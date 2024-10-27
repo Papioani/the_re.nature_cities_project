@@ -1,0 +1,4 @@
+/* Set background opacity for about page */
+.otherBackground {
+  opacity: 0.7; /* Less opaque for this page */
+}

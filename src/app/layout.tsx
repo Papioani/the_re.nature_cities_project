@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import styles from "/styles/layout.module.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,10 +24,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Set the opacity class based on the current pathname
+  const pathname =
+    typeof window !== "undefined" ? window.location.pathname : "/"; // Default to root for server-side
+  const opacityClass = pathname === "/" ? "" : styles.otherBackground; // Apply otherBackground class for routes other than "/"
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased ${opacityClass}`}
+        style={{ backgroundImage: "var(--background-image)" }} // Apply the common background image
       >
         {children}
       </body>
