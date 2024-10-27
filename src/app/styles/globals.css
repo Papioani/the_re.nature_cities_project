@@ -26,7 +26,9 @@ body {
   background-image: var(--background-image);
   background-attachment: fixed;
   font-family: "Helvetica Neue", Arial, sans-serif;
+  position: relative;
 }
+
 .footerBackground {
   position: relative;
   padding: 30px;
@@ -45,11 +47,24 @@ body {
 }
 /* Optional: Style for the main content */
 .mainContent {
+  position: relative; /* Make mainContent relative for overlay */
   padding: 20px; /* Adjust as needed */
   flex-grow: 1;
   overflow: auto;
 }
-
+.mainContent::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.3
+  ); /* Adjust this value for desired opacity */
+  z-index: -1; /* Place it behind the content */
+  pointer-events: none; /* Allow interaction with the content above */
+}
 .footerImages {
   display: flex; /* Use flexbox to arrange the images */
   justify-content: end;
@@ -62,4 +77,26 @@ body {
   border-radius: 8px; /* Add rounded corners for a modern look */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   background-color: white;
+}
+.navbar {
+  min-height: 100px;
+  background-color: #556b2f; /*  #01796f;  #556b2f; */ /* Example using Forest Green */
+  color: white;
+  padding: 20px 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+}
+
+/* Navbar links */
+.navbar a {
+  color: white; /* Set link color to white */
+  text-decoration: none; /* Remove underline */
+  margin: 0 15px; /* Spacing between links */
+  padding: 20px;
+  margin-top: 20px;
+  font-size: x-large;
+}
+
+/* Add hover effect for links */
+.navbar a:hover {
+  text-decoration: underline; /* Underline on hover */
 }
