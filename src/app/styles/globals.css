@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --background-image: url("/background_forest.jpg"); /* Common background image */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --background-image: url("/background_forest.jpg"); /* Common background image for dark mode, if needed */
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: var(--foreground);
+  background: var(--background);
+  background-size: cover; /* Ensure the background image covers the entire body */
+  background-image: var(--background-image);
+  background-attachment: fixed;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+.footerBackground {
+  position: relative;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 10;
+  min-height: 100px;
+}
+
+.footerBackground::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(240, 240, 240, 0.3);
+  z-index: -1; /* Place it behind the footer content */
+  pointer-events: none;
+}
+/* Optional: Style for the main content */
+.mainContent {
+  padding: 20px; /* Adjust as needed */
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.footerImages {
+  display: flex; /* Use flexbox to arrange the images */
+  justify-content: end;
+  gap: 20px; /* Space between the images */
+}
+
+.footerImage {
+  max-width: 300px; /* Set max width for the images */
+  height: auto;
+  border-radius: 8px; /* Add rounded corners for a modern look */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  background-color: white;
+}
