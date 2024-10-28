@@ -3,12 +3,10 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
-      <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-lg font-bold">Re.Nature Cities</h1>
-
+    <nav className="navbar fixed top-0 left-0 right-0 z-50 ">
+      <div className="container mx-auto flex justify-between px-4">
         <div>
-          <a href="#" className="hover:underline">
+          <a href="#" className="hover:text-gray-700">
             Home
           </a>
 
