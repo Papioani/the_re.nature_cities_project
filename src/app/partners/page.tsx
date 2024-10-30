@@ -1,8 +1,8 @@
 // src/app/partners/page.tsx
-import React from "react";
+import React, { FC } from "react";
 import Link from "next/link";
 
-const PartnersPage = () => {
+const PartnersPage: FC = () => {
   return (
     <section className="partnersContent no-background px-4 py-6">
       <h1 className="section-title">The Partners</h1>

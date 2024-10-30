@@ -1,7 +1,7 @@
 // src/app/project-outline/page.tsx
-import React from "react";
+import React, { FC } from "react";
 
-const ProjectOutline = () => {
+const ProjectOutline: FC = () => {
   return (
     <section className="project-outline-container">
       <h1 className="section-title">The Project Outline</h1>

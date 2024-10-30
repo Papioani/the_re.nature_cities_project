@@ -1,7 +1,10 @@
 // src/app/the_re.nature_cities_project/page.tsx
-import React from "react";
-
-const ReNaturePage = () => {
+import React, { FC } from "react";
+// If there were props, we would define them here as an interface
+// interface ReNaturePageProps {
+//   title: string;
+// }
+const ReNaturePage: FC = () => {
   return (
     <section className="re.NatureProjectContent no-background px-4 py-6">
       <h2 className="text-2xl font-bold mb-4">The Scope</h2>{" "}
