@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --background-image: url("/background_forest.jpg"); /* Common background image */
+  --background: #f8f9fa; /* Lightened background */
+  --foreground: #333333; /* Darkened foreground for contrast */
+  /*  --background-image: url("/background_forest.jpg"); */ /* Keep the background image */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --background-image: url("/background_forest.jpg"); /* Common background image for dark mode, if needed */
+    --background: #121212; /* Dark mode background */
+    --foreground: #e0e0e0; /* Lightened foreground for dark mode */
+    --background-image: url("/background_forest.jpg"); /* Dark mode background image */
   }
 }
 
@@ -24,79 +24,190 @@ body {
   background: var(--background);
   background-size: cover; /* Ensure the background image covers the entire body */
   background-image: var(--background-image);
-  background-attachment: fixed;
   font-family: "Helvetica Neue", Arial, sans-serif;
   position: relative;
 }
 
 .footerBackground {
   position: relative;
-  padding: 30px;
-  background-color: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 10;
-  min-height: 100px;
+  align-items: center;
+  justify-content: flex-end;
+  color: white;
+  text-align: center;
 }
 
 .footerBackground::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(240, 240, 240, 0.3);
+  /*  background-color: rgba(240, 240, 240, 0.5); */
   z-index: -1; /* Place it behind the footer content */
   pointer-events: none;
 }
-/* Optional: Style for the main content */
+h1 {
+  display: flex;
+  font-size: 2xl;
+  font-weight: bold;
+  justify-items: center;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+p {
+  font-size: lg;
+  line-height: 1.6;
+}
+.container {
+  max-width: 1200px; /* Controls the maximum width */
+  padding-left: 1rem; /* Padding on left side */
+  padding-right: 1rem; /* Padding on right side */
+  margin: 0 auto; /* Centers content horizontally */
+}
 .mainContent {
   position: relative; /* Make mainContent relative for overlay */
-  padding: 20px; /* Adjust as needed */
+  padding: 20px;
   flex-grow: 1;
   overflow: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: #333;
+  background: var(--gradient-overlay),
+    url("/background_forest.jpg") center/cover no-repeat;
+  background-attachment: fixed;
 }
-.mainContent::before {
+/* .hero-section {
+  background-image: var(--background-image);
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  position: relative;
+  margin-bottom: 20px;
+} */
+
+/* .hero-section .overlay {
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+/* .hero-section .hero-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+} */
+/* .mainContent::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.3
-  ); /* Adjust this value for desired opacity */
-  z-index: -1; /* Place it behind the content */
-  pointer-events: none; /* Allow interaction with the content above */
-}
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+  pointer-events: none;
+} */
 .footerImages {
   display: flex; /* Use flexbox to arrange the images */
-  justify-content: end;
+  justify-content: flex-end;
+  align-items: center; /* Center images vertically */
   gap: 20px; /* Space between the images */
+  height: auto;
+  padding: 20px;
 }
 
 .footerImage {
-  max-width: 300px; /* Set max width for the images */
-  height: auto;
-  border-radius: 8px; /* Add rounded corners for a modern look */
+  max-width: 250px;
+  height: 50px;
+  border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   background-color: white;
 }
 .navbar {
-  min-height: 100px;
-  background-color: #556b2f; /*  #01796f;  #556b2f; */ /* Example using Forest Green */
+  min-height: fit-content;
+
+  background-color: #556b2f; /*    #01796f; #a7d7c5;  #8bc34a;  */ /* Example using Forest Green */
   color: white;
-  padding: 20px 30px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+  padding: 16px 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
 }
 
-/* Navbar links */
 .navbar a {
-  color: white; /* Set link color to white */
-  text-decoration: none; /* Remove underline */
+  color: rgba(255, 255, 255, 0.9); /* Set link color to white */
+  text-decoration: none;
   margin: 0 15px; /* Spacing between links */
-  padding: 20px;
-  margin-top: 20px;
-  font-size: x-large;
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
-
+.no-background {
+  background-image: none;
+}
 /* Add hover effect for links */
 .navbar a:hover {
-  text-decoration: underline; /* Underline on hover */
+  text-decoration: wavy;
+  color: #e0e0e0;
+}
+.text-shadow-lg {
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); /* Subtle shadow for readability */
+}
+
+.shadow-inner-lg {
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5); /* Inner shadow for depth */
+}
+/* projectOutline.css */
+
+.project-outline-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.section-title {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.project-description {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+.work-package {
+  margin-bottom: 2rem;
+}
+
+.work-package-title {
+  font-size: 1.5rem;
+  color: #0073e6;
+  margin-bottom: 1rem;
+}
+
+.work-package-details {
+  list-style-type: disc;
+  margin-left: 2rem;
+}
+
+.work-package-details li {
+  margin-bottom: 0.5rem;
+}
+.partner-link {
+  color: #556b2f; /* Dark Olive Green */
+  text-decoration: underline;
+  font-weight: bold; /* Bold font weight */
+  padding: 5px 10px; /* Padding for a better click area */
+
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.partner-link:hover {
+  /* Change background on hover */
+  text-decoration: none;
+  /* Change text color on hover */
 }
