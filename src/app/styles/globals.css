@@ -59,13 +59,15 @@ p {
   font-size: lg;
   line-height: 1.6;
 }
+.container {
+  max-width: 1200px; /* Controls the maximum width */
+  padding-left: 1rem; /* Padding on left side */
+  padding-right: 1rem; /* Padding on right side */
+  margin: 0 auto; /* Centers content horizontally */
+}
 .mainContent {
-  max-width: 1200px;
   position: relative; /* Make mainContent relative for overlay */
-  padding-left: 1rem;
-  padding-right: 1rem;
-  /*  padding: 20px; */
-  margin: 0 auto;
+  padding: 20px;
   flex-grow: 1;
   overflow: auto;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -74,14 +76,14 @@ p {
     url("/background_forest.jpg") center/cover no-repeat;
   background-attachment: fixed;
 }
-.hero-section {
+/* .hero-section {
   background-image: var(--background-image);
   background-size: cover;
   background-position: center;
   height: 300px;
   position: relative;
   margin-bottom: 20px;
-}
+} */
 
 /* .hero-section .overlay {
   background: rgba(0, 0, 0, 0.5);
@@ -117,8 +119,7 @@ p {
 .footerImage {
   max-width: 250px;
   height: 50px;
-
-  border-radius: 8px; /* Add rounded corners for a modern look */
+  border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   background-color: white;
 }
@@ -131,10 +132,9 @@ p {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
 }
 
-/* Navbar links */
 .navbar a {
   color: rgba(255, 255, 255, 0.9); /* Set link color to white */
-  text-decoration: none; /* Remove underline */
+  text-decoration: none;
   margin: 0 15px; /* Spacing between links */
   padding: 10px 15px;
   font-size: 1rem;
@@ -156,4 +156,44 @@ p {
 
 .shadow-inner-lg {
   box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5); /* Inner shadow for depth */
+}
+/* projectOutline.css */
+
+.project-outline-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.project-description {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+.work-package {
+  margin-bottom: 2rem;
+}
+
+.work-package-title {
+  font-size: 1.5rem;
+  color: #0073e6;
+  margin-bottom: 1rem;
+}
+
+.work-package-details {
+  list-style-type: disc;
+  margin-left: 2rem;
+}
+
+.work-package-details li {
+  margin-bottom: 0.5rem;
 }
