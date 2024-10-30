@@ -1,8 +1,14 @@
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start relative">
-        {/* <div className="bg-black bg-opacity-70 p-8 rounded-lg shadow-lg"> */}
+    <div className="flex flex-col min-h-screen">
+      {/* <div className="hero-section">
+        <div className="overlay">
+          <h1 className="text-white text-2xl font-extrabold mb-4 leading-tight">
+            Welcome to Re.Nature Cities
+          </h1>
+        </div>
+      </div> */}
+      <main className="flex flex-col gap-8 items-center sm:items-start p-8 pb-20">
         <div className="bg-gray-900 bg-opacity-40 p-8 rounded-lg shadow-lg">
           <h1 className="text-white text-2xl font-extrabold mb-4 leading-tight">
             Welcome to Re.Nature Cities
