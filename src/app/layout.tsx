@@ -32,12 +32,11 @@ export default function RootLayout({
       >
         <Navbar />
         {/* Hero section with background image */}
-        <section className="hero-section">
-          <div className="overlay"></div>
-        </section>
+        <section className="hero-section"></section>
         <div className="container">
           <main className="mainContent">{children}</main>
         </div>
+
         <footer className="footerBackground">
           {" "}
           <Footer />
