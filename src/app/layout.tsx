@@ -38,6 +38,7 @@ export default function RootLayout({
         <div className="container">
           <main className="mainContent">{children}</main>
         </div>
+
         <footer className="footerBackground">
           {" "}
           <Footer />
