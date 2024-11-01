@@ -2,10 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* You typically define custom properties in the :root selector (or any parent element) to make them accessible throughout your stylesheet. */
 :root {
   --background: #f8f9fa; /* Lightened background */
   --foreground: #333333; /* Darkened foreground for contrast */
-  /*  --background-image: url("/background_forest.jpg"); */ /* Keep the background image */
+  --background-image: url("/background_forest.jpg"); /* defined this variable in your CSS like so: syntax retrieves the value of the custom property --background*/
 }
 
 @media (prefers-color-scheme: dark) {
@@ -15,13 +16,17 @@
     --background-image: url("/background_forest.jpg"); /* Dark mode background image */
   }
 }
-
+/* -- prefix:  variables that allow you to store values that you can reuse throughout your stylesheet.  */
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  color: var(--foreground);
-  background: var(--background);
+  min-height: 100vh; /* 100vh means the height of the entire visible area of the browser window. It is responsive */
+  margin: 0; /* removes any default margin that browsers apply to the body element */
+  padding: 0;
+  color: var(--foreground); /* this would be --foreground: #333333; */
+  background: var(
+    --background
+  ); /* syntax retrieves the value of the custom property --background */
   background-size: cover; /* Ensure the background image covers the entire body */
   /* background-image: var(--background-image); */
   font-family: "Helvetica Neue", Arial, sans-serif;
@@ -30,20 +35,16 @@ body {
 
 .footerBackground {
   position: relative;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.8);
+  padding: 1rem;
+  background-color: #2e4d2e;
   z-index: 10;
-  align-items: center;
-  justify-content: flex-end;
-  color: white;
-  text-align: center;
+  color: #f5f5f5;
 }
 
 .footerBackground::before {
   content: "";
   position: absolute;
   inset: 0;
-  /*  background-color: rgba(240, 240, 240, 0.5); */
   z-index: -1; /* Place it behind the footer content */
   pointer-events: none;
 }
@@ -64,52 +65,38 @@ p {
   padding-left: 1rem; /* Padding on left side */
   padding-right: 1rem; /* Padding on right side */
   margin: 0 auto; /* Centers content horizontally */
+  backdrop-filter: blur(10px);
 }
 .mainContent {
   position: relative; /* Make mainContent relative for overlay */
-  padding: 20px;
-  flex-grow: 1;
-  overflow: auto;
+  padding: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  color: #333;
-  background: var(--gradient-overlay),
-    url("/background_forest.jpg") center/cover no-repeat;
-  background-attachment: fixed;
 }
 .hero-section {
   background-image: url("/background_forest.jpg");
   background-size: cover;
+  background-position: center; /* Center the image horizontally and vertically */
   background-attachment: fixed;
-  height: 300px;
-  position: relative;
-
+  position: sticky;
+  top: 0;
+  height: 400px;
+  position: relative; /* .hero-section as a reference point for any absolutely positioned elements within it, like ::before. */
   padding: 5rem 2rem;
 }
 
 .hero-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
+  content: ""; /* is required to make the ::before pseudo-element appear. Without defining content, pseudo-elements won’t render */
+  position: absolute; /* its position is calculated relative to the .hero-section (thanks to the parent’s position: relative). */
+  top: 0; /* the 0s here to span the full height and width of its parent element, the .hero-section */
   left: 0;
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0);
 }
 
-/* .hero-section .hero-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #ffffff;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-} */
-/* .mainContent::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: -1;
-  pointer-events: none;
-} */
 .footerImages {
   display: flex; /* Use flexbox to arrange the images */
   justify-content: flex-end;
@@ -128,11 +115,9 @@ p {
 }
 .navbar {
   min-height: fit-content;
-
-  background-color: #556b2f; /*    #01796f; #a7d7c5;  #8bc34a;  */ /* Example using Forest Green */
-  color: white;
+  background-color: #2e4d2e; /*   #556b2f;  #01796f; #a7d7c5;  #8bc34a;  */ /* Example using Forest Green */
+  color: #f5f5f5;
   padding: 16px 30px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
 }
 
 .navbar a {
