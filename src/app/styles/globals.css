@@ -23,7 +23,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   background-size: cover; /* Ensure the background image covers the entire body */
-  background-image: var(--background-image);
+  /* background-image: var(--background-image); */
   font-family: "Helvetica Neue", Arial, sans-serif;
   position: relative;
 }
@@ -76,22 +76,25 @@ p {
     url("/background_forest.jpg") center/cover no-repeat;
   background-attachment: fixed;
 }
-/* .hero-section {
-  background-image: var(--background-image);
+.hero-section {
+  background-image: url("/background_forest.jpg");
   background-size: cover;
-  background-position: center;
+  background-attachment: fixed;
   height: 300px;
   position: relative;
-  margin-bottom: 20px;
-} */
 
-/* .hero-section .overlay {
-  background: rgba(0, 0, 0, 0.5);
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
+  padding: 5rem 2rem;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+}
 
 /* .hero-section .hero-title {
   font-size: 2rem;
