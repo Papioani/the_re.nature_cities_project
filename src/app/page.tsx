@@ -9,9 +9,9 @@ export default function Home() {
         </div>
       </div> */}
       <main className="flex flex-col gap-8 items-start sm:items-start p-8 pb-20">
-        <h1 className=" text-2xl font-bold mb-4 text-center">
-          Welcome to Re.Nature Cities
-        </h1>
+        <div className="centered-container">
+          <h1 className="centered-heading"> Welcome to Re.Nature Cities</h1>
+        </div>
         <p className="text-lg leading-relaxed mb-6 border-l-4 border-green-500 pl-4">
           This research project focuses on experimental and numerical methods to
           assess the role of street trees as a Nature-Based Solution for climate
