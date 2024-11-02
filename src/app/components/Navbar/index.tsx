@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar">
-        <div className="container mx-auto flex justify-between px-4">
+        <div className="mx-auto flex-col justify-end h-full">
           <Link href="/">Home</Link>
           <Link href="/the-re.nature-cities-project">
             The Re.Nature Cities Project

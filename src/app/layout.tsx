@@ -31,8 +31,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
+
         {/* Hero section with background image */}
-        <section className="hero-section"></section>
+        {/* <section className="hero-section"></section> */}
         <div className="container">
           <main className="mainContent">{children}</main>
         </div>
