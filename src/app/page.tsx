@@ -24,12 +24,12 @@ export default function Home() {
           by the European Union – NextGenerationEU (H.F.R.I. Project Number:
           15566).
         </p>
-        <div className="text-lg leading-relaxed mb-6 border-t border-gray-300 pt-4 text-left">
-          <p className="mb-1">
+        <div className="text-lg leading-relaxed mb-6 border-t border-gray-500 pt-4 text-left">
+          <p className="marker-square mb-1">
             <span className="font-semibold">Project Duration:</span> 24 months
             (2/10/2023 - 01/10/2025)
           </p>
-          <p>
+          <p className="marker-square">
             <span className="font-semibold">Total Budget (€):</span> 162,084
           </p>
         </div>
