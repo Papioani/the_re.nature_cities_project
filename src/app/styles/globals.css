@@ -6,14 +6,14 @@
 :root {
   --background: #f8f9fa; /* Lightened background */
   --foreground: #333333; /* Darkened foreground for contrast */
-  --background-image: url("/background_forest.jpg"); /* defined this variable in your CSS like so: syntax retrieves the value of the custom property --background*/
+  /*  --background-image: url("/background_forest.jpg"); */ /* defined this variable in your CSS like so: syntax retrieves the value of the custom property --background*/
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #121212; /* Dark mode background */
     --foreground: #e0e0e0; /* Lightened foreground for dark mode */
-    --background-image: url("/background_forest.jpg"); /* Dark mode background image */
+    --background-image: url("/background-forest2.png"); /* Dark mode background image */
   }
 }
 /* -- prefix:  variables that allow you to store values that you can reuse throughout your stylesheet.  */
@@ -36,7 +36,9 @@ body {
 .footerBackground {
   position: relative;
   padding: 1rem;
-  background-color: #1c3d5a;
+  background-image: var(--background-image);
+  /*  background-color: #1c3d5a; */
+  background-color: black;
   z-index: 10;
   color: #f5f5f5;
   border-top: 2px solid rgba(255, 255, 255, 0.2);
@@ -139,13 +141,13 @@ ul {
 }
 
 .hero-section {
-  background-image: url("/background_forest.jpg");
+  background-image: url("/background-forest2.png");
   background-size: cover;
   background-position: center; /* Center the image horizontally and vertically */
   background-attachment: fixed;
   position: sticky;
   top: 0;
-  height: 400px;
+  height: 500px;
   position: relative; /* .hero-section as a reference point for any absolutely positioned elements within it, like ::before. */
   padding: 5rem 2rem;
 }
@@ -189,6 +191,7 @@ ul {
   /* background-color: #2e4d2e; */ /*   #556b2f;  #01796f; #a7d7c5;  #8bc34a;  */ /* Example using Forest Green */
   /*   background: linear-gradient(to bottom, rgba(46, 77, 46, 1), rgba(46, 77, 46, 0.8));  a gradient could be interesting
  */
+  position: fixed;
   background-color: rgba(46, 77, 46, 0.9);
   color: #f5f5f5;
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
@@ -199,7 +202,6 @@ ul {
   display: flex; /* Use flexbox */
   flex-direction: column; /* Stack children vertically */
   justify-content: flex-end; /* Align children to the bottom */
-  height: 100%;
 }
 
 .navbar a {
@@ -219,7 +221,6 @@ ul {
 .navbar a:hover {
   text-decoration: wavy;
   color: white;
-
   transition: background-color 0.3s ease;
 }
 
