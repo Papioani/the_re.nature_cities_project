@@ -34,9 +34,9 @@ export default function RootLayout({
 
         {/* Hero section with background image */}
         <section className="hero-section"></section>
-        <div className="container">
-          <main className="mainContent">{children}</main>
-        </div>
+        {/* <div className="container"> */}
+        <main className="mainContent">{children}</main>
+        {/* </div> */}
 
         <footer className="footerBackground">
           {" "}
