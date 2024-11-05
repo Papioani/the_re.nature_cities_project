@@ -142,14 +142,15 @@ ul {
 
 .hero-section {
   background-image: url("/background-forest2.png");
-  background-size: cover;
+  background-size: contain; /* Show the entire image */
+  background-repeat: no-repeat; /* Prevent tiling */
   background-position: center; /* Center the image horizontally and vertically */
   background-attachment: fixed;
   position: sticky;
   top: 0;
-  height: 500px;
+  height: 350px;
   position: relative; /* .hero-section as a reference point for any absolutely positioned elements within it, like ::before. */
-  padding: 5rem 2rem;
+  padding: 3rem 2rem;
 }
 
 .hero-section::before {
