@@ -8,26 +8,36 @@ import React from "react";
 const Navbar = () => {
   return (
     <>
-      <nav className="navbar">
-        <div className="mx-auto flex-col justify-end h-full">
-          <Link href="/">Home</Link>
-          <Link href="/the-re.nature-cities-project">
+      <nav className="navbar flex items-center justify-between text-white px-4">
+        <div className="flex space-x-6">
+          {" "}
+          <Link href="/" className="nav-link home">
+            Home
+          </Link>
+          <Link
+            href="/the-re.nature-cities-project"
+            className="nav-link large-tabs"
+          >
             The Re.Nature Cities Project
           </Link>
-
-          <Link href="/partners">Partners</Link>
-
-          <Link href="/project-outline">Project Outline</Link>
-
-          <Link href="/wind-tunnel">
+          <Link href="/partners" className="nav-link home">
+            Partners
+          </Link>
+          <Link href="/project-outline" className="nav-link">
+            Project Outline
+          </Link>
+          <Link href="/wind-tunnel" className="nav-link wind large-tabs">
             Wind tunnel, LAI/LAD and albedo measurements
           </Link>
-
-          <Link href="/deliverables-publications">
+          <Link
+            href="/deliverables-publications"
+            className="nav-link large-tabs"
+          >
             Deliverables and publications
           </Link>
-
-          <Link href="/the-action">The action</Link>
+          <Link href="/the-action" className="nav-link home">
+            The action
+          </Link>
         </div>
       </nav>
     </>
