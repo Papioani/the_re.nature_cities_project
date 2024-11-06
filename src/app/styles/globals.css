@@ -22,21 +22,21 @@ body {
   flex-direction: column;
   min-height: 100vh; /* 100vh means the height of the entire visible area of the browser window. It is responsive */
   margin: 0; /* removes any default margin that browsers apply to the body element */
-  padding: 0;
+  padding: 0px;
   color: var(--foreground); /* this would be --foreground: #333333; */
   background: var(
     --background
   ); /* syntax retrieves the value of the custom property --background */
   background-size: cover; /* Ensure the background image covers the entire body */
   background-image: var(--background-image);
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  position: relative;
+  /*   font-family: "Helvetica Neue", Arial, sans-serif; */
+  font-family: Arial, sans-serif;
 }
 
 .footerBackground {
-  position: relative;
+  position: sticky;
   padding: 1rem;
-  background-image: var(--background-image);
+  /* background-image: var(--background-image); */
   /*  background-color: #1c3d5a; */
   background-color: black;
   z-index: 10;
@@ -70,7 +70,7 @@ ul {
   font-size: 1rem; /* Comfortable font size for body text */
   color: black;
   line-height: 1.8; /* Increase line height for readability */
-  margin-bottom: 1.5rem; /* Consistent spacing for paragraphs */
+  margin-bottom: 2rem; /* Consistent spacing for paragraphs */
 }
 .list-custom {
   list-style-type: square; /* Changes bullet points to squares */
@@ -102,6 +102,7 @@ ul {
   width: 100%; /* Take full width of the main container */
   display: flex;
   justify-content: center; /* Center-align child elements */
+  top: 100px;
 }
 .centered-heading {
   display: flex;
@@ -124,32 +125,34 @@ ul {
   background: rgba(28, 61, 90, 0.8); /* Color of the line */
   margin: 0.5rem auto 0; /* Center the line and add space */
 }
-.container {
-  max-width: 1200px; /* Controls the maximum width */
-  padding-left: 1rem; /* Padding on left side */
-  padding-right: 1rem; /* Padding on right side */
-  margin: 0 auto; /* Centers content horizontally */
-  /* backdrop-filter: blur(10px); */
-  padding: 50px;
-  margin-top: 20px;
-}
 
 .mainContent {
-  position: relative; /* Make mainContent relative for overlay */
-  background: rgba(250, 250, 250, 0.9);
+  position: -webkit-sticky; /* Safari fix */
+  position: sticky;
+  /* background: rgba(250, 250, 250, 0.9); */
+  background-color: #fff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: top 0.3s ease-in-out;
+  flex-grow: 1;
+  padding-top: 5rem;
+  z-index: 5;
 }
 
 .hero-section {
   background-image: url("/background-forest2.png");
-  background-size: cover;
+  background-size: 100%; /* Show the entire image */
+  background-repeat: no-repeat; /* Prevent tiling */
   background-position: center; /* Center the image horizontally and vertically */
   background-attachment: fixed;
+  /*  transform: scaleY(0.9); */
+  z-index: 2;
   position: sticky;
   top: 0;
-  height: 500px;
+  transition: opacity 0.3s ease-in-out;
+  height: 350px;
   position: relative; /* .hero-section as a reference point for any absolutely positioned elements within it, like ::before. */
-  padding: 5rem 2rem;
+  margin-top: calc(100px + 1rem);
+  overflow: hidden; /* Prevents content overflow */
 }
 
 .hero-section::before {
@@ -160,14 +163,15 @@ ul {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0);
+  z-index: 1;
 }
 .re.NatureProjectContent {
   background-color: rgba(255, 255, 255, 0.95);
-  padding: 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   max-width: 800px;
   margin: 0 auto;
+  margin-bottom: 40px;
 }
 
 .footerImages {
@@ -187,41 +191,35 @@ ul {
   background-color: white;
 }
 .navbar {
-  min-height: fit-content;
-  /* background-color: #2e4d2e; */ /*   #556b2f;  #01796f; #a7d7c5;  #8bc34a;  */ /* Example using Forest Green */
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: #2e4d2e; /*   #556b2f;  #01796f; #a7d7c5;  #8bc34a;  */ /* Example using Forest Green */
   /*   background: linear-gradient(to bottom, rgba(46, 77, 46, 1), rgba(46, 77, 46, 0.8));  a gradient could be interesting
  */
-  position: fixed;
-  background-color: rgba(46, 77, 46, 0.9);
-  color: #f5f5f5;
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 16px 30px;
+  padding: 0 30px;
   z-index: 10;
   width: 100%;
-  display: flex; /* Use flexbox */
-  flex-direction: column; /* Stack children vertically */
-  justify-content: flex-end; /* Align children to the bottom */
 }
 
-.navbar a {
-  color: rgba(255, 255, 255, 0.9); /* Set link color to white */
+.nav-link {
   text-decoration: none;
-  margin: 0 15px; /* Spacing between links */
-  padding: 10px 15px;
-  font-size: 1rem;
+  padding: 0px 2px 3px 6px;
+  font-size: medium; /* Base size */
   font-weight: 500;
-  letter-spacing: 0.5px;
+  border-radius: 4px;
   transition: color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
 }
-.no-background {
-  background-image: none;
-}
+
 /* Add hover effect for links */
 .navbar a:hover {
   text-decoration: wavy;
-  color: white;
+  transform: scale(1.05); /* Slightly enlarge on hover for effect */
   transition: background-color 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .text-shadow-lg {
@@ -242,9 +240,13 @@ ul {
 }
 
 .section-title {
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
   color: #333;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 .section-divider {
   border-top: 1px solid rgba(0, 0, 0, 0.1); /* Light gray line */
@@ -252,40 +254,97 @@ ul {
   width: 75%;
 }
 .project-description {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  text-align: center;
+  line-height: 1.8;
 }
 
 .work-package {
-  margin-bottom: 2rem;
+  margin-bottom: 30px;
 }
 
 .work-package-title {
-  font-size: 1.5rem;
-  color: #0073e6;
-  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  text-align: center;
+  /* color: #1c3d5a; */
+  color: #2e4d2e;
+  margin-bottom: 15px;
+  font-weight: 600;
 }
 
 .work-package-details {
   list-style-type: disc;
-  margin-left: 2rem;
+  padding-left: 20px;
 }
 
 .work-package-details li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .project-outline-container {
+    padding: 15px;
+    margin: 20px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .project-description {
+    font-size: 1rem;
+  }
+
+  .work-package-title {
+    font-size: 1.2rem;
+  }
+
+  .work-package-details li {
+    font-size: 1rem;
+  }
 }
 .partner-link {
   color: #556b2f; /* Dark Olive Green */
   text-decoration: underline;
   font-weight: bold; /* Bold font weight */
   padding: 5px 10px; /* Padding for a better click area */
-
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+  transition: all 0.3s ease; /* Smooth transition */
 }
-
 .partner-link:hover {
-  /* Change background on hover */
   text-decoration: none;
-  /* Change text color on hover */
+}
+.partner {
+  margin-bottom: 30px;
+}
+.partner-description {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+.partner-list {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+.partner-list li {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+@media (max-width: 768px) {
+  .partnersContent {
+    padding: 15px;
+    margin: 20px;
+  }
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .partner-description {
+    font-size: 1rem;
+  }
+
+  .partner-list li {
+    font-size: 1rem;
+  }
 }

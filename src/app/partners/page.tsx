@@ -4,11 +4,11 @@ import Link from "next/link";
 
 const PartnersPage: FC = () => {
   return (
-    <section className="partnersContent no-background px-4 py-6">
+    <section className="partnersContent px-4 py-6">
       <h1 className="section-title">The Partners</h1>
-
+      <div className="section-divider"></div>
       <article className="partner">
-        <p>
+        <p className="partner-description">
           Founded in 1972, the{" "}
           <Link
             href="https://www.civil.upatras.gr/?lang=en"
@@ -27,38 +27,28 @@ const PartnersPage: FC = () => {
           </Link>{" "}
           is the host institution of the project. The department consists of
           three divisions, nine laboratories, a Seismic Simulator Facility, a
-          Fire Testing Facility, and two Computer Centers covering the areas of
+          Fire Testing Facility, and two Computer Centers covering the areas of:
         </p>
-        <ul>
+        <ul className="partner-list">
           <li>Structural Engineering</li>
-          <li>Geotechnical Engineering and Hydraulic Engineering</li>
+          <li>Geotechnical Engineering and Hydraulic Engineering </li>
           <li>Environmental Engineering and Transportation Engineering</li>
           <ul />
-          <li>
-            Research and development of innovative systems for combined energy
-            and seismic retrofitting of buildings
-          </li>
-          <p>
+
+          <p className="partner-description">
             {" "}
-            Among its notable expertise, the department focuses on the research
-            and development of innovative systems for combined energy and
-            seismic retrofitting of buildings. It also excels in numerical
-            methods for assessing dynamic energy performance and urban
-            microclimate analysis, along with hygrothermal performance and
-            sustainable design of the urban built environment.
+            Among others, the department presents significant expertise in the
+            research and development of innovative systems and components for
+            combined energy and seismic retrofitting of buildings, and also a
+            strong expertise in numerical methods for buildings’ dynamic energy
+            performance and urban microclimate analysis, buildings hygrothermal
+            performance and sustainable design of the urban built environment
           </p>
-          <li>
-            Numerical methods for dynamic energy performance of buildings and
-            urban microclimate analysis
-          </li>
-          <li>
-            Hygrothermal performance of buildings and sustainable urban design
-          </li>
         </ul>
       </article>
-
+      <div className="section-divider"></div>
       <article className="partner">
-        <p>
+        <p className="partner-description">
           The{" "}
           <Link
             href="http://wt.fluid.mech.ntua.gr/"
@@ -72,7 +62,7 @@ const PartnersPage: FC = () => {
           Collaborating Organization of the Re.Nature Cities project. NTUA
           participates through the School of Mechanical Engineering, Fluids
           Section and assures the wind tunnel measurements of the drag
-          coefficient of common urban tree species
+          coefficient of common urban tree species.
         </p>
       </article>
     </section>
