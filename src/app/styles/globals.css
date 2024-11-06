@@ -29,7 +29,8 @@ body {
   ); /* syntax retrieves the value of the custom property --background */
   background-size: cover; /* Ensure the background image covers the entire body */
   background-image: var(--background-image);
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  /*   font-family: "Helvetica Neue", Arial, sans-serif; */
+  font-family: Arial, sans-serif;
 }
 
 .footerBackground {
@@ -69,7 +70,7 @@ ul {
   font-size: 1rem; /* Comfortable font size for body text */
   color: black;
   line-height: 1.8; /* Increase line height for readability */
-  margin-bottom: 1.5rem; /* Consistent spacing for paragraphs */
+  margin-bottom: 2rem; /* Consistent spacing for paragraphs */
 }
 .list-custom {
   list-style-type: square; /* Changes bullet points to squares */
@@ -128,7 +129,8 @@ ul {
 .mainContent {
   position: -webkit-sticky; /* Safari fix */
   position: sticky;
-  background: rgba(250, 250, 250, 0.9);
+  /* background: rgba(250, 250, 250, 0.9); */
+  background-color: #fff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: top 0.3s ease-in-out;
   flex-grow: 1;
@@ -238,9 +240,13 @@ ul {
 }
 
 .section-title {
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
   color: #333;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 .section-divider {
   border-top: 1px solid rgba(0, 0, 0, 0.1); /* Light gray line */
@@ -248,40 +254,97 @@ ul {
   width: 75%;
 }
 .project-description {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  text-align: center;
+  line-height: 1.8;
 }
 
 .work-package {
-  margin-bottom: 2rem;
+  margin-bottom: 30px;
 }
 
 .work-package-title {
-  font-size: 1.5rem;
-  color: #0073e6;
-  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  text-align: center;
+  /* color: #1c3d5a; */
+  color: #2e4d2e;
+  margin-bottom: 15px;
+  font-weight: 600;
 }
 
 .work-package-details {
   list-style-type: disc;
-  margin-left: 2rem;
+  padding-left: 20px;
 }
 
 .work-package-details li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .project-outline-container {
+    padding: 15px;
+    margin: 20px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .project-description {
+    font-size: 1rem;
+  }
+
+  .work-package-title {
+    font-size: 1.2rem;
+  }
+
+  .work-package-details li {
+    font-size: 1rem;
+  }
 }
 .partner-link {
   color: #556b2f; /* Dark Olive Green */
   text-decoration: underline;
   font-weight: bold; /* Bold font weight */
   padding: 5px 10px; /* Padding for a better click area */
-
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+  transition: all 0.3s ease; /* Smooth transition */
 }
-
 .partner-link:hover {
-  /* Change background on hover */
   text-decoration: none;
-  /* Change text color on hover */
+}
+.partner {
+  margin-bottom: 30px;
+}
+.partner-description {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+.partner-list {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+.partner-list li {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+@media (max-width: 768px) {
+  .partnersContent {
+    padding: 15px;
+    margin: 20px;
+  }
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .partner-description {
+    font-size: 1rem;
+  }
+
+  .partner-list li {
+    font-size: 1rem;
+  }
 }

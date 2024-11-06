@@ -6,9 +6,9 @@ const PartnersPage: FC = () => {
   return (
     <section className="partnersContent px-4 py-6">
       <h1 className="section-title">The Partners</h1>
-
+      <div className="section-divider"></div>
       <article className="partner">
-        <p>
+        <p className="partner-description">
           Founded in 1972, the{" "}
           <Link
             href="https://www.civil.upatras.gr/?lang=en"
@@ -27,28 +27,28 @@ const PartnersPage: FC = () => {
           </Link>{" "}
           is the host institution of the project. The department consists of
           three divisions, nine laboratories, a Seismic Simulator Facility, a
-          Fire Testing Facility, and two Computer Centers covering the areas
+          Fire Testing Facility, and two Computer Centers covering the areas of:
         </p>
-        <ul>
+        <ul className="partner-list">
           <li>Structural Engineering</li>
           <li>Geotechnical Engineering and Hydraulic Engineering </li>
           <li>Environmental Engineering and Transportation Engineering</li>
           <ul />
 
-          <p>
+          <p className="partner-description">
             {" "}
-            Among others, it presents significant expertise in the research and
-            development of innovative systems and components for combined energy
-            and seismic retrofitting of buildings, and also a strong expertise
-            in numerical methods for buildings’ dynamic energy performance and
-            urban microclimate analysis, buildings hygrothermal performance and
-            sustainable design of the urban built environment
+            Among others, the department presents significant expertise in the
+            research and development of innovative systems and components for
+            combined energy and seismic retrofitting of buildings, and also a
+            strong expertise in numerical methods for buildings’ dynamic energy
+            performance and urban microclimate analysis, buildings hygrothermal
+            performance and sustainable design of the urban built environment
           </p>
         </ul>
       </article>
-
+      <div className="section-divider"></div>
       <article className="partner">
-        <p>
+        <p className="partner-description">
           The{" "}
           <Link
             href="http://wt.fluid.mech.ntua.gr/"
