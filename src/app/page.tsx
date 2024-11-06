@@ -1,13 +1,6 @@
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* <div className="hero-section">
-        <div className="overlay">
-          <h1 className="text-white text-2xl font-extrabold mb-4 leading-tight">
-            Welcome to Re.Nature Cities
-          </h1>
-        </div>
-      </div> */}
+    <div className="flex flex-col">
       <main className="flex flex-col gap-8 items-start sm:items-start p-8 pb-20">
         <div className="centered-container">
           <h1 className="centered-heading"> Welcome to Re.Nature Cities</h1>
