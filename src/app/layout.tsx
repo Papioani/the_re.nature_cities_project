@@ -28,15 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
         <Navbar />
 
-        {/* Hero section with background image */}
         <section className="hero-section"></section>
-        <div className="container">
-          <main className="mainContent">{children}</main>
-        </div>
+        <main className="mainContent flex-grow pt-20">{children}</main>
 
         <footer className="footerBackground">
           {" "}
