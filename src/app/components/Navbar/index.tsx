@@ -1,15 +1,24 @@
 // Navbar.tsx
+"use client";
 import Link from "next/link";
 // <Link>: This component enables client-side navigation, which means that clicking the link will not trigger a full page reload. Instead, it will only update the necessary components on the page
-import React from "react";
-
+import React, { useRef } from "react";
+import { useStickyScroll } from "../../hooks/useStickyScroll";
 // many modern setups and Next.js examples skip React.FC
 //when no props are present to keep the code concise.
-const Navbar = () => {
+const Navbar: React.FC = () => {
+  const navbarRef = useRef<HTMLElement>(null); // Create a ref for the navbar
+  const heroRef = useRef<HTMLElement>(null); // Create a ref for the hero section
+
+  // Get the scroll offset from the custom hook
+  const offset = useStickyScroll(navbarRef, heroRef);
   return (
     <>
-      <nav className="navbar flex items-center justify-between text-white px-4">
-        <div className="flex space-x-6">
+      <nav
+        ref={navbarRef}
+        className="navbar flex items-center justify-between text-white px-4"
+      >
+        <div className="flex space-x-6 ">
           {" "}
           <Link href="/" className="nav-link home">
             Home
