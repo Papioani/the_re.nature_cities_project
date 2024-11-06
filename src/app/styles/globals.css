@@ -138,6 +138,7 @@ ul {
   position: relative; /* Make mainContent relative for overlay */
   background: rgba(250, 250, 250, 0.9);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: top 0.3s ease-in-out;
 }
 
 .hero-section {
@@ -216,21 +217,21 @@ ul {
   text-decoration: none;
   margin: 0; /* Spacing between links */
   padding: 10px 15px;
-  font-size: 1rem; /* Base size */
+  font-size: medium; /* Base size */
   font-weight: 500;
-  letter-spacing: 0.5px;
-  line-height: 1.5;
+  /*  letter-spacing: 0.5px; */
+  /*  line-height: 1.5; */
   transition: color 0.3s ease, transform 0.2s ease;
   display: inline-block;
-  gap: 0.1rem;
+
   /*  display: flex; */ /* Makes the link a flex container */
   /*  align-items: center; */
 }
 .nav-link.home {
-  font-size: 1.2rem; /* Slightly larger */
+  font-size: medium; /* Slightly larger */
 }
 .nav-link.wind {
-  font-size: 0.9rem; /* Slightly larger */
+  font-size: medium; /* Slightly larger */
 }
 .no-background {
   background-image: none;
