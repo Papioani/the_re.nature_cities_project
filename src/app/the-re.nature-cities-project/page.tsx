@@ -6,7 +6,7 @@ import React, { FC } from "react";
 // }
 const ReNaturePage: FC = () => {
   return (
-    <section className="re.NatureProjectContent no-background px-4 py-6">
+    <section className="re.NatureProjectContent px-4 py-2 pb-16 ">
       <h2>The Scope</h2>{" "}
       <p className="text-lg leading-relaxed mb-6 border-l-4 border-green-500 pl-4">
         Re.Nature Cities aims to evaluate via experimental and simulation means

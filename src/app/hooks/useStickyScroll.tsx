@@ -1,31 +1,38 @@
-import { useState, useEffect } from "react";
+// useStickyScroll.ts
+"use client";
 
-export const useStickyScroll = (
-  navbarRef: React.RefObject<HTMLElement>,
-  heroRef: React.RefObject<HTMLElement>
-) => {
-  const [offset, setOffset] = useState(0);
+import { useEffect } from "react";
 
+const useStickyScroll = () => {
   useEffect(() => {
-    const handleScroll = () => {
-      const navbarHeight = navbarRef.current?.offsetHeight || 0;
-      const heroHeight = heroRef.current?.offsetHeight || 0; // Get hero section height
+    // Type assertion to HTMLElement to tell TypeScript it's not null
+    const navbar = document.querySelector(".navbar") as HTMLElement | null;
+    const heroSection = document.querySelector(
+      ".hero-section"
+    ) as HTMLElement | null;
 
-      const scrollPosition = window.scrollY;
+    // Check if elements exist before accessing their properties
+    if (navbar && heroSection) {
+      const navbarHeight = navbar.offsetHeight;
 
-      if (scrollPosition > heroHeight) {
-        setOffset(-navbarHeight);
-      } else {
-        setOffset(0);
-      }
-    };
+      const handleScroll = () => {
+        const heroSectionBottom = heroSection.getBoundingClientRect().bottom;
 
-    window.addEventListener("scroll", handleScroll);
+        if (heroSectionBottom <= navbarHeight) {
+          // When the hero section is out of view, make navbar "sticky" by keeping it at the top of the main content
+          navbar.style.position = "absolute";
+          navbar.style.top = `${window.scrollY + navbarHeight}px`;
+        } else {
+          // Fix navbar to the top as long as the hero section is in view
+          navbar.style.position = "fixed";
+          navbar.style.top = "0";
+        }
+      };
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [navbarRef, heroRef]);
-
-  return offset;
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
+  }, []);
 };
+
+export default useStickyScroll;
