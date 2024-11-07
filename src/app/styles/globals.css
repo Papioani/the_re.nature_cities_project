@@ -110,7 +110,6 @@ ul {
   flex-direction: column;
   align-items: center; /* Center the heading and line */
   text-align: center;
-
   margin: 0 auto;
   color: #1c3d5a;
   font-size: 1.75rem;
@@ -152,7 +151,7 @@ ul {
   transition: opacity 0.3s ease-in-out;
   height: 350px;
   position: relative; /* .hero-section as a reference point for any absolutely positioned elements within it, like ::before. */
-  margin-top: calc(100px + 1rem);
+  margin-top: min(calc(100px + 1rem), 100px); /* Ensure at least 116px */
   overflow: hidden; /* Prevents content overflow */
 }
 
@@ -198,13 +197,13 @@ ul {
   background-color: #556b2f; /*    #2e4d2e;  #01796f; #a7d7c5;  #8bc34a;  */ /* Example using Forest Green */
   /*   background: linear-gradient(to bottom, rgba(46, 77, 46, 1), rgba(46, 77, 46, 0.8));  a gradient could be interesting
  */
-  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 0 30px;
+  padding: 20 30px;
   z-index: 10;
   width: 100%;
   line-height: 1.2rem;
-  height: 116px; /* Set the height to 116px */
+  height: 106px; /* Set the height to 116px */
 }
 
 .nav-link {
