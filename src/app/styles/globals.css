@@ -31,6 +31,7 @@ body {
   background-image: var(--background-image);
   /*   font-family: "Helvetica Neue", Arial, sans-serif; */
   font-family: Arial, sans-serif;
+  line-height: 1.5rem;
 }
 
 .footerBackground {
@@ -194,7 +195,7 @@ ul {
   position: fixed;
   left: 0;
   top: 0;
-  background-color: #2e4d2e; /*   #556b2f;  #01796f; #a7d7c5;  #8bc34a;  */ /* Example using Forest Green */
+  background-color: #556b2f; /*    #2e4d2e;  #01796f; #a7d7c5;  #8bc34a;  */ /* Example using Forest Green */
   /*   background: linear-gradient(to bottom, rgba(46, 77, 46, 1), rgba(46, 77, 46, 0.8));  a gradient could be interesting
  */
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
@@ -202,6 +203,8 @@ ul {
   padding: 0 30px;
   z-index: 10;
   width: 100%;
+  line-height: 1.2rem;
+  height: 116px; /* Set the height to 116px */
 }
 
 .nav-link {

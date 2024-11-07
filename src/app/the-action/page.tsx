@@ -10,7 +10,7 @@ const ActionPage: React.FC = () => {
       <div className="action-description text-lg space-y-4">
         <p>
           The action The Action “Basic Research Financing (Horizontal support
-          for all Sciences)” (ID 16618 – Subproject 1) is included in the
+          for all Sciences)” (ID 16618 - Subproject 1) is included in the
           projects of component 4.5 “Promote Research and Innovation” within the
           framework of the National Recovery and Resilience Plan “Greece 2.0”
           funded by the European Union - Next Generation EU and aims to

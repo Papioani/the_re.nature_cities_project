@@ -8,7 +8,7 @@ import React from "react";
 //when no props are present to keep the code concise.
 const Navbar: React.FC = () => {
   return (
-    <nav className="navbar sticky flex flex-col items-end justify-end text-white px-4 h-20">
+    <nav className="navbar sticky flex flex-col items-end justify-end text-white px-4">
       <div className="flex space-x-6 ">
         {" "}
         <Link href="/" className="nav-link">
