@@ -14,7 +14,7 @@ export default function Home() {
           The research project is implemented in the framework of the H.F.R.I
           call “Basic Research Financing (Horizontal support of all Sciences)”
           under the National Recovery and Resilience Plan “Greece 2.0,” funded
-          by the European Union – NextGenerationEU (H.F.R.I. Project Number:
+          by the European Union - NextGenerationEU (H.F.R.I. Project Number:
           15566).
         </p>
         <div className="text-lg leading-relaxed mb-6 border-t border-gray-500 pt-4 text-left">
@@ -25,7 +25,10 @@ export default function Home() {
             24 months (2/10/2023 - 01/10/2025)
           </p>
           <p className="marker-square">
-            <span className="font-semibold">Total Budget (€):</span> 162,084
+            <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 font-bold">
+              Total Budget (€):
+            </span>{" "}
+            162,084
           </p>
         </div>
       </main>
