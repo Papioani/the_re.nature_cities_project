@@ -35,7 +35,7 @@ export default function RootLayout({
         <section className="hero-section"></section>
         <main className="mainContent flex-grow pt-20">{children}</main>
 
-        <footer className="footerBackground">
+        <footer>
           {" "}
           <Footer />
         </footer>
