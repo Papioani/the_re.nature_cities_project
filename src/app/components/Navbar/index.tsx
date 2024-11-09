@@ -13,15 +13,16 @@ const Navbar: React.FC = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
   return (
-    <nav className="navbar sticky top-0 flex items-center justify-between text-white px-4">
-      <Link href="/" className="logo-section flex items-center">
-        <img
-          src="/Papioani.png"
-          alt="Logo"
-          className="h-16 w-auto cursor-pointer"
-        />
-      </Link>
-
+    <nav className="navbar flex sticky top-0 justify-between items-end text-white px-4">
+      <div className="logo-section">
+        <Link href="/">
+          <img
+            src="/Papioani.png"
+            alt="Logo"
+            className="h-16 w-auto cursor-pointer"
+          />
+        </Link>
+      </div>
       {/* Hamburger Icon (visible on mobile) */}
       <div className="md:hidden flex items-center">
         <button className="text-2xl text-white" onClick={toggleMobileMenu}>
@@ -46,12 +47,12 @@ const Navbar: React.FC = () => {
       <div
         className={`${
           isMobileMenuOpen ? "block" : "hidden"
-        } md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 items-start md:items-end text-white mt-4 md:mt-0`}
+        } navbar-links md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 md:items-start text-white mt-8 md:mt-0`}
       >
         <Link href="/" className="nav-link">
           Home
         </Link>
-        <Link href="/the-re.nature-cities-project" className="nav-link ">
+        <Link href="/the-re.nature-cities-project" className="nav-link">
           The Re.Nature <br /> Cities Project
         </Link>
         <Link href="/partners" className="nav-link">
