@@ -6,8 +6,8 @@ const PartnersPage: FC = () => {
   return (
     <section className="partnersContent px-4 py-6">
       <h1 className="section-title">The Partners</h1>
-      <div className="section-divider"></div>
-      <article className="partner">
+
+      <article className="partner partner-line">
         <p className="partner-description">
           Founded in 1972, the{" "}
           <Link
