@@ -5,7 +5,7 @@ import Link from "next/link";
 const PartnersPage: FC = () => {
   return (
     <section className="partnersContent px-4 py-6">
-      <h1 className="section-title">The Partners</h1>
+      <h2>The Partners</h2>
 
       <article className="partner partner-line">
         <p className="partner-description">
