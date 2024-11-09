@@ -127,24 +127,12 @@ ul {
   top: 100px;
 }
 .centered-heading {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center the heading and line */
-  text-align: center;
   margin: 0 auto;
   color: #1c3d5a;
   font-size: 1.75rem;
   font-weight: bold;
   /*  border-bottom: 1px solid #1c3d5a; */
-  padding-bottom: 0.5rem;
-}
-.centered-heading::after {
-  content: "";
-  display: block;
-  width: 75%; /* Width of the line */
-  height: 2px; /* Thickness of the line */
-  background: rgba(28, 61, 90, 0.8); /* Color of the line */
-  margin: 0.5rem auto 0; /* Center the line and add space */
+  padding-bottom: 3rem;
 }
 
 .mainContent {
@@ -189,6 +177,7 @@ ul {
   z-index: 1;
 }
 .re.NatureProjectContent {
+  display: flex;
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -300,6 +289,13 @@ ul {
   position: relative;
 }
 
+.line {
+  width: 20%;
+  height: 2px;
+  background-color: #1c3d5a;
+  margin: 20px 10px;
+}
+
 .section-divider {
   border-top: 1px solid rgba(0, 0, 0, 0.1); /* Light gray line */
   margin: 2rem 0; /* Space around the line */
@@ -386,7 +382,7 @@ ul {
 .partner-line::before {
   content: "";
   display: block;
-  width: 50%; /* Width of the line */
+  width: 20%; /* Width of the line */
   height: 2px; /* Thickness of the line */
   background: rgba(28, 61, 90, 0.8); /* Color of the line */
   margin: 0.5rem 0 1rem 0; /* Add top gap, no margins for other sides */
