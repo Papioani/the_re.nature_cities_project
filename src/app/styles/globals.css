@@ -101,7 +101,7 @@ ul {
   color: #2e4d2e; /* Forest green color for bullets */
 }
 .emphasis {
-  color: #2e4d2e;
+  color: #2e4d2e; /* #556b2f; */
   font-weight: bold;
 }
 .marker-square {
@@ -114,9 +114,9 @@ ul {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 8px; /* Size of the square */
-  height: 8px;
-  background-color: #2e4d2e; /* Green color for the square */
+  width: 10px; /* Size of the square */
+  height: 10px;
+  background-color: #2e4d2e; /*  #556b2f;  */ /* Green color for the square */
   display: inline-block;
   border-radius: 2px; /* Optional: Slight rounding for a softer look */
 }
