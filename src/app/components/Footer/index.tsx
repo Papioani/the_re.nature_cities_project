@@ -47,10 +47,10 @@ const Footer: React.FC = () => {
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-8 rounded-lg max-w-md w-full">
-            <h2 className="text-xl font-bold">Contact Details</h2>
+            <h2 className="text-lg font-semibold">Contact Details</h2>
 
-            <p>
-              <span className="text-xl">Stella Tsoka</span>
+            <p style={{ color: "#1c3d5a" }}>
+              <span className="text-xl font-semibold">Stella Tsoka</span>
               <br />
               Scientific responsible and coordinator of the project <br />
               Assistant professor <br />
