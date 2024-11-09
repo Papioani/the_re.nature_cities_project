@@ -236,7 +236,7 @@ ul {
   z-index: 20;
   width: 100%;
   line-height: 1.5rem;
-  height: 106px; /* Set the height to 116px */
+  height: 90px; /* Set the height to 116px */
 }
 
 .nav-link {
@@ -249,7 +249,7 @@ ul {
   transition: color 0.3s ease, transform 0.2s ease;
   display: inline-flex;
   justify-content: center; /* Center items horizontally */
-  align-items: center;
+  align-items: flex-start;
   z-index: 20;
 }
 

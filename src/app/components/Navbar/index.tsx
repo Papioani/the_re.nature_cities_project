@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
       <div
         className={`${
           isMobileMenuOpen ? "block" : "hidden"
-        } md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 items-center md:items-end text-white mt-4 md:mt-0`}
+        } md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 items-start md:items-end text-white mt-4 md:mt-0`}
       >
         <Link href="/" className="nav-link">
           Home
