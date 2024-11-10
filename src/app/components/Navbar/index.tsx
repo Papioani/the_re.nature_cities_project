@@ -1,17 +1,20 @@
 // Navbar.tsx
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 // <Link>: This component enables client-side navigation, which means that clicking the link will not trigger a full page reload. Instead, it will only update the necessary components on the page
-import React, { useState } from "react";
 
 // many modern setups and Next.js examples skip React.FC
 //when no props are present to keep the code concise.
 const Navbar: React.FC = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+  const handleMouseEnter = () => setIsDropdownOpen(true);
+  const handleMouseLeave = () => setIsDropdownOpen(false);
   return (
     <nav className="navbar flex sticky top-0 justify-between items-end text-white px-4">
       <div className="logo-section">
@@ -52,9 +55,43 @@ const Navbar: React.FC = () => {
         <Link href="/" className="nav-link">
           Home
         </Link>
-        <Link href="/the-re.nature-cities-project" className="nav-link">
-          The Re.Nature <br /> Cities Project
-        </Link>
+        <div
+          className="relative inline-block"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <Link href="/the-re.nature-cities-project" className="nav-link">
+            The Re.Nature <br /> Cities Project
+            <svg
+              className="-mr-1 h-5 w-5 text-gray-400"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fillRule="evenodd"
+                d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </Link>
+          {isDropdownOpen && (
+            <div className="absolute z-10 mt-2 w-30 bg-white font-bold rounded-lg shadow-lg ">
+              <ul className="py-2 px-4  text-sm" style={{ color: "#2e4d2e" }}>
+                <li>
+                  <Link href="/" className="block py-2  ">
+                    The Scope
+                  </Link>
+                </li>{" "}
+                <li>
+                  <Link href="/settings" className="block py-2 ">
+                    The Objectives
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
         <Link href="/partners" className="nav-link">
           Partners
         </Link>
