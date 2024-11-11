@@ -8,7 +8,7 @@ const PartnersPage: FC = () => {
       <h2>The Partners</h2>
 
       <article className="partner partner-line px-4">
-        <p className="partner-description ">
+        <p className="partner-description text.m">
           Founded in 1972, the{" "}
           <Link
             href="https://www.civil.upatras.gr/?lang=en"
@@ -29,7 +29,7 @@ const PartnersPage: FC = () => {
           three divisions, nine laboratories, a Seismic Simulator Facility, a
           Fire Testing Facility, and two Computer Centers covering the areas of:
         </p>
-        <ul className="partner-list">
+        <ul className="partner-list text-m">
           <li>Structural Engineering</li>
           <li>Geotechnical Engineering and Hydraulic Engineering </li>
           <li>Environmental Engineering and Transportation Engineering</li>
@@ -47,7 +47,7 @@ const PartnersPage: FC = () => {
         </ul>
       </article>
       <div className="section-divider"></div>
-      <article className="partner px-8">
+      <article className="partner px-4">
         <p className="partner-description">
           The{" "}
           <Link

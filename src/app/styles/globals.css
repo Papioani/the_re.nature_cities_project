@@ -89,7 +89,6 @@ h2 {
 }
 p,
 ul {
-  font-size: 1rem; /* Comfortable font size for body text */
   color: black;
   line-height: 1.8; /* Increase line height for readability */
   margin-bottom: 2rem; /* Consistent spacing for paragraphs */
@@ -332,19 +331,22 @@ ul {
 
 .work-package-details {
   list-style-type: none;
-  padding-left: 20px;
+  padding-left: 0;
 }
 
 .work-package-details li {
   margin-bottom: 8px;
   font-size: 1.1rem;
   line-height: 1.6;
+  display: flex; /* Makes the list items behave like flex containers */
+  align-items: center;
 }
 .work-package-details li::before {
   content: "○ "; /* Small open circle */
   color: #2e4d2e;
   font-size: 0.9rem; /* Adjust to be less prominent */
   margin-right: 5px;
+  flex-shrink: 0;
 }
 .work-package:nth-child(odd) {
   background-color: rgba(46, 77, 46, 0.05); /* Subtle green with low opacity */
@@ -352,7 +354,7 @@ ul {
   border-radius: 5px; /* Optional: rounded corners for a softer look */
 }
 /* Responsive Design */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .project-outline-container {
     padding: 15px;
     margin: 20px;
@@ -373,7 +375,7 @@ ul {
   .work-package-details li {
     font-size: 1rem;
   }
-}
+} */
 .contact-link {
   text-decoration: none;
 }
@@ -395,7 +397,6 @@ ul {
   margin-bottom: 30px;
 }
 .partner-description {
-  font-size: 1.1rem;
   margin-bottom: 15px;
   margin-top: 15px;
 }
@@ -413,9 +414,8 @@ ul {
 }
 .partner-list li {
   margin-bottom: 8px;
-  font-size: 1.1rem;
 }
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .partnersContent {
     padding: 15px;
     margin: 20px;
@@ -431,4 +431,4 @@ ul {
   .partner-list li {
     font-size: 1rem;
   }
-}
+} */
