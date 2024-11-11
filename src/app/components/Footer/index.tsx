@@ -18,8 +18,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="footerBackground">
-      <Link
-        href="/contact"
+      <button
         onClick={openModal}
         className="footer-link flex space-x-2 text-white transition-colors duration-300"
       >
@@ -35,11 +34,11 @@ const Footer: React.FC = () => {
           <path d="M11.854 8l-4.5 4.5L6.5 11 9.707 8 6.5 4.5l.854-.854 4.5 4.5z" />
         </svg>
         <span>Contact</span>
-      </Link>
+      </button>
       <div className="footerImages">
         <img src="/elidek.png" alt="Elidek logo" className="footerImage" />
         <img
-          src="/Ελλάδα2.0.jpg"
+          src="/Ellada2.0.jpg"
           alt="image of Greece2.0"
           className="footerImage"
         />
