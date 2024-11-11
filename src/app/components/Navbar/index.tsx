@@ -76,15 +76,24 @@ const Navbar: React.FC = () => {
             </svg>
           </Link>
           {isDropdownOpen && (
-            <div className="absolute z-10 mt-2 w-30 bg-white font-bold rounded-lg shadow-lg ">
-              <ul className="py-2 px-4  text-sm" style={{ color: "#2e4d2e" }}>
+            <div
+              className="absolute z-10 mt-2 w-full bg-white font-bold rounded-lg shadow-lg "
+              style={{ backgroundColor: "rgba(255, 255, 255, 0.9)" }}
+            >
+              <ul className="text-m" style={{ color: "#2e4d2e" }}>
                 <li>
-                  <Link href="/" className="block py-2  ">
+                  <Link
+                    href="/the-re.nature-cities-project#scope"
+                    className="block py-1 px-1 "
+                  >
                     The Scope
                   </Link>
                 </li>{" "}
                 <li>
-                  <Link href="/settings" className="block py-2 ">
+                  <Link
+                    href="/the-re.nature-cities-project#objectives"
+                    className="block py-1 px-1 "
+                  >
                     The Objectives
                   </Link>
                 </li>

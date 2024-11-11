@@ -1,5 +1,9 @@
 // src/app/the_re.nature_cities_project/page.tsx
+
+"use client";
+
 import React, { FC } from "react";
+
 // If there were props, we would define them here as an interface
 // interface ReNaturePageProps {
 //   title: string;
@@ -7,7 +11,9 @@ import React, { FC } from "react";
 const ReNaturePage: FC = () => {
   return (
     <section className="re.NatureProjectContent px-4 py-2 pb-16 ">
-      <h2 className="marker-square">The Scope</h2>{" "}
+      <h2 id="scope" className="marker-square">
+        The Scope
+      </h2>{" "}
       <p className="text-lg leading-relaxed mb-6 border-l-4 border-[#059669] pl-4">
         Re.Nature Cities aims to evaluate via experimental and simulation means
         the ability of street trees as nature-based solutions (NBS) to act as an
@@ -17,7 +23,9 @@ const ReNaturePage: FC = () => {
         well-being of the citizens.
       </p>{" "}
       <div className="section-divider"></div>
-      <h2 className="marker-square">The Objectives</h2>
+      <h2 id="objectives" className="marker-square">
+        The Objectives
+      </h2>
       <ul className="list-custom pl-6">
         <li className="mb-2">
           To assess the{" "}
