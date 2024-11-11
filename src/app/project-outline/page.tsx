@@ -3,7 +3,7 @@ import React, { FC } from "react";
 
 const ProjectOutline: FC = () => {
   return (
-    <section className="project-outline-container">
+    <section className="project-outline-container pb-16">
       <h2 className="text-center mb-8">The Project Outline</h2>
       <p className="project-description text-lg text-gray-700 leading-relaxed my-6">
         Re.Nature Cities project consists of the following work packages and

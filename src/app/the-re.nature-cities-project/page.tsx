@@ -10,7 +10,7 @@ import React, { FC } from "react";
 // }
 const ReNaturePage: FC = () => {
   return (
-    <section className="re.NatureProjectContent px-4 py-2 pb-16 ">
+    <section className="re.NatureProjectContent px-8 py-2 pb-16 ">
       <h2 id="scope" className="marker-square">
         The Scope
       </h2>{" "}

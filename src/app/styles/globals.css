@@ -292,8 +292,9 @@ ul {
 
 .line {
   width: 20%;
-  height: 2px;
-  background-color: #1c3d5a;
+  height: 3px;
+  /* background-color: #1c3d5a; */
+  background-color: #556b2f;
   margin: 20px 10px;
 }
 
