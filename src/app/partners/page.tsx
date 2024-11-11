@@ -4,10 +4,10 @@ import Link from "next/link";
 
 const PartnersPage: FC = () => {
   return (
-    <section className="partnersContent px-4 py-6">
+    <section className="partnersContent py-4 px-8 pb-16">
       <h2>The Partners</h2>
 
-      <article className="partner partner-line">
+      <article className="partner partner-line px-4">
         <p className="partner-description">
           Founded in 1972, the{" "}
           <Link
@@ -47,7 +47,7 @@ const PartnersPage: FC = () => {
         </ul>
       </article>
       <div className="section-divider"></div>
-      <article className="partner">
+      <article className="partner px-8">
         <p className="partner-description">
           The{" "}
           <Link
