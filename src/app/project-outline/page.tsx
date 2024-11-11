@@ -3,7 +3,7 @@ import React, { FC } from "react";
 
 const ProjectOutline: FC = () => {
   return (
-    <section className="project-outline-container px-6 pb-16">
+    <section className="project-outline-container text-m px-6 pb-16">
       <h2 className="text-start">The Project Outline</h2>
       <p className="project-description text-m leading-relaxed my-6">
         Re.Nature Cities project consists of the following work packages and
@@ -14,7 +14,7 @@ const ProjectOutline: FC = () => {
         <h2 className="work-package-title">
           Work Package 1: Definition of the Case Study Areas and Simulation Days
         </h2>
-        <ul className="work-package-details">
+        <ul className="work-package-details text-m">
           <li>
             Collection of Local Climate Zone classification data for Athens and
             selection of the case study urban districts
