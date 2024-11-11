@@ -4,11 +4,11 @@ import Link from "next/link";
 
 const PartnersPage: FC = () => {
   return (
-    <section className="partnersContent py-4 px-8 pb-16">
+    <section className="partnersContent px-8 pb-16">
       <h2>The Partners</h2>
 
       <article className="partner partner-line px-4">
-        <p className="partner-description">
+        <p className="partner-description ">
           Founded in 1972, the{" "}
           <Link
             href="https://www.civil.upatras.gr/?lang=en"
