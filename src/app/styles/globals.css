@@ -252,6 +252,11 @@ ul {
   justify-content: flex-end; /* Align all items to the top */
   align-items: flex-end;
 }
+.nav-link:active {
+  outline: 2px solid #2e4d2e;
+  outline-offset: 2px;
+  transform: scale(0.98);
+}
 
 .navbar a:hover {
   text-decoration: wavy;
