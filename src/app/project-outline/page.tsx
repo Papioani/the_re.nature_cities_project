@@ -11,7 +11,7 @@ const ProjectOutline: FC = () => {
       </p>
 
       <article className="work-package">
-        <h2 className="work-package-title">
+        <h2 id="work1" className="work-package-title">
           Work Package 1: Definition of the Case Study Areas and Simulation Days
         </h2>
         <ul className="work-package-details text-m">
@@ -27,7 +27,7 @@ const ProjectOutline: FC = () => {
       </article>
 
       <article className="work-package">
-        <h2 className="work-package-title">
+        <h2 id="work2" className="work-package-title">
           Work Package 2: Microclimate Evaluation on the Basis of Climate Change
         </h2>
         <ul className="work-package-details">
@@ -45,7 +45,7 @@ const ProjectOutline: FC = () => {
       </article>
 
       <article className="work-package">
-        <h2 className="work-package-title">
+        <h2 id="work3" className="work-package-title">
           Work Package 3: Evaluation of Climate Change Effect on the Built
           Environment
         </h2>
@@ -60,7 +60,7 @@ const ProjectOutline: FC = () => {
       </article>
 
       <article className="work-package">
-        <h2 className="work-package-title">
+        <h2 id="work4" className="work-package-title">
           Work Package 4: Experimental Assessment of Street Trees as Urban NBS
         </h2>
         <ul className="work-package-details">
@@ -74,7 +74,7 @@ const ProjectOutline: FC = () => {
       </article>
 
       <article className="work-package">
-        <h2 className="work-package-title">
+        <h2 id="work5" className="work-package-title">
           Work Package 5: Evaluation of the Environmental and Energy Effect of
           Street Trees
         </h2>
@@ -97,13 +97,13 @@ const ProjectOutline: FC = () => {
       </article>
 
       <article className="work-package">
-        <h2 className="work-package-title">
+        <h2 id="work6" className="work-package-title">
           Work Package 6: Project Management
         </h2>
       </article>
 
       <article className="work-package">
-        <h2 className="work-package-title">
+        <h2 id="work7" className="work-package-title">
           Work Package 7: Dissemination and Communication of the Results
         </h2>
       </article>
