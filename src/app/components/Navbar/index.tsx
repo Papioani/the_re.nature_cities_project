@@ -29,20 +29,36 @@ const Navbar: React.FC = () => {
     }, 300); // 300ms delay before closing the dropdown
     setWorkDropdownTimeout(timeout);
   };
+  // Define handleKeyDown to close dropdowns on Escape key press
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Escape") {
+      setIsReDropdownOpen(false);
+      setIsWorkDropdownOpen(false);
+    }
+  };
   return (
-    <nav className="navbar flex sticky top-0 justify-between items-end text-white px-4">
-      <div className="logo-section h-full w-full rounded-md">
+    <nav
+      aria-label="Main navigation"
+      className="navbar flex sticky top-0 justify-between items-end text-white px-4 md:py-4"
+      onKeyDown={handleKeyDown}
+    >
+      <header className="logo-section  rounded-md">
         <Link href="/">
           <img
             src="/logo2.jpg"
-            alt="Logo"
+            alt="The Re.Nature Cities logo showing a tree within a circle"
             className="h-30 w-auto cursor-pointer  md:h-20 px-2 hover:opacity-80 transition-opacity duration-200"
           />
         </Link>
-      </div>
+      </header>
       {/* Hamburger Icon (visible on mobile) */}
       <div className="md:hidden flex items-center">
-        <button className="text-2xl text-white" onClick={toggleMobileMenu}>
+        <button
+          className="text-2xl text-white"
+          aria-label="Toggle mobile menu"
+          aria-expanded={isMobileMenuOpen}
+          onClick={toggleMobileMenu}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -73,8 +89,18 @@ const Navbar: React.FC = () => {
           className="relative inline-block"
           onMouseEnter={handleReMouseEnter}
           onMouseLeave={handleReMouseLeave}
+          onKeyDown={handleKeyDown}
         >
-          <Link href="/the-re.nature-cities-project" className="nav-link">
+          <Link
+            href="/the-re.nature-cities-project"
+            className="nav-link"
+            aria-haspopup="true"
+            aria-expanded={isReDropdownOpen}
+            aria-controls="reDropdownMenu"
+            onFocus={handleReMouseEnter}
+            onBlur={handleReMouseLeave}
+            id="reDropdownTrigger"
+          >
             The Re.Nature <br /> Cities Project
             <svg
               className="-mr-1 h-5 w-5 text-gray-400"
@@ -91,11 +117,14 @@ const Navbar: React.FC = () => {
           </Link>
           {isReDropdownOpen && (
             <div
+              role="menu"
+              id="reDropdownMenu"
+              aria-labelledby="reDropdownTrigger"
               className="absolute z-10 mt-2 w-full bg-white font-bold rounded-lg shadow-lg "
               style={{ backgroundColor: "rgba(255, 255, 255, 0.9)" }}
             >
               <ul className="text-m" style={{ color: "#2e4d2e" }}>
-                <li>
+                <li role="menuitem">
                   <Link
                     href="/the-re.nature-cities-project#scope"
                     className="block py-1 px-1 "
@@ -103,7 +132,7 @@ const Navbar: React.FC = () => {
                     The Scope
                   </Link>
                 </li>{" "}
-                <li>
+                <li role="menuitem">
                   <Link
                     href="/the-re.nature-cities-project#objectives"
                     className="block py-1 px-1 "
@@ -122,8 +151,18 @@ const Navbar: React.FC = () => {
           className="relative inline-block"
           onMouseEnter={handleWorkMouseEnter}
           onMouseLeave={handleWorkMouseLeave}
+          onKeyDown={handleKeyDown}
         >
-          <Link href="/project-outline" className="nav-link">
+          <Link
+            href="/project-outline"
+            className="nav-link"
+            aria-haspopup="true"
+            aria-expanded={isWorkDropdownOpen}
+            aria-controls="workDropdownMenu"
+            onFocus={handleWorkMouseEnter}
+            onBlur={handleWorkMouseLeave}
+            id="workDropdownTrigger"
+          >
             Project Outline
             <svg
               className="-mr-1 h-5 w-5 text-gray-400"
@@ -140,11 +179,14 @@ const Navbar: React.FC = () => {
           </Link>
           {isWorkDropdownOpen && (
             <div
+              role="menu"
+              id="workDropdownMenu"
+              aria-labelledby="workDropdownTrigger"
               className="absolute z-10 mt-2 w-full bg-white font-bold rounded-lg shadow-lg "
               style={{ backgroundColor: "rgba(255, 255, 255, 0.9)" }}
             >
               <ul className="text-m" style={{ color: "#2e4d2e" }}>
-                <li>
+                <li role="menuitem">
                   <Link
                     href="/project-outline#work1"
                     className="block py-1 px-1 "
@@ -152,7 +194,7 @@ const Navbar: React.FC = () => {
                     Work Package 1
                   </Link>
                 </li>{" "}
-                <li>
+                <li role="menuitem">
                   <Link
                     href="/project-outline#work2"
                     className="block py-1 px-1 "
@@ -160,7 +202,7 @@ const Navbar: React.FC = () => {
                     Work Package 2
                   </Link>
                 </li>
-                <li>
+                <li role="menuitem">
                   <Link
                     href="/project-outline#work3"
                     className="block py-1 px-1 "
@@ -168,7 +210,7 @@ const Navbar: React.FC = () => {
                     Work Package 3
                   </Link>
                 </li>{" "}
-                <li>
+                <li role="menuitem">
                   <Link
                     href="/project-outline#work4"
                     className="block py-1 px-1 "
@@ -176,7 +218,7 @@ const Navbar: React.FC = () => {
                     Work Package 4
                   </Link>
                 </li>
-                <li>
+                <li role="menuitem">
                   <Link
                     href="/project-outline#work5"
                     className="block py-1 px-1 "
@@ -184,7 +226,7 @@ const Navbar: React.FC = () => {
                     Work Package 5
                   </Link>
                 </li>{" "}
-                <li>
+                <li role="menuitem">
                   <Link
                     href="/project-outline#work6"
                     className="block py-1 px-1 "
@@ -192,7 +234,7 @@ const Navbar: React.FC = () => {
                     Work Package 6
                   </Link>
                 </li>
-                <li>
+                <li role="menuitem">
                   <Link
                     href="/project-outline#work7"
                     className="block py-1 px-1 "
