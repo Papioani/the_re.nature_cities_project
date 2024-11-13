@@ -1,15 +1,17 @@
 // src/app/project-outline/page.tsx
 import React, { FC } from "react";
+import ScrollHandler from "../components/ScrollHandler";
 
 const ProjectOutline: FC = () => {
   return (
     <section className="project-outline-container text-m px-6 pb-16">
+      <ScrollHandler />{" "}
+      {/* This component will handle scroll-to-hash functionality */}
       <h2 className="text-start">The Project Outline</h2>
       <p className="project-description text-m leading-relaxed my-6">
         Re.Nature Cities project consists of the following work packages and
         subsections:
       </p>
-
       <article className="work-package">
         <h2 id="work1" className="work-package-title">
           Work Package 1: Definition of the Case Study Areas and Simulation Days
@@ -25,7 +27,6 @@ const ProjectOutline: FC = () => {
           </li>
         </ul>
       </article>
-
       <article className="work-package">
         <h2 id="work2" className="work-package-title">
           Work Package 2: Microclimate Evaluation on the Basis of Climate Change
@@ -43,7 +44,6 @@ const ProjectOutline: FC = () => {
           </li>
         </ul>
       </article>
-
       <article className="work-package">
         <h2 id="work3" className="work-package-title">
           Work Package 3: Evaluation of Climate Change Effect on the Built
@@ -58,7 +58,6 @@ const ProjectOutline: FC = () => {
           <li>Outdoor thermal comfort analysis</li>
         </ul>
       </article>
-
       <article className="work-package">
         <h2 id="work4" className="work-package-title">
           Work Package 4: Experimental Assessment of Street Trees as Urban NBS
@@ -72,7 +71,6 @@ const ProjectOutline: FC = () => {
           <li>Wind tunnel measurements</li>
         </ul>
       </article>
-
       <article className="work-package">
         <h2 id="work5" className="work-package-title">
           Work Package 5: Evaluation of the Environmental and Energy Effect of
@@ -95,13 +93,11 @@ const ProjectOutline: FC = () => {
           </li>
         </ul>
       </article>
-
       <article className="work-package">
         <h2 id="work6" className="work-package-title">
           Work Package 6: Project Management
         </h2>
       </article>
-
       <article className="work-package">
         <h2 id="work7" className="work-package-title">
           Work Package 7: Dissemination and Communication of the Results
