@@ -39,15 +39,15 @@ const Navbar: React.FC = () => {
   return (
     <nav
       aria-label="Main navigation"
-      className="navbar flex sticky top-0 justify-between items-end text-white px-4 md:py-4"
+      className="navbar flex sticky top-0 justify-between items-end p-2 text-white px-2 md:py-2"
       onKeyDown={handleKeyDown}
     >
-      <header className="logo-section  rounded-md">
+      <header className="logo-section flex-grow max-w-xs">
         <Link href="/">
           <img
             src="/logo2.jpg"
             alt="The Re.Nature Cities logo showing a tree within a circle"
-            className="h-30 w-auto cursor-pointer  md:h-20 px-2 hover:opacity-80 transition-opacity duration-200"
+            className="max-h-24 max-w-40 object-contain cursor-pointer md:h-24 md:w-auto px-6 py-0 hover:opacity-80 hover:scale-110 transition-all duration-200"
           />
         </Link>
       </header>
@@ -82,9 +82,9 @@ const Navbar: React.FC = () => {
           isMobileMenuOpen ? "block" : "hidden"
         } navbar-links md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 md:items-start text-white mt-8 md:mt-0`}
       >
-        <Link href="/" className="nav-link">
+        {/*  <Link href="/" className="nav-link">
           Home
-        </Link>
+        </Link> */}
         <div
           className="relative inline-block"
           onMouseEnter={handleReMouseEnter}

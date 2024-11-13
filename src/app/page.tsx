@@ -11,12 +11,12 @@ export default function Home() {
           <div className="line"></div> {/* Line on the right */}
         </div>
 
-        <p className="text-lg leading-relaxed mb-6 border-l-4 border-[#059669] pl-4">
+        <p className="text-lg leading-relaxed mb-6 border-l-2 border-[#059669] pl-2">
           This research project focuses on experimental and numerical methods to
           assess the role of street trees as a Nature-Based Solution for climate
           change adaptation in urban areas.
         </p>
-        <p className="text-lg leading-relaxed mb-6 border-l-4 border-[#059669] pl-4">
+        <p className="text-lg leading-relaxed mb-6 border-l-2 border-[#059669] pl-2">
           The research project is implemented in the framework of the H.F.R.I
           call “Basic Research Financing (Horizontal support of all Sciences)”
           under the National Recovery and Resilience Plan “Greece 2.0,” funded
