@@ -144,9 +144,9 @@ const Navbar: React.FC = () => {
           isMobileMenuOpen ? "block" : "hidden"
         } navbar-links md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 md:items-start text-white mt-8 md:mt-0`}
       >
-        {/*  <Link href="/" className="nav-link">
+        <Link href="/" className="nav-link">
           Home
-        </Link> */}
+        </Link>
         <div
           className="relative inline-block"
           /* onMouseEnter={handleReMouseEnter}

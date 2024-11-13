@@ -32,9 +32,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
         <ScrollHandler />
-        <Navbar />
 
         <section className="hero-section"></section>
+        <Navbar />
         <main className="mainContent flex-grow pt-20">{children}</main>
 
         <footer>
