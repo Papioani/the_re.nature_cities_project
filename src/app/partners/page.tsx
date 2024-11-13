@@ -1,14 +1,36 @@
+"use client";
+
 // src/app/partners/page.tsx
-import React, { FC } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import Link from "next/link";
 
 const PartnersPage: FC = () => {
+  const mainContentRef = useRef<HTMLElement>(null);
+  const firstParagraphRef = useRef<HTMLParagraphElement>(null);
+
+  // Set focus to the main content on load
+  useEffect(() => {
+    mainContentRef.current?.focus();
+    // Focus on the first paragraph or heading
+    if (firstParagraphRef.current) {
+      firstParagraphRef.current.focus();
+    }
+  }, []);
+
   return (
-    <section className="partnersContent px-8 pb-16">
-      <h2>The Partners</h2>
+    <section
+      className="partnersContent px-8 pb-16"
+      ref={mainContentRef}
+      tabIndex={-1} // Allows the section to receive programmatic focus
+    >
+      <h2 id="partnersTitle">The Partners</h2>
 
       <article className="partner partner-line px-4">
-        <p className="partner-description text.m">
+        <p
+          className="partner-description text.m
+        ref={firstParagraphRef}
+          tabIndex={0}"
+        >
           Founded in 1972, the{" "}
           <Link
             href="https://www.civil.upatras.gr/?lang=en"
