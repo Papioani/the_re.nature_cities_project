@@ -2,7 +2,7 @@
 
 // components/ScrollHandler.tsx
 
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { usePathname } from "next/navigation";
 
 export default function ScrollHandler() {
