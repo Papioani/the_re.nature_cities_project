@@ -44,7 +44,7 @@ export default function ScrollHandler() {
 
             // Optionally focus the target element for accessibility
             targetElement.setAttribute("tabindex", "-1");
-            targetElement.focus();
+            /*  targetElement.focus(); */
           } else {
             console.log("Target element not found");
           }

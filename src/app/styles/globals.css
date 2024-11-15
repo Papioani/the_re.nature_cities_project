@@ -461,3 +461,7 @@ ul {
   z-index: 20;
   transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
+/* Remove the outline on hover */
+a:focus {
+  outline: none;
+}
