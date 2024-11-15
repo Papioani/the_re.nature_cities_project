@@ -2,7 +2,7 @@
 
 // components/ScrollHandler.tsx
 
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 export default function ScrollHandler() {
@@ -10,28 +10,33 @@ export default function ScrollHandler() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const hash = window.location.hash;
+      const hash = window.location.hash; // Get current hash
       if (hash) {
-        // Find the element with the corresponding ID
-        const targetElement = document.querySelector(hash) as HTMLElement;
-        if (targetElement) {
-          // Get the height of the fixed navbar (adjust this value if needed)
-          const navbarHeight =
-            document.querySelector(".navbar")?.clientHeight || 0;
+        // Add a slight delay to allow browser hash adjustments
+        setTimeout(() => {
+          // Find the element with the corresponding ID
+          const targetElement = document.querySelector(hash) as HTMLElement;
+          if (targetElement) {
+            // Get the height of the fixed navbar (adjust this value if needed)
+            const navbarHeight =
+              document.querySelector(".navbar")?.clientHeight || 0;
 
-          // Scroll to the target element, adjusted for the navbar height
-          window.scrollTo({
-            top:
+            // Calculate the final scroll position based on document scroll
+            const scrollToPosition =
               targetElement.getBoundingClientRect().top +
               window.scrollY -
-              navbarHeight,
-            behavior: "smooth",
-          });
+              navbarHeight;
+            // Scroll to the target element, adjusted for the navbar height
+            window.scrollTo({
+              top: scrollToPosition,
+              behavior: "smooth",
+            });
 
-          // Optionally focus the target element for accessibility
-          targetElement.setAttribute("tabindex", "-1");
-          targetElement.focus();
-        }
+            // Optionally focus the target element for accessibility
+            targetElement.setAttribute("tabindex", "-1");
+            targetElement.focus();
+          }
+        }, 500);
       } else {
         // If no hash, scroll to the top of the page or container
         window.scrollTo(0, 0);
