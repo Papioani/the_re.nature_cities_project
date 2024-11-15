@@ -3,10 +3,24 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 // <Link>: This component enables client-side navigation, which means that clicking the link will not trigger a full page reload. Instead, it will only update the necessary components on the page
-
+interface Tooltip {
+  text: string;
+  show: boolean;
+  position: {
+    top: number;
+    left: number;
+  };
+}
 // many modern setups and Next.js examples skip React.FC
 //when no props are present to keep the code concise.
 const Navbar: React.FC = () => {
+  const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
+  const [tooltip, setTooltip] = useState<Tooltip>({
+    text: "",
+    show: false,
+    position: { top: 0, left: 0 },
+  });
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   /* const [isReDropdownOpen, setIsReDropdownOpen] = useState<boolean>(false); */
   const [isWorkDropdownOpen, setIsWorkDropdownOpen] = useState<boolean>(false);
@@ -39,7 +53,7 @@ const Navbar: React.FC = () => {
   }, [isWorkDropdownOpen]);
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsMobileMenuOpen((prevState) => !prevState);
   };
   /* const handleReMouseEnter = () => setIsReDropdownOpen(true);
   const handleReMouseLeave = () => setIsReDropdownOpen(false); */
@@ -97,7 +111,37 @@ const Navbar: React.FC = () => {
       }
     }
   };
+  // Define types for event and description
+  const handleTooltipMouseEnter = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    description: string
+  ) => {
+    const rect = e.currentTarget.getBoundingClientRect(); // Get the position of the link
+    // Calculate the position for the tooltip to be to the right of the link
+    const tooltipPosition = {
+      top: rect.top + window.scrollY, // Tooltip's top position relative to the viewport (same as the link)
+      left: rect.right + window.scrollX + 5, // Position the tooltip just to the right of the link (5px padding)
+    };
 
+    setTooltip({
+      show: true,
+      text: description,
+      position: tooltipPosition,
+    });
+    setActiveTooltip(id);
+  };
+
+  const handleTooltipMouseLeave = () => {
+    setTooltip((prevState) => ({ ...prevState, show: false }));
+    setActiveTooltip(null);
+  };
+  const handleTooltipFocus = (id: string) => {
+    setActiveTooltip(id);
+  };
+
+  const handleTooltipBlur = () => {
+    setActiveTooltip(null);
+  };
   return (
     <nav
       aria-label="Main navigation"
@@ -119,6 +163,7 @@ const Navbar: React.FC = () => {
           className="text-2xl text-white"
           aria-label="Toggle mobile menu"
           aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-menu" // Associates button with the menu
           onClick={toggleMobileMenu}
         >
           <svg
@@ -140,9 +185,11 @@ const Navbar: React.FC = () => {
 
       {/* Navbar Links (hidden on mobile, shown on medium screens and up) */}
       <div
+        id="mobile-menu"
         className={`${
           isMobileMenuOpen ? "block" : "hidden"
         } navbar-links md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 md:items-start text-white mt-8 md:mt-0`}
+        hidden={!isMobileMenuOpen} // Semantically hide the menu
       >
         <Link href="/" className="nav-link">
           Home
@@ -246,16 +293,24 @@ const Navbar: React.FC = () => {
               role="menu"
               id="workDropdownMenu"
               aria-labelledby="workDropdownTrigger"
-              className="absolute z-10 mt-2 w-full bg-white font-bold rounded-lg shadow-lg "
+              className="dropdown-container absolute z-10 mt-2 w-full bg-white font-bold rounded-lg shadow-lg "
               style={{ backgroundColor: "rgba(255, 255, 255, 0.9)" }}
             >
               <ul className="text-m" style={{ color: "#2e4d2e" }}>
                 <li role="menuitem">
                   <Link
                     href="/project-outline#work1"
-                    className="block py-1 px-1 "
+                    className="work-link block py-1 px-1 "
                     ref={firstDropdownItemRef}
                     tabIndex={0}
+                    role="menuitem"
+                    onMouseEnter={(e) =>
+                      handleTooltipMouseEnter(
+                        e,
+                        "Definition of the Case Study Areas and Simulation Days"
+                      )
+                    }
+                    onMouseLeave={handleTooltipMouseLeave}
                   >
                     Work Package 1
                   </Link>
@@ -263,9 +318,16 @@ const Navbar: React.FC = () => {
                 <li>
                   <Link
                     href="/project-outline#work2"
-                    className="block py-1 px-1 "
+                    className="work-link block py-1 px-1 "
                     tabIndex={0}
                     role="menuitem"
+                    onMouseEnter={(e) =>
+                      handleTooltipMouseEnter(
+                        e,
+                        "Microclimate Evaluation on the Basis of Climate Change"
+                      )
+                    }
+                    onMouseLeave={handleTooltipMouseLeave}
                   >
                     Work Package 2
                   </Link>
@@ -273,8 +335,16 @@ const Navbar: React.FC = () => {
                 <li role="menuitem">
                   <Link
                     href="/project-outline#work3"
-                    className="block py-1 px-1 "
+                    className="work-link block py-1 px-1 "
                     tabIndex={0}
+                    role="menuitem"
+                    onMouseEnter={(e) =>
+                      handleTooltipMouseEnter(
+                        e,
+                        "Evaluation of Climate Change Effect on the Built Environment"
+                      )
+                    }
+                    onMouseLeave={handleTooltipMouseLeave}
                   >
                     Work Package 3
                   </Link>
@@ -282,8 +352,16 @@ const Navbar: React.FC = () => {
                 <li role="menuitem">
                   <Link
                     href="/project-outline#work4"
-                    className="block py-1 px-1 "
+                    className="work-link block py-1 px-1 "
                     tabIndex={0}
+                    role="menuitem"
+                    onMouseEnter={(e) =>
+                      handleTooltipMouseEnter(
+                        e,
+                        "Experimental Assessment of Street Trees as Urban NBS"
+                      )
+                    }
+                    onMouseLeave={handleTooltipMouseLeave}
                   >
                     Work Package 4
                   </Link>
@@ -291,8 +369,16 @@ const Navbar: React.FC = () => {
                 <li role="menuitem">
                   <Link
                     href="/project-outline#work5"
-                    className="block py-1 px-1 "
+                    className="work-link block py-1 px-1 "
                     tabIndex={0}
+                    role="menuitem"
+                    onMouseEnter={(e) =>
+                      handleTooltipMouseEnter(
+                        e,
+                        "Evaluation of the Environmental and Energy Effect of Street Trees"
+                      )
+                    }
+                    onMouseLeave={handleTooltipMouseLeave}
                   >
                     Work Package 5
                   </Link>
@@ -300,8 +386,13 @@ const Navbar: React.FC = () => {
                 <li role="menuitem">
                   <Link
                     href="/project-outline#work6"
-                    className="block py-1 px-1 "
+                    className="work-link block py-1 px-1 "
                     tabIndex={0}
+                    role="menuitem"
+                    onMouseEnter={(e) =>
+                      handleTooltipMouseEnter(e, "Project Management")
+                    }
+                    onMouseLeave={handleTooltipMouseLeave}
                   >
                     Work Package 6
                   </Link>
@@ -309,8 +400,16 @@ const Navbar: React.FC = () => {
                 <li role="menuitem">
                   <Link
                     href="/project-outline#work7"
-                    className="block py-1 px-1 "
+                    className="work-link block py-1 px-1 "
                     tabIndex={0}
+                    role="menuitem"
+                    onMouseEnter={(e) =>
+                      handleTooltipMouseEnter(
+                        e,
+                        "Dissemination and Communication of the Results"
+                      )
+                    }
+                    onMouseLeave={handleTooltipMouseLeave}
                   >
                     Work Package 7
                   </Link>
@@ -329,6 +428,18 @@ const Navbar: React.FC = () => {
           The action
         </Link>
       </div>
+      {/* Tooltip that will appear on hover */}
+      {tooltip.show && (
+        <div
+          className="tooltip-box"
+          style={{
+            top: tooltip.position.top + "px",
+            left: tooltip.position.left + "px",
+          }}
+        >
+          {tooltip.text}
+        </div>
+      )}
     </nav>
   );
 };
