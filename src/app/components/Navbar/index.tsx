@@ -14,7 +14,6 @@ interface Tooltip {
 // many modern setups and Next.js examples skip React.FC
 //when no props are present to keep the code concise.
 const Navbar: React.FC = () => {
-  const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
   const [tooltip, setTooltip] = useState<Tooltip>({
     text: "",
     show: false,
@@ -30,6 +29,7 @@ const Navbar: React.FC = () => {
   // Create the ref for the workDropdownTrigger
   const workDropdownTriggerRef = useRef<HTMLAnchorElement | null>(null);
   const firstDropdownItemRef = useRef<HTMLAnchorElement | null>(null);
+  const secondDropdownItemRef = useRef<HTMLAnchorElement | null>(null);
 
   const handleWorkFocus = () => {
     setIsWorkDropdownOpen(true);
@@ -128,20 +128,12 @@ const Navbar: React.FC = () => {
       text: description,
       position: tooltipPosition,
     });
-    setActiveTooltip(id);
   };
 
   const handleTooltipMouseLeave = () => {
     setTooltip((prevState) => ({ ...prevState, show: false }));
-    setActiveTooltip(null);
-  };
-  const handleTooltipFocus = (id: string) => {
-    setActiveTooltip(id);
   };
 
-  const handleTooltipBlur = () => {
-    setActiveTooltip(null);
-  };
   return (
     <nav
       aria-label="Main navigation"
@@ -189,7 +181,7 @@ const Navbar: React.FC = () => {
         className={`${
           isMobileMenuOpen ? "block" : "hidden"
         } navbar-links md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 md:items-start text-white mt-8 md:mt-0`}
-        hidden={!isMobileMenuOpen} // Semantically hide the menu
+        aria-hidden={!isMobileMenuOpen} // Semantically hide the menu
       >
         <Link href="/" className="nav-link">
           Home
@@ -300,10 +292,12 @@ const Navbar: React.FC = () => {
                 <li role="menuitem">
                   <Link
                     href="/project-outline#work1"
+                    aria-label="Definition of the Case Study Areas and Simulation Days"
                     className="work-link block py-1 px-1 "
                     ref={firstDropdownItemRef}
                     tabIndex={0}
                     role="menuitem"
+                    aria-level={2}
                     onMouseEnter={(e) =>
                       handleTooltipMouseEnter(
                         e,
@@ -318,9 +312,11 @@ const Navbar: React.FC = () => {
                 <li>
                   <Link
                     href="/project-outline#work2"
+                    aria-label="Microclimate Evaluation on the Basis of Climate Change"
                     className="work-link block py-1 px-1 "
                     tabIndex={0}
                     role="menuitem"
+                    aria-level={2}
                     onMouseEnter={(e) =>
                       handleTooltipMouseEnter(
                         e,
@@ -335,9 +331,11 @@ const Navbar: React.FC = () => {
                 <li role="menuitem">
                   <Link
                     href="/project-outline#work3"
+                    aria-label="Evaluation of Climate Change Effect on the Built Environment"
                     className="work-link block py-1 px-1 "
                     tabIndex={0}
                     role="menuitem"
+                    aria-level={2}
                     onMouseEnter={(e) =>
                       handleTooltipMouseEnter(
                         e,
@@ -352,9 +350,11 @@ const Navbar: React.FC = () => {
                 <li role="menuitem">
                   <Link
                     href="/project-outline#work4"
+                    aria-label="Experimental Assessment of Street Trees as Urban NBS"
                     className="work-link block py-1 px-1 "
                     tabIndex={0}
                     role="menuitem"
+                    aria-level={2}
                     onMouseEnter={(e) =>
                       handleTooltipMouseEnter(
                         e,
@@ -369,9 +369,11 @@ const Navbar: React.FC = () => {
                 <li role="menuitem">
                   <Link
                     href="/project-outline#work5"
+                    aria-label="Evaluation of the Environmental and Energy Effect of Street Trees"
                     className="work-link block py-1 px-1 "
                     tabIndex={0}
                     role="menuitem"
+                    aria-level={2}
                     onMouseEnter={(e) =>
                       handleTooltipMouseEnter(
                         e,
@@ -386,9 +388,11 @@ const Navbar: React.FC = () => {
                 <li role="menuitem">
                   <Link
                     href="/project-outline#work6"
+                    aria-label="Project Management"
                     className="work-link block py-1 px-1 "
                     tabIndex={0}
                     role="menuitem"
+                    aria-level={2}
                     onMouseEnter={(e) =>
                       handleTooltipMouseEnter(e, "Project Management")
                     }
@@ -400,9 +404,11 @@ const Navbar: React.FC = () => {
                 <li role="menuitem">
                   <Link
                     href="/project-outline#work7"
+                    aria-label="Dissemination and Communication of the Results"
                     className="work-link block py-1 px-1 "
                     tabIndex={0}
                     role="menuitem"
+                    aria-level={2}
                     onMouseEnter={(e) =>
                       handleTooltipMouseEnter(
                         e,
