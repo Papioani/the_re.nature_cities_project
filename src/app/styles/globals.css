@@ -40,6 +40,10 @@ body {
     font-size: 14px;
     padding: 10px;
   }
+  .hero-section {
+    background-attachment: scroll;
+    height: auto; /* Allow natural height scaling */
+  }
 }
 
 /* Tablet styling */
@@ -151,13 +155,11 @@ ul {
 
 .hero-section {
   background-image: url("/background-forest2.png");
-  background-size: 100%; /* Show the entire image */
+  background-size: cover; /* Show the entire image */
   background-repeat: no-repeat; /* Prevent tiling */
   background-position: center; /* Center the image horizontally and vertically */
   background-attachment: fixed;
-  @media (max-width: 768px) {
-    background-attachment: scroll; /* For mobile devices */
-  }
+
   /* transform: scaleY(0.9); */
   z-index: 2;
   position: sticky;
@@ -193,7 +195,7 @@ ul {
   display: flex; /* Use flexbox to arrange the images */
   justify-content: flex-end;
   align-self: flex-end; /* Center images vertically */
-  gap: 20px; /* Space between the images */
+  gap: 1rem; /* Space between the images */
   height: auto;
   padding: 0px 30px; /* 20px for top and bottom, 30px for left and right */
 }

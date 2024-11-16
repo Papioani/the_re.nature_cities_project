@@ -1,4 +1,6 @@
-export default function Home() {
+import React from "react";
+
+const Home: React.FC = () => {
   return (
     <div className="flex flex-col">
       <main className="flex flex-col gap-4 items-start sm:items-start p-8 pb-10">
@@ -40,4 +42,5 @@ export default function Home() {
       </main>
     </div>
   );
-}
+};
+export default Home;

@@ -29,7 +29,6 @@ const Navbar: React.FC = () => {
   // Create the ref for the workDropdownTrigger
   const workDropdownTriggerRef = useRef<HTMLAnchorElement | null>(null);
   const firstDropdownItemRef = useRef<HTMLAnchorElement | null>(null);
-  const secondDropdownItemRef = useRef<HTMLAnchorElement | null>(null);
 
   const handleWorkFocus = () => {
     setIsWorkDropdownOpen(true);
@@ -51,6 +50,22 @@ const Navbar: React.FC = () => {
       firstDropdownItemRef.current.focus();
     }
   }, [isWorkDropdownOpen]);
+
+  useEffect(() => {
+    // Debug and reset focus stealing
+    console.log("Initially focused element:", document.activeElement);
+    if (document.activeElement !== document.body) {
+      (document.activeElement as HTMLElement).blur();
+    }
+  }, []);
+
+  useEffect(() => {
+    // Check if the dropdown menu is ready (for debugging)
+    const dropdownElement = document.querySelector("#workDropdownMenu");
+    if (dropdownElement) {
+      console.log("Dropdown element exists:", dropdownElement);
+    }
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prevState) => !prevState);
