@@ -138,49 +138,6 @@ ul {
   padding-bottom: 2rem;
 }
 
-.mainContent {
-  position: -webkit-sticky; /* Safari fix */
-  position: sticky;
-  background: rgba(250, 250, 250, 0.9);
-  /* background-color: #fff; */ /* this is what makes the main background totally white */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: top 0.3s ease-in-out;
-  flex-grow: 1;
-  padding-top: 2rem;
-  z-index: 5;
-  border-top: 2px solid rgba(28, 61, 90, 0.9);
-  /* border-bottom: 3px solid rgba(28, 61, 90, 0.3); */
-  scroll-padding-top: calc(350px + 100px);
-}
-
-.hero-section {
-  background-image: url("/background-forest2.png");
-  background-size: cover; /* Show the entire image */
-  background-repeat: no-repeat; /* Prevent tiling */
-  background-position: center; /* Center the image horizontally and vertically */
-  background-attachment: fixed;
-
-  /* transform: scaleY(0.9); */
-  z-index: 2;
-  position: sticky;
-  top: 0;
-  transition: opacity 0.3s ease-in-out;
-  height: 350px;
-  position: relative; /* .hero-section as a reference point for any absolutely positioned elements within it, like ::before. */
-  margin-top: min(calc(90px + 1rem), 106px); /* Ensure at least 106px */
-  overflow: hidden; /* Prevents content overflow */
-}
-
-.hero-section::before {
-  content: ""; /* is required to make the ::before pseudo-element appear. Without defining content, pseudo-elements won’t render */
-  position: absolute; /* its position is calculated relative to the .hero-section (thanks to the parent’s position: relative). */
-  top: 0; /* the 0s here to span the full height and width of its parent element, the .hero-section */
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0);
-  z-index: 1;
-}
 .re.NatureProjectContent {
   display: flex;
   background-color: rgba(255, 255, 255, 0.95);
