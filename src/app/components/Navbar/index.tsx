@@ -1,6 +1,7 @@
 // Navbar.tsx
 "use client";
 import { useState, useRef, useEffect } from "react";
+import styles from "./Navbar.module.css";
 import Link from "next/link";
 // <Link>: This component enables client-side navigation, which means that clicking the link will not trigger a full page reload. Instead, it will only update the necessary components on the page
 interface Tooltip {
@@ -14,6 +15,15 @@ interface Tooltip {
 // many modern setups and Next.js examples skip React.FC
 //when no props are present to keep the code concise.
 const Navbar: React.FC = () => {
+  const navbarRef = useRef<HTMLElement | null>(null); // Ref to access the Navbar
+  const [navbarHeight, setNavbarHeight] = useState(0);
+
+  useEffect(() => {
+    // Ensure the Navbar exists in the DOM before measuring
+    if (navbarRef.current) {
+      setNavbarHeight(navbarRef.current.offsetHeight);
+    }
+  }, []);
   const [tooltip, setTooltip] = useState<Tooltip>({
     text: "",
     show: false,
@@ -134,9 +144,10 @@ const Navbar: React.FC = () => {
     const rect = e.currentTarget.getBoundingClientRect(); // Get the position of the link
     // Calculate the position for the tooltip to be to the right of the link
     const tooltipPosition = {
-      top: rect.top + window.scrollY, // Tooltip's top position relative to the viewport (same as the link)
-      left: rect.right + window.scrollX + 5, // Position the tooltip just to the right of the link (5px padding)
+      top: rect.top, // Tooltip's top position relative to the viewport (same as the link)
+      left: rect.right + 5, // Position the tooltip just to the right of the link (5px padding)
     };
+    console.log("Tooltip Position:", tooltipPosition);
 
     setTooltip({
       show: true,
@@ -151,11 +162,12 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
+      ref={navbarRef}
       aria-label="Main navigation"
-      className="navbar flex sticky top-0 justify-between items-end p-2 text-white md:p-3"
+      className={`${styles.navbar} flex sticky top-0 justify-between items-end p-2 text-white md:p-3`}
       onKeyDown={handleKeyDown}
     >
-      <header className="logo-section flex-grow max-w-xs">
+      <header className={`${styles.logoSection} flex-grow max-w-xs`}>
         <Link href="/">
           <img
             src="/logo2.jpg"
@@ -193,12 +205,12 @@ const Navbar: React.FC = () => {
       {/* Navbar Links (hidden on mobile, shown on medium screens and up) */}
       <div
         id="mobile-menu"
-        className={`${
-          isMobileMenuOpen ? "block" : "hidden"
-        } navbar-links md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 md:items-start text-white mt-8 md:mt-0`}
+        className={`${isMobileMenuOpen ? "block" : "hidden"} ${
+          styles.navbarLinks
+        } md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 md:items-start text-white mt-8 md:mt-0`}
         aria-hidden={!isMobileMenuOpen} // Semantically hide the menu
       >
-        <Link href="/" className="nav-link">
+        <Link href="/" className={styles.navLink}>
           Home
         </Link>
         <div
@@ -209,7 +221,7 @@ const Navbar: React.FC = () => {
         >
           <Link
             href="/the-re.nature-cities-project"
-            className="nav-link"
+            className={styles.navLink}
             //aria-haspopup="true"
             //aria-expanded={false}
             // aria-controls="reDropdownMenu"
@@ -260,7 +272,7 @@ const Navbar: React.FC = () => {
             </div>
           )} */}
         </div>
-        <Link href="/partners" className="nav-link">
+        <Link href="/partners" className={styles.navLink}>
           Partners
         </Link>
         <div
@@ -272,7 +284,7 @@ const Navbar: React.FC = () => {
         >
           <Link
             href="/project-outline"
-            className="nav-link"
+            className={styles.navLink}
             aria-haspopup="true"
             aria-expanded={isWorkDropdownOpen}
             aria-controls="workDropdownMenu"
@@ -439,20 +451,20 @@ const Navbar: React.FC = () => {
             </div>
           )}
         </div>
-        <Link href="/wind-tunnel" className="nav-link">
+        <Link href="/wind-tunnel" className={styles.navLink}>
           Wind Tunnel, LAI/LAD <br /> and Albedo Measurements
         </Link>
-        <Link href="/deliverables-publications" className="nav-link ">
+        <Link href="/deliverables-publications" className={styles.navLink}>
           Deliverables and <br /> publications
         </Link>
-        <Link href="/the-action" className="nav-link">
+        <Link href="/the-action" className={styles.navLink}>
           The action
         </Link>
       </div>
       {/* Tooltip that will appear on hover */}
       {tooltip.show && (
         <div
-          className="tooltip-box"
+          className={styles.tooltipBox}
           style={{
             top: tooltip.position.top + "px",
             left: tooltip.position.left + "px",

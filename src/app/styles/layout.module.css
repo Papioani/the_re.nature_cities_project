@@ -16,7 +16,12 @@
   /* border-bottom: 3px solid rgba(28, 61, 90, 0.3); */
   scroll-padding-top: calc(350px + 100px);
 }
-
+@media (max-width: 768px) {
+  .heroSection {
+    background-attachment: scroll;
+    height: auto; /* Allow natural height scaling */
+  }
+}
 .heroSection {
   background-image: url("/background-forest2.png");
   background-size: cover; /* Show the entire image */
@@ -30,7 +35,7 @@
   transition: opacity 0.3s ease-in-out;
   height: 350px;
   position: relative; /* .hero-section as a reference point for any absolutely positioned elements within it, like ::before. */
-  margin-top: min(calc(90px + 1rem), 106px); /* Ensure at least 106px */
+  /* margin-top: min(calc(90px + 1rem), 106px); */ /* Ensure at least 106px */
   overflow: hidden; /* Prevents content overflow */
 }
 
