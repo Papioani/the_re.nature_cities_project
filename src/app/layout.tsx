@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./styles/globals.css";
 import styles from "./styles/layout.module.css";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
+import Footer from "./components/footer";
+import Navbar from "./components/navbar";
 import ScrollHandler from "./components/ScrollHandler";
 
 const geistSans = localFont({
@@ -33,9 +33,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
         <ScrollHandler />
+        <Navbar />
         {/* For styles in globals.css, you don't use styles. You just use the regular class names directly (e.g., className="heroSection"). */}
         <section className={styles.heroSection}></section>
-        <Navbar />
+
         {/* For styles in layout.module.css, you use styles because those class names are scoped locally to the component (e.g., className={styles.heroSection}). */}
         <main className={`${styles.mainContent} flex-grow pt-20`}>
           {children}
