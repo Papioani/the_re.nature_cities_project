@@ -1,6 +1,7 @@
 // src/app/components/Footer.tsx
 "use client";
 import React, { useState } from "react";
+import styles from "./Footer.module.css";
 import Link from "next/link";
 
 const Footer: React.FC = () => {
@@ -17,10 +18,10 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="footerBackground" aria-label="Footer">
+    <footer className={styles.footerBackground} aria-label="Footer">
       <button
         onClick={openModal}
-        className="footer-link flex space-x-2 text-white transition-colors duration-300"
+        className={`${styles.footerLink} flex space-x-2 text-white transition-colors duration-300`}
         aria-label="Open contact modal"
       >
         {/* SVG Arrow */}
@@ -37,17 +38,17 @@ const Footer: React.FC = () => {
         </svg>
         <span>Contact</span>
       </button>
-      <div className="footerImages" aria-label="Footer logos">
+      <div className={styles.footerImages} aria-label="Footer logos">
         <img
           src="/elidek.png"
           alt="Elidek logo"
-          className="footerImage"
+          className={styles.footerImage}
           aria-label="Elidek logo"
         />
         <img
           src="/Ellada2.0.jpg"
           alt="image of Greece2.0"
-          className="footerImage"
+          className={styles.footerImage}
           aria-label="Greece 2.0 logo"
         />
       </div>
@@ -72,7 +73,7 @@ const Footer: React.FC = () => {
                 href="https://www.civil.upatras.gr/?lang=en"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="contact-link"
+                className={styles.contactLink}
                 aria-label="Visit the Department of Civil Engineering at the University of Patras website"
               >
                 Department of Civil Engineering,
@@ -81,7 +82,7 @@ const Footer: React.FC = () => {
                 href="https://www.civil.upatras.gr/?lang=en"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="contact-link"
+                className={styles.contactLink}
                 aria-label="Visit the University of Patras website"
               >
                 University of Patras

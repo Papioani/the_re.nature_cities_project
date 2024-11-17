@@ -3,6 +3,7 @@
 // src/app/partners/page.tsx
 import React, { FC, useEffect, useRef } from "react";
 import Link from "next/link";
+import styles from "./Partners.module.css";
 
 const PartnersPage: FC = () => {
   const mainContentRef = useRef<HTMLElement>(null);
@@ -10,7 +11,10 @@ const PartnersPage: FC = () => {
 
   // Set focus to the main content on load
   useEffect(() => {
-    mainContentRef.current?.focus();
+    // Ensure focus is set on the main content after page reload
+    if (mainContentRef.current) {
+      mainContentRef.current.focus();
+    }
     // Focus on the first paragraph or heading
     if (firstParagraphRef.current) {
       firstParagraphRef.current.focus();
@@ -25,11 +29,11 @@ const PartnersPage: FC = () => {
     >
       <h2 id="partnersTitle">The Partners</h2>
 
-      <article className="partner partner-line px-4">
+      <article className={`${styles.partner} ${styles.partnerLine} px-4`}>
         <p
-          className="partner-description text.m
-        ref={firstParagraphRef}
-          tabIndex={0}"
+          className={`${styles.partnerDescription} text.m`}
+          ref={firstParagraphRef}
+          tabIndex={0}
         >
           Founded in 1972, the{" "}
           <Link
@@ -51,13 +55,13 @@ const PartnersPage: FC = () => {
           three divisions, nine laboratories, a Seismic Simulator Facility, a
           Fire Testing Facility, and two Computer Centers covering the areas of:
         </p>
-        <ul className="partner-list text-m">
+        <ul className={`${styles.partnerList} text-m`}>
           <li>Structural Engineering</li>
           <li>Geotechnical Engineering and Hydraulic Engineering </li>
           <li>Environmental Engineering and Transportation Engineering</li>
           <ul />
 
-          <p className="partner-description">
+          <p className={styles.partnerDescription}>
             {" "}
             Among others, the department presents significant expertise in the
             research and development of innovative systems and components for
@@ -69,8 +73,8 @@ const PartnersPage: FC = () => {
         </ul>
       </article>
       <div className="section-divider"></div>
-      <article className="partner px-4">
-        <p className="partner-description">
+      <article className={`${styles.partner} px-4`}>
+        <p className={styles.partnerDescription}>
           The{" "}
           <Link
             href="http://wt.fluid.mech.ntua.gr/"

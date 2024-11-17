@@ -1,0 +1,22 @@
+.partner {
+  margin-bottom: 30px;
+}
+.partnerLine::before {
+  content: "";
+  display: block;
+  width: 20%; /* Width of the line */
+  height: 2px; /* Thickness of the line */
+  background: rgba(28, 61, 90, 0.8); /* Color of the line */
+  margin: 0.5rem 0 1rem 0; /* Add top gap, no margins for other sides */
+}
+.partnerDescription {
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.partnerList {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+.partnerList li {
+  margin-bottom: 8px;
+}
