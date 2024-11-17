@@ -29,11 +29,9 @@ export default function ScrollHandler() {
             const navbarHeight = navbarElement ? navbarElement.offsetHeight : 0;
             console.log("Navbar height:", navbarHeight);
 
-            // Calculate the final scroll position based on document scroll
-            const scrollToPosition =
-              targetElement.getBoundingClientRect().top +
-              window.scrollY -
-              navbarHeight;
+            // Calculate the final scroll position based on the target element and navbar height
+            const rect = targetElement.getBoundingClientRect();
+            const scrollToPosition = rect.top + window.scrollY - navbarHeight;
             console.log("Scroll position to:", scrollToPosition);
 
             // Scroll to the target element, adjusted for the navbar height
@@ -44,7 +42,7 @@ export default function ScrollHandler() {
 
             // Optionally focus the target element for accessibility
             targetElement.setAttribute("tabindex", "-1");
-            /*  targetElement.focus(); */
+            targetElement.focus();
           } else {
             console.log("Target element not found");
           }

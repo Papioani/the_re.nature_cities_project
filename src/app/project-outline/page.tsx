@@ -1,9 +1,43 @@
+"use client";
+
 // src/app/project-outline/page.tsx
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import ScrollHandler from "../components/ScrollHandler";
 import styles from "./ProjectOutline.module.css";
 
 const ProjectOutline: FC = () => {
+  // Effect for adjusting scroll position after hash changes
+  useEffect(() => {
+    // Listen for hash changes and adjust the scroll
+    const handleHashChange = () => {
+      const navbarHeight = document.querySelector(".navbar")?.clientHeight || 0;
+      const targetElement = document.querySelector(window.location.hash);
+
+      if (targetElement) {
+        window.scrollTo({
+          top:
+            targetElement.getBoundingClientRect().top +
+            window.scrollY -
+            navbarHeight,
+          behavior: "smooth",
+        });
+      }
+    };
+
+    // Listen for hash changes
+    window.addEventListener("hashchange", handleHashChange);
+
+    // Adjust scroll when component mounts (if there's an initial hash)
+    if (window.location.hash) {
+      handleHashChange();
+    }
+
+    // Clean up listener when the component unmounts
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
+
   return (
     <section className={`${styles.projectOutlineContainer} text-m px-6 pb-16`}>
       <ScrollHandler />{" "}
