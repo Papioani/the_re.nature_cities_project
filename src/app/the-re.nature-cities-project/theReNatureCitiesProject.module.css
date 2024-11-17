@@ -1,0 +1,20 @@
+.reNatureProjectContent {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+.listCustom {
+  list-style-type: square; /* Changes bullet points to squares */
+}
+.listCustom li::marker {
+  color: #2e4d2e; /* Forest green color for bullets */
+}
+.emphasis {
+  color: #2e4d2e; /* #556b2f; */
+  font-weight: bold;
+}

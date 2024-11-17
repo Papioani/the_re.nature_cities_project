@@ -26,7 +26,7 @@ export default function ScrollHandler() {
 
             // Get the height of the fixed navbar (adjust this value if needed)
             const navbarElement = document.querySelector(".navbar");
-            const navbarHeight = navbarElement ? navbarElement.clientHeight : 0;
+            const navbarHeight = navbarElement ? navbarElement.offsetHeight : 0;
             console.log("Navbar height:", navbarHeight);
 
             // Calculate the final scroll position based on document scroll
@@ -55,15 +55,36 @@ export default function ScrollHandler() {
       }
     };
 
-    // Delay to allow for layout stabilization before running scroll logic
-    setTimeout(handleScroll, 50);
-
     // Listen for hash changes (browser-based navigation)
     window.addEventListener("hashchange", handleScroll);
 
-    // Clean up event listeners
+    // Also handle immediate hash links clicks and apply the scroll
+    const handleLinkClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (
+        target.tagName === "A" &&
+        target.getAttribute("href")?.startsWith("#")
+      ) {
+        // Prevent the default anchor click behavior
+        event.preventDefault();
+        const href = target.getAttribute("href");
+        if (href) {
+          history.pushState(null, "", href); // Update the URL hash manually
+          handleScroll(); // Perform custom scroll logic
+        }
+      }
+    };
+
+    // Attach event listener to hash links
+    document.addEventListener("click", handleLinkClick);
+
+    // Initial call to handle scroll logic (in case the page is loaded with a hash)
+    handleScroll();
+
+    // Clean up event listeners when component unmounts
     return () => {
       window.removeEventListener("hashchange", handleScroll);
+      document.removeEventListener("click", handleLinkClick);
     };
   }, [pathname]); // Dependency on pathname to handle route changes
 
