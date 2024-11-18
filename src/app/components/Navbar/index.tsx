@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
     if (navbarRef.current) {
       const height = navbarRef.current.getBoundingClientRect().height;
       setNavbarHeight(height);
-      console.log("Navbar height:", height);
+      console.log("Navbar height from index.tsx of Navbar:", height);
     } else {
       console.log("Navbar ref is null or not yet rendered");
     }
@@ -97,6 +97,7 @@ const Navbar: React.FC = () => {
     }, 300); // 300ms delay before closing the dropdown
     setWorkDropdownTimeout(timeout);
   };
+
   // Define handleKeyDown to close dropdowns on Escape key press
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Escape") {
@@ -163,6 +164,11 @@ const Navbar: React.FC = () => {
     setTooltip((prevState) => ({ ...prevState, show: false }));
   };
 
+  // Close both the tooltip and dropdown after clicking on a link (hash navigation)
+  const handleLinkClick = () => {
+    setIsWorkDropdownOpen(false); // Close dropdown after link click
+    setTooltip((prevState) => ({ ...prevState, show: false })); // Close tooltip after link click
+  };
   return (
     <nav
       ref={navbarRef}
@@ -335,6 +341,7 @@ const Navbar: React.FC = () => {
                       )
                     }
                     onMouseLeave={handleTooltipMouseLeave}
+                    onClick={handleLinkClick}
                   >
                     Work Package 1
                   </Link>
@@ -354,6 +361,7 @@ const Navbar: React.FC = () => {
                       )
                     }
                     onMouseLeave={handleTooltipMouseLeave}
+                    onClick={handleLinkClick}
                   >
                     Work Package 2
                   </Link>
@@ -373,6 +381,7 @@ const Navbar: React.FC = () => {
                       )
                     }
                     onMouseLeave={handleTooltipMouseLeave}
+                    onClick={handleLinkClick}
                   >
                     Work Package 3
                   </Link>
@@ -392,6 +401,7 @@ const Navbar: React.FC = () => {
                       )
                     }
                     onMouseLeave={handleTooltipMouseLeave}
+                    onClick={handleLinkClick}
                   >
                     Work Package 4
                   </Link>
@@ -411,6 +421,7 @@ const Navbar: React.FC = () => {
                       )
                     }
                     onMouseLeave={handleTooltipMouseLeave}
+                    onClick={handleLinkClick}
                   >
                     Work Package 5
                   </Link>
@@ -427,6 +438,7 @@ const Navbar: React.FC = () => {
                       handleTooltipMouseEnter(e, "Project Management")
                     }
                     onMouseLeave={handleTooltipMouseLeave}
+                    onClick={handleLinkClick}
                   >
                     Work Package 6
                   </Link>
@@ -446,6 +458,7 @@ const Navbar: React.FC = () => {
                       )
                     }
                     onMouseLeave={handleTooltipMouseLeave}
+                    onClick={handleLinkClick}
                   >
                     Work Package 7
                   </Link>

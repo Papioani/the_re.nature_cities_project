@@ -5,88 +5,110 @@
 // !!!!!!!! SPA behavior in Next.js: When you change routes in an SPA like Next.js,
 // the URL changes without a full page reload. This might not trigger the traditional
 // hashchange event unless it’s manually handled. !!!!!!!!!!!!!!
-import { useEffect } from "react";
+"use client";
+
+// components/ScrollHandler.tsx
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 export default function ScrollHandler() {
   const pathname = usePathname();
+  const [isHashScroll, setIsHashScroll] = useState(false); // Flag to track hash-based scrolling
+  const [hashScrollDone, setHashScrollDone] = useState(false); // Flag to track if hash scroll is complete
 
   useEffect(() => {
-    const handleScroll = () => {
+    let isScrolling = false;
+    let scrollTimeout: NodeJS.Timeout;
+
+    // Function to adjust the scroll position by adding the navbar height
+    const adjustScrollPosition = () => {
       const hash = window.location.hash; // Get current hash
-      console.log("CURRENT HASH:", hash);
-
       if (hash) {
-        // Use requestAnimationFrame to wait for the layout to stabilize
-        requestAnimationFrame(() => {
-          // Find the element with the corresponding ID
-          const targetElement = document.querySelector(hash) as HTMLElement;
-          if (targetElement) {
-            console.log("Found target element:", targetElement);
+        const targetElement = document.querySelector(hash) as HTMLElement;
+        if (targetElement) {
+          // Adjust scroll position by adding the navbar height
+          const navbarElement = document.querySelector(
+            ".navbarElement"
+          ) as HTMLElement;
+          const navbarHeight = navbarElement ? navbarElement.offsetHeight : 0;
+          const rect = targetElement.getBoundingClientRect();
+          const scrollToPosition = rect.top + window.scrollY - navbarHeight;
 
-            // Get the height of the fixed navbar (adjust this value if needed)
-            const navbarElement = document.querySelector(
-              ".navbarElement"
-            ) as HTMLElement;
-            const navbarHeight = navbarElement ? navbarElement.offsetHeight : 0;
-            console.log("Navbar height:", navbarHeight);
+          // Adjust scroll position after the browser's scroll behavior is done
+          window.scrollTo({
+            top: scrollToPosition,
+            behavior: "smooth",
+          });
 
-            // Calculate the final scroll position based on the target element and navbar height
-            const rect = targetElement.getBoundingClientRect();
-            const scrollToPosition = rect.top + window.scrollY - navbarHeight;
-            console.log("Scroll position to:", scrollToPosition);
-
-            // Scroll to the target element, adjusted for the navbar height
-            window.scrollTo({
-              top: scrollToPosition,
-              behavior: "smooth",
-            });
-
-            // Optionally focus the target element for accessibility
-            targetElement.setAttribute("tabindex", "-1");
-            targetElement.focus();
-          } else {
-            console.log("Target element not found");
-          }
-        });
+          // Optionally, focus the target element for accessibility
+          targetElement.setAttribute("tabindex", "-1");
+          targetElement.focus();
+        }
       } else {
-        console.log("No hash found, scrolling to top");
+        // If no hash is found, scroll to the top of the page
         window.scrollTo(0, 0);
       }
     };
 
-    // Listen for hash changes (browser-based navigation)
-    window.addEventListener("hashchange", handleScroll);
+    // Listen to the scroll event to detect manual scrolling
+    const handleScroll = () => {
+      if (isHashScroll) {
+        // If it's a hash scroll, don't allow manual scroll resetting
+        return;
+      }
 
-    // Also handle immediate hash links clicks and apply the scroll
-    const handleLinkClick = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      if (
-        target.tagName === "A" &&
-        target.getAttribute("href")?.startsWith("#")
-      ) {
-        // Prevent the default anchor click behavior
-        event.preventDefault();
-        const href = target.getAttribute("href");
-        if (href) {
-          history.pushState(null, "", href); // Update the URL hash manually
-          handleScroll(); // Perform custom scroll logic
-        }
+      if (isScrolling) {
+        clearTimeout(scrollTimeout);
+      }
+
+      isScrolling = true;
+
+      // Set a timeout to detect when scrolling stops
+      scrollTimeout = setTimeout(() => {
+        isScrolling = false;
+      }, 150); // Wait for 150ms after scroll stops to consider it manual scroll
+    };
+
+    // Handle the case where hash-based scroll happens
+    const handleHashChange = () => {
+      setIsHashScroll(true);
+      setHashScrollDone(false); // Mark hash scroll as not complete yet
+      // Introduce a small delay to ensure the default scroll happens first
+      setTimeout(() => {
+        adjustScrollPosition(); // Adjust scroll after the default scroll
+        setHashScrollDone(true); // Mark hash scroll as complete
+      }, 50); // Small delay to wait for the browser's default scroll behavior
+    };
+
+    // Handle manual scrolling by the user
+    const handleManualScroll = () => {
+      if (isHashScroll) {
+        // Prevent interfering with the manual scroll after hash-based navigation
+        setIsHashScroll(false);
       }
     };
 
-    // Attach event listener to hash links
-    document.addEventListener("click", handleLinkClick);
+    // Initial adjustment when the page loads (in case the hash is present)
+    if (!hashScrollDone) {
+      adjustScrollPosition();
+    }
 
-    // Initial call to handle scroll logic (in case the page is loaded with a hash)
-    handleScroll();
+    // Add event listeners for scroll and hash changes
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("hashchange", handleHashChange); // Handle hashchange for hash-based scroll
 
-    // Clean up event listeners when component unmounts
+    // Handle user scroll to stop manual interference after the hash scroll
+    window.addEventListener("wheel", handleManualScroll); // Handle mouse wheel scroll
+    window.addEventListener("touchstart", handleManualScroll); // Handle touch-based scroll (for mobile)
+
+    // Clean up event listeners when the component unmounts
     return () => {
-      window.removeEventListener("hashchange", handleScroll);
-      document.removeEventListener("click", handleLinkClick);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("hashchange", handleHashChange);
+      window.removeEventListener("wheel", handleManualScroll);
+      window.removeEventListener("touchstart", handleManualScroll);
     };
-  }, [pathname]); // Dependency on pathname to handle route changes
+  }, [pathname, isHashScroll, hashScrollDone]);
 
   return null; // This component doesn't render anything visible
 }
