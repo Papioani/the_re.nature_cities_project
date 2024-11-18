@@ -1,58 +1,11 @@
 "use client";
 
 // src/app/project-outline/page.tsx
-import React, { FC, useLayoutEffect, useState } from "react";
+import React, { FC, useLayoutEffect, useState, useEffect } from "react";
 import ScrollHandler from "../components/ScrollHandler";
 import styles from "./ProjectOutline.module.css";
 
 const ProjectOutline: FC = () => {
-  const [navbarHeight, setNavbarHeight] = useState(0);
-
-  useLayoutEffect(() => {
-    const navbar = document.querySelector(".navbar");
-    if (navbar) {
-      setNavbarHeight(navbar.clientHeight);
-    }
-  }, []);
-  // Effect for adjusting scroll position after hash changes
-  useLayoutEffect(() => {
-    // Listen for hash changes and adjust the scroll
-    const handleHashChange = () => {
-      console.log("Navbar height:", navbarHeight); // Log height to debug
-
-      const targetElement = document.querySelector(window.location.hash);
-
-      if (targetElement) {
-        // Log the target element's top position for reference
-        console.log(
-          "Target element top:",
-          targetElement.getBoundingClientRect().top
-        );
-
-        window.scrollTo({
-          top:
-            targetElement.getBoundingClientRect().top +
-            window.scrollY -
-            navbarHeight,
-          behavior: "smooth",
-        });
-      }
-    };
-
-    // Listen for hash changes
-    window.addEventListener("hashchange", handleHashChange);
-
-    // Adjust scroll when component mounts (if there's an initial hash)
-    if (window.location.hash) {
-      handleHashChange();
-    }
-
-    // Clean up listener when the component unmounts
-    return () => {
-      window.removeEventListener("hashchange", handleHashChange);
-    };
-  }, [navbarHeight]);
-
   return (
     <section className={`${styles.projectOutlineContainer} text-m px-6 pb-16`}>
       <ScrollHandler />{" "}
