@@ -1,19 +1,34 @@
 "use client";
 
 // src/app/project-outline/page.tsx
-import React, { FC, useEffect } from "react";
+import React, { FC, useLayoutEffect, useState } from "react";
 import ScrollHandler from "../components/ScrollHandler";
 import styles from "./ProjectOutline.module.css";
 
 const ProjectOutline: FC = () => {
+  const [navbarHeight, setNavbarHeight] = useState(0);
+
+  useLayoutEffect(() => {
+    const navbar = document.querySelector(".navbar");
+    if (navbar) {
+      setNavbarHeight(navbar.clientHeight);
+    }
+  }, []);
   // Effect for adjusting scroll position after hash changes
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Listen for hash changes and adjust the scroll
     const handleHashChange = () => {
-      const navbarHeight = document.querySelector(".navbar")?.clientHeight || 0;
+      console.log("Navbar height:", navbarHeight); // Log height to debug
+
       const targetElement = document.querySelector(window.location.hash);
 
       if (targetElement) {
+        // Log the target element's top position for reference
+        console.log(
+          "Target element top:",
+          targetElement.getBoundingClientRect().top
+        );
+
         window.scrollTo({
           top:
             targetElement.getBoundingClientRect().top +
@@ -36,7 +51,7 @@ const ProjectOutline: FC = () => {
     return () => {
       window.removeEventListener("hashchange", handleHashChange);
     };
-  }, []);
+  }, [navbarHeight]);
 
   return (
     <section className={`${styles.projectOutlineContainer} text-m px-6 pb-16`}>

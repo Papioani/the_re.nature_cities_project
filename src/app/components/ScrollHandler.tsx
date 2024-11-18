@@ -14,7 +14,7 @@ export default function ScrollHandler() {
   useEffect(() => {
     const handleScroll = () => {
       const hash = window.location.hash; // Get current hash
-      console.log("Current hash:", hash);
+      console.log("CURRENT HASH:", hash);
 
       if (hash) {
         // Use requestAnimationFrame to wait for the layout to stabilize
@@ -25,7 +25,9 @@ export default function ScrollHandler() {
             console.log("Found target element:", targetElement);
 
             // Get the height of the fixed navbar (adjust this value if needed)
-            const navbarElement = document.querySelector(".navbar");
+            const navbarElement = document.querySelector(
+              ".navbarElement"
+            ) as HTMLElement;
             const navbarHeight = navbarElement ? navbarElement.offsetHeight : 0;
             console.log("Navbar height:", navbarHeight);
 
