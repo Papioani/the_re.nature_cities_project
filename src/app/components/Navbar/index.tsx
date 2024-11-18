@@ -1,6 +1,6 @@
 // Navbar.tsx
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useLayoutEffect, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import Link from "next/link";
 // <Link>: This component enables client-side navigation, which means that clicking the link will not trigger a full page reload. Instead, it will only update the necessary components on the page
@@ -18,10 +18,13 @@ const Navbar: React.FC = () => {
   const navbarRef = useRef<HTMLElement | null>(null); // Ref to access the Navbar
   const [navbarHeight, setNavbarHeight] = useState(0);
 
-  useEffect(() => {
-    // Ensure the Navbar exists in the DOM before measuring
+  useLayoutEffect(() => {
     if (navbarRef.current) {
-      setNavbarHeight(navbarRef.current.offsetHeight);
+      const height = navbarRef.current.getBoundingClientRect().height;
+      setNavbarHeight(height);
+      console.log("Navbar height:", height);
+    } else {
+      console.log("Navbar ref is null or not yet rendered");
     }
   }, []);
   const [tooltip, setTooltip] = useState<Tooltip>({
@@ -164,7 +167,7 @@ const Navbar: React.FC = () => {
     <nav
       ref={navbarRef}
       aria-label="Main navigation"
-      className={`${styles.navbar} flex sticky top-0 justify-between items-end p-2 text-white md:p-3`}
+      className={`${styles.navbar} flex sticky top-0 justify-between items-end p-2 text-white md:p-3 navbarElement`}
       onKeyDown={handleKeyDown}
     >
       <header className={`${styles.logoSection} flex-grow max-w-xs`}>
