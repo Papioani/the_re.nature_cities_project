@@ -23,6 +23,7 @@ export default function ScrollHandler() {
     // Function to adjust the scroll position by adding the navbar height
     const adjustScrollPosition = () => {
       const hash = window.location.hash; // Get current hash
+      console.log("ScrollHandler: adjustScrollPosition called", { hash });
       if (hash) {
         const targetElement = document.querySelector(hash) as HTMLElement;
         if (targetElement) {
@@ -32,6 +33,7 @@ export default function ScrollHandler() {
           ) as HTMLElement;
           const navbarHeight = navbarElement ? navbarElement.offsetHeight : 0;
           const rect = targetElement.getBoundingClientRect();
+          console.log("ScrollHandler: target element rect", rect);
           const scrollToPosition = rect.top + window.scrollY - navbarHeight;
 
           // Adjust scroll position after the browser's scroll behavior is done
@@ -45,6 +47,7 @@ export default function ScrollHandler() {
           targetElement.focus();
         }
       } else {
+        console.log("ScrollHandler: No hash, scrolling to top");
         // If no hash is found, scroll to the top of the page
         window.scrollTo(0, 0);
       }

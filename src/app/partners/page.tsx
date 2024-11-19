@@ -3,6 +3,7 @@
 // src/app/partners/page.tsx
 import React, { FC, useEffect, useRef } from "react";
 import Link from "next/link";
+
 import styles from "./Partners.module.css";
 
 const PartnersPage: FC = () => {
@@ -20,13 +21,13 @@ const PartnersPage: FC = () => {
       firstParagraphRef.current.focus();
     }
   }, []);
+  useEffect(() => {
+    console.log("Testing without focus logic");
+    window.scrollTo(0, 0); // Reset scroll position to the top
+  }, []);
 
   return (
-    <section
-      className="partnersContent px-8 pb-16"
-      ref={mainContentRef}
-      tabIndex={-1} // Allows the section to receive programmatic focus
-    >
+    <section className="partnersContent px-8 pb-16" ref={mainContentRef}>
       <h2 id="partnersTitle">The Partners</h2>
 
       <article className={`${styles.partner} ${styles.partnerLine} px-4`}>

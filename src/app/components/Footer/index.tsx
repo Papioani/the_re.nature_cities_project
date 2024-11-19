@@ -59,7 +59,10 @@ const Footer: React.FC = () => {
           aria-labelledby="modal-title"
           aria-describedby="modal-description"
         >
-          <div className="bg-white p-8 rounded-lg max-w-md w-full">
+          <div
+            className="bg-white p-8 rounded-lg max-w-md w-full"
+            style={{ marginTop: "60px" }}
+          >
             <h2 id="modal-title" className="text-lg font-semibold">
               Contact Details
             </h2>
