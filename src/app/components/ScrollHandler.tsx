@@ -16,43 +16,41 @@ export default function ScrollHandler() {
   const [isHashScroll, setIsHashScroll] = useState(false); // Flag to track hash-based scrolling
   const [hashScrollDone, setHashScrollDone] = useState(false); // Flag to track if hash scroll is complete
 
+  // Function to adjust the scroll position by adding the navbar height
+  const adjustScrollPosition = () => {
+    const hash = window.location.hash; // Get current hash
+    console.log("ScrollHandler: adjustScrollPosition called", { hash });
+    if (hash) {
+      const targetElement = document.querySelector(hash) as HTMLElement;
+      if (targetElement) {
+        // Adjust scroll position by adding the navbar height
+        const navbarElement = document.querySelector(
+          ".navbarElement"
+        ) as HTMLElement;
+        const navbarHeight = navbarElement ? navbarElement.offsetHeight : 0;
+        const rect = targetElement.getBoundingClientRect();
+        console.log("ScrollHandler: target element rect", rect);
+        const scrollToPosition = rect.top + window.scrollY - navbarHeight;
+
+        // Adjust scroll position after the browser's scroll behavior is done
+        window.scrollTo({
+          top: scrollToPosition,
+          behavior: "smooth",
+        });
+
+        // Optionally, focus the target element for accessibility
+        targetElement.setAttribute("tabindex", "-1");
+        targetElement.focus();
+      }
+    } else {
+      console.log("ScrollHandler: No hash, scrolling to top");
+      // If no hash is found, scroll to the top of the page
+      window.scrollTo(0, 0);
+    }
+  };
   useEffect(() => {
     let isScrolling = false;
     let scrollTimeout: NodeJS.Timeout;
-
-    // Function to adjust the scroll position by adding the navbar height
-    const adjustScrollPosition = () => {
-      const hash = window.location.hash; // Get current hash
-      console.log("ScrollHandler: adjustScrollPosition called", { hash });
-      if (hash) {
-        const targetElement = document.querySelector(hash) as HTMLElement;
-        if (targetElement) {
-          // Adjust scroll position by adding the navbar height
-          const navbarElement = document.querySelector(
-            ".navbarElement"
-          ) as HTMLElement;
-          const navbarHeight = navbarElement ? navbarElement.offsetHeight : 0;
-          const rect = targetElement.getBoundingClientRect();
-          console.log("ScrollHandler: target element rect", rect);
-          const scrollToPosition = rect.top + window.scrollY - navbarHeight;
-
-          // Adjust scroll position after the browser's scroll behavior is done
-          window.scrollTo({
-            top: scrollToPosition,
-            behavior: "smooth",
-          });
-
-          // Optionally, focus the target element for accessibility
-          targetElement.setAttribute("tabindex", "-1");
-          targetElement.focus();
-        }
-      } else {
-        console.log("ScrollHandler: No hash, scrolling to top");
-        // If no hash is found, scroll to the top of the page
-        window.scrollTo(0, 0);
-      }
-    };
-
     // Listen to the scroll event to detect manual scrolling
     const handleScroll = () => {
       if (isHashScroll) {
@@ -103,7 +101,10 @@ export default function ScrollHandler() {
     // Handle user scroll to stop manual interference after the hash scroll
     window.addEventListener("wheel", handleManualScroll); // Handle mouse wheel scroll
     window.addEventListener("touchstart", handleManualScroll); // Handle touch-based scroll (for mobile)
-
+    // Handle initial load if there's a hash in the URL
+    if (window.location.hash) {
+      adjustScrollPosition();
+    }
     // Clean up event listeners when the component unmounts
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -112,6 +113,14 @@ export default function ScrollHandler() {
       window.removeEventListener("touchstart", handleManualScroll);
     };
   }, [pathname, isHashScroll, hashScrollDone]);
+
+  // Listen for hash changes even when navigating within the same page
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash && !hashScrollDone) {
+      adjustScrollPosition();
+    }
+  }, [pathname, hashScrollDone]);
 
   return null; // This component doesn't render anything visible
 }
