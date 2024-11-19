@@ -1,12 +1,14 @@
 // src/app/components/Footer.tsx
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "./Footer.module.css";
 import Link from "next/link";
 
 const Footer: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
+  // Reference to the modal content
+  const modalRef = useRef<HTMLDivElement>(null);
   // Function to open the modal
   const openModal = () => {
     setIsModalOpen(true);
@@ -16,7 +18,26 @@ const Footer: React.FC = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+  // Close modal when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        closeModal();
+      }
+    };
+    // Attach event listener for click outside modal
+    if (isModalOpen) {
+      document.addEventListener("click", handleClickOutside);
+    }
 
+    // Cleanup event listener on component unmount or when modal is closed
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isModalOpen]);
   return (
     <footer className={styles.footerBackground} aria-label="Footer">
       <button
@@ -60,6 +81,7 @@ const Footer: React.FC = () => {
           aria-describedby="modal-description"
         >
           <div
+            ref={modalRef}
             className="bg-white p-8 rounded-lg max-w-md w-full"
             style={{ marginTop: "60px" }}
           >
