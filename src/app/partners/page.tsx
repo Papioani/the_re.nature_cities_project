@@ -21,10 +21,6 @@ const PartnersPage: FC = () => {
       firstParagraphRef.current.focus();
     }
   }, []);
-  useEffect(() => {
-    console.log("Testing without focus logic");
-    window.scrollTo(0, 0); // Reset scroll position to the top
-  }, []);
 
   return (
     <section className="partnersContent px-8 pb-16" ref={mainContentRef}>
