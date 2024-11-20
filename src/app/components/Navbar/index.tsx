@@ -83,12 +83,11 @@ const Navbar: React.FC = () => {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prevState) => !prevState);
   };
-  /* const handleReMouseEnter = () => setIsReDropdownOpen(true);
-  const handleReMouseLeave = () => setIsReDropdownOpen(false); */
 
   const handleWorkMouseEnter = () => {
+    console.log("Mouse entered the 'Project Outline' link");
     if (workDropdownTimeout) clearTimeout(workDropdownTimeout); // Clear any previous timeout
-    setIsWorkDropdownOpen(true);
+    setIsWorkDropdownOpen((prev) => true);
   };
 
   const handleWorkMouseLeave = () => {
@@ -169,6 +168,7 @@ const Navbar: React.FC = () => {
     setIsWorkDropdownOpen(false); // Close dropdown after link click
     setTooltip((prevState) => ({ ...prevState, show: false })); // Close tooltip after link click
   };
+
   return (
     <nav
       ref={navbarRef}
@@ -222,52 +222,10 @@ const Navbar: React.FC = () => {
         <Link href="/" className={styles.navLink}>
           Home
         </Link>
-        <div
-          className="relative inline-block"
-          /* onMouseEnter={handleReMouseEnter}
-          onMouseLeave={handleReMouseLeave} 
-          onKeyDown={handleKeyDown} */
-        >
-          <Link
-            href="/the-re.nature-cities-project"
-            className={styles.navLink}
-            //aria-haspopup="true"
-            //aria-expanded={false}
-            // aria-controls="reDropdownMenu"
-            //onFocus={handleReMouseEnter}
-            //onBlur={handleReMouseLeave}
-            // id="reDropdownTrigger"
-          >
+        <div className="relative inline-block">
+          <Link href="/the-re.nature-cities-project" className={styles.navLink}>
             The Re.Nature <br /> Cities Project
           </Link>
-          {/* {isReDropdownOpen && (
-            <div
-              role="menu"
-              id="reDropdownMenu"
-              aria-labelledby="reDropdownTrigger"
-              className="absolute z-10 mt-2 w-full bg-white font-bold rounded-lg shadow-lg "
-              style={{ backgroundColor: "rgba(255, 255, 255, 0.9)" }}
-            >
-              <ul className="text-m" style={{ color: "#2e4d2e" }}>
-                <li role="menuitem">
-                  <Link
-                    href="/the-re.nature-cities-project#scope"
-                    className="block py-1 px-1 "
-                  >
-                    The Scope
-                  </Link>
-                </li>{" "}
-                <li role="menuitem">
-                  <Link
-                    href="/the-re.nature-cities-project#objectives"
-                    className="block py-1 px-1 "
-                  >
-                    The Objectives
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          )} */}
         </div>
         <Link href="/partners" className={styles.navLink}>
           Partners
