@@ -32,7 +32,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
-        <ScrollHandler />
+        {/*  <ScrollHandler /> */}
         <Navbar />
         {/* For styles in globals.css, you don't use styles. You just use the regular class names directly (e.g., className="heroSection"). */}
         <section className={styles.heroSection}></section>
