@@ -5,18 +5,28 @@
   line-height: 1.6;
 }
 .projectDescription {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   text-align: start;
-  color: "#1c3d5a";
+  color: /* "#1c3d5a"; */ #2e4d2e;
   line-height: 1.8;
 }
-.projectDescription::before {
+.projectDescription::before,
+.projectDescription::after {
   content: "";
   display: block;
-  width: 20%; /* Width of the line */
-  height: 2px; /* Thickness of the line */
-  background: rgba(28, 61, 90, 0.8); /* Color of the line */
-  margin: 0.5rem 0 1rem 0; /* Add top gap, no margins for other sides */
+  height: 3px;
+  background: /* rgba(28, 61, 90, 0.8); */ #1c3d5a; /* Dark blue color for the lines */
+  position: absolute;
+  top: 5rem; /* Adjust the vertical position of the lines */
+  width: 30%; /* The width of the lines */
+}
+
+.projectDescription::before {
+  left: 2rem; /* Starts the line from the left */
+}
+
+.projectDescription::after {
+  right: 2rem; /* Starts the line from the right */
 }
 .workPackage {
   margin-bottom: 30px;

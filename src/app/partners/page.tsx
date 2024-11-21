@@ -27,8 +27,9 @@ const PartnersPage: FC = () => {
   return (
     <section className="partnersContent px-8 pb-16" ref={mainContentRef}>
       <h2 id="partnersTitle">The Partners</h2>
+      <div className={`${styles.partnerLine} pb-4`}> </div>
 
-      <article className={`${styles.partner} ${styles.partnerLine} px-4`}>
+      <article className={`${styles.partner}  px-4`}>
         <p
           className={`${styles.partnerDescription} text.m`}
           ref={firstParagraphRef}

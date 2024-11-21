@@ -1,7 +1,3 @@
-/* Set background opacity for about page */
-.otherBackground {
-  opacity: 2; /* Less opaque for this page */
-}
 .mainContent {
   position: -webkit-sticky; /* Safari fix */
   position: sticky;
