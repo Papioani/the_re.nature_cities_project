@@ -11,6 +11,8 @@
   color: /* #f5f5f5; */ white;
   padding: 1rem;
   /*  border-top: 3px solid rgba(255, 255, 255, 0.2); */
+  width: 100%; /* Ensures the footer spans the viewport */
+  box-sizing: border-box;
 }
 
 .footerBackground::before {
@@ -39,10 +41,15 @@
   gap: 1rem; /* Space between the images */
   height: auto;
   padding: 0px 30px; /* 20px for top and bottom, 30px for left and right */
+  max-width: 100%; /* Prevents the container from exceeding the viewport */
+  overflow: hidden; /* Ensures any accidental overflow is clipped */
+  box-sizing: border-box; /* Ensures padding is included in width calculations */
 }
 .footerImage {
-  max-width: 250px;
-  height: 50px;
+  max-width: 100%;
+  max-height: 50px;
+  height: auto; /* Maintains aspect ratio */
+  flex-shrink: 1; /* Ensures images shrink if needed */
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   background-color: white;
@@ -52,4 +59,28 @@
 }
 .contactLink:hover {
   text-decoration: underline;
+}
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .footerBackground {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center-align content */
+    padding: 0rem; /* Adjust padding for better spacing */
+  }
+
+  .footerLink {
+    margin-bottom: 1rem; /* Add spacing below the contact span */
+    text-align: center; /* Center-align text */
+  }
+
+  .footerImages {
+    justify-content: center; /* Center images horizontally */
+    /* Keep images in a single row if they fit */
+    justify-content: space-between;
+  }
+
+  .footerImage {
+    max-width: 50%; /* Make images smaller to fit better */
+    /* Add spacing between images */
+  }
 }
