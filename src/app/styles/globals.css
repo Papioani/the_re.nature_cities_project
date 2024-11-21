@@ -90,30 +90,6 @@ ul {
   width: 75%;
 }
 
-/* Responsive Design */
-/* @media (max-width: 768px) {
-  .project-outline-container {
-    padding: 15px;
-    margin: 20px;
-  }
-
-  .section-title {
-    font-size: 1.5rem;
-  }
-
-  .project-description {
-    font-size: 1rem;
-  }
-
-  .work-package-title {
-    font-size: 1.2rem;
-  }
-
-  .work-package-details li {
-    font-size: 1rem;
-  }
-} */
-
 .partner-link {
   display: inline;
   margin: 0;
@@ -126,23 +102,6 @@ ul {
   text-decoration: none;
 }
 
-/* @media (max-width: 768px) {
-  .partnersContent {
-    padding: 15px;
-    margin: 20px;
-  }
-  .section-title {
-    font-size: 1.5rem;
-  }
-
-  .partner-description {
-    font-size: 1rem;
-  }
-
-  .partner-list li {
-    font-size: 1rem;
-  }
-} */
 .tooltip-container {
   position: fixed;
 }
