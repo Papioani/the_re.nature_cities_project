@@ -1,7 +1,7 @@
 "use client";
 
 // src/app/project-outline/page.tsx
-import React, { FC, useState, useEffect } from "react";
+import React, { FC } from "react";
 import ScrollHandler from "../components/ScrollHandler";
 import styles from "./ProjectOutline.module.css";
 
