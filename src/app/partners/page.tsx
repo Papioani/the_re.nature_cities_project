@@ -12,13 +12,11 @@ const PartnersPage: FC = () => {
 
   // Set focus to the main content on load
   useEffect(() => {
-    // Ensure focus is set on the main content after page reload
     if (mainContentRef.current) {
-      mainContentRef.current.focus();
+      mainContentRef.current.focus({ preventScroll: true });
     }
-    // Focus on the first paragraph or heading
     if (firstParagraphRef.current) {
-      firstParagraphRef.current.focus();
+      firstParagraphRef.current.focus({ preventScroll: true });
     }
   }, []);
   /*  useEffect(() => {
