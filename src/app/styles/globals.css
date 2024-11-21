@@ -122,7 +122,7 @@ a:focus {
   transform: translateY(-50%);
   width: 10px; /* Size of the square */
   height: 10px;
-  background-color: #556b2f; /* #2e4d2e;   */ /* Green color for the square */
+  background-color: #059669; /* #2e4d2e;   */ /* Green color for the square */
   display: inline-block;
   border-radius: 2px; /* Optional: Slight rounding for a softer look */
 }
