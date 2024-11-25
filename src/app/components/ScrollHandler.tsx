@@ -3,6 +3,13 @@ import { usePathname } from "next/navigation";
 
 export default function ScrollHandler() {
   const pathname = usePathname();
+  // Cache the navbar element outside of the scroll handler
+  const getNavbarHeight = () => {
+    const navbarElement = document.querySelector(
+      ".navbarElement"
+    ) as HTMLElement;
+    return navbarElement ? navbarElement.offsetHeight : 0;
+  };
 
   const adjustScrollPosition = () => {
     console.log("Adjust scroll position called");
@@ -11,22 +18,28 @@ export default function ScrollHandler() {
       const targetElement = document.querySelector(hash) as HTMLElement;
       console.log("Target element found:", targetElement);
       if (targetElement) {
-        const navbarElement = document.querySelector(
-          ".navbarElement"
-        ) as HTMLElement;
-        const navbarHeight = navbarElement ? navbarElement.offsetHeight : 0;
+        const navbarHeight = getNavbarHeight();
+
+        // Calculate viewport offset (for mobile devices)
+        const visualOffset = window.visualViewport?.offsetTop || 0;
+
         const rect = targetElement.getBoundingClientRect();
         console.log("Navbar height:", navbarHeight, "Element rect:", rect);
-        const scrollToPosition = rect.top + window.scrollY - navbarHeight;
+        const scrollToPosition =
+          rect.top + window.scrollY - navbarHeight - visualOffset;
 
         window.scrollTo({
           top: scrollToPosition,
           behavior: "smooth",
         });
 
-        // Focus for accessibility
-        targetElement.setAttribute("tabindex", "-1");
-        targetElement.focus();
+        // Focus for accessibility (ensure it's focusable)
+        if (targetElement) {
+          if (targetElement.tabIndex === -1) {
+            targetElement.setAttribute("tabindex", "0");
+          }
+          targetElement.focus();
+        }
       }
     }
   };
@@ -39,7 +52,7 @@ export default function ScrollHandler() {
 
     // Handle same-page hash navigation
     const handleAnchorClick = (event: Event) => {
-      const target = event.target as HTMLAnchorElement;
+      let target = event.target as HTMLAnchorElement;
       console.log("Anchor click detected:", target);
       if (
         target.tagName === "A" &&
@@ -47,6 +60,7 @@ export default function ScrollHandler() {
         (target.pathname === window.location.pathname ||
           target.pathname === pathname)
       ) {
+        event.preventDefault();
         console.log("Same-page navigation detected:", target.hash);
         setTimeout(() => adjustScrollPosition(), 100); // Delay to allow default behavior
       }

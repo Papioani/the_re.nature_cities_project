@@ -15,7 +15,10 @@ const ReNaturePage: FC = () => {
       <h2 id="scope" className="markerSquare">
         The Scope
       </h2>{" "}
-      <p className="text-m leading-relaxed mb-6 border-l-2 border-[#059669] pl-2">
+      <p
+        style={{ backgroundColor: "white" }}
+        className="text-m leading-relaxed mb-6 border-l-2 border-[#059669] pl-2"
+      >
         Re.Nature Cities aims to evaluate via experimental and simulation means
         the ability of street trees as nature-based solutions (NBS) to act as an
         effective measure against the increased air temperature on the ambient
@@ -68,7 +71,7 @@ const ReNaturePage: FC = () => {
           planting patterns for urban areas.
         </li>
       </ul>
-      <div className="section-divider"></div>
+      <div className="section-divider2"></div>
     </section>
   );
 };

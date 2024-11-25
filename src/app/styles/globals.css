@@ -36,7 +36,6 @@ body {
   font-family: "Helvetica Neue", Arial, sans-serif;
   /*  font-family: Arial, sans-serif; */
   line-height: 1.5rem;
-  overflow-x: hidden;
 }
 /* Mobile-first styling */
 @media (max-width: 768px) {
@@ -90,9 +89,14 @@ ul {
 .section-divider {
   border-top: 1px solid rgba(0, 0, 0, 0.2); /* Light gray line */
   margin: 2rem 0; /* Space around the line */
-  width: 75%;
+  width: 45%;
 }
-
+.section-divider2 {
+  border-top: 1px solid rgba(0, 0, 0, 0.2); /* Light gray line */
+  margin: 2rem 0; /* Space around the line */
+  width: 45%;
+  margin-left: auto;
+}
 .partner-link {
   display: inline;
   margin: 0;
@@ -128,4 +132,24 @@ a:focus {
   background-color: #059669; /* #2e4d2e;   */ /* Green color for the square */
   display: inline-block;
   border-radius: 2px; /* Optional: Slight rounding for a softer look */
+}
+#workDropdownMenu ul {
+  margin-bottom: 0;
+}
+#workDropdownMenu ul li a:active {
+  background-color: rgba(
+    107,
+    139,
+    59,
+    0.6
+  ); /* Darker green for pressed state */
+  transform: scale(0.98); /* Slight shrink to mimic button press */
+}
+
+#workDropdownMenu ul li a {
+  display: block; /* Ensure the link behaves like a block element */
+  padding-left: 10px; /* Apply padding to the left for all lines */
+  text-decoration: none; /* Optional: remove underline */
+  color: inherit; /* Keep the text color consistent */
+  margin-bottom: 4px;
 }
