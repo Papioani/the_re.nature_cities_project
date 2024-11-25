@@ -22,11 +22,11 @@
 }
 
 .projectDescription::before {
-  left: 2rem; /* Starts the line from the left */
+  left: 5rem; /* Starts the line from the left */
 }
 
 .projectDescription::after {
-  right: 2rem; /* Starts the line from the right */
+  right: 5rem; /* Starts the line from the right */
 }
 .workPackage {
   margin-bottom: 30px;

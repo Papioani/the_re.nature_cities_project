@@ -1,12 +1,16 @@
 .mainContent {
   position: -webkit-sticky; /* Safari fix */
   position: sticky;
-  background: rgba(250, 250, 250, 0.9);
+  background: rgba(255, 255, 255, 0.9);
+  /*  background: white;
+  opacity: 0.9; */
   /* background-color: #fff; */ /* this is what makes the main background totally white */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: top 0.3s ease-in-out;
   flex-grow: 1;
   padding-top: 2rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
   z-index: 5;
   border-top: 2px solid rgba(28, 61, 90, 0.9);
   /* border-bottom: 3px solid rgba(28, 61, 90, 0.3); */
@@ -16,6 +20,10 @@
   .heroSection {
     background-attachment: scroll;
     height: auto; /* Allow natural height scaling */
+  }
+  .mainContent {
+    padding-left: 0rem; /* Reduced padding for mobile */
+    padding-right: 0rem; /* Reduced padding for mobile */
   }
 }
 .heroSection {

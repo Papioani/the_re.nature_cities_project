@@ -15,10 +15,43 @@ interface Tooltip {
 // many modern setups and Next.js examples skip React.FC
 //when no props are present to keep the code concise.
 const Navbar: React.FC = () => {
+  const [isRotated, setIsRotated] = useState<boolean>(false);
   const navbarRef = useRef<HTMLElement | null>(null); // Ref to access the Navbar
   const [navbarHeight, setNavbarHeight] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const [isWorkDropdownOpen, setIsWorkDropdownOpen] = useState<boolean>(false);
+  const [workDropdownTimeout, setWorkDropdownTimeout] =
+    useState<NodeJS.Timeout | null>(null);
 
+  // Create the ref for the workDropdownTrigger
+  const workDropdownTriggerRef = useRef<HTMLAnchorElement | null>(null);
+  const firstDropdownItemRef = useRef<HTMLAnchorElement | null>(null);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node)
+    ) {
+      setIsWorkDropdownOpen(false);
+    }
+  };
+  useEffect(() => {
+    if (isWorkDropdownOpen) {
+      document.addEventListener("click", handleClickOutside); // Add listener when dropdown opens
+      document.addEventListener("touchstart", handleClickOutside);
+    } else {
+      document.removeEventListener("click", handleClickOutside); // Remove listener when dropdown closes
+      document.removeEventListener("touchstart", handleClickOutside);
+    }
+
+    // Cleanup on unmount or when dropdown state changes
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+      document.addEventListener("touchstart", handleClickOutside);
+    };
+  }, [isWorkDropdownOpen]); // Depend on `isDropdownOpen`
   // Check for mobile screen size on initial render and when window resizes
   useEffect(() => {
     const checkScreenSize = () => {
@@ -47,16 +80,6 @@ const Navbar: React.FC = () => {
     show: false,
     position: { top: 0, left: 0 },
   });
-
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
-  /* const [isReDropdownOpen, setIsReDropdownOpen] = useState<boolean>(false); */
-  const [isWorkDropdownOpen, setIsWorkDropdownOpen] = useState<boolean>(false);
-  const [workDropdownTimeout, setWorkDropdownTimeout] =
-    useState<NodeJS.Timeout | null>(null);
-
-  // Create the ref for the workDropdownTrigger
-  const workDropdownTriggerRef = useRef<HTMLAnchorElement | null>(null);
-  const firstDropdownItemRef = useRef<HTMLAnchorElement | null>(null);
 
   const handleWorkFocus = () => {
     setIsWorkDropdownOpen(true);
@@ -120,6 +143,9 @@ const Navbar: React.FC = () => {
     if (event.key === "Escape") {
       setIsWorkDropdownOpen(false);
       workDropdownTriggerRef.current?.focus();
+    } else if (event.key === "Enter" || event.key === " ") {
+      // Toggle the dropdown on Enter or Space key press
+      setIsWorkDropdownOpen((prevState) => !prevState);
     }
   };
 
@@ -196,6 +222,7 @@ const Navbar: React.FC = () => {
   const handleDropdownClick = (event: React.MouseEvent) => {
     event.stopPropagation(); // Prevent triggering other click events
     setIsWorkDropdownOpen((prev) => !prev); // Toggle the dropdown visibility
+    setIsRotated((prev) => !prev);
   };
 
   return (
@@ -206,7 +233,7 @@ const Navbar: React.FC = () => {
       onKeyDown={handleKeyDown}
     >
       <header className={`${styles.logoSection} flex-grow max-w-xs`}>
-        <Link href="/">
+        <Link href="/" onClick={closeMobileMenu}>
           <img
             src="/logo2.jpg"
             alt="The Re.Nature Cities logo showing a tree within a circle"
@@ -274,17 +301,22 @@ const Navbar: React.FC = () => {
             <div className="relative inline-block">
               <button
                 onClick={handleProjectOutlineClick} // Redirect to the project outline page
-                className="inline-flex items-center space-x-2 p-2 text-gray-700"
+                className={`${styles.navLink} inline-flex items-center space-x-2 p-2`}
+                aria-expanded={isWorkDropdownOpen} // Reflect dropdown state
+                aria-controls="workDropdownMenu"
               >
-                <span>Project Outline</span>
+                <span className="mr-2">Project Outline</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
+                  width="20"
+                  height="20"
                   fill="currentColor"
-                  className="bi bi-chevron-down"
+                  className={`bi bi-chevron-down transition-transform duration-300 ${
+                    isRotated ? "rotate-180" : ""
+                  } text-[#fffff] `}
                   viewBox="0 0 16 16"
                   onClick={handleDropdownClick} // Open the dropdown on arrow click
+                  aria-hidden="true"
                 >
                   <path
                     fillRule="evenodd"
@@ -296,14 +328,23 @@ const Navbar: React.FC = () => {
             {/* Dropdown for mobile */}
             {isWorkDropdownOpen && (
               <div
+                ref={dropdownRef}
                 id="workDropdownMenu"
-                className="absolute left-0 mt-2 bg-white shadow-md p-2"
+                className="absolute left-0 mt-2 bg-white shadow-md rounded-md max-w-[90%] sm:max-w-[350px]"
+                role="region"
+                aria-labelledby="project-outline-link"
               >
-                <ul className="text-sm">
+                <ul>
                   {/* Dropdown items for mobile */}
-                  <li>
+                  <li
+                    style={{
+                      backgroundColor: "rgba(107, 139, 59, 0.2)", // RGBA for #556b2f with opacity 0.5
+                      transition: "background-color 0.3s ease",
+                    }}
+                  >
                     <a
                       href="#work1"
+                      className="mobile-link"
                       onClick={() => {
                         closeMobileMenu();
                         handleProjectOutlineClick();
@@ -316,6 +357,7 @@ const Navbar: React.FC = () => {
                   <li>
                     <a
                       href="#work2"
+                      className="mobile-link"
                       onClick={() => {
                         closeMobileMenu();
                         handleProjectOutlineClick();
@@ -325,7 +367,12 @@ const Navbar: React.FC = () => {
                       Climate Change
                     </a>
                   </li>
-                  <li>
+                  <li
+                    style={{
+                      backgroundColor: "rgba(107, 139, 59, 0.2)", // RGBA for #556b2f with opacity 0.5
+                      transition: "background-color 0.3s ease",
+                    }}
+                  >
                     <a
                       href="#work3"
                       onClick={() => {
@@ -347,6 +394,51 @@ const Navbar: React.FC = () => {
                     >
                       Work Package 4: Experimental Assessment of Street Trees as
                       Urban NBS
+                    </a>
+                  </li>
+                  <li
+                    style={{
+                      backgroundColor: "rgba(107, 139, 59, 0.2)", // RGBA for #556b2f with opacity 0.5
+                      transition: "background-color 0.3s ease",
+                    }}
+                  >
+                    <a
+                      href="#work5"
+                      onClick={() => {
+                        closeMobileMenu();
+                        handleProjectOutlineClick();
+                      }}
+                    >
+                      Work Package 5: Evaluation of the Environmental and Energy
+                      Effect of Street Trees
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#work6"
+                      onClick={() => {
+                        closeMobileMenu();
+                        handleProjectOutlineClick();
+                      }}
+                    >
+                      Work Package 6: Project Management
+                    </a>
+                  </li>
+                  <li
+                    style={{
+                      backgroundColor: "rgba(107, 139, 59, 0.2)", // RGBA for #556b2f with opacity 0.5
+                      transition: "background-color 0.3s ease",
+                    }}
+                  >
+                    <a
+                      href="#work7"
+                      onClick={() => {
+                        closeMobileMenu();
+                        handleProjectOutlineClick();
+                      }}
+                    >
+                      Work Package 7: Dissemination and Communication of the
+                      Results
                     </a>
                   </li>
                 </ul>
@@ -544,13 +636,25 @@ const Navbar: React.FC = () => {
             </div>
           </>
         )}
-        <Link href="/wind-tunnel" className={styles.navLink}>
+        <Link
+          href="/wind-tunnel"
+          className={styles.navLink}
+          onClick={closeMobileMenu}
+        >
           Wind Tunnel, LAI/LAD <br /> and Albedo Measurements
         </Link>
-        <Link href="/deliverables-publications" className={styles.navLink}>
+        <Link
+          href="/deliverables-publications"
+          className={styles.navLink}
+          onClick={closeMobileMenu}
+        >
           Deliverables and <br /> publications
         </Link>
-        <Link href="/the-action" className={styles.navLink}>
+        <Link
+          href="/the-action"
+          className={styles.navLink}
+          onClick={closeMobileMenu}
+        >
           The action
         </Link>
       </div>
