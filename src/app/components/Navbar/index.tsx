@@ -35,6 +35,7 @@ const Navbar: React.FC = () => {
       !dropdownRef.current.contains(event.target as Node)
     ) {
       setIsWorkDropdownOpen(false);
+      setIsRotated(false);
     }
   };
   useEffect(() => {
@@ -232,12 +233,12 @@ const Navbar: React.FC = () => {
       className={`${styles.navbar} flex sticky top-0 justify-between items-end p-2 text-white md:p-3 navbarElement`}
       onKeyDown={handleKeyDown}
     >
-      <header className={`${styles.logoSection} flex-grow max-w-xs`}>
-        <Link href="/" onClick={closeMobileMenu}>
+      <header className={`${styles.logoSection} px-6`}>
+        <Link href="/" onClick={closeMobileMenu} className="inline-block">
           <img
             src="/logo2.jpg"
             alt="The Re.Nature Cities logo showing a tree within a circle"
-            className="max-h-24 max-w-40 object-contain cursor-pointer  md:w-auto px-6 py-0 hover:opacity-80 hover:scale-110 transition-all duration-200"
+            className="max-h-28 max-w-30 object-contain cursor-pointer  md:w-auto  py-0 hover:opacity-80 hover:scale-110 transition-all duration-200"
           />
         </Link>
       </header>

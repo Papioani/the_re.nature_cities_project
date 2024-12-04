@@ -31,7 +31,7 @@ const PartnersPage: FC = () => {
 
       <article className={`${styles.partner}  px-4`}>
         <p
-          className={`${styles.partnerDescription} text.m`}
+          className={`${styles.partnerDescription} text.m `}
           ref={firstParagraphRef}
           tabIndex={0}
         >
@@ -74,7 +74,7 @@ const PartnersPage: FC = () => {
       </article>
       <div className="section-divider"></div>
       <article className={`${styles.partner} px-4`}>
-        <p className={styles.partnerDescription}>
+        <p className={`${styles.partnerDescription} `}>
           The{" "}
           <Link
             href="http://wt.fluid.mech.ntua.gr/"
