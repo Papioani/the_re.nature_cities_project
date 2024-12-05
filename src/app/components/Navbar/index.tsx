@@ -17,8 +17,8 @@ interface Tooltip {
 const Navbar: React.FC = () => {
   const [isRotated, setIsRotated] = useState<boolean>(false);
   const navbarRef = useRef<HTMLElement | null>(null); // Ref to access the Navbar
-  const [navbarHeight, setNavbarHeight] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  const [navbarHeight, setNavbarHeight] = useState<number>(0);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isWorkDropdownOpen, setIsWorkDropdownOpen] = useState<boolean>(false);
   const [workDropdownTimeout, setWorkDropdownTimeout] =
@@ -119,17 +119,19 @@ const Navbar: React.FC = () => {
     }
   }, []);
 
-  const toggleMobileMenu = () => {
+  const toggleMobileMenu = (): void => {
     setIsMobileMenuOpen((prevState) => !prevState);
   };
-  const closeMobileMenu = () => {
+  const closeMobileMenu = (): void => {
     setIsMobileMenuOpen(false);
   };
 
-  const handleWorkMouseEnter = () => {
+  const handleWorkMouseEnter: React.MouseEventHandler<
+    HTMLAnchorElement
+  > = () => {
     console.log("Mouse entered the 'Project Outline' link");
     if (workDropdownTimeout) clearTimeout(workDropdownTimeout); // Clear any previous timeout
-    setIsWorkDropdownOpen((prev) => true);
+    setIsWorkDropdownOpen(true);
   };
 
   const handleWorkMouseLeave = () => {
@@ -180,7 +182,7 @@ const Navbar: React.FC = () => {
         setIsWorkDropdownOpen((prev) => !prev);
       } else if (event.key === "Escape") {
         setIsWorkDropdownOpen(false);
-        workDropdownTriggerRef.current.focus(); // Return focus to trigger
+        workDropdownTriggerRef.current?.focus(); // Return focus to trigger
       }
     }
   };
@@ -267,7 +269,47 @@ const Navbar: React.FC = () => {
           </svg>
         </button>
       </div>
+      <div className="relative">
+        <input
+          className="appearance-none border-2 pl-10 border-gray-300 hover:border-gray-400 transition-colors rounded-md w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:ring-purple-600 focus:border-purple-600 focus:shadow-outline"
+          id="username"
+          type="text"
+          placeholder="Search..."
+        />
+        <div className="absolute right-0 inset-y-0 flex items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="-ml-1 mr-3 h-5 w-5 text-gray-400 hover:text-gray-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </div>
 
+        <div className="absolute left-0 inset-y-0 flex items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 ml-3 text-gray-400 hover:text-gray-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </div>
+      </div>
       {/* Navbar Links (hidden on mobile, shown on medium screens and up) */}
       <div
         id="mobile-menu"
@@ -452,13 +494,12 @@ const Navbar: React.FC = () => {
 
             <div
               className="relative inline-block"
-              onMouseEnter={handleWorkMouseEnter}
-              onMouseLeave={handleWorkMouseLeave}
               onKeyDown={handleDropdownKeyDown}
               tabIndex={0}
             >
               <Link
                 href="/project-outline"
+                passHref // This tells Next.js to handle the anchor properly
                 className={styles.navLink}
                 aria-haspopup="true"
                 aria-expanded={isWorkDropdownOpen}
@@ -467,6 +508,8 @@ const Navbar: React.FC = () => {
                 onBlur={handleWorkBlur}
                 id="workDropdownTrigger"
                 ref={workDropdownTriggerRef} // Attach the ref to the element
+                onMouseEnter={handleWorkMouseEnter}
+                onMouseLeave={handleWorkMouseLeave}
               >
                 Project Outline
                 <svg
