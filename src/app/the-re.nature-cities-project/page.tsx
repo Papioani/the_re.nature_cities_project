@@ -11,13 +11,15 @@ import styles from "./theReNatureCitiesProject.module.css";
 // }
 const ReNaturePage: FC = () => {
   return (
-    <section className={`${styles.reNatureProjectContent} px-8 py-2 pb-16`}>
+    <section
+      className={`${styles.reNatureProjectContent} px-8 py-2 pb-16 p-4 bg-white shadow-md rounded-lg`}
+    >
       <h2 id="scope" className="markerSquare">
         The Scope
       </h2>{" "}
       <p
         /*  style={{ backgroundColor: "white" }} */
-        className="text-m leading-relaxed mb-6" /*  border-l-2 border-[#059669] pl-2 */
+        className="text-m leading-relaxed mb-6 " /*  border-l-2 border-[#059669] pl-2 */
       >
         Re.Nature Cities aims to evaluate via experimental and simulation means
         the ability of street trees as nature-based solutions (NBS) to act as an

@@ -40,16 +40,16 @@
 }
 .navLink {
   text-decoration: none;
-  padding: 0px 2px 3px 6px;
   margin-top: 0;
   font-size: 1rem;
   font-weight: bold;
-  padding: 0px 2px 3px 6px;
+  padding: 0px 2px 0px 6px;
   border-radius: 4px;
   transition: color 0.3s ease, transform 0.2s ease;
   display: flex;
   text-align: start;
   z-index: 20;
+  color: #ffffff;
 }
 
 .navLink:active {
@@ -59,7 +59,10 @@
 }
 .tooltipBox {
   position: fixed;
+  /*   background-color: #f0f0f0;
+ */
   background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   color: #556b2f;
   padding: 8px;
   font-weight: bold;
