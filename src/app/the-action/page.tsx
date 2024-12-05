@@ -10,7 +10,7 @@ const ActionPage: React.FC = () => {
         Action Overview
       </h2>
 
-      <div className="action-description text-justify text-lg space-y-4">
+      <div className="action-description text-justify text-lg space-y-4 p-4 bg-white shadow-md rounded-lg">
         <p>
           The action The Action “Basic Research Financing (Horizontal support
           for all Sciences)” (ID 16618 - Subproject 1) is included in the

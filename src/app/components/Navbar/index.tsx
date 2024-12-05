@@ -242,6 +242,50 @@ const Navbar: React.FC = () => {
           />
         </Link>
       </header>
+      {/* Search Input */}
+      <div className="absolute right-0 top-0 p-4">
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="w-full max-w-xs pl-8 pr-3 py-1 border rounded-md text-black focus:outline-none focus:ring-2 focus:ring-black-500 placeholder-gray-400 text-sm"
+            aria-label="Search"
+          />
+          <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 text-gray-400 hover:text-gray-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </div>
+
+          <div className="absolute left-2 top-1/2 transform -translate-y-1/2 flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 text-gray-400 hover:text-gray-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
       {/* Hamburger Icon (visible on mobile) */}
       <div className="md:hidden flex items-center">
         <button
