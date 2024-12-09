@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
   const [isRotated, setIsRotated] = useState<boolean>(false);
   const navbarRef = useRef<HTMLElement | null>(null); // Ref to access the Navbar
   const [navbarHeight, setNavbarHeight] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isWorkDropdownOpen, setIsWorkDropdownOpen] = useState<boolean>(false);
   const [workDropdownTimeout, setWorkDropdownTimeout] =
@@ -87,13 +87,19 @@ const Navbar: React.FC = () => {
   };
   const handleWorkBlur = (event: React.FocusEvent) => {
     const relatedTarget = event.relatedTarget as HTMLElement;
+    console.log("handleWorkBlur triggered");
+    console.log("Event target:", event.target);
+    console.log("Related target:", relatedTarget);
     if (
       relatedTarget &&
       workDropdownTriggerRef.current &&
       !workDropdownTriggerRef.current.contains(relatedTarget) &&
       !relatedTarget.closest("#workDropdownMenu")
     ) {
+      console.log("Closing dropdown due to focus loss");
       setIsWorkDropdownOpen(false);
+    } else {
+      console.log("Not closing dropdown, conditions not met");
     }
   };
 
@@ -128,6 +134,7 @@ const Navbar: React.FC = () => {
 
   const handleWorkMouseEnter = () => {
     console.log("Mouse entered the 'Project Outline' link");
+
     if (workDropdownTimeout) clearTimeout(workDropdownTimeout); // Clear any previous timeout
     setIsWorkDropdownOpen((prev) => true);
   };
@@ -318,7 +325,8 @@ const Navbar: React.FC = () => {
         className={`${isMobileMenuOpen ? "block" : "hidden"} ${
           styles.navbarLinks
         } md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 md:items-start text-white mt-8 md:mt-0`}
-        aria-hidden={!isMobileMenuOpen} // Semantically hide the menu
+        aria-expanded={isMobileMenuOpen}
+        aria-controls="mobile-menu"
       >
         <Link href="/" className={styles.navLink} onClick={closeMobileMenu}>
           Home
