@@ -187,7 +187,9 @@ const Navbar: React.FC = () => {
         setIsWorkDropdownOpen((prev) => !prev);
       } else if (event.key === "Escape") {
         setIsWorkDropdownOpen(false);
-        workDropdownTriggerRef.current.focus(); // Return focus to trigger
+        if (workDropdownTriggerRef.current) {
+          workDropdownTriggerRef.current.focus(); // Add a null check here
+        } // Return focus to trigger
       }
     }
   };
