@@ -282,7 +282,7 @@ const Navbar: React.FC = () => {
         id="mobile-menu"
         className={`${isMobileMenuOpen ? "block" : "hidden"} ${
           styles.navbarLinks
-        } md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 md:items-start text-white mt-8 md:mt-0`}
+        } md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 md:items-start text-white mt-8 md:mt-0 last:mr-6`}
         aria-expanded={isMobileMenuOpen}
         aria-controls="mobile-menu"
       >
@@ -663,7 +663,7 @@ const Navbar: React.FC = () => {
         </Link>
         <Link
           href="/the-action"
-          className={styles.navLink}
+          className={styles.navLink} 
           onClick={closeMobileMenu}
         >
           The action
