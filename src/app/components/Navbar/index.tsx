@@ -239,7 +239,7 @@ const Navbar: React.FC = () => {
     <nav
       ref={navbarRef}
       aria-label="Main navigation"
-      className={`${styles.navbar} flex sticky top-0 justify-between items-end p-2 text-white md:p-3 navbarElement`}
+      className={`${styles.navbar} flex sticky top-0 justify-between items-end text-white md:p-1 navbarElement`}
       onKeyDown={handleKeyDown}
     >
       <header className={`${styles.logoSection} px-6`}>
