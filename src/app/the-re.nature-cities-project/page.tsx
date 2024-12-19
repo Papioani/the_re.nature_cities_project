@@ -11,12 +11,17 @@ import styles from "./theReNatureCitiesProject.module.css";
 // }
 const ReNaturePage: FC = () => {
   return (
-    <section
-      className={`${styles.reNatureProjectContent} px-8 py-2 pb-16 p-4 bg-white shadow-md rounded-lg`}
-    >
-      <h2 id="scope" className="markerSquare">
-        The Scope
-      </h2>{" "}
+    <>
+      {/* <section
+        className={`${styles.reNatureProjectContent} px-8 py-2 pb-16 p-4 bg-white shadow-md rounded-lg`}
+      > */}
+      <div className="w-full flex justify-center items-center gap-4 p-8">
+        <div className="line"></div>
+        <h2 id="scope" className="text-center" /*  className="markerSquare" */>
+          The Scope
+        </h2>{" "}
+        <div className="line"></div>
+      </div>
       <p
         /*  style={{ backgroundColor: "white" }} */
         className="text-m leading-relaxed mb-6 " /*  border-l-2 border-[#059669] pl-2 */
@@ -28,10 +33,20 @@ const ReNaturePage: FC = () => {
         costs caused by climate change, while promoting public health and the
         well-being of the citizens.
       </p>{" "}
-      <div className="section-divider"></div>
-      <h2 id="objectives" className="markerSquare">
-        The Objectives
-      </h2>
+      <div>
+        <div className="section-divider"></div>
+        {/* <div className="section-divider2"></div> */}
+      </div>
+      <div className="w-full flex justify-center items-center gap-4 p-8">
+        <div className="line"></div>
+        <h2
+          id="objectives"
+          className="text-center gap-4" /* className="markerSquare" */
+        >
+          The Objectives
+        </h2>
+        <div className="line"></div>
+      </div>
       <ul className={`${styles.listCustom} pl-6`}>
         <li className="mb-2">
           To assess the{" "}
@@ -73,8 +88,8 @@ const ReNaturePage: FC = () => {
           planting patterns for urban areas.
         </li>
       </ul>
-      <div className="section-divider2"></div>
-    </section>
+      {/* <div className="section-divider2"></div> */}
+    </>
   );
 };
 

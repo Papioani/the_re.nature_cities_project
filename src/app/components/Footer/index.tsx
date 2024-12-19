@@ -85,12 +85,14 @@ const Footer: React.FC = () => {
             className="bg-white p-8 rounded-lg max-w-md w-full"
             style={{ marginTop: "60px" }}
           >
-            <h2 id="modal-title" className="text-lg font-semibold">
+            <p id="modal-title" className="text-lg text-center underline">
               Contact Details
-            </h2>
+            </p>
 
-            <p id="modal-description" className="text-[#1c3d5a]">
-              <span className="text-xl font-semibold">Stella Tsoka</span>
+            <p id="modal-description" className="font-normal">
+              <span className="text-xl font-semibold text-[#556b2f]">
+                Stella Tsoka
+              </span>
               <br />
               Scientific responsible and coordinator of the project <br />
               Assistant professor <br />

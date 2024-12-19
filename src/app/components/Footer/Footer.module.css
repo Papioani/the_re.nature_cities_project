@@ -9,7 +9,7 @@
   align-items: center;
   z-index: 10;
   color: /* #f5f5f5; */ white;
-  padding: 1rem;
+  padding: 1.5rem;
   /*  border-top: 3px solid rgba(255, 255, 255, 0.2); */
   width: 100%; /* Ensures the footer spans the viewport */
   box-sizing: border-box;
@@ -24,7 +24,7 @@
 }
 .footerLink {
   font-weight: bold; /* Bold font weight */
-  padding: 10px 40px; /* Padding for a better click area */
+  padding: 1.5rem 2.5rem; /* Padding for a better click area */
   transition: all 0.3s ease; /* Smooth transition */
   text-decoration: none;
   align-self: flex-start;
@@ -38,20 +38,20 @@
   display: flex; /* Use flexbox to arrange the images */
   justify-content: flex-end;
   align-self: flex-end; /* Center images vertically */
-  gap: 1rem; /* Space between the images */
+  gap: 3rem; /* Space between the images */
   height: auto;
-  padding: 0px 30px; /* 20px for top and bottom, 30px for left and right */
+  padding: 0 1.9rem; /* 20px for top and bottom, 30px for left and right */
   max-width: 100%; /* Prevents the container from exceeding the viewport */
   overflow: hidden; /* Ensures any accidental overflow is clipped */
   box-sizing: border-box; /* Ensures padding is included in width calculations */
 }
 .footerImage {
   max-width: 100%;
-  max-height: 50px;
+  max-height: 3.7rem;
   height: auto; /* Maintains aspect ratio */
   flex-shrink: 1; /* Ensures images shrink if needed */
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.4);
   background-color: white;
 }
 .contactLink {
@@ -61,11 +61,11 @@
   text-decoration: underline;
 }
 /* Mobile-specific styles */
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .footerBackground {
     flex-direction: column; /* Stack items vertically */
     align-items: center; /* Center-align content */
-    padding: 0rem; /* Adjust padding for better spacing */
+    padding: 0; /* Adjust padding for better spacing */
   }
 
   .footerLink {
