@@ -6,14 +6,14 @@ const Home: React.FC = () => {
     <div className="flex flex-col">
       <main className="flex flex-col gap-4 items-start sm:items-start p-8 pb-10">
         <div className="w-full flex justify-center items-start gap-4">
-          <div className={styles.line}></div> {/* Line on the left */}
+          <div className="line"></div> {/* Line on the left */}
           <h1
             className={`${styles.centeredHeading} flex flex-col items-center text-center`}
           >
             {" "}
             Welcome to Re.Nature Cities
           </h1>
-          <div className={styles.line}></div> {/* Line on the right */}
+          <div className="line"></div> {/* Line on the right */}
         </div>
 
         <p className="text-lg leading-relaxed mb-6 border-l-2 border-[#059669] pl-2">
