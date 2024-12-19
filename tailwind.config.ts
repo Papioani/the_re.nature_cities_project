@@ -9,7 +9,7 @@ const config: Config = {
     "./src/app/fonts/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/partners/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/project-outline/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/styles/**/*.{css}", // Include any global styles
+    "./src/app/styles/**/*.css", // Updated pattern to include nested CSS files
     "./src/app/the-action/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/the-re.nature/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/utils/**/*.{js,ts,jsx,tsx,mdx}",

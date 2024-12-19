@@ -12,7 +12,6 @@
   padding-left: 4rem;
   padding-right: 4rem;
   z-index: 5;
-  border-top: 2px solid rgba(28, 61, 90, 0.9);
   /* border-bottom: 3px solid rgba(28, 61, 90, 0.3); */
   scroll-padding-top: calc(350px + 100px);
 }
