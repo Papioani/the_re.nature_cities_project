@@ -3,7 +3,6 @@
 // src/app/partners/page.tsx
 import React, { FC, useEffect, useRef } from "react";
 import Link from "next/link";
-
 import styles from "./Partners.module.css";
 
 const PartnersPage: FC = () => {
@@ -31,7 +30,7 @@ const PartnersPage: FC = () => {
 
       <article className={`${styles.partner}  px-4`}>
         <p
-          className={`${styles.partnerDescription} text.m `}
+          className={`${styles.partnerDescription} text-lg `}
           ref={firstParagraphRef}
           tabIndex={0}
         >
@@ -55,7 +54,7 @@ const PartnersPage: FC = () => {
           three divisions, nine laboratories, a Seismic Simulator Facility, a
           Fire Testing Facility, and two Computer Centers covering the areas of:
         </p>
-        <ul className={`${styles.partnerList} text-m`}>
+        <ul className={`${styles.partnerList} text-lg`}>
           <li>Structural Engineering</li>
           <li>Geotechnical Engineering and Hydraulic Engineering </li>
           <li>Environmental Engineering and Transportation Engineering</li>
@@ -73,7 +72,7 @@ const PartnersPage: FC = () => {
         </ul>
       </article>
       <div className="section-divider"></div>
-      <article className={`${styles.partner} px-4`}>
+      <article className={`${styles.partner} px-4 text-lg`}>
         <p className={`${styles.partnerDescription} `}>
           The{" "}
           <Link
