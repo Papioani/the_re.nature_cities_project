@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
         >
           <path d="M11.854 8l-4.5 4.5L6.5 11 9.707 8 6.5 4.5l.854-.854 4.5 4.5z" />
         </svg>
-        <span>Contact</span>
+        <span className="text-lg">Contact</span>
       </button>
       <div className={styles.footerImages} aria-label="Footer logos">
         <img
