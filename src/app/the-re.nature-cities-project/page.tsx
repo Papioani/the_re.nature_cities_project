@@ -24,7 +24,7 @@ const ReNaturePage: FC = () => {
       </div>
       <p
         /*  style={{ backgroundColor: "white" }} */
-        className="text-m leading-relaxed mb-6 " /*  border-l-2 border-[#059669] pl-2 */
+        className="text-lg leading-relaxed mb-6 " /*  border-l-2 border-[#059669] pl-2 */
       >
         Re.Nature Cities aims to evaluate via experimental and simulation means
         the ability of street trees as nature-based solutions (NBS) to act as an
@@ -47,7 +47,7 @@ const ReNaturePage: FC = () => {
         </h2>
         <div className="line"></div>
       </div>
-      <ul className={`${styles.listCustom} pl-6`}>
+      <ul className={`${styles.listCustom} pl-6 text-lg `}>
         <li className="mb-2">
           To assess the{" "}
           <span className={styles.emphasis}>microclimatic conditions</span>{" "}
@@ -81,7 +81,7 @@ const ReNaturePage: FC = () => {
           of common urban tree species, available for use in the precise and
           holistic evaluation of trees' effects in cities.
         </li>
-        <li className="mb-2">
+        <li className="mb-2 ">
           To develop a{" "}
           <span className={styles.emphasis}>decision-making toolbox</span>,
           which will allow for the optimized selection of street trees and
