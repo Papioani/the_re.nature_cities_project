@@ -24,7 +24,7 @@ const PartnersPage: FC = () => {
   }, []); */
 
   return (
-    <section className="partnersContent px-8 pb-16" ref={mainContentRef}>
+    <section className=" px-8 pb-10" ref={mainContentRef}>
       <h2 id="partnersTitle">The Partners</h2>
       <div className={`${styles.partnerLine} pb-4`}> </div>
 

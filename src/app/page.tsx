@@ -1,10 +1,14 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import styles from "./styles/page.module.css";
 
 const Home: React.FC = () => {
+  const mainContentRef = useRef<HTMLElement>(null);
+
   return (
-    <div className="flex flex-col">
-      <main className="flex flex-col gap-4 items-start sm:items-start p-8 pb-10">
+    <div className="flex flex-col" ref={mainContentRef}>
+      <main className="flex flex-col gap-4 items-start sm:items-start p-8 pb-6">
         <div className="w-full flex justify-center items-start gap-4">
           <div className="line"></div> {/* Line on the left */}
           <h1
