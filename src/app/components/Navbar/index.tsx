@@ -652,14 +652,21 @@ const Navbar: React.FC = () => {
           className={styles.navLink}
           onClick={closeMobileMenu}
         >
-          Wind Tunnel, LAI/LAD <br /> and Albedo Measurements
+          Wind Tunnel, LAI/LAD <br /> & Albedo Measurements
         </Link>
         <Link
-          href="/deliverables-publications"
+          href="/deliverables"
           className={styles.navLink}
           onClick={closeMobileMenu}
         >
-          Deliverables and <br /> publications
+          Deliverables
+        </Link>
+        <Link
+          href="/publications-announcements"
+          className={styles.navLink}
+          onClick={closeMobileMenu}
+        >
+          Publications & Conference <br /> Announcements
         </Link>
         <Link
           href="/the-action"

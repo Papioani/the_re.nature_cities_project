@@ -18,7 +18,7 @@
   background: /* rgba(28, 61, 90, 0.8); */ #1c3d5a; /* Dark blue color for the lines */
   position: absolute;
   top: 5rem; /* Adjust the vertical position of the lines */
-  width: 30%; /* The width of the lines */
+  width: 20%; /* The width of the lines */
 }
 
 .projectDescription::before {
