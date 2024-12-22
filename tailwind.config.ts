@@ -6,6 +6,7 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/deliverables/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/publications-announcements/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/fonts/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/partners/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/project-outline/**/*.{js,ts,jsx,tsx,mdx}",
