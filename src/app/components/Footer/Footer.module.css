@@ -3,7 +3,7 @@
   /* padding: 1rem; */
   /* background-image: var(--background-image); */
   /*  background-color: #1c3d5a; */
-  background-color: #585858; /*   #a8a8a8;  #4b4b4b;  #708090; */
+  background-color: #708090; /*  1c3d5a 585858 #a8a8a8;  #4b4b4b;  #708090; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,7 +51,7 @@
   height: auto; /* Maintains aspect ratio */
   flex-shrink: 1; /* Ensures images shrink if needed */
   border-radius: 8px;
-  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.6);
   background-color: white;
 }
 .contactLink {

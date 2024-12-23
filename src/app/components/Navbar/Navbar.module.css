@@ -1,11 +1,16 @@
 .navbar {
   position: fixed;
   left: 0;
-  background-color: #556b2f; /*    #2e4d2e;   #01796f; #a7d7c5;  #8bc34a;  */ /* Example using Forest Green */
+  top: 0;
+  background-color: #556b2f; /*  rgba(
+    0,
+    127,
+    128
+  ); */ /*    #2e4d2e;   #01796f; #a7d7c5;  #8bc34a;  */ /* Example using Forest Green */
   /*   background: linear-gradient(to bottom, rgba(46, 77, 46, 1), rgba(46, 77, 46, 0.8));  a gradient could be interesting
    */
   /* border-bottom: 2px solid rgba(255, 255, 255, 0.2); */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
   z-index: 20;
   width: 100%;
   line-height: 1.5rem;
@@ -19,8 +24,8 @@
   transition: background-color 0.3s ease;
   background-color: rgba(255, 255, 255, 0.1);
 }
+
 .logoSection {
-  flex-grow: 1; /* Allows the logo section to take up more space */
   cursor: default;
 }
 .logoSection img {
@@ -37,39 +42,41 @@
     flex-direction: column; /* Stack vertically on small screens */
     align-items: flex-start; /* Adjust alignment */
   }
+  .navbar {
+    padding: 0.5rem; /* Adjust padding for mobile */
+  }
 }
 .navLink {
   text-decoration: none;
   margin-top: 0;
-  font-size: 1rem;
   font-weight: bold;
-  padding: 0px 2px 0px 6px;
-  border-radius: 4px;
+  padding: 0 0 0.125rem 0; /* Converted 2px to 0.125rem */
+  border-radius: 0.25rem;
   transition: color 0.3s ease, transform 0.2s ease;
   display: flex;
   text-align: start;
   z-index: 20;
   color: #ffffff;
+  font-size: 1rem;
+  display: block;
 }
 
 .navLink:active {
-  outline: 2px solid #2e4d2e;
-  outline-offset: 2px;
+  outline: 0.125rem solid #2e4d2e;
+  outline-offset: 0.125rem;
   transform: scale(0.98);
 }
 
 .tooltipBox {
   position: fixed;
-  /*   background-color: #f0f0f0;
- */
   background-color: white;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
   color: #556b2f;
-  padding: 8px;
+  padding: 0.5rem;
   font-weight: bold;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   max-width: 250px;
-  font-size: 14px;
+  font-size: 0.9rem;
   z-index: 20;
   transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }

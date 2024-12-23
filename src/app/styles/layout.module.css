@@ -5,7 +5,7 @@
   /*  background: white;
   opacity: 0.9; */
   /* background-color: #fff; */ /* this is what makes the main background totally white */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
   transition: top 0.3s ease-in-out;
   flex-grow: 1;
   padding-top: 2rem;
