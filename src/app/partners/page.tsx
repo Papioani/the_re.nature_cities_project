@@ -26,14 +26,19 @@ const PartnersPage: FC = () => {
   return (
     <section className=" px-8 pb-10" ref={mainContentRef}>
       <h2 id="partnersTitle">The Partners</h2>
-      <div className={`${styles.partnerLine} pb-4`}> </div>
+      <div className={`${styles.partnerLine} pb-8`}> </div>
 
-      <article className={`${styles.partner}  px-4`}>
+      <article className={`${styles.partner} text-large px-4`}>
         <p
           className={`${styles.partnerDescription} text-lg `}
           ref={firstParagraphRef}
           tabIndex={0}
         >
+          <img
+            src="CEUPlogo.png"
+            alt="University of Patras Logo"
+            className={`${styles.partnerLogo} inline-block mr-3`}
+          />
           Founded in 1972, the{" "}
           <Link
             href="https://www.civil.upatras.gr/?lang=en"
@@ -50,9 +55,12 @@ const PartnersPage: FC = () => {
           >
             University of Patras
           </Link>{" "}
-          is the host institution of the project. The department consists of
-          three divisions, nine laboratories, a Seismic Simulator Facility, a
-          Fire Testing Facility, and two Computer Centers covering the areas of:
+          <span>
+            is the host institution of the project. The department consists of
+            three divisions, nine laboratories, a Seismic{" "}
+          </span>
+          Simulator Facility, a Fire Testing Facility, and two Computer Centers
+          covering the areas of:
         </p>
         <ul className={`${styles.partnerList} text-lg`}>
           <li>Structural Engineering</li>
@@ -60,8 +68,11 @@ const PartnersPage: FC = () => {
           <li>Environmental Engineering and Transportation Engineering</li>
           <ul />
 
-          <p className={styles.partnerDescription}>
-            {" "}
+          <p
+            className={`${styles.partnerDescription} text-lg `}
+            ref={firstParagraphRef}
+            tabIndex={0}
+          >
             Among others, the department presents significant expertise in the
             research and development of innovative systems and components for
             combined energy and seismic retrofitting of buildings, and also a
@@ -71,9 +82,15 @@ const PartnersPage: FC = () => {
           </p>
         </ul>
       </article>
-      <div className="section-divider"></div>
+      <div className={`${styles.partnerLine} pb-8`}> </div>
+
       <article className={`${styles.partner} px-4 text-lg`}>
         <p className={`${styles.partnerDescription} `}>
+          <img
+            src="UniAthensLogo.png"
+            alt="University of Patras Logo"
+            className={`${styles.partnerLogo} inline-block mr-3`}
+          />
           The{" "}
           <Link
             href="http://wt.fluid.mech.ntua.gr/"
