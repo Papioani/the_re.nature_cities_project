@@ -93,6 +93,13 @@ ul {
   background-color: /* #556b2f; */ #2e4d2e;
   margin: 2rem 0;
 }
+.line2 {
+  width: 20%;
+  height: 0.2rem;
+  /* background-color: #1c3d5a; */
+  background-color: /* #556b2f; */ #2e4d2e;
+  margin: 2rem 0;
+}
 .text-shadow-lg {
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); /* Subtle shadow for readability */
 }
