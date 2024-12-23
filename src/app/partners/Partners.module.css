@@ -1,6 +1,14 @@
 .partner {
-  margin-bottom: 30px;
+  margin-bottom: 4rem;
 }
+.partnerLogo {
+  float: left; /* Floats the image to the left to allow text to wrap around it */
+  width: 15rem;
+  height: auto;
+  vertical-align: middle; /* Ensures the logo aligns vertically with the text */
+  margin-right: 1rem; /* Adjust space between image and text */
+}
+
 .partnerLine::before {
   content: "";
   display: block;
@@ -10,10 +18,14 @@
 }
 .partnerDescription {
   margin-bottom: 15px;
-  margin-top: 15px;
+  margin-top: 0px;
+  line-height: 1.8;
+}
+.partnerDescription span {
+  line-height: 2.1;
 }
 .partnerList {
-  padding-left: 20px;
+  /* padding-left: 20px; */
   list-style-type: disc;
 }
 .partnerList li {
