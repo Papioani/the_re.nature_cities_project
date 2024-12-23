@@ -10,14 +10,14 @@ const Home: React.FC = () => {
     <section className="flex flex-col" ref={mainContentRef}>
       <main className="flex flex-col gap-4 items-start sm:items-start p-8 pb-6">
         <div className="w-full flex justify-center items-start gap-4">
-          <div className="line"></div> {/* Line on the left */}
+          <div className="section-divider"></div> {/* Line on the left */}
           <h1
             className={`${styles.centeredHeading} flex flex-col items-center text-center`}
           >
             {" "}
             Welcome to Re.Nature Cities
           </h1>
-          <div className="line"></div> {/* Line on the right */}
+          <div className="section-divider"></div> {/* Line on the right */}
         </div>
 
         <p className="text-lg leading-relaxed mb-6  border-[#059669] pl-2">
@@ -32,7 +32,8 @@ const Home: React.FC = () => {
           by the European Union - NextGenerationEU (H.F.R.I. Project Number:
           15566).
         </p>
-        <div className="text-lg leading-relaxed mb-6 border-t border-gray-500 pt-4 text-left">
+        <div className="section-divider"></div>
+        <div className="text-lg leading-relaxed mb-6 text-left">
           <p className="markerSquare mb-1">
             <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 font-bold">
               Project Duration:

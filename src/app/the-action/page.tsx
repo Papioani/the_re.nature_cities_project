@@ -4,11 +4,7 @@ import styles from "./TheAction.module.css";
 const ActionPage: React.FC = () => {
   return (
     <section className="action-page-container px-6 py-8 max-w-4xl mx-auto">
-      <h2
-        className={`${styles.sectionTitle} text-3xl font-bold text-center mb-6`}
-      >
-        Action Overview
-      </h2>
+      <h2 className="text-center">Action Overview</h2>
 
       <div className="action-description text-justify text-lg space-y-4 p-4 shadow-lg rounded-lg">
         <p>

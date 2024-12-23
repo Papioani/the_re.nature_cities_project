@@ -11,7 +11,8 @@ const ProjectOutline: FC = () => {
     <section className={`${styles.projectOutlineContainer} text-m px-6 pb-16`}>
       <ScrollHandler />{" "}
       {/* This component will handle scroll-to-hash functionality */}
-      <h2 className="text-center">The Project Outline</h2>
+      <h2 className="text-start">The Project Outline</h2>
+      <div className={`${styles.projectLine} pb-4`}> </div>
       <p className={`${styles.projectDescription} text-m leading-relaxed my-6`}>
         Re.Nature Cities project consists of the following work packages and
         subsections:
