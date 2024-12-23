@@ -1,5 +1,4 @@
 .projectOutlineContainer {
-  max-width: 1200px;
   margin: 0 auto;
   font-family: Arial, sans-serif;
   line-height: 1.6;
@@ -7,20 +6,15 @@
 .projectDescription {
   font-size: 1.2rem;
   text-align: start;
-  color: /* "#1c3d5a"; */ #2e4d2e;
   line-height: 1.8;
 }
-.projectDescription::before,
-.projectDescription::after {
+.projectLine::before {
   content: "";
   display: block;
-  height: 3px;
-  background: /* rgba(28, 61, 90, 0.8); */ #1c3d5a; /* Dark blue color for the lines */
-  position: absolute;
-  top: 5rem; /* Adjust the vertical position of the lines */
-  width: 20%; /* The width of the lines */
+  width: 25%; /* Width of the line */
+  height: 1px; /* Thickness of the line */
+  background: rgba(28, 61, 90, 0.8); /* Color of the line */
 }
-
 .projectDescription::before {
   left: 5rem; /* Starts the line from the left */
 }

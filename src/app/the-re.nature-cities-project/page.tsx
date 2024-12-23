@@ -19,14 +19,12 @@ const ReNaturePage: FC = () => {
       > */}
       <section className=" pb-10" ref={mainContentRef}>
         <div className="w-full flex justify-between items-center ">
-          <div className="line2"></div>
           <h2
             id="scope"
             className="text-center px-4" /*  className="markerSquare" */
           >
             The Scope
           </h2>
-          <div className="line2"></div>
         </div>
         <p
           /*  style={{ backgroundColor: "white" }} */
@@ -39,15 +37,14 @@ const ReNaturePage: FC = () => {
           and energy costs caused by climate change, while promoting public
           health and the well-being of the citizens.
         </p>{" "}
+        <div className="section-divider"></div>
         <div className="w-full flex justify-between items-center">
-          <div className="line2"></div>
           <h2
             id="objectives"
             className="text-center px-4" /* className="markerSquare" */
           >
             The Objectives
           </h2>
-          <div className="line2"></div>
         </div>
         <ul className={`${styles.listCustom} pl-6 text-lg `}>
           <li className="mb-2">
@@ -92,7 +89,6 @@ const ReNaturePage: FC = () => {
             planting patterns for urban areas.
           </li>
         </ul>
-        {/* <div className="section-divider2"></div> */}
       </section>
     </>
   );
