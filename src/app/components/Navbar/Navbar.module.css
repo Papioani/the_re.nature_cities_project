@@ -2,11 +2,15 @@
   position: fixed;
   left: 0;
   top: 0;
-  background-color: #556b2f; /*    #2e4d2e;   #01796f; #a7d7c5;  #8bc34a;  */ /* Example using Forest Green */
+  background-color: #556b2f; /*  rgba(
+    0,
+    127,
+    128
+  ); */ /*    #2e4d2e;   #01796f; #a7d7c5;  #8bc34a;  */ /* Example using Forest Green */
   /*   background: linear-gradient(to bottom, rgba(46, 77, 46, 1), rgba(46, 77, 46, 0.8));  a gradient could be interesting
    */
   /* border-bottom: 2px solid rgba(255, 255, 255, 0.2); */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
   z-index: 20;
   width: 100%;
   line-height: 1.5rem;
@@ -20,14 +24,7 @@
   transition: background-color 0.3s ease;
   background-color: rgba(255, 255, 255, 0.1);
 }
-.hamburger-container {
-  position: absolute;
-  top: 0rem; /* Adjust if necessary */
-  right: 3rem; /* This places it at the top-right corner */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 .logoSection {
   cursor: default;
 }
