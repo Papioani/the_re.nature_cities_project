@@ -239,20 +239,20 @@ const Navbar: React.FC = () => {
     <nav
       ref={navbarRef}
       aria-label="Main navigation"
-      className={`${styles.navbar} flex sticky top-0 justify-between items-end text-white md:p-1 navbarElement`}
+      className={`${styles.navbar} flex sticky top-0 justify-centre items-end text-white navbarElement`}
       onKeyDown={handleKeyDown}
     >
-      <header className={`${styles.logoSection} px-6`}>
+      <header className={`${styles.logoSection} pl-6 pt-2`}>
         <Link href="/" onClick={closeMobileMenu} className="inline-block">
           <img
             src="/logo2.jpeg"
             alt="The Re.Nature Cities logo showing a tree within a circle"
-            className="max-h-28 max-w-30 object-contain cursor-pointer  md:w-auto  py-0 hover:opacity-80 hover:scale-110 transition-all duration-200"
+            className="max-h-28 max-w-30 object-contain cursor-pointer  md:w-auto  py-0 hover:opacity-80 hover:scale-105 transition-all duration-200"
           />
         </Link>
       </header>
       {/* Hamburger Icon (visible on mobile) */}
-      <div className="md:hidden flex items-center">
+      <div className="hamburger-container md:hidden">
         <button
           className="text-2xl text-white"
           aria-label="Toggle mobile menu"
@@ -282,7 +282,7 @@ const Navbar: React.FC = () => {
         id="mobile-menu"
         className={`${isMobileMenuOpen ? "block" : "hidden"} ${
           styles.navbarLinks
-        } md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 md:items-start text-white mt-8 md:mt-0 `}
+        } md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 md:items-start text-white mt-8 md:mt-0 pl-6`}
         aria-expanded={isMobileMenuOpen}
         aria-controls="mobile-menu"
       >
@@ -312,7 +312,7 @@ const Navbar: React.FC = () => {
             <div className="relative inline-block">
               <button
                 onClick={handleProjectOutlineClick} // Redirect to the project outline page
-                className={`${styles.navLink} inline-flex items-center space-x-2 p-2`}
+                className={`${styles.navLink} inline-flex items-center space-x-2 p-2 `}
                 aria-expanded={isWorkDropdownOpen} // Reflect dropdown state
                 aria-controls="workDropdownMenu"
               >
@@ -469,7 +469,7 @@ const Navbar: React.FC = () => {
             >
               <Link
                 href="/project-outline"
-                className={styles.navLink}
+                className={`${styles.navLink} px-4`}
                 aria-haspopup="true"
                 aria-expanded={isWorkDropdownOpen}
                 aria-controls="workDropdownMenu"
@@ -652,7 +652,8 @@ const Navbar: React.FC = () => {
           className={styles.navLink}
           onClick={closeMobileMenu}
         >
-          Wind Tunnel, LAI/LAD <br /> & Albedo Measurements
+          <span>Wind Tunnel, LAI/LAD</span>
+          <span style={{ display: "block" }}>& Albedo Measurements</span>
         </Link>
         <Link
           href="/deliverables"
@@ -666,14 +667,15 @@ const Navbar: React.FC = () => {
           className={styles.navLink}
           onClick={closeMobileMenu}
         >
-          Publications & Conference <br /> Announcements
+          <span>Publications & Conference</span>
+          <span style={{ display: "block" }}>Announcements</span>
         </Link>
         <Link
           href="/the-action"
           className={styles.navLink}
           onClick={closeMobileMenu}
         >
-          The action
+          The Action
         </Link>
       </div>
       {/* Tooltip that will appear on hover */}
