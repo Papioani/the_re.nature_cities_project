@@ -1,0 +1,64 @@
+.publications h2 {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+}
+
+.publications ul {
+  list-style-type: none; /* Removes bullets */
+  padding: 0;
+}
+
+.publications li {
+  margin-bottom: 1.5em;
+  word-wrap: break-word; /* Ensures long words break correctly */
+  line-height: 1.6;
+}
+
+.publications a {
+  color: #00796b; /* Link color */
+  text-decoration: none; /* Removes underline */
+}
+
+.publications a:hover {
+  text-decoration: underline; /* Adds underline on hover */
+}
+.h3 {
+  color: #2e4d2e;
+  font-weight: bold;
+  font-size: large;
+  margin-bottom: 1.25rem;
+}
+
+.publications i {
+  font-style: italic;
+}
+.strong {
+  margin-right: 0.4rem;
+}
+.conference a {
+  display: block; /* Keeps the link on the next line */
+  width: fit-content;
+  margin: 0;
+  margin-top: 0.5rem; /* Optional: Adds space above the link */
+  color: #2e4d2e;
+  font-weight: bolder;
+  text-decoration: none;
+  transition: all 0.3s ease; /* Smooth transition */
+}
+.conference a:hover {
+  text-decoration: underline;
+}
+.conference p::before {
+  content: "○ "; /* Small open circle */
+  color: #2e4d2e;
+  font-size: 0.9rem; /* Adjust to be less prominent */
+  margin-right: 5px;
+  flex-shrink: 0;
+}
+.publications p::before {
+  content: "○ "; /* Small open circle */
+  color: #2e4d2e;
+  font-size: 0.9rem; /* Adjust to be less prominent */
+  margin-right: 5px;
+  flex-shrink: 0;
+}

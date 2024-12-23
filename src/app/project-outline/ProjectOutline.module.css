@@ -65,3 +65,18 @@
   padding: 15px; /* Optional: add some padding */
   border-radius: 5px; /* Optional: rounded corners for a softer look */
 }
+.arrowLink {
+  margin-left: 0.5rem; /* Space between title and icon */
+  color: #2e4d2e; /* Matches theme color */
+  font-size: 1rem; /* Adjust arrow size */
+  display: inline-flex; /* Aligns icon with text */
+  align-items: center;
+  cursor: pointer; /* Indicates interactivity */
+  transition: color 0.2s ease, transform 0.2s ease; /* Smooth hover effect */
+  justify-content: end;
+}
+
+.arrowLink:hover {
+  color: #1a331a; /* Darker shade on hover */
+  transform: translateX(4px); /* Subtle motion effect on hover */
+}
