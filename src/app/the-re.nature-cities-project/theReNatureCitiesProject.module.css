@@ -8,13 +8,18 @@
   margin: 0 auto;
   margin-bottom: 40px;
 }
-.listCustom {
-  list-style-type: square; /* Changes bullet points to squares */
-}
-.listCustom li::marker {
-  color: #2e4d2e; /* Forest green color for bullets */
-}
+
+/* .listCustom li::marker {
+  color: #2e4d2e; 
+} */
 .emphasis {
   color: /* #1c3d5a; */ #2e4d2e; /* 2e4d2e*/
   font-weight: bold;
+}
+.listCustom li::before {
+  content: "○ "; /* Small open circle */
+  color: #2e4d2e;
+  font-size: 0.9rem; /* Adjust to be less prominent */
+  margin-right: 5px;
+  flex-shrink: 0;
 }
