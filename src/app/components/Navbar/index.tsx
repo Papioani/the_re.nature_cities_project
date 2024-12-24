@@ -242,15 +242,15 @@ const Navbar: React.FC = () => {
       className={`${styles.navbar} flex sticky top-0 justify-centre items-end text-white navbarElement`}
       onKeyDown={handleKeyDown}
     >
-      <header className={`${styles.logoSection} pl-6 pt-2`}>
+      <header className={`${styles.logoSection} flex items-center pl-6 pt-2`}>
         <Link href="/" onClick={closeMobileMenu} className="inline-block">
           <Image
-            src="/logo2.jpeg"
-            width={500} // Specify width
-            height={300} // Specify height
+            src="/Logo2.jpeg"
+            width={100} // Specify width
+            height={100} // Specify height
             priority // Optional: use for LCP optimization
             alt="The Re.Nature Cities logo showing a tree within a circle"
-            className="max-h-28 max-w-30 object-contain cursor-pointer  md:w-auto  py-0 hover:opacity-80 hover:scale-105 transition-all duration-200"
+            className=" object-contain cursor-pointer  md:w-auto  py-0 hover:opacity-80 hover:scale-105 transition-all duration-200"
           />
         </Link>
       </header>
