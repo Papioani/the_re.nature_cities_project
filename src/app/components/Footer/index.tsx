@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./Footer.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
 const Footer: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -59,19 +60,30 @@ const Footer: React.FC = () => {
         </svg>
         <span className="text-lg">Contact</span>
       </button>
-      <div className={styles.footerImages} aria-label="Footer logos">
-        <img
-          src="/elidek.png"
-          alt="Elidek logo"
-          className={styles.footerImage}
-          aria-label="Elidek logo"
-        />
-        <img
-          src="/Ellada2.0.jpg"
-          alt="image of Greece2.0"
-          className={styles.footerImage}
-          aria-label="Greece 2.0 logo"
-        />
+      <div
+        className={styles.footerImages}
+        aria-label="Logos Elidek and Ellada2.0"
+      >
+        <div className={styles.footerImage}>
+          <Image
+            src="/elidek.png"
+            alt="Elidek logo"
+            layout="intrinsic"
+            objectFit="contain"
+            width={96} /* Matches the CSS width of 6rem */
+            height={59}
+          />
+        </div>
+        <div className={styles.footerImage} aria-label="Greece 2.0 logo">
+          <Image
+            src="/Ellada2.0.jpg"
+            alt="image of Greece2.0"
+            layout="intrinsic"
+            objectFit="contain"
+            width={96} /* Matches the CSS width of 6rem */
+            height={59}
+          />
+        </div>
       </div>
       {isModalOpen && (
         <div
