@@ -1,18 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { usePathname } from "next/navigation";
 
 export default function ScrollHandler() {
   const pathname = usePathname();
-  // Cache the navbar element outside of the scroll handler
-  const getNavbarHeight = () => {
-    const navbarElement = document.querySelector(
-      ".navbarElement"
-    ) as HTMLElement;
-    return navbarElement ? navbarElement.offsetHeight : 0;
-  };
 
-  const adjustScrollPosition = () => {
+  const adjustScrollPosition = useCallback(() => {
     console.log("Adjust scroll position called");
+
+    // Cache the navbar element outside of the scroll handler
+    const getNavbarHeight = () => {
+      const navbarElement = document.querySelector(
+        ".navbarElement"
+      ) as HTMLElement;
+      return navbarElement ? navbarElement.offsetHeight : 0;
+    };
+
     const hash = window.location.hash; // Get current hash
     if (hash) {
       const targetElement = document.querySelector(hash) as HTMLElement;
@@ -42,7 +44,7 @@ export default function ScrollHandler() {
         }
       }
     }
-  };
+  }, []);
 
   useEffect(() => {
     // Handle hash navigation when navigating between pages
@@ -52,7 +54,7 @@ export default function ScrollHandler() {
 
     // Handle same-page hash navigation
     const handleAnchorClick = (event: Event) => {
-      let target = event.target as HTMLAnchorElement;
+      const target = event.target as HTMLAnchorElement;
       console.log("Anchor click detected:", target);
       if (
         target.tagName === "A" &&
@@ -79,7 +81,7 @@ export default function ScrollHandler() {
       window.removeEventListener("hashchange", handleHashChange);
       document.removeEventListener("click", handleAnchorClick);
     };
-  }, [pathname]);
+  }, [pathname, adjustScrollPosition]);
 
   return null; // No visible UI
 }

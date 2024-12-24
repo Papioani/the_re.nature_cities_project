@@ -4,7 +4,6 @@ import "./styles/globals.css";
 import styles from "./styles/layout.module.css";
 import Footer from "./components/footer";
 import Navbar from "./components/navbar";
-import ScrollHandler from "./components/ScrollHandler";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
