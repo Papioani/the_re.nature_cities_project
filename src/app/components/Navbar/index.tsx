@@ -3,6 +3,8 @@
 import { useState, useRef, useLayoutEffect, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import Link from "next/link";
+import Image from "next/image";
+
 // <Link>: This component enables client-side navigation, which means that clicking the link will not trigger a full page reload. Instead, it will only update the necessary components on the page
 interface Tooltip {
   text: string;
@@ -17,6 +19,7 @@ interface Tooltip {
 const Navbar: React.FC = () => {
   const [isRotated, setIsRotated] = useState<boolean>(false);
   const navbarRef = useRef<HTMLElement | null>(null); // Ref to access the Navbar
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [navbarHeight, setNavbarHeight] = useState(0);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
@@ -71,9 +74,6 @@ const Navbar: React.FC = () => {
     if (navbarRef.current) {
       const height = navbarRef.current.getBoundingClientRect().height;
       setNavbarHeight(height);
-      console.log("Navbar height from index.tsx of Navbar:", height);
-    } else {
-      console.log("Navbar ref is null or not yet rendered");
     }
   }, []);
   const [tooltip, setTooltip] = useState<Tooltip>({
@@ -136,7 +136,7 @@ const Navbar: React.FC = () => {
     console.log("Mouse entered the 'Project Outline' link");
 
     if (workDropdownTimeout) clearTimeout(workDropdownTimeout); // Clear any previous timeout
-    setIsWorkDropdownOpen((prev) => true);
+    setIsWorkDropdownOpen(() => true);
   };
 
   const handleWorkMouseLeave = () => {
@@ -244,8 +244,11 @@ const Navbar: React.FC = () => {
     >
       <header className={`${styles.logoSection} pl-6 pt-2`}>
         <Link href="/" onClick={closeMobileMenu} className="inline-block">
-          <img
+          <Image
             src="/logo2.jpeg"
+            width={500} // Specify width
+            height={300} // Specify height
+            priority // Optional: use for LCP optimization
             alt="The Re.Nature Cities logo showing a tree within a circle"
             className="max-h-28 max-w-30 object-contain cursor-pointer  md:w-auto  py-0 hover:opacity-80 hover:scale-105 transition-all duration-200"
           />
@@ -511,7 +514,6 @@ const Navbar: React.FC = () => {
                         ref={firstDropdownItemRef}
                         tabIndex={0}
                         role="menuitem"
-                        aria-level={2}
                         onMouseEnter={(e) =>
                           handleTooltipMouseEnter(
                             e,
@@ -531,7 +533,6 @@ const Navbar: React.FC = () => {
                         className="work-link block py-1 px-1 "
                         tabIndex={0}
                         role="menuitem"
-                        aria-level={2}
                         onMouseEnter={(e) =>
                           handleTooltipMouseEnter(
                             e,
@@ -551,7 +552,6 @@ const Navbar: React.FC = () => {
                         className="work-link block py-1 px-1 "
                         tabIndex={0}
                         role="menuitem"
-                        aria-level={2}
                         onMouseEnter={(e) =>
                           handleTooltipMouseEnter(
                             e,
@@ -571,7 +571,6 @@ const Navbar: React.FC = () => {
                         className="work-link block py-1 px-1 "
                         tabIndex={0}
                         role="menuitem"
-                        aria-level={2}
                         onMouseEnter={(e) =>
                           handleTooltipMouseEnter(
                             e,
@@ -591,7 +590,6 @@ const Navbar: React.FC = () => {
                         className="work-link block py-1 px-1 "
                         tabIndex={0}
                         role="menuitem"
-                        aria-level={2}
                         onMouseEnter={(e) =>
                           handleTooltipMouseEnter(
                             e,
@@ -611,7 +609,6 @@ const Navbar: React.FC = () => {
                         className="work-link block py-1 px-1 "
                         tabIndex={0}
                         role="menuitem"
-                        aria-level={2}
                         onMouseEnter={(e) =>
                           handleTooltipMouseEnter(e, "Project Management")
                         }
@@ -628,7 +625,6 @@ const Navbar: React.FC = () => {
                         className="work-link block py-1 px-1 "
                         tabIndex={0}
                         role="menuitem"
-                        aria-level={2}
                         onMouseEnter={(e) =>
                           handleTooltipMouseEnter(
                             e,

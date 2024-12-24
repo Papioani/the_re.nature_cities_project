@@ -4,6 +4,7 @@
 import React, { FC, useEffect, useRef } from "react";
 import Link from "next/link";
 import styles from "./Partners.module.css";
+import Image from "next/image";
 
 const PartnersPage: FC = () => {
   const mainContentRef = useRef<HTMLElement>(null);
@@ -24,7 +25,11 @@ const PartnersPage: FC = () => {
   }, []); */
 
   return (
-    <section className=" px-8 pb-10" ref={mainContentRef}>
+    <section
+      className=" px-8 pb-10"
+      ref={mainContentRef}
+      aria-labelledby="partnersTitle"
+    >
       <h2 id="partnersTitle">The Partners</h2>
       <div className={`${styles.partnerLine} pb-8`}> </div>
 
@@ -34,9 +39,11 @@ const PartnersPage: FC = () => {
           ref={firstParagraphRef}
           tabIndex={0}
         >
-          <img
-            src="CEUPlogo.png"
+          <Image
+            src="/CEUPlogo.png"
             alt="University of Patras Logo"
+            width={500}
+            height={300}
             className={`${styles.partnerLogo} inline-block mr-3`}
           />
           Founded in 1972, the{" "}
@@ -86,9 +93,11 @@ const PartnersPage: FC = () => {
 
       <article className={`${styles.partner} px-4 text-lg`}>
         <p className={`${styles.partnerDescription} `}>
-          <img
-            src="UniAthensLogo.png"
+          <Image
+            src="/UniAthensLogo.png"
             alt="University of Patras Logo"
+            width={500}
+            height={300}
             className={`${styles.partnerLogo} inline-block mr-3`}
           />
           The{" "}

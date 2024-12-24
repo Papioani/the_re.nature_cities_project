@@ -4,7 +4,7 @@
 
 import React, { FC, useRef } from "react";
 import styles from "./theReNatureCitiesProject.module.css";
-import { FaSearch, FaClipboardList, FaTree } from "react-icons/fa";
+import { FaSearch, FaClipboardList } from "react-icons/fa";
 
 // If there were props, we would define them here as an interface
 // interface ReNaturePageProps {
@@ -78,7 +78,7 @@ const ReNaturePage: FC = () => {
               aerodynamic characteristics
             </span>{" "}
             of common urban tree species, available for use in the precise and
-            holistic evaluation of trees' effects in cities.
+            holistic evaluation of trees&apos; effects in cities.
           </li>
           <li className="mb-2 ">
             To develop a{" "}
