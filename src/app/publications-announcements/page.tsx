@@ -6,6 +6,7 @@ const PublicationsAnnouncements: React.FC = () => {
     <>
       <section className="publications-announcements">
         <h2>Publications & Conference Announcements</h2>
+        <div className="section-divider"></div>
 
         {/* Conferences Section */}
         <div className="conference-announcements">
@@ -44,6 +45,7 @@ const PublicationsAnnouncements: React.FC = () => {
                 View the session here
               </a>
             </p>
+            <div className="section-divider"></div>
           </div>
         </div>
       </section>

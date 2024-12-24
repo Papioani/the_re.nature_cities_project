@@ -4,6 +4,8 @@
 
 import React, { FC, useRef } from "react";
 import styles from "./theReNatureCitiesProject.module.css";
+import { FaSearch, FaClipboardList, FaTree } from "react-icons/fa";
+import { GiCompass } from "react-icons/gi";
 
 // If there were props, we would define them here as an interface
 // interface ReNaturePageProps {
@@ -23,7 +25,7 @@ const ReNaturePage: FC = () => {
             id="scope"
             className="text-center px-4" /*  className="markerSquare" */
           >
-            The Scope
+            <FaSearch /> The Scope
           </h2>
         </div>
         <p
@@ -39,11 +41,8 @@ const ReNaturePage: FC = () => {
         </p>{" "}
         <div className="section-divider"></div>
         <div className="w-full flex justify-between items-center">
-          <h2
-            id="objectives"
-            className="text-center px-4" /* className="markerSquare" */
-          >
-            The Objectives
+          <h2 id="objectives" className="text-center inline-block px-4">
+            <FaClipboardList className="clipboard" /> The Objectives
           </h2>
         </div>
         <ul className={`${styles.listCustom} pl-6 text-lg `}>
