@@ -78,7 +78,7 @@ const ReNaturePage: FC = () => {
               aerodynamic characteristics
             </span>{" "}
             of common urban tree species, available for use in the precise and
-            holistic evaluation of trees' effects in cities.
+            holistic evaluation of trees&apos; effects in cities.
           </li>
           <li className="mb-2 ">
             To develop a{" "}
