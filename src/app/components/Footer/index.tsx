@@ -68,20 +68,18 @@ const Footer: React.FC = () => {
           <Image
             src="/elidek.png"
             alt="Elidek logo"
-            layout="intrinsic"
-            objectFit="contain"
-            width={96} /* Matches the CSS width of 6rem */
-            height={59}
+            width={500} // specify width
+            height={300}
+            style={{ objectFit: "contain" }}
           />
         </div>
         <div className={styles.footerImage} aria-label="Greece 2.0 logo">
           <Image
             src="/Ellada2.0.jpg"
             alt="image of Greece2.0"
-            layout="intrinsic"
-            objectFit="contain"
-            width={96} /* Matches the CSS width of 6rem */
-            height={59}
+            width={500} // specify width
+            height={300}
+            style={{ objectFit: "contain" }}
           />
         </div>
       </div>
