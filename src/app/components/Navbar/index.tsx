@@ -136,7 +136,7 @@ const Navbar: React.FC = () => {
     console.log("Mouse entered the 'Project Outline' link");
 
     if (workDropdownTimeout) clearTimeout(workDropdownTimeout); // Clear any previous timeout
-    setIsWorkDropdownOpen((prev) => true);
+    setIsWorkDropdownOpen(() => true);
   };
 
   const handleWorkMouseLeave = () => {
@@ -511,7 +511,6 @@ const Navbar: React.FC = () => {
                         ref={firstDropdownItemRef}
                         tabIndex={0}
                         role="menuitem"
-                        aria-level={2}
                         onMouseEnter={(e) =>
                           handleTooltipMouseEnter(
                             e,
@@ -531,7 +530,6 @@ const Navbar: React.FC = () => {
                         className="work-link block py-1 px-1 "
                         tabIndex={0}
                         role="menuitem"
-                        aria-level={2}
                         onMouseEnter={(e) =>
                           handleTooltipMouseEnter(
                             e,
@@ -551,7 +549,6 @@ const Navbar: React.FC = () => {
                         className="work-link block py-1 px-1 "
                         tabIndex={0}
                         role="menuitem"
-                        aria-level={2}
                         onMouseEnter={(e) =>
                           handleTooltipMouseEnter(
                             e,
@@ -571,7 +568,6 @@ const Navbar: React.FC = () => {
                         className="work-link block py-1 px-1 "
                         tabIndex={0}
                         role="menuitem"
-                        aria-level={2}
                         onMouseEnter={(e) =>
                           handleTooltipMouseEnter(
                             e,
@@ -591,7 +587,6 @@ const Navbar: React.FC = () => {
                         className="work-link block py-1 px-1 "
                         tabIndex={0}
                         role="menuitem"
-                        aria-level={2}
                         onMouseEnter={(e) =>
                           handleTooltipMouseEnter(
                             e,
@@ -611,7 +606,6 @@ const Navbar: React.FC = () => {
                         className="work-link block py-1 px-1 "
                         tabIndex={0}
                         role="menuitem"
-                        aria-level={2}
                         onMouseEnter={(e) =>
                           handleTooltipMouseEnter(e, "Project Management")
                         }
@@ -628,7 +622,6 @@ const Navbar: React.FC = () => {
                         className="work-link block py-1 px-1 "
                         tabIndex={0}
                         role="menuitem"
-                        aria-level={2}
                         onMouseEnter={(e) =>
                           handleTooltipMouseEnter(
                             e,

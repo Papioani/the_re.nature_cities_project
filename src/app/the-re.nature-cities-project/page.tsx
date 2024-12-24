@@ -4,7 +4,7 @@
 
 import React, { FC, useRef } from "react";
 import styles from "./theReNatureCitiesProject.module.css";
-import { FaSearch, FaClipboardList, FaTree } from "react-icons/fa";
+import { FaSearch, FaClipboardList } from "react-icons/fa";
 
 // If there were props, we would define them here as an interface
 // interface ReNaturePageProps {

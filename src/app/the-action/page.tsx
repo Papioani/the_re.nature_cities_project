@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./TheAction.module.css";
 
 const ActionPage: React.FC = () => {
   return (
