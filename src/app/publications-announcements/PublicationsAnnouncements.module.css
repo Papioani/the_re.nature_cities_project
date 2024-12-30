@@ -22,12 +22,6 @@
 .publications a:hover {
   text-decoration: underline; /* Adds underline on hover */
 }
-.h3 {
-  color: #2e4d2e;
-  font-weight: bold;
-  font-size: large;
-  margin-bottom: 1.25rem;
-}
 
 .publications i {
   font-style: italic;
