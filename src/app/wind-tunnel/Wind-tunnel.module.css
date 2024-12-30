@@ -1,0 +1,45 @@
+.NTUAPackageTitle {
+  font-size: 1.2rem;
+  text-align: center;
+  /* color: #1c3d5a; */
+  color: #2e4d2e;
+  margin-bottom: 3rem;
+  margin-top: 2rem;
+  font-weight: 600;
+}
+.NTUADescription {
+  display: flex;
+  flex-direction: row; /* Aligns the image and text side by side */
+  align-items: center; /* Vertically center the content */
+  gap: 20px; /* Adds space between the image and text */
+  font-size: 1.2rem;
+  text-align: start;
+  line-height: 1.4;
+  flex-wrap: wrap;
+}
+.NTUADescription article {
+  display: flex; /* Makes sure the article behaves as a flex container */
+  flex: 1; /* Allows the article content (text) to take up remaining space */
+}
+.treePhoto {
+  flex-shrink: 0; /* Prevents the image from shrinking */
+  max-width: 100%; /* Ensures the image scales responsively */
+  height: auto;
+  margin-left: 0.5rem;
+}
+.NTUA ul {
+  list-style-type: none; /* Removes bullets */
+  padding: 0;
+}
+
+.NTUA p::before {
+  content: "○ "; /* Small open circle */
+  color: #2e4d2e;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+  font-size: medium;
+  font-weight: bold;
+}
+.NTUA p {
+  margin-bottom: 1rem;
+}
