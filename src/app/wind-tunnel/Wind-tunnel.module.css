@@ -10,36 +10,46 @@
 .NTUADescription {
   display: flex;
   flex-direction: row; /* Aligns the image and text side by side */
-  align-items: center; /* Vertically center the content */
-  gap: 20px; /* Adds space between the image and text */
-  font-size: 1.2rem;
-  text-align: start;
-  line-height: 1.4;
-  flex-wrap: wrap;
+  gap: 0.5rem; /* Adds space between the image and text */
+  align-items: stretch;
+  width: 100%; /* Ensures the container spans its parent */
+  height: 20rem;
 }
-.NTUADescription article {
-  display: flex; /* Makes sure the article behaves as a flex container */
-  flex: 1; /* Allows the article content (text) to take up remaining space */
+.NTUADescription ul {
+  list-style: none; /* Removes default list styling */
+  padding-left: 0; /* Removes default left padding */
 }
-.treePhoto {
-  flex-shrink: 0; /* Prevents the image from shrinking */
-  max-width: 100%; /* Ensures the image scales responsively */
-  height: auto;
-  margin-left: 0.5rem;
+.NTUALiContent {
+  display: flex; /* Aligns bullet and text horizontally */
+  align-items: flex-start; /* Ensures the bullet and text align at the top */
 }
-.NTUA ul {
-  list-style-type: none; /* Removes bullets */
-  padding: 0;
-}
-
-.NTUA p::before {
-  content: "○ "; /* Small open circle */
+.NTUABullet {
   color: #2e4d2e;
+  font-size: 1.2rem; /* Adjust circle size */
   margin-right: 0.5rem;
   flex-shrink: 0;
-  font-size: medium;
-  font-weight: bold;
 }
-.NTUA p {
-  margin-bottom: 1rem;
+.NTUAtext {
+  flex: 2; /* Allows the article content (text) to take up remaining space */
+  justify-content: center; /* Vertically centers content */
+  align-items: stretch;
+  height: 100%;
+}
+.NTUAimage {
+  flex: 1; /* Allows the article content (text) to take up remaining space */
+  justify-content: center; /* Centers the image horizontally */
+  align-items: center;
+  height: 100%;
+}
+.treePhoto {
+  max-width: 100%; /* Ensures the image scales responsively */
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.NTUAtext ul li {
+  margin-bottom: 1rem; /* Adds spacing between items */
+  font-size: 1.2rem;
+  line-height: 1.5;
+  list-style: none; /* Removes the default bullet */
 }
