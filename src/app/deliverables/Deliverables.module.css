@@ -1,0 +1,5 @@
+td {
+  font-family: inherit; /* Uses the font-family of the parent (body) */
+  font-size: 1rem; /* Matches body font size */
+  color: var(--foreground); /* Matches the general text color */
+}
