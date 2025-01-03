@@ -93,7 +93,7 @@ const Footer: React.FC = () => {
           <div
             ref={modalRef}
             className="bg-white p-8 rounded-lg max-w-md w-full"
-            style={{ marginTop: "60px" }}
+            style={{ marginTop: "80px" }}
           >
             <p id="modal-title" className="text-lg text-center underline">
               Contact Details
