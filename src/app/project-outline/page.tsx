@@ -44,15 +44,15 @@ const ProjectOutline: FC = () => {
       <article className={styles.workPackage}>
         <h2 id="work2" className={styles.workPackageTitle}>
           Work Package 2: Microclimate Evaluation on the Basis of Climate Change
-          <a
-            href="/files/work1" // Link to the files page for this work package
+          {/*  <a
+            href="/files/work2" 
             target="_blank"
             rel="noopener noreferrer"
             className={styles.arrowLink}
-            title="View and download files" // Tooltip for clarity
+            title="View and download files" 
           >
-            <FaArrowRight aria-label="Go to Work Package 1 details" />
-          </a>
+            <FaArrowRight aria-label="Go to Work Package 2 details" />
+          </a> */}
         </h2>
         <ul className={styles.workPackageDetails}>
           <li>
@@ -71,15 +71,15 @@ const ProjectOutline: FC = () => {
         <h2 id="work3" className={styles.workPackageTitle}>
           Work Package 3: Evaluation of Climate Change Effect on the Built
           Environment
-          <a
-            href="/files/work1" // Link to the files page for this work package
+          {/*  <a
+            href="/files/work3"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.arrowLink}
-            title="View and download files" // Tooltip for clarity
+            title="View and download files"
           >
-            <FaArrowRight aria-label="Go to Work Package 1 details" />
-          </a>
+            <FaArrowRight aria-label="Go to Work Package 3 details" />
+          </a> */}
         </h2>
         <ul className={styles.workPackageDetails}>
           <li>
@@ -98,9 +98,9 @@ const ProjectOutline: FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.arrowLink}
-            title="View and download files" // Tooltip for clarity
+            title="View and download files"
           >
-            <FaArrowRight aria-label="Go to Work Package 1 details" />
+            <FaArrowRight aria-label="Go to Work Package 4 details" />
           </a>
         </h2>
         <ul className={styles.workPackageDetails}>
@@ -116,15 +116,15 @@ const ProjectOutline: FC = () => {
         <h2 id="work5" className={styles.workPackageTitle}>
           Work Package 5: Evaluation of the Environmental and Energy Effect of
           Street Trees
-          <a
-            href="/files/work1" // Link to the files page for this work package
+          {/*  <a
+            href="/files/work5" 
             target="_blank"
             rel="noopener noreferrer"
             className={styles.arrowLink}
-            title="View and download files" // Tooltip for clarity
+            title="View and download files" 
           >
             <FaArrowRight aria-label="Go to Work Package 1 details" />
-          </a>
+          </a> */}
         </h2>
         <ul className={styles.workPackageDetails}>
           <li>
@@ -146,29 +146,29 @@ const ProjectOutline: FC = () => {
       <article className={styles.workPackage}>
         <h2 id="work6" className={styles.workPackageTitle}>
           Work Package 6: Project Management
-          <a
-            href="/files/work1" // Link to the files page for this work package
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.arrowLink}
-            title="View and download files" // Tooltip for clarity
-          >
-            <FaArrowRight aria-label="Go to Work Package 1 details" />
-          </a>
-        </h2>
-      </article>
-      <article className={styles.workPackage}>
-        <h2 id="work7" className={styles.workPackageTitle}>
-          Work Package 7: Dissemination and Communication of the Results
-          <a
-            href="https://zenodo.org/records/14513140"
+          {/* <a
+            href="/files/work6"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.arrowLink}
             title="View and download files"
           >
-            <FaArrowRight aria-label="Go to Work Package 1 details" />
-          </a>
+            <FaArrowRight aria-label="Go to Work Package 6 details" />
+          </a> */}
+        </h2>
+      </article>
+      <article className={styles.workPackage}>
+        <h2 id="work7" className={styles.workPackageTitle}>
+          Work Package 7: Dissemination and Communication of the Results
+          {/* <a
+            href="/files/work7"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.arrowLink}
+            title="View and download files"
+          >
+            <FaArrowRight aria-label="Go to Work Package 7 details" />
+          </a> */}
         </h2>
       </article>
     </section>

@@ -24,7 +24,7 @@ const WindTunnel: React.FC = () => {
     >
       <h2>Wind Tunnel, LAI/LAD & Albedo Measurements</h2>
       <div className={`${styles.windLine} pb-8`}> </div>
-      <article className={styles.windBox}>
+      <div>
         <h3 id="NTUA" className={styles.NTUAPackageTitle}>
           NTUA Wind tunnel experiments{" "}
         </h3>
@@ -86,8 +86,8 @@ const WindTunnel: React.FC = () => {
             />
           </div>
         </div>
-      </article>
-      <article className={styles.windBox}>
+      </div>
+      <div>
         <h3 id="NTUA" className={`${styles.NTUAPackageTitle} ml-4`}>
           Albedo measurements{" "}
         </h3>
@@ -125,8 +125,9 @@ const WindTunnel: React.FC = () => {
             />
           </div>
         </div>
-      </article>
-      <article className={styles.windBox}>
+      </div>
+      {/* <article className={styles.windBox}> */}
+      <div>
         <h3 id="NTUA" className={`${styles.NTUAPackageTitle} ml-4`}>
           Leaf Area Index/Leaf Area Density measurements{" "}
         </h3>
@@ -164,8 +165,8 @@ const WindTunnel: React.FC = () => {
             />
           </div>
         </div>
-      </article>
-      <article className={styles.windBox}>
+      </div>
+      <div>
         <h3 id="NTUA" className={`${styles.NTUAPackageTitle} ml-4`}>
           Leaf Area Index/Leaf Area Density measurements{" "}
         </h3>
@@ -229,7 +230,7 @@ const WindTunnel: React.FC = () => {
             />
           </div>
         </div>
-      </article>
+      </div>
     </section>
   );
 };
