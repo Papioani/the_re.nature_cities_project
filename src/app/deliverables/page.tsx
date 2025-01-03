@@ -1,5 +1,6 @@
 "use client";
 import React, { FC, useEffect, useRef } from "react";
+import styles from "./Deliverables.module.css";
 
 const DeliverablesPage: FC = () => {
   const mainContentRef = useRef<HTMLElement>(null);
@@ -20,6 +21,7 @@ const DeliverablesPage: FC = () => {
       ref={mainContentRef}
       aria-labelledby="deliverablesTitle"
     >
+      <h2 className={styles.deliverablesLine}>Deliverables</h2>
       <div className="rounded-lg border border-gray-200 overflow-hidden shadow-md">
         <table className="table-auto w-full">
           <thead className="bg-[#1c3d5a]" /* 2e4d2e  1c3d5a 556b2f*/>
