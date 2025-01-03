@@ -243,7 +243,7 @@ const Navbar: React.FC = () => {
       onKeyDown={handleKeyDown}
     >
       <header
-        className={`${styles.logoSection} flex items-center pl-6 pt-2 pb-2`}
+        className={`${styles.logoSection} flex items-center pl-2 pt-2 pb-2`}
       >
         <Link href="/" onClick={closeMobileMenu} className="inline-block">
           <Image
