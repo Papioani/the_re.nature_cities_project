@@ -61,3 +61,10 @@
   margin-bottom: 24px;
   transition: box-shadow 0.3s ease;
 }
+.windLine::before {
+  content: "";
+  display: block;
+  width: 25%; /* Width of the line */
+  height: 1px; /* Thickness of the line */
+  background: rgba(28, 61, 90, 0.8); /* Color of the line */
+}
