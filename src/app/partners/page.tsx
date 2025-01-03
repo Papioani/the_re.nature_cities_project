@@ -44,7 +44,7 @@ const PartnersPage: FC = () => {
             alt="University of Patras Logo"
             width={500}
             height={300}
-            className={`${styles.partnerLogo} inline-block mr-3`}
+            className={`${styles.partnerLogo1} inline-block mr-3 mb-2`}
           />
           Founded in 1972, the{" "}
           <Link
@@ -98,7 +98,7 @@ const PartnersPage: FC = () => {
             alt="University of Patras Logo"
             width={500}
             height={300}
-            className={`${styles.partnerLogo} inline-block mr-3`}
+            className={`${styles.partnerLogo2} inline-block mr-3`}
           />
           The{" "}
           <Link
