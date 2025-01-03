@@ -28,7 +28,6 @@ const ReNaturePage: FC = () => {
           </h2>
         </div>
         <p
-          /*  style={{ backgroundColor: "white" }} */
           className="text-lg leading-relaxed mb-6 pl-6" /*  border-l-2 border-[#059669] pl-2 */
         >
           Re.Nature Cities aims to evaluate via experimental and simulation
