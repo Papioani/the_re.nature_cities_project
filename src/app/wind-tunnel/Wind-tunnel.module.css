@@ -4,13 +4,13 @@
   /* color: #1c3d5a; */
   color: #2e4d2e;
   margin-bottom: 3rem;
-  margin-top: 4rem;
+  margin-top: 2rem;
   font-weight: 600;
 }
 .NTUADescription {
   display: flex;
   flex-direction: row; /* Aligns the image and text side by side */
-  gap: 0.5rem; /* Adds space between the image and text */
+  gap: 0.7rem; /* Adds space between the image and text */
   align-items: stretch;
   width: 100%; /* Ensures the container spans its parent */
   height: 20rem;
@@ -44,7 +44,6 @@
 .treePhoto {
   max-width: 100%; /* Ensures the image scales responsively */
   max-height: 100%;
-  border-radius: 8px;
   object-fit: contain;
 }
 
@@ -54,11 +53,10 @@
   line-height: 1.5;
   list-style: none; /* Removes the default bullet */
 }
-.windBox {
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+.windPart:nth-child(odd) {
   border-radius: 8px; /* Optional: adds rounded corners */
-  padding: 16px; /* Optional: adds padding inside the box */
-  margin-bottom: 24px;
+  padding: 1rem;
+  margin-bottom: 2rem;
   transition: box-shadow 0.3s ease;
 }
 .windLine::before {
@@ -67,4 +65,9 @@
   width: 25%; /* Width of the line */
   height: 1px; /* Thickness of the line */
   background: rgba(28, 61, 90, 0.8); /* Color of the line */
+}
+.windPart:nth-child(even) {
+  background-color: rgba(46, 77, 46, 0.05); /* Subtle green with low opacity */
+  padding: 15px; /* Optional: add some padding */
+  border-radius: 5px; /* Optional: rounded corners for a softer look */
 }

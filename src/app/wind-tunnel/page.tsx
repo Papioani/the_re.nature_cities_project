@@ -24,7 +24,7 @@ const WindTunnel: React.FC = () => {
     >
       <h2>Wind Tunnel, LAI/LAD & Albedo Measurements</h2>
       <div className={`${styles.windLine} pb-8`}> </div>
-      <div>
+      <div className={styles.windPart}>
         <h3 id="NTUA" className={styles.NTUAPackageTitle}>
           NTUA Wind tunnel experiments{" "}
         </h3>
@@ -87,7 +87,7 @@ const WindTunnel: React.FC = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className={styles.windPart}>
         <h3 id="NTUA" className={`${styles.NTUAPackageTitle} ml-4`}>
           Albedo measurements{" "}
         </h3>
@@ -95,7 +95,10 @@ const WindTunnel: React.FC = () => {
           <div className={styles.NTUAtext}>
             <ul>
               <li>
-                <div className={styles.NTUALiContent}>
+                <div
+                  className={styles.NTUALiContent}
+                  style={{ marginTop: "2rem" }}
+                >
                   <span className={styles.NTUABullet}>○</span>
                   <span className={styles.NTUAtext}>
                     Use of portable pyranometers to measure the received and
@@ -127,7 +130,7 @@ const WindTunnel: React.FC = () => {
         </div>
       </div>
       {/* <article className={styles.windBox}> */}
-      <div>
+      <div className={styles.windPart}>
         <h3 id="NTUA" className={`${styles.NTUAPackageTitle} ml-4`}>
           Leaf Area Index/Leaf Area Density measurements{" "}
         </h3>
@@ -135,7 +138,10 @@ const WindTunnel: React.FC = () => {
           <div className={styles.NTUAtext}>
             <ul>
               <li>
-                <div className={styles.NTUALiContent}>
+                <div
+                  className={styles.NTUALiContent}
+                  style={{ marginTop: "2rem" }}
+                >
                   <span className={styles.NTUABullet}>○</span>
                   <span className={styles.NTUAtext}>
                     Use of a portable canopy analyzer (LAI- 2000 PCA, LI-COR
@@ -166,7 +172,7 @@ const WindTunnel: React.FC = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className={styles.windPart}>
         <h3 id="NTUA" className={`${styles.NTUAPackageTitle} ml-4`}>
           Leaf Area Index/Leaf Area Density measurements{" "}
         </h3>
