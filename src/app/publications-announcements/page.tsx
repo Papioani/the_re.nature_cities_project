@@ -52,26 +52,11 @@ const PublicationsAnnouncements: React.FC = () => {
       {/* Publications section */}
       <section className="publications-section">
         <h3 className={styles.h3}>PUBLICATIONS</h3>
-        <div className={styles.publications}>
-          <p>
-            Zaraveli, Z., Theodoridou, I., Tsoka, S., & Velikou, K. (2024).{" "}
-            Evaluating the microclimate and thermal comfort of two urban areas
-            in Athens on the basis of current and future climatic conditions. In{" "}
-            <i>
-              6th International Conference on Changing Cities CCVI: Spatial,
-              Design, Landscape, Heritage, and Socio-Economic Dimensions
-            </i>{" "}
-            (pp. XX-XX). Rhodes, Greece.
-          </p>
+        <div>
+          <p></p>
         </div>
-        <div className={styles.conference}>
-          <p>
-            Tsoka, S., Pappa, V., Markos, N., & Bouris, D. (2024). Assessing the
-            effect of citrus plant on the improvement of the outdoor thermal
-            environment using wind tunnel and ground-based Leaf Area Index
-            measurements (No. EGU24-20879).
-            <i>Copernicus Meetings</i>.
-          </p>
+        <div>
+          <p></p>
         </div>
       </section>
       <section />
