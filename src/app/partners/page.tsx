@@ -67,14 +67,12 @@ const PartnersPage: FC = () => {
             three divisions, nine laboratories, a Seismic{" "}
           </span>
           Simulator Facility, a Fire Testing Facility, and two Computer Centers
-          covering the areas of:
+          covering the areas of Structural Engineering, Geotechnical Engineering
+          and Hydraulic Engineering and Environmental Engineering and
+          Transportation Engineering
         </p>
         <ul className={`${styles.partnerList} text-lg`}>
-          <li>Structural Engineering</li>
-          <li>Geotechnical Engineering and Hydraulic Engineering </li>
-          <li>Environmental Engineering and Transportation Engineering</li>
           <ul />
-
           <p
             className={`${styles.partnerDescription} text-lg `}
             ref={firstParagraphRef}
@@ -102,18 +100,23 @@ const PartnersPage: FC = () => {
           />
           The{" "}
           <Link
+            href="https://ntua.gr/en/"
+            target="_blank"
+            className="partner-link"
+          >
+            National Technical University of Athens (NTUA)
+          </Link>
+          , is a Collaborating Organization of the Re.NatureCities project. NTUA
+          participates through the School of Mechanical Engineering,{" "}
+          <Link
             href="http://wt.fluid.mech.ntua.gr/"
             target="_blank"
             className="partner-link"
           >
-            National Technical University of Athens (NTUA){" "}
+            Fluid Section
           </Link>{" "}
-          is a collaborating organization for the Re.Nature Cities project. NTUA
-          participates through the School of Mechanical Engineering, Fluids is a
-          Collaborating Organization of the Re.Nature Cities project. NTUA
-          participates through the School of Mechanical Engineering, Fluids
-          Section and assures the wind tunnel measurements of the drag
-          coefficient of common urban tree species.
+          and assures the wind tunnel measurements of the drag coefficient of
+          common urban tree species
         </p>
       </article>
     </section>
