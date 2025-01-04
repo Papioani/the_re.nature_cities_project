@@ -10,3 +10,19 @@
   height: 1px; /* Thickness of the line */
   background: rgba(28, 61, 90, 0.8); /* Color of the line */
 }
+.deliverableLink {
+  color: #556b2f; /* Link color, e.g., blue */
+  text-decoration: none; /* Underline to indicate it's a link */
+  font-weight: 500; /* Slightly bold for emphasis */
+  font-weight: bold;
+  transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+.deliverableLink:hover {
+  color: #2e4d2e; /* Darker blue on hover */
+  text-decoration: underline; /* Remove underline on hover */
+}
+.deliverableRow:hover {
+  background-color: #d9e2cd; /* Light blue background on hover */
+  cursor: pointer; /* Change cursor to pointer to indicate it's interactive */
+}
