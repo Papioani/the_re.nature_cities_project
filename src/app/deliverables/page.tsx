@@ -74,7 +74,7 @@ const DeliverablesPage: FC = () => {
               <td className="px-4 py-2 ">Drag coefficients database</td>
               <td className={`px-4 py-2 ${styles.deliverableLink}`}>
                 <Link
-                  href="https://zenodo.org/records/14513140"
+                  href="https://zenodo.org/records/14442184"
                   target="_blank"
                 >
                   Go to deliverable
