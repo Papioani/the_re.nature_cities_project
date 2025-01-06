@@ -46,6 +46,7 @@ const PartnersPage: FC = () => {
             height={300}
             className={`${styles.partnerLogo1} inline-block mr-3 mb-2`}
             priority // Add this line to prioritize loading the image
+            layout="intrinsic"
           />
           Founded in 1972, the{" "}
           <Link
