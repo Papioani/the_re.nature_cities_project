@@ -33,11 +33,11 @@ const ProjectOutline: FC = () => {
         <ul className={`${styles.workPackageDetails} text-m`}>
           <li>
             Collection of Local Climate Zone classification data for Athens and
-            selection of the case study urban districts
+            selection of the case study urban districts.
           </li>
           <li>
             Definition of typical and extreme simulation days for microclimate
-            analysis
+            analysis.
           </li>
         </ul>
       </article>
@@ -58,9 +58,9 @@ const ProjectOutline: FC = () => {
           <li>
             Microclimate analysis of the selected urban districts for the
             current and future climatic conditions considering 2 future periods
-            and 2 emission scenarios
+            and 2 emission scenarios.
           </li>
-          <li>Identification of the most critical scenario</li>
+          <li>Identification of the most critical scenario.</li>
           <li>
             Extraction of microclimate data for buildings’ dynamic energy
             performance simulations.
@@ -84,10 +84,10 @@ const ProjectOutline: FC = () => {
         <ul className={styles.workPackageDetails}>
           <li>
             Building energy performance and indoor thermal comfort analysis of
-            residential buildings located inside the selected case study areas
+            residential buildings located inside the selected case study areas.
           </li>
-          <li>Assessment of Natural Ventilation Potential</li>
-          <li>Outdoor thermal comfort analysis</li>
+          <li>Assessment of Natural Ventilation Potential.</li>
+          <li>Outdoor thermal comfort analysis.</li>
         </ul>
       </article>
       <article className={styles.workPackage}>
@@ -106,10 +106,10 @@ const ProjectOutline: FC = () => {
         <ul className={styles.workPackageDetails}>
           <li>
             Selection of tree types, commonly encountered in urban areas of
-            Mediterranean cities
+            Mediterranean cities.
           </li>
-          <li>LAI/LAD, albedo measurements</li>
-          <li>Wind tunnel measurements</li>
+          <li>LAI/LAD, albedo measurements.</li>
+          <li>Wind tunnel measurements.</li>
         </ul>
       </article>
       <article className={styles.workPackage}>
@@ -129,7 +129,7 @@ const ProjectOutline: FC = () => {
         <ul className={styles.workPackageDetails}>
           <li>
             Definition of planting scenarios according to each tree type and the
-            morphology of the selected case study areas
+            morphology of the selected case study areas.
           </li>
           <li>
             Numerical evaluation of the impact of the selected trees on the
@@ -139,7 +139,7 @@ const ProjectOutline: FC = () => {
           </li>
           <li>
             Use of the measured values in WP4, for the accurate modeling of
-            plants
+            plants.
           </li>
         </ul>
       </article>
