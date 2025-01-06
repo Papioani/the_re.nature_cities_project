@@ -69,7 +69,7 @@ const PartnersPage: FC = () => {
           Simulator Facility, a Fire Testing Facility, and two Computer Centers
           covering the areas of Structural Engineering, Geotechnical Engineering
           and Hydraulic Engineering and Environmental Engineering and
-          Transportation Engineering
+          Transportation Engineering.
         </p>
         <ul className={`${styles.partnerList} text-lg`}>
           <ul />
@@ -83,7 +83,7 @@ const PartnersPage: FC = () => {
             combined energy and seismic retrofitting of buildings, and also a
             strong expertise in numerical methods for buildings’ dynamic energy
             performance and urban microclimate analysis, buildings hygrothermal
-            performance and sustainable design of the urban built environment
+            performance and sustainable design of the urban built environment.
           </p>
         </ul>
       </article>
@@ -116,7 +116,7 @@ const PartnersPage: FC = () => {
             Fluid Section
           </Link>{" "}
           and assures the wind tunnel measurements of the drag coefficient of
-          common urban tree species
+          common urban tree species.
         </p>
       </article>
     </section>
