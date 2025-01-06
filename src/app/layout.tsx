@@ -1,20 +1,9 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+
 import "./styles/globals.css";
 import styles from "./styles/layout.module.css";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 export const metadata: Metadata = {
   title: "Urban Resilience: Assessing Street Trees for Climate Adaptation",
@@ -33,9 +22,7 @@ export default function RootLayout({
         {/* Add the viewport meta tag here */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen w-full`}
-      >
+      <body className="antialiased flex flex-col min-h-screen w-full">
         {/*  <ScrollHandler /> */}
         <Navbar />
         {/* For styles in globals.css, you don't use styles. You just use the regular class names directly (e.g., className="heroSection"). */}
