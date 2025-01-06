@@ -36,7 +36,7 @@ const WindTunnel: React.FC = () => {
                   <span className={styles.NTUABullet}>○</span>
                   <span className={styles.NTUAtext}>
                     Experimental determination of the drag coefficient (Cd) of
-                    natural trees/shrubs with different geometric properties
+                    natural trees/shrubs with different geometric properties.
                   </span>
                 </div>
               </li>
@@ -54,7 +54,7 @@ const WindTunnel: React.FC = () => {
                 <div className={styles.NTUALiContent}>
                   <span className={styles.NTUABullet}>○</span>
                   <span className={styles.NTUAtext}>
-                    Trees samples’ height: 1.8m
+                    Trees samples’ height: 1.8m.
                   </span>
                 </div>
               </li>
@@ -62,7 +62,7 @@ const WindTunnel: React.FC = () => {
                 <div className={styles.NTUALiContent}>
                   <span className={styles.NTUABullet}>○</span>
                   <span className={styles.NTUAtext}>
-                    Examined wind speeds: 1.4m/s-10m/s
+                    Examined wind speeds: 1.4m/s-10m/s.
                   </span>
                 </div>
               </li>
@@ -70,7 +70,7 @@ const WindTunnel: React.FC = () => {
                 <div className={styles.NTUALiContent}>
                   <span className={styles.NTUABullet}>○</span>
                   <span className={styles.NTUAtext}>
-                    3 examined samples of each tree type
+                    3 examined samples of each tree type.
                   </span>
                 </div>
               </li>
@@ -103,7 +103,7 @@ const WindTunnel: React.FC = () => {
                   <span className={styles.NTUAtext}>
                     Use of portable pyranometers to measure the received and
                     reflected radiation by the plants’ foliage and definition of
-                    the albedo value
+                    the albedo value.
                   </span>
                 </div>
               </li>
@@ -112,7 +112,7 @@ const WindTunnel: React.FC = () => {
                   <span className={styles.NTUABullet}>○</span>
                   <span className={styles.NTUAtext}>
                     Measurements conducted for the 4 examined tree types and all
-                    samples
+                    samples.
                   </span>
                 </div>
               </li>
@@ -145,7 +145,7 @@ const WindTunnel: React.FC = () => {
                   <span className={styles.NTUABullet}>○</span>
                   <span className={styles.NTUAtext}>
                     Use of a portable canopy analyzer (LAI- 2000 PCA, LI-COR
-                    Biosciences, USA) for the LAI definition
+                    Biosciences, USA) for the LAI definition.
                   </span>
                 </div>
               </li>
@@ -192,7 +192,7 @@ const WindTunnel: React.FC = () => {
                 <div className={styles.NTUALiContent}>
                   <span className={styles.NTUABullet}>○</span>
                   <span className={styles.NTUAtext}>
-                    LMA measurements performed for all plants
+                    LMA measurements performed for all plants.
                   </span>
                 </div>
               </li>
