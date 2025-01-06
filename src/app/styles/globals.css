@@ -8,7 +8,7 @@ html {
 }
 /* You typically define custom properties in the :root selector (or any parent element) to make them accessible throughout your stylesheet. */
 :root {
-  font-size: 16px; /* This will set 1rem = 16px */
+  font-size: 0.875rem; /* This will set 1rem = 16px */
   --background: #f8f9fa; /* Lightened background */
   --foreground: #333333; /* Darkened foreground for contrast */
   --background-image: url("/background_forest.jpg"); /* defined this variable in your CSS like so: syntax retrieves the value of the custom property --background*/
@@ -23,7 +23,6 @@ html {
 }
 /* -- prefix:  variables that allow you to store values that you can reuse throughout your stylesheet.  */
 body {
-  font-size: 1rem;
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* 100vh means the height of the entire visible area of the browser window. It is responsive */
