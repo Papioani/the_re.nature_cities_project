@@ -8,7 +8,7 @@ html {
 }
 /* You typically define custom properties in the :root selector (or any parent element) to make them accessible throughout your stylesheet. */
 :root {
-  font-size: 0.875rem; /* This will set 1rem = 16px */
+  font-size: 1rem; /* This will set 1rem = 16px */
   --background: #f8f9fa; /* Lightened background */
   --foreground: #333333; /* Darkened foreground for contrast */
   --background-image: url("/background_forest.jpg"); /* defined this variable in your CSS like so: syntax retrieves the value of the custom property --background*/
@@ -52,12 +52,12 @@ body {
 @media (min-width: 769px) and (max-width: 1024px) {
   /* Styles for tablets */
   body {
-    font-size: 16px;
+    font-size: 0.875rem;
     padding: 20px;
     width: 100%;
   }
   :root {
-    font-size: 18px; /* Increases base font size for larger screens */
+    font-size: 1rem; /* Increases base font size for larger screens */
   }
 }
 
@@ -90,6 +90,7 @@ ul {
   color: black;
   line-height: 1.8rem; /* Increase line height for readability */
   margin-bottom: 2rem; /* Consistent spacing for paragraphs */
+  font-size: 1rem;
 }
 .line {
   width: 30%;

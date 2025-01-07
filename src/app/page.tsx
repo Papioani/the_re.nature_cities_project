@@ -20,12 +20,12 @@ const Home: React.FC = () => {
           <div className="section-divider"></div> {/* Line on the right */}
         </div>
 
-        <p className="text-lg leading-relaxed mb-6  border-[#059669] pl-2">
+        <p className=" leading-relaxed mb-6  border-[#059669] pl-2">
           This research project focuses on experimental and numerical methods to
           assess the role of street trees as a Nature-Based Solution for climate
           change adaptation in urban areas.
         </p>
-        <p className="text-lg leading-relaxed mb-6 border-[#059669] pl-2">
+        <p className=" leading-relaxed mb-6 border-[#059669] pl-2">
           The research project is implemented in the framework of the H.F.R.I
           call “Basic Research Financing (Horizontal support of all Sciences)”
           under the National Recovery and Resilience Plan “Greece 2.0,” funded
@@ -33,7 +33,7 @@ const Home: React.FC = () => {
           15566).
         </p>
         <div className="section-divider"></div>
-        <div className="text-lg leading-relaxed mb-6 text-left">
+        <div className=" leading-relaxed mb-6 text-left">
           <p className="markerSquare mb-1">
             <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 font-bold">
               Project Duration:

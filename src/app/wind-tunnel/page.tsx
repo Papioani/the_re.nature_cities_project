@@ -18,7 +18,7 @@ const WindTunnel: React.FC = () => {
   }, []);
   return (
     <section
-      className=" text-m px-6 pb-16"
+      className=" px-6 pb-16"
       ref={mainContentRef}
       aria-labelledby="WindTunnelTitle"
     >
