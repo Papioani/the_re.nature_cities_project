@@ -33,9 +33,9 @@ const PartnersPage: FC = () => {
       <h2 id="partnersTitle">The Partners</h2>
       <div className={`${styles.partnerLine} pb-8`}> </div>
 
-      <article className={`${styles.partner} text-large px-4`}>
+      <article className={`${styles.partner} px-4`}>
         <p
-          className={`${styles.partnerDescription} text-lg `}
+          className={styles.partnerDescription}
           ref={firstParagraphRef}
           tabIndex={0}
         >
@@ -73,10 +73,10 @@ const PartnersPage: FC = () => {
           and Hydraulic Engineering and Environmental Engineering and
           Transportation Engineering.
         </p>
-        <ul className={`${styles.partnerList} text-lg`}>
+        <ul className={styles.partnerList}>
           <ul />
           <p
-            className={`${styles.partnerDescription} text-lg `}
+            className={styles.partnerDescription}
             ref={firstParagraphRef}
             tabIndex={0}
           >
@@ -91,11 +91,11 @@ const PartnersPage: FC = () => {
       </article>
       <div className={`${styles.partnerLine} pb-8`}> </div>
 
-      <article className={`${styles.partner} px-4 text-lg`}>
+      <article className={`${styles.partner} px-4`}>
         <p className={`${styles.partnerDescription} `}>
           <Image
             src="/UniAthensLogo.png"
-            alt="University of Patras Logo"
+            alt="University of Athens Logo"
             width={500}
             height={300}
             className={`${styles.partnerLogo2} inline-block mr-3`}

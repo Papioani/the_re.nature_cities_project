@@ -8,12 +8,12 @@ import { FaArrowRight } from "react-icons/fa";
 
 const ProjectOutline: FC = () => {
   return (
-    <section className={`${styles.projectOutlineContainer} text-m px-6 pb-16`}>
+    <section className={`${styles.projectOutlineContainer} px-6 pb-16`}>
       <ScrollHandler />{" "}
       {/* This component will handle scroll-to-hash functionality */}
       <h2 className="text-start">The Project Outline</h2>
       <div className={`${styles.projectLine} pb-4`}> </div>
-      <p className={`${styles.projectDescription} text-m leading-relaxed my-6`}>
+      <p className={`${styles.projectDescription} leading-relaxed my-6`}>
         Re.Nature Cities project consists of the following work packages and
         subsections:
       </p>
@@ -30,7 +30,7 @@ const ProjectOutline: FC = () => {
             <FaArrowRight aria-label="Go to Work Package 1 details" />
           </a>
         </h2>
-        <ul className={`${styles.workPackageDetails} text-m`}>
+        <ul className={`${styles.workPackageDetails}`}>
           <li>
             Collection of Local Climate Zone classification data for Athens and
             selection of the case study urban districts.

@@ -1,5 +1,5 @@
 .partner {
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 }
 .partnerLogo1 {
   float: left; /* Floats the image to the left to allow text to wrap around it */
@@ -11,7 +11,7 @@
 .partnerLogo2 {
   float: left; /* Floats the image to the left to allow text to wrap around it */
   width: 15rem;
-  height: auto;
+  height: 7rem;
   vertical-align: middle; /* Ensures the logo aligns vertically with the text */
   margin-right: 1rem; /* Adjust space between image and text */
 }
@@ -23,12 +23,12 @@
   background: rgba(28, 61, 90, 0.8); /* Color of the line */
 }
 .partnerDescription {
-  margin-bottom: 15px;
+  margin-bottom: 0rem;
   margin-top: 0px;
-  line-height: 1.8;
+  line-height: 1.6rem;
 }
 .partnerDescription span {
-  line-height: 2.1;
+  line-height: 2rem;
 }
 .partnerList {
   /* padding-left: 20px; */
