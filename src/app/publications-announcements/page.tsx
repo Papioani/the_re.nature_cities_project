@@ -4,7 +4,7 @@ import styles from "./PublicationsAnnouncements.module.css";
 const PublicationsAnnouncements: React.FC = () => {
   return (
     <>
-      <section className="publications-announcements">
+      <section className="publications-announcements px-8">
         <h2>Publications & Conference Announcements</h2>
         <div className="section-divider"></div>
 
