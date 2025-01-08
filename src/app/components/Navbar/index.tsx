@@ -247,7 +247,7 @@ const Navbar: React.FC = () => {
       >
         <Link href="/" onClick={closeMobileMenu} className="inline-block">
           <Image
-            src="/Logo2.jpeg"
+            src="/Logo2.png"
             width={100} // Specify width
             height={100} // Specify height
             priority // Optional: use for LCP optimization
