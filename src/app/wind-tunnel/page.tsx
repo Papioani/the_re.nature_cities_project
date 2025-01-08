@@ -23,7 +23,7 @@ const WindTunnel: React.FC = () => {
       aria-labelledby="WindTunnelTitle"
     >
       <h2>Wind Tunnel, LAI/LAD & Albedo Measurements</h2>
-      <div className={`${styles.windLine} pb-8`}> </div>
+      <div className={`${styles.windLine} pb-4`}> </div>
       <div className={styles.windPart}>
         <h3 id="NTUA" className={styles.NTUAPackageTitle}>
           NTUA Wind tunnel experiments{" "}
