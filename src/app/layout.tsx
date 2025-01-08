@@ -21,7 +21,7 @@ export default function RootLayout({
       <head>
         {/* Add the viewport meta tag here */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/logo2.png" type="image/png" />
+        <link rel="icon" href="/Logo2.png" type="image/png" />
       </head>
       <body className="antialiased flex flex-col min-h-screen w-full">
         {/*  <ScrollHandler /> */}
