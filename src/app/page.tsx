@@ -32,7 +32,7 @@ const Home: React.FC = () => {
           by the European Union - NextGenerationEU (H.F.R.I. Project Number:
           15566).
         </p>
-        <div className="section-divider"></div>
+        <div className="section-divider pb-0"></div>
         <div className=" leading-relaxed mb-6 text-left">
           <p className="markerSquare mb-1">
             <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 font-bold">
