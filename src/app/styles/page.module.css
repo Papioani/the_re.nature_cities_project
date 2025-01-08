@@ -6,3 +6,6 @@
   /*  border-bottom: 1px solid #1c3d5a; */
   padding-bottom: 2rem;
 }
+.noBottomMargin {
+  margin: 2rem 0 1rem 0; /* Remove bottom margin */
+}
