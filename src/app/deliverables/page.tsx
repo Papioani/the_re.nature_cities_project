@@ -22,7 +22,9 @@ const DeliverablesPage: FC = () => {
       aria-labelledby="deliverablesTitle"
       ref={mainContentRef}
     >
-      <h2 className={styles.deliverablesLine}>Deliverables</h2>
+      {" "}
+      <h2 id="deliverablesTitle">Deliverables</h2>
+      <div className={`${styles.deliverablesLine} pb-8`}></div>
       <div className="rounded-lg border border-gray-200 overflow-hidden shadow-md">
         <table className="table-auto w-full">
           <thead className="bg-[#1c3d5a]" /* 2e4d2e  1c3d5a 556b2f*/>

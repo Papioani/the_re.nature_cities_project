@@ -6,7 +6,8 @@ const PublicationsAnnouncements: React.FC = () => {
     <>
       <section className="publications-announcements px-8">
         <h2>Publications & Conference Announcements</h2>
-        <div className="section-divider"></div>
+        <div className={`${styles.publicationsLine} pb-4`}> </div>
+        {/*  <div className="section-divider"></div> */}
 
         {/* Conferences Section */}
         <div className="conference-announcements">
