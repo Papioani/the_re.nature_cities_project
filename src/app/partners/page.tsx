@@ -245,7 +245,7 @@ const PartnersPage: FC = () => {
         </ul>
         <ul>
           <li>
-            <strong>Zwi Zaraveli</strong>
+            <strong>Zoi Zaraveli</strong>
           </li>
           <li>
             Scientific Associate, Department of Civil Engineering, University of
