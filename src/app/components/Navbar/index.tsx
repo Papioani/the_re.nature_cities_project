@@ -287,7 +287,7 @@ const Navbar: React.FC = () => {
         id="mobile-menu"
         className={`${isMobileMenuOpen ? "block" : "hidden"} ${
           styles.navbarLinks
-        } md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 md:items-start text-white mt-8 md:mt-0 pl-6`}
+        } md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 md:items-start text-white mt-8 md:mt-0 pl-4`}
         aria-expanded={isMobileMenuOpen}
         aria-controls="mobile-menu"
       >
@@ -300,7 +300,8 @@ const Navbar: React.FC = () => {
             className={styles.navLink}
             onClick={closeMobileMenu}
           >
-            The Re.Nature <br /> Cities Project
+            <span>The Re.Nature</span>
+            <span style={{ display: "block" }}>Cities Project</span>
           </Link>
         </div>
         <Link
@@ -308,7 +309,8 @@ const Navbar: React.FC = () => {
           className={styles.navLink}
           onClick={closeMobileMenu}
         >
-          Partners
+          <span>Partners &</span>
+          <span style={{ display: "block" }}>Research Team</span>
         </Link>
 
         {/* Conditionally render for mobile */}
@@ -673,7 +675,8 @@ const Navbar: React.FC = () => {
           className={styles.navLink}
           onClick={closeMobileMenu}
         >
-          The Action
+          <span>The</span>
+          <span style={{ display: "block" }}>Action</span>
         </Link>
       </div>
       {/* Tooltip that will appear on hover */}
