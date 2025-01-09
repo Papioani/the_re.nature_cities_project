@@ -30,7 +30,7 @@ const PartnersPage: FC = () => {
       ref={mainContentRef}
       aria-labelledby="partnersTitle"
     >
-      <h2 id="partnersTitle">The Partners</h2>
+      <h2 id="partnersTitle">The Partners and Research Team</h2>
       <div className={`${styles.partnerLine} pb-8`}> </div>
 
       <article className={`${styles.partner} px-4`}>
@@ -92,7 +92,7 @@ const PartnersPage: FC = () => {
       <div className="section-divider"></div>
 
       <article className={`${styles.partner} px-4`}>
-        <p className={`${styles.partnerDescription} `}>
+        <p className={`${styles.partnerDescription} pb-8`}>
           <Image
             src="/UniAthensLogo.png"
             alt="University of Athens Logo"
@@ -120,6 +120,136 @@ const PartnersPage: FC = () => {
           and assures the wind tunnel measurements of the drag coefficient of
           common urban tree species.
         </p>
+      </article>
+      <div className="section-divider"></div>
+      <article className={`${styles.partner} px-4`}>
+        <ul>
+          <li>
+            <strong>Stella Tsoka</strong>
+          </li>
+          <li>Principal Investigator</li>
+          <li>
+            Assistant Professor, Department of Civil Engineering, University of
+            Patras
+          </li>
+          <Link
+            href="https://orcid.org/0000-0002-8187-8493"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.orcidLink}
+          >
+            Visit ORCID profile
+          </Link>
+        </ul>
+        <ul>
+          <li>
+            <strong>Demetri Bouris</strong>
+          </li>
+          <li>
+            Professor, School of Mechanical Engineering, Section of Fluids,
+          </li>
+          <li>
+            Laboratory of Aerodynamics, National Technical University of Athens
+          </li>
+          <li>
+            <Link
+              href="https://orcid.org/0000-0003-3464-6945"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.orcidLink}
+            >
+              Visit ORCID profile
+            </Link>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <strong>Nikos Markos</strong>
+          </li>
+          <li>
+            Researcher, Department of Civil Engineering, University of Patras,
+          </li>
+          <li>Researcher at Hellenic Agricultural Organization DEMETER</li>
+          <li>
+            <Link
+              href="https://orcid.org/0000-0002-7726-9062"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.orcidLink}
+            >
+              Visit ORCID profile
+            </Link>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <strong>Ifigeneia Theodoridou</strong>
+          </li>
+          <li>
+            Post-Doctoral Researcher, Department of Civil Engineering,
+            University of Patras
+          </li>
+          <li>
+            <Link
+              href="https://scholar.google.com/citations?user=9LaZgY0AAAAJ&hl=el"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.orcidLink}
+            >
+              Visit Google Scholar profile
+            </Link>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <strong>Kondylia Velikou</strong>
+          </li>
+          <li>
+            Post-Doctoral Researcher, Department of Civil Engineering,
+            University of Patras
+          </li>
+          <li>
+            <Link
+              href="https://orcid.org/0000-0002-7897-4660"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.orcidLink}
+            >
+              Visit ORCID profile
+            </Link>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <strong>Vasiliki Pappa</strong>
+          </li>
+          <li>
+            Scientific Associate, School of Mechanical Engineering, Section of
+            Fluids,
+          </li>
+          <li>
+            Laboratory of Aerodynamics, National Technical University of Athens
+          </li>
+          <li>
+            <Link
+              href="https://www.researchgate.net/profile/Vasiliki-Pappa-5"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.orcidLink}
+            >
+              Visit ResearchGate Profile
+            </Link>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <strong>Zwi Zaraveli</strong>
+          </li>
+          <li>
+            Scientific Associate, Department of Civil Engineering, University of
+            Patras
+          </li>
+        </ul>
       </article>
     </section>
   );
