@@ -53,7 +53,7 @@ const PublicationsAnnouncements: React.FC = () => {
         </div>
       </section>
       {/* Publications section */}
-      <section className="publications-section">
+      <section className="publications-section px-8">
         <h3 className={styles.h3}>PUBLICATIONS</h3>
         <div>
           <p></p>
