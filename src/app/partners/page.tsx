@@ -149,7 +149,8 @@ const PartnersPage: FC = () => {
             Professor, School of Mechanical Engineering, Section of Fluids,
           </li>
           <li>
-            Laboratory of Aerodynamics, National Technical University of Athens
+            Laboratory for Innovative Environmental Technologies, National
+            Technical University of Athens
           </li>
           <li>
             <Link
@@ -228,7 +229,8 @@ const PartnersPage: FC = () => {
             Fluids,
           </li>
           <li>
-            Laboratory of Aerodynamics, National Technical University of Athens
+            Laboratory for Innovative Environmental Technologies, National
+            Technical University of Athens
           </li>
           <li>
             <Link
