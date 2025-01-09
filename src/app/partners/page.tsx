@@ -89,7 +89,7 @@ const PartnersPage: FC = () => {
           </p>
         </ul>
       </article>
-      <div className={`${styles.partnerLine} pb-8`}> </div>
+      <div className="section-divider"></div>
 
       <article className={`${styles.partner} px-4`}>
         <p className={`${styles.partnerDescription} `}>
