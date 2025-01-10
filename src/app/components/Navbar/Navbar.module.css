@@ -42,9 +42,10 @@
 }
 .navbarLinks {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-end; /* Align all items to the top */
   gap: 0.4rem;
+  flex-wrap: nowrap;
 }
 @media (max-width: 768px) {
   .navbarLinks {
@@ -54,7 +55,6 @@
   .navbar {
     padding: 0.5rem; /* Adjust padding for mobile */
     justify-content: space-between;
-    flex-wrap: wrap;
   }
 }
 .navLink {
@@ -70,6 +70,9 @@
   color: #ffffff;
   font-size: 1rem;
   display: block;
+  white-space: nowrap;
+  /* Prevent shrinking */
+  flex-shrink: 0;
 }
 
 .navLink:active {
