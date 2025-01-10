@@ -11,9 +11,9 @@
   width: 100%;
   line-height: 1.5rem;
   height: auto;
-  display: flex;
+
   flex-wrap: nowrap;
-  padding-right: 0.7rem;
+  padding-right: 0.6rem;
 }
 .navbar a:hover {
   text-decoration: wavy;
@@ -24,15 +24,27 @@
 
 .logoSection {
   cursor: default;
+  margin: 0;
 }
 .logoSection img {
   cursor: pointer; /* Pointer cursor on hover over the image */
+}
+@media (min-width: 1440px) {
+  .logoSection {
+    margin-right: 6rem; /* Large margin for big desktops */
+  }
+  .navbarLinks {
+    display: flex; /* Ensure this is flex to apply gap */
+    flex-direction: row; /* Align links horizontally */
+    gap: 4rem;
+    margin: 0 3rem; /* Adds 2rem margin to the left and right of the navbar */
+  }
 }
 .navbarLinks {
   display: flex;
   flex-direction: column;
   justify-content: flex-end; /* Align all items to the top */
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 @media (max-width: 768px) {
   .navbarLinks {
@@ -78,8 +90,4 @@
   font-size: 0.9rem;
   z-index: 20;
   transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-}
-.centerText {
-  display: block;
-  text-align: center;
 }
