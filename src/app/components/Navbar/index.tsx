@@ -239,7 +239,7 @@ const Navbar: React.FC = () => {
     <nav
       ref={navbarRef}
       aria-label="Main navigation"
-      className={`${styles.navbar} flex sticky top-0 justify-centre items-end text-white navbarElement`}
+      className={`${styles.navbar} flex sticky top-0 justify-between items-end text-white navbarElement`}
       onKeyDown={handleKeyDown}
     >
       <header
@@ -287,7 +287,7 @@ const Navbar: React.FC = () => {
         id="mobile-menu"
         className={`${isMobileMenuOpen ? "block" : "hidden"} ${
           styles.navbarLinks
-        } md:flex flex-col md:flex-row space-y-0  md:space-x-4 md:items-start text-white mt-8 md:mt-0 `}
+        } md:flex flex-row md:flex-row  space-y-0 md:space-x-4 2xl:gap-6 md:items-start text-white mt-8 md:mt-0 `}
         aria-expanded={isMobileMenuOpen}
         aria-controls="mobile-menu"
       >
@@ -675,8 +675,8 @@ const Navbar: React.FC = () => {
           className={styles.navLink}
           onClick={closeMobileMenu}
         >
-          <span>The</span>
-          <span style={{ display: "block" }}>Action</span>
+          <span className="block 2xl:inline">The</span>
+          <span className="block 2xl:inline 2xl:ml-2">Action</span>
         </Link>
       </div>
       {/* Tooltip that will appear on hover */}
