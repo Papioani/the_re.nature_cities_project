@@ -260,7 +260,9 @@ const Navbar: React.FC = () => {
       <div className="hamburger-container md:hidden">
         <button
           className="text-2xl text-white"
-          aria-label="Toggle mobile menu"
+          aria-label={
+            isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"
+          }
           aria-expanded={isMobileMenuOpen}
           aria-controls="mobile-menu" // Associates button with the menu
           onClick={toggleMobileMenu}
@@ -271,6 +273,7 @@ const Navbar: React.FC = () => {
             viewBox="0 0 24 24"
             stroke="currentColor"
             className="w-8 h-8"
+            aria-hidden="true"
           >
             <path
               strokeLinecap="round"
@@ -288,8 +291,8 @@ const Navbar: React.FC = () => {
         className={`${isMobileMenuOpen ? "block" : "hidden"} ${
           styles.navbarLinks
         } md:flex flex-row md:flex-row  space-y-0 md:space-x-4 2xl:gap-6 md:items-start text-white mt-8 md:mt-0 `}
+        role="menu" // Marks this as a menu container
         aria-expanded={isMobileMenuOpen}
-        aria-controls="mobile-menu"
       >
         <Link href="/" className={styles.navLink} onClick={closeMobileMenu}>
           Home
@@ -301,7 +304,7 @@ const Navbar: React.FC = () => {
             onClick={closeMobileMenu}
           >
             <span>The Re.Nature</span>
-            <span style={{ display: "block" }}>Cities Project</span>
+            <span className="block">Cities Project</span>
           </Link>
         </div>
         <Link
@@ -310,7 +313,7 @@ const Navbar: React.FC = () => {
           onClick={closeMobileMenu}
         >
           <span>Partners &</span>
-          <span style={{ display: "block" }}>Research Team</span>
+          <span className="block">Research Team</span>
         </Link>
 
         {/* Conditionally render for mobile */}
@@ -322,6 +325,7 @@ const Navbar: React.FC = () => {
                 className={`${styles.navLink} inline-flex items-center space-x-2 p-2 `}
                 aria-expanded={isWorkDropdownOpen} // Reflect dropdown state
                 aria-controls="workDropdownMenu"
+                id="project-outline-link"
               >
                 <span className="mr-2">Project Outline</span>
                 <svg
@@ -653,7 +657,7 @@ const Navbar: React.FC = () => {
           onClick={closeMobileMenu}
         >
           <span>Wind Tunnel, LAI/LAD</span>
-          <span style={{ display: "block" }}>& Albedo Measurements</span>
+          <span className="block">& Albedo Measurements</span>
         </Link>
         <Link
           href="/deliverables"
