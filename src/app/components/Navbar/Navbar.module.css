@@ -31,12 +31,13 @@
 @media (min-width: 1440px) {
   .logoSection {
     margin-right: 6rem; /* Large margin for big desktops */
+    margin-left: 1rem;
   }
   .navbarLinks {
     display: flex; /* Ensure this is flex to apply gap */
     flex-direction: row; /* Align links horizontally */
     gap: 4rem;
-    margin: 0 3rem; /* Adds 2rem margin to the left and right of the navbar */
+    margin: 0 0.5rem; /* Adds rem margin to the left and right of the navbar */
   }
 }
 
@@ -51,10 +52,30 @@
   .navbarLinks {
     flex-direction: column; /* Stack vertically on small screens */
     align-items: flex-start; /* Adjust alignment */
+    position: relative; /* Ensure that links stay within their container */
+    padding-top: 4rem;
   }
   .navbar {
     padding: 0.5rem; /* Adjust padding for mobile */
     justify-content: space-between;
+    position: fixed;
+  }
+  .logoSection {
+    /*  position: absolute; this gives error  */ /* Keep the logo at the top left */
+    top: 0;
+    left: 0;
+    z-index: 21;
+    width: auto; /* Avoid it growing too large */
+    padding: 1rem 0;
+  }
+  .hamburger-container {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem; /* Position it at the top-right */
+    font-size: 1.5rem;
+    color: white;
+    z-index: 22;
   }
 }
 .navLink {
