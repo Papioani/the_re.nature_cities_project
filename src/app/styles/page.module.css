@@ -1,11 +1,16 @@
 .centeredHeading {
   margin: 0 auto;
   color: #1c3d5a;
-
   font-weight: bold;
-  /*  border-bottom: 1px solid #1c3d5a; */
   padding-bottom: 2rem;
 }
 .noBottomMargin {
   margin: 2rem 0 1rem 0; /* Remove bottom margin */
+}
+@media (max-width: 480px) {
+  /* Target small screens */
+  .centeredHeading {
+    line-height: 1.5; /* Increase line-height for small screens */
+    padding: 1rem 0; /* Add some padding on top and bottom */
+  }
 }

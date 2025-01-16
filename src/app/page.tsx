@@ -12,7 +12,7 @@ const Home: React.FC = () => {
         <div className="w-full flex justify-center items-start gap-4">
           <div className="section-divider"></div> {/* Line on the left */}
           <h1
-            className={`${styles.centeredHeading} flex flex-col items-center text-center`}
+            className={`${styles.centeredHeading} flex flex-col items-center text-center `}
           >
             {" "}
             Welcome to Re.Nature Cities
