@@ -1,11 +1,14 @@
 "use client";
-import React, { FC, useEffect, useRef } from "react";
+import React, { FC, useState, useEffect, useRef, ReactNode } from "react";
 import styles from "./Deliverables.module.css";
 import Link from "next/link";
+import Modal from "../components/Modal";
 
 const DeliverablesPage: FC = () => {
   const mainContentRef = useRef<HTMLElement>(null);
   const firstParagraphRef = useRef<HTMLParagraphElement>(null);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [modalContent, setModalContent] = useState<string | null>(null);
 
   // Set focus to the main content on load
   useEffect(() => {
@@ -16,6 +19,21 @@ const DeliverablesPage: FC = () => {
       firstParagraphRef.current.focus({ preventScroll: true });
     }
   }, []);
+
+  const openModal = (fileId: string) => {
+    console.log(`Opening modal with fileId: ${fileId}`);
+    setModalContent(fileId);
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    console.log("Closing modal");
+    setModalOpen(false);
+    setModalContent(null);
+  };
+  useEffect(() => {
+    console.log(`Modal open status: ${modalOpen}`);
+    console.log(`Modal content: ${modalContent}`);
+  }, [modalOpen, modalContent]);
   return (
     <section
       className="px-8 pb-10"
@@ -49,10 +67,17 @@ const DeliverablesPage: FC = () => {
                 </Link>
               </td>
             </tr>
-            <tr>
+            <tr className={styles.deliverableRow}>
               <td className="px-4 py-2 font-semibold">D2.1.</td>
               <td className="px-4 py-2 ">
                 Microclimate evaluation for current and future conditions
+              </td>
+              <td className={`px-4 py-2 ${styles.deliverableLink}`}>
+                <button
+                  onClick={() => openModal("1vMgajDuBjWnoUVVDVh7XebpVfH_2FJek")}
+                >
+                  View deliverable
+                </button>
               </td>
             </tr>
             <tr>
@@ -114,6 +139,14 @@ const DeliverablesPage: FC = () => {
             </tr>
           </tfoot>
         </table>
+        {/* Modal Component */}
+        {modalContent && (
+          <Modal
+            isOpen={modalOpen}
+            onClose={closeModal}
+            fileId={modalContent || ""}
+          />
+        )}{" "}
       </div>
     </section>
   );
