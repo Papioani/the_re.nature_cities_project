@@ -1,5 +1,5 @@
 // /src/components/Modal.tsx
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState, useEffect, useRef } from "react";
 
 interface ModalProps {
   isOpen: boolean;
@@ -11,6 +11,27 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId }) => {
   const [fileUrl, setFileUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  // Close modal when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("click", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isOpen, onClose]);
   useEffect(() => {
     console.log("Modal isOpen:", isOpen);
     console.log("FileId received by modal:", fileId);
@@ -50,9 +71,16 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="absolute inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+    <div
+      className="absolute inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center"
+      role="dialog"
+      aria-labelledby="deliverable-modal-title"
+    >
       {/* Modal container */}
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl relative max-h-[100vh] overflow-auto z-[2000]">
+      <div
+        ref={modalRef}
+        className="bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl relative max-h-[100vh] overflow-auto z-[2000]"
+      >
         <button
           className="absolute top-2 right-2 text-gray-500"
           onClick={onClose}
