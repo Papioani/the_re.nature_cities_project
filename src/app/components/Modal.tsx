@@ -50,9 +50,9 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-[2000]">
+    <div className="absolute inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
       {/* Modal container */}
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl relative max-h-[100vh] overflow-auto">
+      <div className="bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl relative max-h-[100vh] overflow-auto z-[2000]">
         <button
           className="absolute top-2 right-2 text-gray-500"
           onClick={onClose}
