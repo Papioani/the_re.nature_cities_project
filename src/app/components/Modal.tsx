@@ -41,15 +41,10 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
         try {
           setLoading(true);
           setIsDataLoaded(false);
-          const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
-          console.log("API Key:", API_KEY);
-          const response = await fetch(
-            `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&key=${API_KEY}`
-          );
-          console.log("Fetch response status:", response.status);
+          const response = await fetch(`/api/drive?fileId=${fileId}`);
 
           if (!response.ok) {
-            throw new Error("Failed to fetch file");
+            throw new Error(`Failed to fetch file: ${response.statusText}`);
           }
 
           const fileBlob = await response.blob();
@@ -68,6 +63,14 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
       fetchFile();
     }
   }, [fileId, setLoading]);
+
+  useEffect(() => {
+    return () => {
+      if (fileUrl) {
+        URL.revokeObjectURL(fileUrl); // Clean up the object URL
+      }
+    };
+  }, [fileUrl]);
 
   if (!isOpen || !isDataLoaded) return null; // Only show modal when data is available and modal is open
 
