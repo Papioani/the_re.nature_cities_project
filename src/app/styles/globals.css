@@ -18,7 +18,7 @@ html {
   :root {
     --background: #121212; /* Dark mode background */
     --foreground: #e0e0e0; /* Lightened foreground for dark mode */
-    --background-image: url("/background-forest.png"); /* Dark mode background image */
+    --background-image: url("/background-forest.jpg"); /* Dark mode background image */
   }
 }
 /* -- prefix:  variables that allow you to store values that you can reuse throughout your stylesheet.  */
