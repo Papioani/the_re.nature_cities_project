@@ -1,8 +1,5 @@
 .footerBackground {
   position: sticky;
-  /* padding: 1rem; */
-  /* background-image: var(--background-image); */
-  /*  background-color: #1c3d5a; */
   background-color: #708090; /*  1c3d5a 585858 #a8a8a8;  #4b4b4b;  #708090; */
   display: flex;
   justify-content: space-between;
