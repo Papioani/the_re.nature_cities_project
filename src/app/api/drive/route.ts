@@ -11,12 +11,15 @@ export async function GET(request: Request) {
 
   try {
     const apiKey = process.env.GOOGLE_BACKEND_API_KEY; // Use backend API key
+    console.log("API Key:", apiKey);
     const response = await fetch(
       `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&key=${apiKey}`
     );
 
     if (!response.ok) {
-      throw new Error("Failed to fetch file");
+      const errorText = await response.text(); // Capture the error details from Google API
+      console.error("Failed to fetch file:", errorText);
+      throw new Error(`Failed to fetch file: ${errorText}`);
     }
 
     const data = await response.blob();
