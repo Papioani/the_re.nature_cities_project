@@ -4,6 +4,7 @@ import "./styles/globals.css";
 import styles from "./styles/layout.module.css";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import { ModalProvider } from "./context/ModalContext"; // Import the provider
 
 export const metadata: Metadata = {
   title: "Re.Nature Cities: Assessing Street Trees for Climate Adaptation",
@@ -44,15 +45,17 @@ export default function RootLayout({
       </head>
       <body className="antialiased flex flex-col min-h-screen w-full">
         {/*  <ScrollHandler /> */}
+
         <Navbar />
-        {/* For styles in globals.css, you don't use styles. You just use the regular class names directly (e.g., className="heroSection"). */}
-        <section className={styles.heroSection}></section>
+        <ModalProvider>
+          {/* For styles in globals.css, you don't use styles. You just use the regular class names directly (e.g., className="heroSection"). */}
+          <section className={styles.heroSection}></section>
 
-        {/* For styles in layout.module.css, you use styles because those class names are scoped locally to the component (e.g., className={styles.heroSection}). */}
-        <main className={`${styles.mainContent} flex-grow pt-20`}>
-          {children}
-        </main>
-
+          {/* For styles in layout.module.css, you use styles because those class names are scoped locally to the component (e.g., className={styles.heroSection}). */}
+          <main className={`${styles.mainContent} flex-grow pt-20`}>
+            {children}
+          </main>
+        </ModalProvider>
         <footer>
           {" "}
           <Footer />

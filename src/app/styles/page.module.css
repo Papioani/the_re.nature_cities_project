@@ -10,7 +10,7 @@
 @media (max-width: 480px) {
   /* Target small screens */
   .centeredHeading {
-    line-height: 1.5; /* Increase line-height for small screens */
+    line-height: 1.4; /* Increase line-height for small screens */
     padding: 1rem 0; /* Add some padding on top and bottom */
   }
 }
