@@ -3,12 +3,13 @@ import React, { FC, useState, useEffect, useRef, ReactNode } from "react";
 import styles from "./Deliverables.module.css";
 import Link from "next/link";
 import Modal from "../components/Modal";
+import { useModal } from "../context/ModalContext";
 
 const DeliverablesPage: FC = () => {
   const mainContentRef = useRef<HTMLElement>(null);
   const firstParagraphRef = useRef<HTMLParagraphElement>(null);
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [modalContent, setModalContent] = useState<string | null>(null);
+  // Access modal state and functions from context
+  const { modalOpen, modalContent, openModal, closeModal } = useModal();
 
   // Set focus to the main content on load
   useEffect(() => {
@@ -20,20 +21,6 @@ const DeliverablesPage: FC = () => {
     }
   }, []);
 
-  const openModal = (fileId: string) => {
-    console.log(`Opening modal with fileId: ${fileId}`);
-    setModalContent(fileId);
-    setModalOpen(true);
-  };
-  const closeModal = () => {
-    console.log("Closing modal");
-    setModalOpen(false);
-    setModalContent(null);
-  };
-  useEffect(() => {
-    console.log(`Modal open status: ${modalOpen}`);
-    console.log(`Modal content: ${modalContent}`);
-  }, [modalOpen, modalContent]);
   return (
     <section
       className="px-8 pb-10"
@@ -140,13 +127,6 @@ const DeliverablesPage: FC = () => {
           </tfoot>
         </table>
         {/* Modal Component */}
-        {modalContent && (
-          <Modal
-            isOpen={modalOpen}
-            onClose={closeModal}
-            fileId={modalContent || ""}
-          />
-        )}{" "}
       </div>
     </section>
   );

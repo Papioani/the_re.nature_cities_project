@@ -10,6 +10,7 @@ interface ModalProps {
 const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId }) => {
   const [fileUrl, setFileUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false);
 
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -40,6 +41,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId }) => {
       const fetchFile = async () => {
         try {
           setLoading(true);
+          setIsDataLoaded(false);
           const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
           console.log("API Key:", API_KEY);
           console.log(`Fetching file for fileId: ${fileId}`);
@@ -58,9 +60,11 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId }) => {
           console.log("File URL created:", fileUrl);
           setFileUrl(fileUrl);
           setLoading(false);
+          setIsDataLoaded(true); // Mark data as loaded
         } catch (error) {
           console.error("Error fetching file:", error);
           setLoading(false);
+          setIsDataLoaded(false);
         }
       };
 
@@ -68,18 +72,18 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId }) => {
     }
   }, [fileId]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !isDataLoaded) return null; // Only show modal when data is available and modal is open
 
   return (
     <div
-      className="absolute inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center"
+      className="absolute inset-x-0 bottom-0 top-16  flex justify-center items-end z-[2000]"
       role="dialog"
       aria-labelledby="deliverable-modal-title"
     >
       {/* Modal container */}
       <div
         ref={modalRef}
-        className="bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl relative max-h-[100vh] overflow-auto z-[2000]"
+        className="bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl relative max-h-[200vh] overflow-auto z-[2000] md:top-80"
       >
         <button
           className="absolute top-2 right-2 text-gray-500"
