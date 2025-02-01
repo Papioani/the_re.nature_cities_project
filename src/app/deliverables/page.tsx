@@ -1,15 +1,14 @@
 "use client";
-import React, { FC, useState, useEffect, useRef, ReactNode } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import styles from "./Deliverables.module.css";
 import Link from "next/link";
-import Modal from "../components/Modal";
 import { useModal } from "../context/ModalContext";
 
 const DeliverablesPage: FC = () => {
   const mainContentRef = useRef<HTMLElement>(null);
   const firstParagraphRef = useRef<HTMLParagraphElement>(null);
   // Access modal state and functions from context
-  const { modalOpen, modalContent, openModal, closeModal } = useModal();
+  const { openModal } = useModal();
 
   // Set focus to the main content on load
   useEffect(() => {
@@ -67,21 +66,42 @@ const DeliverablesPage: FC = () => {
                 </button>
               </td>
             </tr>
-            <tr>
+            <tr className={styles.deliverableRow}>
               <td className="px-4 py-2 font-semibold">D3.1.</td>
               <td className="px-4 py-2 ">
                 Evaluation of climate change effect on the built environment
               </td>
+              <td className={`px-4 py-2 ${styles.deliverableLink}`}>
+                <button
+                  onClick={() => openModal("1xi3RCLIqwWL5yTjPiUHiLoFeql9Aja0M")}
+                >
+                  View deliverable
+                </button>
+              </td>
             </tr>
-            <tr>
+            <tr className={styles.deliverableRow}>
               <td className="px-4 py-2 font-semibold">D4.1</td>
               <td className="px-4 py-2 ">
                 Selection of urban street trees types{" "}
               </td>
+              <td className={`px-4 py-2 ${styles.deliverableLink}`}>
+                <button
+                  onClick={() => openModal("1pTdys-Z7qRrmG-XvQXwdLwBSOIsWnQu5")}
+                >
+                  View deliverable
+                </button>
+              </td>
             </tr>
-            <tr>
+            <tr className={styles.deliverableRow}>
               <td className="px-4 py-2 font-semibold">D4.2.</td>
               <td className="px-4 py-2 ">LAI/LAD and albedo database</td>
+              <td className={`px-4 py-2 ${styles.deliverableLink}`}>
+                <button
+                  onClick={() => openModal("1L39hJMJPHgcm1wRM7CsEwxfeXLxMOyyu")}
+                >
+                  View deliverable
+                </button>
+              </td>
             </tr>
             <tr className={styles.deliverableRow}>
               <td className="px-4 py-2 font-semibold">D4.3.</td>

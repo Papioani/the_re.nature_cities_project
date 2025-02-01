@@ -22,6 +22,9 @@
   color: #2e4d2e; /* Darker blue on hover */
   text-decoration: underline; /* Remove underline on hover */
 }
+.deliverableLink button:hover {
+  text-decoration: underline;
+}
 .deliverableRow:hover {
   background-color: #d9e2cd; /* Light blue background on hover */
   cursor: pointer; /* Change cursor to pointer to indicate it's interactive */
