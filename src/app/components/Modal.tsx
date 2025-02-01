@@ -5,15 +5,16 @@ interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   fileId: string;
+  setLoading: (loading: boolean) => void; // Accept setLoading from parent
 }
 
-const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId }) => {
+const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
   const [fileUrl, setFileUrl] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
   const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false);
 
   const modalRef = useRef<HTMLDivElement>(null);
 
+  // !!!!!! The general rule is: any state or prop used inside the useEffect should go into the dependency array !!!!!!!!!!!!!!!!!!!
   // Close modal when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -32,19 +33,15 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId }) => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [isOpen, onClose]);
-  useEffect(() => {
-    console.log("Modal isOpen:", isOpen);
-    console.log("FileId received by modal:", fileId);
+  }, [isOpen, onClose, setLoading]); // React's eslint plugin requires you to list setLoading(a function) in the dependencies as safety mechanism to ensure that not using an old version of a function if it's being updated frequently.
 
+  useEffect(() => {
     if (fileId) {
       const fetchFile = async () => {
         try {
           setLoading(true);
           setIsDataLoaded(false);
           const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
-          console.log("API Key:", API_KEY);
-          console.log(`Fetching file for fileId: ${fileId}`);
 
           const response = await fetch(
             `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&key=${API_KEY}`
@@ -70,20 +67,20 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId }) => {
 
       fetchFile();
     }
-  }, [fileId]);
+  }, [fileId, setLoading]);
 
   if (!isOpen || !isDataLoaded) return null; // Only show modal when data is available and modal is open
 
   return (
     <div
-      className="absolute inset-x-0 bottom-0 top-16  flex justify-center items-end z-[2000]"
+      className="absolute inset-x-0 bottom-0 top-16 flex justify-center items-end z-[2000]"
       role="dialog"
       aria-labelledby="deliverable-modal-title"
     >
       {/* Modal container */}
       <div
         ref={modalRef}
-        className="bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl relative max-h-[200vh] overflow-auto z-[2000] md:top-80"
+        className="bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl relative max-h-[200vh] overflow-auto z-[2000] md:top-96"
       >
         <button
           className="absolute top-2 right-2 text-gray-500"
@@ -92,9 +89,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId }) => {
           ✖
         </button>
         <div className="overflow-hidden h-full">
-          {loading ? (
-            <p className="text-gray-600">Loading...</p>
-          ) : fileUrl ? (
+          {fileUrl ? (
             <iframe
               src={fileUrl}
               width="100%"
