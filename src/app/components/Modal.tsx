@@ -41,7 +41,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
         try {
           setLoading(true);
           setIsDataLoaded(false);
-          const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
+          const API_KEY = process.env.GOOGLE_API_KEY;
           console.log("API Key:", API_KEY);
           const response = await fetch(
             `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&key=${API_KEY}`
