@@ -263,7 +263,7 @@ const Navbar: React.FC = () => {
           aria-label={
             isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"
           }
-          aria-expanded={isMobileMenuOpen}
+          aria-expanded={isMobileMenuOpen ? "true" : "false"}
           aria-controls="mobile-menu" // Associates button with the menu
           onClick={toggleMobileMenu}
         >
@@ -292,7 +292,6 @@ const Navbar: React.FC = () => {
           styles.navbarLinks
         } md:flex flex-row md:flex-row  space-y-0 md:space-x-4 2xl:gap-6 md:items-start text-white mt-8 md:mt-0 `}
         role="menu" // Marks this as a menu container
-        aria-expanded={isMobileMenuOpen}
       >
         <Link href="/" className={styles.navLink} onClick={closeMobileMenu}>
           Home
@@ -323,7 +322,7 @@ const Navbar: React.FC = () => {
               <button
                 onClick={handleProjectOutlineClick} // Redirect to the project outline page
                 className={`${styles.navLink} inline-flex items-center space-x-2 p-2 `}
-                aria-expanded={isWorkDropdownOpen} // Reflect dropdown state
+                aria-expanded={isWorkDropdownOpen ? "true" : "false"} // Reflect dropdown state
                 aria-controls="workDropdownMenu"
                 id="project-outline-link"
               >

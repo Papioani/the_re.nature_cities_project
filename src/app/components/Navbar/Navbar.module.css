@@ -54,8 +54,10 @@
     align-items: flex-start; /* Adjust alignment */
     position: relative; /* Ensure that links stay within their container */
     padding-top: 4rem;
+    padding: 0.5rem;
   }
   .navbar {
+    flex-direction: row;
     padding: 0.5rem; /* Adjust padding for mobile */
     justify-content: space-between;
     position: fixed;
