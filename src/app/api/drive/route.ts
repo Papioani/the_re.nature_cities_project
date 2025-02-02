@@ -2,6 +2,11 @@
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
+  try {
+    console.log("API route hit"); // <-- This should always log when the function runs
+  } catch (error) {
+    console.error("Error before reaching logic:", error);
+  }
   const { searchParams } = new URL(request.url);
   const fileId = searchParams.get("fileId");
 
@@ -29,7 +34,10 @@ export async function GET(request: Request) {
 
     const data = await response.blob();
     return new NextResponse(data, {
-      headers: { "Content-Type": "application/pdf" },
+      headers: {
+        "Content-Type": "application/pdf",
+        "Cache-Control": "public, max-age=3600",
+      },
     });
   } catch (error) {
     console.error("Error fetching file:", error);
