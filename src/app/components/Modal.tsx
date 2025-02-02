@@ -49,15 +49,22 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
 
           const fileBlob = await response.blob();
           console.log("Blob type:", fileBlob.type);
-          const fileUrl = URL.createObjectURL(fileBlob);
+          // Create object URL only when the Blob is valid
+          if (fileBlob.type === "application/pdf") {
+            const fileUrl = URL.createObjectURL(fileBlob);
+            console.log("File URL created:", fileUrl);
+            setFileUrl(fileUrl);
+          } else {
+            console.error("Fetched file is not a valid PDF.");
+            setFileUrl(null); // In case the file is not a PDF, reset fileUrl
+          }
 
-          console.log("File URL created:", fileUrl);
-          setFileUrl(fileUrl);
           setLoading(false);
           /* setIsDataLoaded(true); */ // Mark data as loaded
         } catch (error) {
           console.error("Error fetching file:", error);
           setLoading(false);
+          setFileUrl(null); // Reset if there's an error
           /*  setIsDataLoaded(false); */
         }
       };
@@ -67,18 +74,14 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
   }, [fileId, setLoading]);
 
   useEffect(() => {
+    // Clean up the Blob URL only when the modal is closed
     return () => {
       if (fileUrl) {
-        URL.revokeObjectURL(fileUrl); // Clean up the object URL
+        console.log("Revoking file URL:", fileUrl);
+        URL.revokeObjectURL(fileUrl);
       }
     };
-  }, [fileUrl]);
-
-  useEffect(() => {
-    if (fileUrl) {
-      window.open(fileUrl); // Open the blob URL in a new tab to check if the PDF loads
-    }
-  }, [fileUrl]);
+  }, [fileUrl]); // Only run when fileUrl changes
 
   if (!isOpen || !fileUrl) return null;
 
