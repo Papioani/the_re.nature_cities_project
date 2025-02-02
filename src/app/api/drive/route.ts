@@ -22,6 +22,8 @@ export async function GET(request: Request) {
     const url = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&key=${apiKey}`; ///////
     console.log("API URL:", url); ////////
     const response = await fetch(url);
+    console.log("Response status:", response.status); // Log the status code
+    console.log("Content-Type:", response.headers.get("Content-Type"));
     const contentType = response.headers.get("Content-Type"); // Get the Content-Type header  ////
     console.log("Content-Type:", contentType); ///
     console.log("Response status:", response.status);
