@@ -44,10 +44,26 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
           const response = await fetch(`/api/drive?fileId=${fileId}`);
 
           if (!response.ok) {
-            throw new Error(`Failed to fetch file: ${response.statusText}`);
+            const errorText = await response.text();
+            throw new Error(`HTTP error ${response.status}: ${errorText}`);
           }
 
-          const fileBlob = await response.blob();
+          // Check for JSON errors even if response.ok is true
+          const contentType = response.headers.get("Content-Type");
+          if (contentType && contentType.includes("application/json")) {
+            try {
+              const data = await response.json();
+              if (data.error) {
+                // Check for an 'error' property in the JSON
+                throw new Error(data.error); // Throw the server's error
+              }
+            } catch (jsonError) {
+              // Handle JSON parsing errors or missing 'error' property
+              console.error("Error parsing JSON response:", jsonError);
+              throw new Error("Invalid JSON response from server.");
+            }
+          }
+          const fileBlob = (await response.blob()) as Blob;
           console.log("Blob type:", fileBlob.type);
           // Create object URL only when the Blob is valid
           if (fileBlob.type === "application/pdf") {
@@ -94,11 +110,17 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
       {/* Modal container */}
       <div
         ref={modalRef}
+        role="dialog"
         className="bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl relative max-h-[200vh] overflow-auto z-[2000] md:top-96"
       >
+        <h2 id="deliverable-modal-title" className="sr-only">
+          Modal Title (Add your title here)
+        </h2>{" "}
+        {/* Add a title element, visually hidden if necessary */}
         <button
           className="absolute top-2 right-2 text-gray-500"
           onClick={onClose}
+          aria-label="Close modal"
         >
           ✖
         </button>
