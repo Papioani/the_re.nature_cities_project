@@ -5,16 +5,21 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const fileId = searchParams.get("fileId");
 
+  console.log("Received request for fileId:", fileId);
+
   if (!fileId) {
     return NextResponse.json({ error: "File ID is required" }, { status: 400 });
   }
 
   try {
     const apiKey = process.env.GOOGLE_BACKEND_API_KEY; // Use backend API key
-    console.log("API Key:", apiKey);
-    const response = await fetch(
-      `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&key=${apiKey}`
-    );
+    console.log("USING API Key:", apiKey);
+    const url = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&key=${apiKey}`; ///////
+    console.log("API URL:", url); ////////
+    const response = await fetch(url);
+    const contentType = response.headers.get("Content-Type"); // Get the Content-Type header  ////
+    console.log("Content-Type:", contentType); ///
+    console.log("Response status:", response.status);
 
     if (!response.ok) {
       const errorText = await response.text(); // Capture the error details from Google API
