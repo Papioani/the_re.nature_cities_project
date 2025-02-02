@@ -10,7 +10,7 @@ interface ModalProps {
 
 const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
   const [fileUrl, setFileUrl] = useState<string | null>(null);
-  const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false);
+  /*   const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false); */
 
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -40,7 +40,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
       const fetchFile = async () => {
         try {
           setLoading(true);
-          setIsDataLoaded(false);
+          /*  setIsDataLoaded(false); */
           const response = await fetch(`/api/drive?fileId=${fileId}`);
 
           if (!response.ok) {
@@ -48,15 +48,17 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
           }
 
           const fileBlob = await response.blob();
+          console.log("Blob type:", fileBlob.type);
           const fileUrl = URL.createObjectURL(fileBlob);
+
           console.log("File URL created:", fileUrl);
           setFileUrl(fileUrl);
           setLoading(false);
-          setIsDataLoaded(true); // Mark data as loaded
+          /* setIsDataLoaded(true); */ // Mark data as loaded
         } catch (error) {
           console.error("Error fetching file:", error);
           setLoading(false);
-          setIsDataLoaded(false);
+          /*  setIsDataLoaded(false); */
         }
       };
 
@@ -72,7 +74,13 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
     };
   }, [fileUrl]);
 
-  if (!isOpen || !isDataLoaded) return null; // Only show modal when data is available and modal is open
+  useEffect(() => {
+    if (fileUrl) {
+      window.open(fileUrl); // Open the blob URL in a new tab to check if the PDF loads
+    }
+  }, [fileUrl]);
+
+  if (!isOpen || !fileUrl) return null;
 
   return (
     <div
