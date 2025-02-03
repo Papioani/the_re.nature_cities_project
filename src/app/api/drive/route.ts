@@ -67,7 +67,7 @@ export async function GET(request: Request) {
     return new NextResponse(data, {
       headers: {
         "Content-Type": "application/pdf",
-        "Cache-Control": "no-cache",
+        "Cache-Control": "public, max-age=3600",
         "Content-Disposition": "inline", // Crucial for displaying in iframe
       },
     });
