@@ -53,16 +53,35 @@ export async function GET(request: Request) {
     }
 
     const data = await response.blob();
+    console.log("Blob size:", data.size); // Check the size
+    console.log("Blob type:", data.type); // Should be "application/pdf"
+    if (data.type !== "application/pdf") {
+      console.error("Downloaded data is NOT a PDF!");
+      return NextResponse.json(
+        { error: "Invalid file type (not PDF)" },
+        { status: 500 }
+      );
+    }
+    const fileUrl = URL.createObjectURL(data); // Create URL after checks
+    console.log("File URL:", fileUrl); // Log the URL
     return new NextResponse(data, {
       headers: {
         "Content-Type": "application/pdf",
-        "Cache-Control": "public, max-age=3600",
+        "Cache-Control": "no-cache",
+        "Content-Disposition": "inline", // Crucial for displaying in iframe
       },
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Error fetching file:", error);
+    let errorMessage = "An unknown error occurred."; // Default message
+
+    if (error instanceof Error) {
+      errorMessage = error.message;
+    } else if (typeof error === "string") {
+      errorMessage = error;
+    }
     return NextResponse.json(
-      { error: "Internal Server Error" },
+      { error: `Error fetching file: ${errorMessage}` },
       { status: 500 }
     );
   }
