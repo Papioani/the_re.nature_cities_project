@@ -165,3 +165,4 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
 };
 
 export default Modal;
+
