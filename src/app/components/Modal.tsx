@@ -10,11 +10,9 @@ interface ModalProps {
 
 const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
   const [fileUrl, setFileUrl] = useState<string | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
-
   /*   const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false); */
-
   const modalRef = useRef<HTMLDivElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   // !!!!!! The general rule is: any state or prop used inside the useEffect should go into the dependency array !!!!!!!!!!!!!!!!!!!
   // Close modal when clicking outside
@@ -72,6 +70,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
             const fileUrl = URL.createObjectURL(fileBlob);
             console.log("File URL created:", fileUrl);
             setFileUrl(fileUrl);
+            console.log("fileUrl after setting:", fileUrl);
           } else {
             console.error("Fetched file is not a valid PDF.");
             setFileUrl(null); // In case the file is not a PDF, reset fileUrl
@@ -92,31 +91,34 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
   }, [fileId, setLoading]);
 
   useEffect(() => {
-    // Clean up the Blob URL only when the modal is closed
-    return () => {
-      if (fileUrl) {
-        console.log("Revoking file URL:", fileUrl);
-        URL.revokeObjectURL(fileUrl);
-      }
-    };
-  }, [fileUrl]); // Only run when fileUrl changes
+    console.log("iframeRef.current:", iframeRef.current);
+    if (fileUrl && iframeRef.current) {
+      const currentIframe = iframeRef.current; // Copy the ref value here
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // Adjust breakpoint as needed
-    };
+      currentIframe.src = fileUrl;
 
-    window.addEventListener("resize", handleResize);
-    handleResize(); // Initial check
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+      const handleLoad = () => {
+        console.log("Iframe loaded successfully");
+      };
 
-  const handleOpenInNewTab = () => {
-    if (fileUrl) {
-      window.open(fileUrl, "_blank");
-      onClose(); // Close the modal after opening
+      const handleError = (error: Event) => {
+        console.error("Iframe load error:", error);
+        // Handle the error, perhaps set an error state
+      };
+
+      currentIframe.addEventListener("load", handleLoad);
+      currentIframe.addEventListener("error", handleError);
+
+      return () => {
+        currentIframe.removeEventListener("load", handleLoad); // Use currentIframe
+        currentIframe.removeEventListener("error", handleError); // Use currentIframe
+        if (fileUrl) {
+          // Check if fileUrl is not null before revoking
+          URL.revokeObjectURL(fileUrl);
+        }
+      };
     }
-  };
+  }, [fileUrl]);
 
   if (!isOpen || !fileUrl) return null;
 
@@ -124,6 +126,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
     <div
       className="absolute inset-x-0 bottom-0 top-16 flex justify-center items-end z-[2000]"
       role="dialog"
+      aria-labelledby="deliverable-modal-title"
     >
       {/* Modal container */}
       <div
@@ -131,6 +134,10 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
         role="dialog"
         className="bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl relative max-h-[200vh] overflow-auto z-[2000] md:top-96"
       >
+        <h2 id="deliverable-modal-title" className="sr-only">
+          Modal Title
+        </h2>{" "}
+        {/* Add a title element, visually hidden if necessary */}
         <button
           className="absolute top-2 right-2 text-gray-500"
           onClick={onClose}
@@ -140,18 +147,14 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
         </button>
         <div className="overflow-hidden h-full">
           {fileUrl ? (
-            isMobile ? (
-              <div>
-                <button onClick={handleOpenInNewTab}>Open in New Tab</button>
-              </div>
-            ) : (
-              <iframe
-                src={fileUrl}
-                width="100%"
-                height="100%"
-                className="h-96 sm:h-[50vh] md:h-[70vh] lg:h-[80vh] xl:h-[90vh] rounded-lg border"
-              ></iframe>
-            )
+            <iframe
+              ref={iframeRef}
+              src={fileUrl}
+              width="100%"
+              height="100%"
+              /* sandbox="allow-same-origin allow-scripts" */
+              className="h-96 sm:h-[50vh] md:h-[70vh] lg:h-[80vh] xl:h-[90vh] rounded-lg border"
+            ></iframe>
           ) : (
             <p className="text-gray-600">Error loading file.</p>
           )}
@@ -162,3 +165,4 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
 };
 
 export default Modal;
+
