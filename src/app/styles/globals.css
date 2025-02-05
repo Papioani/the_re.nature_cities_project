@@ -11,7 +11,7 @@ html {
   font-size: 1rem; /* This will set 1rem = 16px */
   --background: #f8f9fa; /* Lightened background */
   --foreground: #333333; /* Darkened foreground for contrast */
-  --background-image: url("/background-forest.png"); /* defined this variable in your CSS like so: syntax retrieves the value of the custom property --background*/
+  /* --background-image: url("/background-forest.png"); */ /* defined this variable in your CSS like so: syntax retrieves the value of the custom property --background*/
 }
 
 @media (prefers-color-scheme: dark) {

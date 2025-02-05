@@ -49,7 +49,7 @@ const DeliverablesPage: FC = () => {
                   href="https://zenodo.org/records/14513140"
                   target="_blank"
                 >
-                  Go to deliverable
+                  View deliverable
                 </Link>
               </td>
             </tr>
@@ -73,7 +73,17 @@ const DeliverablesPage: FC = () => {
               </td>
               <td className={`px-4 py-2 ${styles.deliverableLink}`}>
                 <button
-                  onClick={() => openModal("1xi3RCLIqwWL5yTjPiUHiLoFeql9Aja0M")}
+                  onClick={() => {
+                    const isMobile = window.innerWidth <= 768;
+                    const pdfUrl =
+                      "https://drive.google.com/file/d/1xi3RCLIqwWL5yTjPiUHiLoFeql9Aja0M/view";
+
+                    if (isMobile) {
+                      window.open(pdfUrl, "_blank"); // Redirect to Google Drive on mobile
+                    } else {
+                      openModal("1xi3RCLIqwWL5yTjPiUHiLoFeql9Aja0M"); // Open modal on desktop
+                    }
+                  }}
                 >
                   View deliverable
                 </button>
@@ -111,7 +121,7 @@ const DeliverablesPage: FC = () => {
                   href="https://zenodo.org/records/14442184"
                   target="_blank"
                 >
-                  Go to deliverable
+                  View deliverable
                 </Link>
               </td>
             </tr>
