@@ -60,7 +60,17 @@ const DeliverablesPage: FC = () => {
               </td>
               <td className={`px-4 py-2 ${styles.deliverableLink}`}>
                 <button
-                  onClick={() => openModal("1vMgajDuBjWnoUVVDVh7XebpVfH_2FJek")}
+                  onClick={() => {
+                    const isMobile = window.innerWidth <= 768;
+                    const pdfUrl =
+                      "https://drive.google.com/file/d/1vMgajDuBjWnoUVVDVh7XebpVfH_2FJek/view";
+
+                    if (isMobile) {
+                      window.open(pdfUrl, "_blank"); // Redirect to Google Drive on mobile
+                    } else {
+                      openModal("1vMgajDuBjWnoUVVDVh7XebpVfH_2FJek"); // Open modal on desktop
+                    }
+                  }}
                 >
                   View deliverable
                 </button>
@@ -96,7 +106,17 @@ const DeliverablesPage: FC = () => {
               </td>
               <td className={`px-4 py-2 ${styles.deliverableLink}`}>
                 <button
-                  onClick={() => openModal("1pTdys-Z7qRrmG-XvQXwdLwBSOIsWnQu5")}
+                  onClick={() => {
+                    const isMobile = window.innerWidth <= 768;
+                    const pdfUrl =
+                      "https://drive.google.com/file/d/1pTdys-Z7qRrmG-XvQXwdLwBSOIsWnQu5/view";
+
+                    if (isMobile) {
+                      window.open(pdfUrl, "_blank"); // Redirect to Google Drive on mobile
+                    } else {
+                      openModal("1pTdys-Z7qRrmG-XvQXwdLwBSOIsWnQu5"); // Open modal on desktop
+                    }
+                  }}
                 >
                   View deliverable
                 </button>
@@ -107,7 +127,17 @@ const DeliverablesPage: FC = () => {
               <td className="px-4 py-2 ">LAI/LAD and albedo database</td>
               <td className={`px-4 py-2 ${styles.deliverableLink}`}>
                 <button
-                  onClick={() => openModal("1L39hJMJPHgcm1wRM7CsEwxfeXLxMOyyu")}
+                  onClick={() => {
+                    const isMobile = window.innerWidth <= 768;
+                    const pdfUrl =
+                      "https://drive.google.com/file/d/1L39hJMJPHgcm1wRM7CsEwxfeXLxMOyyu/view";
+
+                    if (isMobile) {
+                      window.open(pdfUrl, "_blank"); // Redirect to Google Drive on mobile
+                    } else {
+                      openModal("1L39hJMJPHgcm1wRM7CsEwxfeXLxMOyyu"); // Open modal on desktop
+                    }
+                  }}
                 >
                   View deliverable
                 </button>
