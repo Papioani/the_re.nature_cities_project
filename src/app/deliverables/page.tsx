@@ -40,7 +40,7 @@ const DeliverablesPage: FC = () => {
           </thead>
           <tbody>
             <tr className={styles.deliverableRow}>
-              <td className="px-4 py-2 font-semibold">D1.1. </td>
+              <td className="px-4 py-2 font-semibold text-[#2e4d2e]">D1.1. </td>
               <td className="px-4 py-2 ">
                 Case study areas and simulations days
               </td>
@@ -54,7 +54,7 @@ const DeliverablesPage: FC = () => {
               </td>
             </tr>
             <tr className={styles.deliverableRow}>
-              <td className="px-4 py-2 font-semibold">D2.1.</td>
+              <td className="px-4 py-2 font-semibold text-[#2e4d2e]">D2.1.</td>
               <td className="px-4 py-2 ">
                 Microclimate evaluation for current and future conditions
               </td>
@@ -77,7 +77,7 @@ const DeliverablesPage: FC = () => {
               </td>
             </tr>
             <tr className={styles.deliverableRow}>
-              <td className="px-4 py-2 font-semibold">D3.1.</td>
+              <td className="px-4 py-2 font-semibold text-[#2e4d2e]">D3.1.</td>
               <td className="px-4 py-2 ">
                 Evaluation of climate change effect on the built environment
               </td>
@@ -100,7 +100,7 @@ const DeliverablesPage: FC = () => {
               </td>
             </tr>
             <tr className={styles.deliverableRow}>
-              <td className="px-4 py-2 font-semibold">D4.1</td>
+              <td className="px-4 py-2 font-semibold text-[#2e4d2e]">D4.1</td>
               <td className="px-4 py-2 ">
                 Selection of urban street trees types{" "}
               </td>
@@ -123,7 +123,7 @@ const DeliverablesPage: FC = () => {
               </td>
             </tr>
             <tr className={styles.deliverableRow}>
-              <td className="px-4 py-2 font-semibold">D4.2.</td>
+              <td className="px-4 py-2 font-semibold text-[#2e4d2e]">D4.2.</td>
               <td className="px-4 py-2 ">LAI/LAD and albedo database</td>
               <td className={`px-4 py-2 ${styles.deliverableLink}`}>
                 <button
@@ -144,7 +144,7 @@ const DeliverablesPage: FC = () => {
               </td>
             </tr>
             <tr className={styles.deliverableRow}>
-              <td className="px-4 py-2 font-semibold">D4.3.</td>
+              <td className="px-4 py-2 font-semibold text-[#2e4d2e]">D4.3.</td>
               <td className="px-4 py-2 ">Drag coefficients database</td>
               <td className={`px-4 py-2 ${styles.deliverableLink}`}>
                 <Link
@@ -156,27 +156,27 @@ const DeliverablesPage: FC = () => {
               </td>
             </tr>
             <tr>
-              <td className="px-4 py-2 font-semibold">D5.1.</td>
+              <td className="px-4 py-2 font-semibold text-[#2e4d2e]">D5.1.</td>
               <td className="px-4 py-2 ">Impact of NBS on microclimate</td>
             </tr>
             <tr>
-              <td className="px-4 py-2 font-semibold">D5.2.</td>
+              <td className="px-4 py-2 font-semibold text-[#2e4d2e]">D5.2.</td>
               <td className="px-4 py-2 ">
                 Impact of NBS on building performance and NVP
               </td>
             </tr>
             <tr>
-              <td className="px-4 py-2 font-semibold">D5.3.</td>
+              <td className="px-4 py-2 font-semibold text-[#2e4d2e]">D5.3.</td>
               <td className="px-4 py-2 ">
                 Impact of NBS on outdoor comfort and air quality
               </td>
             </tr>
             <tr>
-              <td className="px-4 py-2 font-semibold">D6.1.</td>
+              <td className="px-4 py-2 font-semibold text-[#2e4d2e]">D6.1.</td>
               <td className="px-4 py-2 ">Final report</td>
             </tr>
             <tr>
-              <td className="px-4 py-2 font-semibold">D6.2.</td>
+              <td className="px-4 py-2 font-semibold text-[#2e4d2e]">D6.2.</td>
               <td className="px-4 py-2 ">Interim report</td>
             </tr>
           </tbody>

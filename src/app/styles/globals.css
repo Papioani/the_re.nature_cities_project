@@ -115,12 +115,12 @@ ul {
 }
 
 .section-divider {
-  border-top: 0.07rem solid rgba(0, 0, 0, 0.3); /* Light gray line */
+  border-top: 0.07rem solid rgba(28, 61, 90, 0.8); /* Light gray line */
   margin: 2rem 0 2rem 0; /* Space around the line */
   width: 15%;
 }
 .section-divider2 {
-  border-top: 0.07rem solid rgba(0, 0, 0, 0.2); /* Light gray line */
+  border-top: 0.07rem solid rgba(28, 61, 90, 0.8); /* Light gray line */
   margin: 0 0; /* Space around the line */
   width: 50%;
   margin-left: auto;
@@ -128,7 +128,7 @@ ul {
 .partner-link {
   display: inline;
   margin: 0;
-  color: #556b2f; /* Dark Olive Green */
+  color: /* #556b2f; Dark Olive Green */ #2e4d2e;
   text-decoration: underline;
   font-weight: bold; /* Bold font weight */
   transition: all 0.3s ease; /* Smooth transition */

@@ -3,6 +3,9 @@
   font-size: 1rem; /* Matches body font size */
   color: var(--foreground); /* Matches the general text color */
 }
+.custom-td {
+  color: #2e4d2e;
+}
 .deliverablesLine::after {
   content: "";
   display: block;
@@ -11,7 +14,7 @@
   background: rgba(28, 61, 90, 0.8); /* Color of the line */
 }
 .deliverableLink {
-  color: #556b2f; /* Link color, e.g., blue */
+  color: #2e4d2e; /* Link color, e.g., blue */
   text-decoration: none; /* Underline to indicate it's a link */
   font-weight: 500; /* Slightly bold for emphasis */
   font-weight: bold;
@@ -19,7 +22,7 @@
 }
 
 .deliverableLink:hover {
-  color: #2e4d2e; /* Darker blue on hover */
+  color: #2e4d2e;
   text-decoration: underline; /* Remove underline on hover */
 }
 .deliverableLink button:hover {
