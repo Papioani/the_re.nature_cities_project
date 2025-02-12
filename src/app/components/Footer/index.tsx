@@ -100,7 +100,7 @@ const Footer: React.FC = () => {
             </p>
 
             <p id="modal-description" className="font-normal">
-              <span className="text-xl font-semibold text-[#556b2f]">
+              <span className="text-xl font-semibold text-[#2e4d2e]">
                 Stella Tsoka
               </span>
               <br />

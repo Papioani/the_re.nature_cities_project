@@ -39,7 +39,7 @@
 }
 .orcidLink {
   text-decoration: none;
-  color: #556b2f;
+  color: #2e4d2e; /*  #556b2f;  */
 }
 .orcidLink:hover {
   text-decoration: underline;

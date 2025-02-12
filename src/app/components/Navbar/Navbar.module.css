@@ -16,7 +16,7 @@
 }
 .navbar a:hover {
   text-decoration: wavy;
-  transform: scale(1.05); /* Slightly enlarge on hover for effect */
+  transform: scale(1.03); /* Slightly enlarge on hover for effect */
   transition: background-color 0.3s ease;
   background-color: #c5c5af; /* rgba(255, 255, 255, 0.1) /////// */
 }
@@ -90,7 +90,12 @@
   display: flex;
   text-align: start;
   z-index: 20;
-  color: #556b2f; /* ffffff   333333  2e4d2e  /////// */
+  color: rgba(
+    28,
+    61,
+    90,
+    0.8
+  ); /* #356335; */ /* ffffff   556b2f 333333  2e4d2e  /////// */
   font-size: 1rem;
   display: block;
   white-space: nowrap;
@@ -108,7 +113,7 @@
   position: fixed;
   background-color: white;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-  color: #556b2f;
+  color: /* #556b2f; */ #2e4d2e;
   padding: 0.5rem;
   font-weight: bold;
   border-radius: 0.25rem;

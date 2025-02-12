@@ -1,6 +1,11 @@
 .footerBackground {
   position: sticky;
-  background-color: #708090; /*  1c3d5a 585858 #a8a8a8;  #4b4b4b;  #708090; */
+  background-color: rgba(
+    28,
+    61,
+    90,
+    0.8
+  ); /*  556b2f  708090 1c3d5a 585858 #a8a8a8;  #4b4b4b;  #708090; */
   display: flex;
   justify-content: space-between;
   align-items: center;
