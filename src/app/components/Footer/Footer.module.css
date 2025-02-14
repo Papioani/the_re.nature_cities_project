@@ -24,6 +24,10 @@
   inset: 0;
   z-index: -1; /* Place it behind the footer content */
   pointer-events: none;
+  background-image: url("/background-forest.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
 }
 .footerLink {
   font-weight: bold; /* Bold font weight */
