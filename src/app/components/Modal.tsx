@@ -4,15 +4,15 @@ import React, { FC, useState, useEffect, useRef } from "react";
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  fileId: string;
+  fileId: string | null;
   setLoading: (loading: boolean) => void; // Accept setLoading from parent
 }
 
 const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
   const [fileUrl, setFileUrl] = useState<string | null>(null);
-  /*   const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false); */
   const modalRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [loadError, setLoadError] = useState<boolean>(false); // State for load errors
 
   // !!!!!! The general rule is: any state or prop used inside the useEffect should go into the dependency array !!!!!!!!!!!!!!!!!!!
   // Close modal when clicking outside
@@ -33,65 +33,62 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [isOpen, onClose, setLoading]); // React's eslint plugin requires you to list setLoading(a function) in the dependencies as safety mechanism to ensure that not using an old version of a function if it's being updated frequently.
+  }, [isOpen, onClose]); // React's eslint plugin requires you to list setLoading(a function) in the dependencies as safety mechanism to ensure that not using an old version of a function if it's being updated frequently.
 
   useEffect(() => {
-    if (fileId) {
-      const fetchFile = async () => {
-        try {
-          setLoading(true);
-          /*  setIsDataLoaded(false); */
-          const response = await fetch(`/api/drive?fileId=${fileId}`);
+    const fetchFile = async () => {
+      if (!fileId) return; // Exit if fileId is null
 
-          if (!response.ok) {
-            const errorText = await response.text();
-            throw new Error(`HTTP error ${response.status}: ${errorText}`);
-          }
+      setLoading(true);
+      setLoadError(false); // Reset load error state
 
-          // Check for JSON errors even if response.ok is true
-          const contentType = response.headers.get("Content-Type");
-          if (contentType && contentType.includes("application/json")) {
-            try {
-              const data = await response.json();
-              if (data.error) {
-                // Check for an 'error' property in the JSON
-                throw new Error(data.error); // Throw the server's error
-              }
-            } catch (jsonError) {
-              // Handle JSON parsing errors or missing 'error' property
-              console.error("Error parsing JSON response:", jsonError);
-              throw new Error("Invalid JSON response from server.");
-            }
-          }
-          const fileBlob = (await response.blob()) as Blob;
-          console.log("Blob type:", fileBlob.type);
-          // Create object URL only when the Blob is valid
-          if (fileBlob.type === "application/pdf") {
-            const fileUrl = URL.createObjectURL(fileBlob);
-            console.log("File URL created:", fileUrl);
-            setFileUrl(fileUrl);
-            console.log("fileUrl after setting:", fileUrl);
-          } else {
-            console.error("Fetched file is not a valid PDF.");
-            setFileUrl(null); // In case the file is not a PDF, reset fileUrl
-          }
+      try {
+        const response = await fetch(`/api/drive?fileId=${fileId}`);
 
-          setLoading(false);
-          /* setIsDataLoaded(true); */ // Mark data as loaded
-        } catch (error) {
-          console.error("Error fetching file:", error);
-          setLoading(false);
-          setFileUrl(null); // Reset if there's an error
-          /*  setIsDataLoaded(false); */
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`HTTP error ${response.status}: ${errorText}`);
         }
-      };
 
-      fetchFile();
-    }
+        // Check for JSON errors even if response.ok is true
+        const contentType = response.headers.get("Content-Type");
+        if (contentType && contentType.includes("application/json")) {
+          try {
+            const data = await response.json();
+            if (data.error) {
+              // Check for an 'error' property in the JSON
+              throw new Error(data.error); // Throw the server's error
+            }
+          } catch (jsonError) {
+            // Handle JSON parsing errors or missing 'error' property
+            console.error("Error parsing JSON response:", jsonError);
+            throw new Error("Invalid JSON response from server.");
+          }
+        }
+        const fileBlob = (await response.blob()) as Blob;
+
+        // Create object URL only when the Blob is valid
+        if (fileBlob.type === "application/pdf") {
+          const fileUrl = URL.createObjectURL(fileBlob);
+          setFileUrl(fileUrl);
+        } else {
+          console.error("Fetched file is not a valid PDF.");
+          setFileUrl(null); // In case the file is not a PDF, reset fileUrl
+          setLoadError(true); // Set load error state
+        }
+      } catch (error) {
+        console.error("Error fetching file:", error);
+        setFileUrl(null); // Reset if there's an error
+        setLoadError(true); // Set load error state
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFile();
   }, [fileId, setLoading]);
 
   useEffect(() => {
-    console.log("iframeRef.current:", iframeRef.current);
     if (fileUrl && iframeRef.current) {
       const currentIframe = iframeRef.current; // Copy the ref value here
 
@@ -103,7 +100,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
 
       const handleError = (error: Event) => {
         console.error("Iframe load error:", error);
-        // Handle the error, perhaps set an error state
+        setLoadError(true);
       };
 
       currentIframe.addEventListener("load", handleLoad);
@@ -154,9 +151,12 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
               height="100%"
               /* sandbox="allow-same-origin allow-scripts" */
               className="h-96 sm:h-[50vh] md:h-[70vh] lg:h-[80vh] xl:h-[90vh] rounded-lg border"
-            ></iframe>
-          ) : (
+              title="PDF Viewer" // for accessibility
+            />
+          ) : loadError ? (
             <p className="text-gray-600">Error loading file.</p>
+          ) : (
+            <p className="text-gray-600">Loading PDF...</p>
           )}
         </div>
       </div>
@@ -165,4 +165,3 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
 };
 
 export default Modal;
-
