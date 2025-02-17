@@ -678,11 +678,13 @@ const Navbar: React.FC = () => {
         </Link>
         <Link
           href="/the-action"
-          className={styles.navLink}
+          className={`${styles.navLink} mobileMarginTop my-2`}
           onClick={closeMobileMenu}
         >
-          <span className="block 2xl:inline">The</span>
-          <span className="block 2xl:inline 2xl:ml-2">Action</span>
+          <span>
+            <span>The</span>
+            <span style={{ display: "block" }}>Action</span>
+          </span>
         </Link>
       </div>
 
