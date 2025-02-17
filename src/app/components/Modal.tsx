@@ -37,7 +37,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
 
   useEffect(() => {
     const fetchFile = async () => {
-      if (!fileId) return; // Exit if fileId is null
+      if (!fileId) return; // prevent the useEffect from running at all until a valid fileId is available
 
       setLoading(true);
       setLoadError(false); // Reset load error state
