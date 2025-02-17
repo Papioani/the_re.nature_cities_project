@@ -59,7 +59,7 @@ const Navbar: React.FC = () => {
   // Check for mobile screen size on initial render and when window resizes
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 768); // Threshold for mobile screens
+      setIsMobile(window.innerWidth <= 1024); // Threshold for mobile screens
     };
 
     checkScreenSize(); // Check on initial render
@@ -257,7 +257,8 @@ const Navbar: React.FC = () => {
         </Link>
       </header>
       {/* Hamburger Icon (visible on mobile) */}
-      <div className="hamburger-container md:hidden">
+
+      <div className="hamburger-container lg:hidden">
         <button
           className="text-2xl text-white"
           aria-label={
@@ -289,23 +290,25 @@ const Navbar: React.FC = () => {
       <div
         id="mobile-menu"
         className={`${isMobileMenuOpen ? "block" : "hidden"} ${
-          styles.navbarLinks
-        } md:flex flex-row md:flex-row  space-y-0 md:space-x-4 2xl:gap-6 md:items-start text-white mt-8 md:mt-0 `}
-        role="menu" // Marks this as a menu container
+          isMobile
+            ? "absolute inset-x-0 top-full bg-[#e3e3cb] text-white p-4 z-50 "
+            : "md:flex flex-row space-y-0 md:space-x-4 2xl:gap-6 md:items-start text-white mt-8 md:mt-0"
+        } ${styles.navbarLinks}`}
+        role="menu"
       >
         <Link href="/" className={styles.navLink} onClick={closeMobileMenu}>
           Home
         </Link>
-        <div className="relative inline-block">
-          <Link
-            href="/the-re.nature-cities-project"
-            className={styles.navLink}
-            onClick={closeMobileMenu}
-          >
-            <span>The Re.Nature</span>
-            <span className="block">Cities Project</span>
-          </Link>
-        </div>
+
+        <Link
+          href="/the-re.nature-cities-project"
+          className={styles.navLink}
+          onClick={closeMobileMenu}
+        >
+          <span>The Re.Nature</span>
+          <span className="block">Cities Project</span>
+        </Link>
+
         <Link
           href="/partners"
           className={styles.navLink}
@@ -321,12 +324,12 @@ const Navbar: React.FC = () => {
             <div className="relative inline-block">
               <button
                 onClick={handleProjectOutlineClick} // Redirect to the project outline page
-                className={`${styles.navLink} inline-flex items-center space-x-2 p-2 `}
+                className={`${styles.navLink} inline-flex items-center space-x-2`}
                 aria-expanded={isWorkDropdownOpen ? "true" : "false"} // Reflect dropdown state
                 aria-controls="workDropdownMenu"
                 id="project-outline-link"
               >
-                <span className="mr-2">Project Outline</span>
+                <span>Project Outline</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -351,7 +354,7 @@ const Navbar: React.FC = () => {
               <div
                 ref={dropdownRef}
                 id="workDropdownMenu"
-                className="absolute left-0 mt-2 bg-white shadow-md rounded-md max-w-[90%] sm:max-w-[350px]"
+                className="absolute left-0 top-full mt-2 bg-white shadow-md rounded-md max-w-[90%] sm:max-w-[350px] "
                 role="region"
                 aria-labelledby="project-outline-link"
               >
@@ -502,8 +505,8 @@ const Navbar: React.FC = () => {
                   />
                 </svg>
               </Link>
-              {/* Dropdown for desktop */}
 
+              {/* Dropdown for desktop */}
               {isWorkDropdownOpen && (
                 <div
                   role="menu"
@@ -682,6 +685,7 @@ const Navbar: React.FC = () => {
           <span className="block 2xl:inline 2xl:ml-2">Action</span>
         </Link>
       </div>
+
       {/* Tooltip that will appear on hover */}
       {tooltip.show && (
         <div
