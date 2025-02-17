@@ -258,7 +258,7 @@ const Navbar: React.FC = () => {
       </header>
       {/* Hamburger Icon (visible on mobile) */}
 
-      <div className="hamburger-container lg:hidden">
+      <div className={`hamburger-container ${isMobile ? "block" : "hidden"}`}>
         <button
           className="text-2xl text-white"
           aria-label={
