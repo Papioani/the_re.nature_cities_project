@@ -99,7 +99,7 @@
     z-index: 22;
   }
   .mobileMarginTop {
-    margin-top: 0.5rem; /* or whatever value you want */
+    column-gap: 0.25rem;
   }
 }
 
