@@ -687,7 +687,7 @@ const Navbar: React.FC = () => {
           className={`${styles.navLink} mobileMarginTop mt-2`}
           onClick={closeMobileMenu}
         >
-          <span className="inline-flex lg:flex-col items-center text-start gap-x-1">
+          <span className="inline-flex items-center text-start gap-x-1">
             <span className="w-full text-start">The</span>
             <span>Action</span>
           </span>
