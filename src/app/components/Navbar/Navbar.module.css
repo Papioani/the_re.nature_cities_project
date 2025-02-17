@@ -89,20 +89,20 @@
     width: auto; /* Avoid it growing too large */
     padding: 1rem 0;
   }
-  .hamburger-container {
-    display: block;
-    position: absolute;
-    top: 1rem;
-    right: 1rem; /* Position it at the top-right */
-    font-size: 1.5rem;
-    color: white;
-    z-index: 22;
-  }
+
   .mobileMarginTop {
     column-gap: 0.25rem;
   }
 }
-
+.hamburger-container {
+  display: block;
+  position: absolute;
+  top: 1rem;
+  right: 1rem; /* Position it at the top-right */
+  font-size: 1.5rem;
+  color: white;
+  z-index: 22;
+}
 .navLink {
   margin-top: 0;
   font-weight: bolder;
