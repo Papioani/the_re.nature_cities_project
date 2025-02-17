@@ -42,6 +42,25 @@
   }
 }
 
+@media (min-width: 768px) and (max-width: 1024px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+  .navbarLinks {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  #workDropdownMenu {
+    position: absolute;
+    left: 0;
+    top: 100%; /* Places it exactly below the button */
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    width: max-content; /* Adjust width based on content */
+  }
+}
 @media (max-width: 768px) {
   .navbarLinks {
     flex-direction: column; /* Stack vertically on small screens */
