@@ -302,20 +302,24 @@ const Navbar: React.FC = () => {
 
         <Link
           href="/the-re.nature-cities-project"
-          className={styles.navLink}
+          className={`${styles.navLink} mobileMarginTop mt-2`}
           onClick={closeMobileMenu}
         >
-          <span>The Re.Nature</span>
-          <span className="block">Cities Project</span>
+          <span className="inline-flex lg:flex-col items-center text-start gap-x-1">
+            <span>The Re.Nature</span>
+            <span className="block">Cities Project</span>
+          </span>
         </Link>
 
         <Link
           href="/partners"
-          className={styles.navLink}
+          className={`${styles.navLink} mobileMarginTop mt-2`}
           onClick={closeMobileMenu}
         >
-          <span>Partners &</span>
-          <span className="block">Research Team</span>
+          <span className="inline-flex lg:flex-col items-center text-start gap-x-1">
+            <span className="w-full text-start">Partners & </span>
+            <span className="block"> Research Team</span>
+          </span>
         </Link>
 
         {/* Conditionally render for mobile */}
@@ -324,7 +328,7 @@ const Navbar: React.FC = () => {
             <div className="relative inline-block">
               <button
                 onClick={handleProjectOutlineClick} // Redirect to the project outline page
-                className={`${styles.navLink} inline-flex items-center space-x-2`}
+                className={`${styles.navLink} mobileMarginTop mt-2 inline-flex items-center space-x-2`}
                 aria-expanded={isWorkDropdownOpen ? "true" : "false"} // Reflect dropdown state
                 aria-controls="workDropdownMenu"
                 id="project-outline-link"
@@ -655,7 +659,7 @@ const Navbar: React.FC = () => {
         )}
         <Link
           href="/wind-tunnel"
-          className={styles.navLink}
+          className={`${styles.navLink} mobileMarginTop mt-2`}
           onClick={closeMobileMenu}
         >
           <span>Wind Tunnel, LAI/LAD</span>
@@ -663,27 +667,29 @@ const Navbar: React.FC = () => {
         </Link>
         <Link
           href="/deliverables"
-          className={styles.navLink}
+          className={`${styles.navLink} mobileMarginTop mt-2`}
           onClick={closeMobileMenu}
         >
           Deliverables
         </Link>
         <Link
           href="/publications-announcements"
-          className={styles.navLink}
+          className={`${styles.navLink} mobileMarginTop mt-2`}
           onClick={closeMobileMenu}
         >
-          <span className="centerText">Publications & Conference</span>
-          <span style={{ display: "block" }}>Announcements</span>
+          <span className="w-full text-start">Publications & Conference</span>
+          <span style={{ display: "block" }} className="w-full text-start">
+            Announcements
+          </span>
         </Link>
         <Link
           href="/the-action"
-          className={`${styles.navLink} mobileMarginTop my-2`}
+          className={`${styles.navLink} mobileMarginTop mt-2`}
           onClick={closeMobileMenu}
         >
-          <span>
-            <span>The</span>
-            <span style={{ display: "block" }}>Action</span>
+          <span className="inline-flex lg:flex-col items-center text-start gap-x-1">
+            <span className="w-full text-start">The</span>
+            <span>Action</span>
           </span>
         </Link>
       </div>
