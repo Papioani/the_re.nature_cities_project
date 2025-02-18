@@ -13,7 +13,6 @@
 }
 @media (max-width: 768px) {
   .heroSection {
-    background-attachment: scroll;
     height: auto; /* Allow natural height scaling */
   }
   .mainContent {
@@ -22,15 +21,6 @@
   }
 }
 .heroSection {
-  background-image: url("/background-forest2.png");
-  background-size: cover; /* Show the entire image */
-  background-repeat: no-repeat; /* Prevent tiling */
-  background-position: center; /* Center the image horizontally and vertically */
-  background-attachment: fixed;
-  z-index: 2;
-  position: sticky;
-  top: 0;
-  transition: opacity 0.3s ease-in-out;
   height: 350px;
   position: relative; /* .hero-section as a reference point for any absolutely positioned elements within it, like ::before. */
   overflow: hidden; /* Prevents content overflow */
