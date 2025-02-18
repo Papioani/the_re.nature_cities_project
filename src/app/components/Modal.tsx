@@ -1,5 +1,7 @@
 // /src/components/Modal.tsx
 import React, { FC, useState, useEffect, useRef } from "react";
+import { ResizableBox } from "react-resizable";
+import "react-resizable/css/styles.css";
 
 interface ModalProps {
   isOpen: boolean;
@@ -15,6 +17,18 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
   const [loadError, setLoadError] = useState<boolean>(false); // State for load errors
 
   // !!!!!! The general rule is: any state or prop used inside the useEffect should go into the dependency array !!!!!!!!!!!!!!!!!!!
+
+  // State variables to store the max width and height of the resizable box
+  const [maxWidth, setMaxWidth] = useState(600);
+  const [maxHeight, setMaxHeight] = useState(400);
+
+  // useEffect to update maxWidth and maxHeight when the component is mounted
+  useEffect(() => {
+    // Set the max width and height based on the window's inner dimensions
+    setMaxWidth(window.innerWidth - 20);
+    setMaxHeight(window.innerHeight - 20);
+  }, []); // Empty dependency array ensures this only runs on mount (client-side)
+
   // Close modal when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -121,44 +135,45 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
 
   return (
     <div
-      className="absolute inset-x-0 bottom-0 top-16 flex justify-center items-end z-[2000]"
+      className="fixed inset-0 flex justify-center items-center z-[2000]"
       role="dialog"
       aria-labelledby="deliverable-modal-title"
     >
-      {/* Modal container */}
-      <div
-        ref={modalRef}
-        role="dialog"
-        className="bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl relative max-h-[200vh] overflow-auto z-[2000] md:top-96"
-      >
-        <h2 id="deliverable-modal-title" className="sr-only">
-          Modal Title
-        </h2>{" "}
-        {/* Add a title element, visually hidden if necessary */}
-        <button
-          className="absolute top-2 right-2 text-gray-500"
-          onClick={onClose}
-          aria-label="Close modal"
+      <div className=" w-full h-full flex justify-center items-center">
+        {" "}
+        {/* Center ResizableBox */}
+        <ResizableBox
+          width={600}
+          height={600}
+          minConstraints={[400, 300]}
+          maxConstraints={[maxWidth, maxHeight]}
+          resizeHandles={["se", "sw", "ne", "nw"]}
+          className="bg-white p-6 rounded-lg shadow-lg relative"
         >
-          ✖
-        </button>
-        <div className="overflow-hidden h-full">
-          {fileUrl ? (
-            <iframe
-              ref={iframeRef}
-              src={fileUrl}
-              width="100%"
-              height="100%"
-              /* sandbox="allow-same-origin allow-scripts" */
-              className="h-96 sm:h-[50vh] md:h-[70vh] lg:h-[80vh] xl:h-[90vh] rounded-lg border"
-              title="PDF Viewer" // for accessibility
-            />
-          ) : loadError ? (
-            <p className="text-gray-600">Error loading file.</p>
-          ) : (
-            <p className="text-gray-600">Loading PDF...</p>
-          )}
-        </div>
+          <button
+            className="absolute top-2 right-2 text-gray-500"
+            onClick={onClose}
+            aria-label="Close modal"
+          >
+            ✖
+          </button>
+          <div className="h-full w-full">
+            {fileUrl ? (
+              <iframe
+                ref={iframeRef}
+                src={fileUrl}
+                width="100%"
+                height="90%"
+                className="rounded-lg border"
+                title="PDF Viewer"
+              />
+            ) : loadError ? (
+              <p className="text-gray-600">Error loading file.</p>
+            ) : (
+              <p className="text-gray-600">Loading PDF...</p>
+            )}
+          </div>
+        </ResizableBox>
       </div>
     </div>
   );
