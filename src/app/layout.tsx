@@ -5,6 +5,8 @@ import styles from "./styles/layout.module.css";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import { ModalProvider } from "./context/ModalContext";
+import Image from "next/image";
+import Background from "./components/Background";
 
 export const metadata: Metadata = {
   title: "Re.Nature Cities: Assessing Street Trees for Climate Adaptation",
@@ -43,10 +45,20 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon.ico" />
       </head>
       <body className="antialiased flex flex-col min-h-screen w-full">
+        <Background />
         <Navbar />
         <ModalProvider>
           {/* For styles in globals.css, you don't use styles. You just use the regular class names directly (e.g., className="heroSection"). */}
-          <section className={styles.heroSection} />
+          <section className={styles.heroSection}>
+            <Image
+              src="/background-forest2.png" // Path to your image
+              alt="Hero Background" // Alt text for accessibility
+              fill // Important for hero images, fills parent
+              style={{ objectFit: "cover" }} // Maintains aspect ratio
+              priority // Prioritize loading (above the fold)
+              quality={75} // Adjust quality as needed (0-100)
+            />
+          </section>
 
           {/* For styles in layout.module.css, you use styles because those class names are scoped locally to the component (e.g., className={styles.heroSection}). */}
           <main className={`${styles.mainContent} flex-grow pt-20`}>

@@ -11,14 +11,12 @@ html {
   font-size: 1rem; /* This will set 1rem = 16px */
   --background: #f8f9fa; /* Lightened background */
   --foreground: #333333; /* Darkened foreground for contrast */
-  /* --background-image: url("/background-forest.png"); */ /* defined this variable in your CSS like so: syntax retrieves the value of the custom property --background*/
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #121212; /* Dark mode background */
     --foreground: #e0e0e0; /* Lightened foreground for dark mode */
-    --background-image: url("/background-forest.png"); /* Dark mode background image */
   }
 }
 /* -- prefix:  variables that allow you to store values that you can reuse throughout your stylesheet.  */
@@ -32,8 +30,7 @@ body {
   background: var(
     --background
   ); /* syntax retrieves the value of the custom property --background */
-  background-size: cover; /* Ensure the background image covers the entire body */
-  background-image: var(--background-image);
+
   /* font-family: "Helvetica Neue", Arial, sans-serif; */
   font-family: Arial, sans-serif;
   line-height: 1.5rem;
@@ -97,14 +94,12 @@ ul {
 .line {
   width: 30%;
   height: 0.25rem;
-  /* background-color: #1c3d5a; */
   background-color: /* #556b2f; */ #2e4d2e;
   margin: 2rem 0;
 }
 .line2 {
   width: 20%;
   height: 0.2rem;
-  /* background-color: #1c3d5a; */
   background-color: /* #556b2f; */ #2e4d2e;
   margin: 2rem 0;
 }
