@@ -33,13 +33,18 @@ const Navbar: React.FC = () => {
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+    if (!dropdownRef.current || !event.target) return;
+    const targetElement = event.target as HTMLElement;
+    // if click is inside dropdown OR on the arrow itself
     if (
-      dropdownRef.current &&
-      !dropdownRef.current.contains(event.target as Node)
+      dropdownRef.current.contains(targetElement) ||
+      targetElement.closest("svg") // Prevents closing if clicking the arrow
     ) {
-      setIsWorkDropdownOpen(false);
-      setIsRotated(false);
+      return;
     }
+
+    setIsWorkDropdownOpen(false);
+    setIsRotated(false);
   };
   useEffect(() => {
     if (isWorkDropdownOpen) {
@@ -53,7 +58,7 @@ const Navbar: React.FC = () => {
     // Cleanup on unmount or when dropdown state changes
     return () => {
       document.removeEventListener("click", handleClickOutside);
-      document.addEventListener("touchstart", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
     };
   }, [isWorkDropdownOpen]); // Depend on `isDropdownOpen`
   // Check for mobile screen size on initial render and when window resizes
@@ -222,7 +227,14 @@ const Navbar: React.FC = () => {
     setIsWorkDropdownOpen(false); // Close dropdown after link click
     setTooltip((prevState) => ({ ...prevState, show: false })); // Close tooltip after link click
   };
-
+  useEffect(() => {
+    console.log(
+      "Updated State -> Rotated:",
+      isRotated,
+      "Dropdown:",
+      isWorkDropdownOpen
+    );
+  }, [isRotated, isWorkDropdownOpen]);
   // Handle the span click (navigate to project outline page)
   const handleProjectOutlineClick = () => {
     window.location.href = "/project-outline"; // Redirect to the project outline page
@@ -231,8 +243,9 @@ const Navbar: React.FC = () => {
   // Handle the arrow click (toggle dropdown)
   const handleDropdownClick = (event: React.MouseEvent) => {
     event.stopPropagation(); // Prevent triggering other click events
-    setIsWorkDropdownOpen((prev) => !prev); // Toggle the dropdown visibility
     setIsRotated((prev) => !prev);
+    setIsWorkDropdownOpen((prev) => !prev); // Toggle the dropdown visibility
+    console.log("Rotated:", !isRotated, "Dropdown:", !isWorkDropdownOpen);
   };
 
   return (
