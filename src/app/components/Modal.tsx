@@ -163,7 +163,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
                 ref={iframeRef}
                 src={fileUrl}
                 width="100%"
-                height="90%"
+                height="100%"
                 className="rounded-lg border"
                 title="PDF Viewer"
               />
