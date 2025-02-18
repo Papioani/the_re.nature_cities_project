@@ -50,7 +50,11 @@
     flex-wrap: wrap;
     justify-content: space-between;
   }
-
+  .relative.inline-block {
+    /* Select the parent element */
+    position: relative; /* Make it a positioning context */
+    display: inline-block; /* Keep the inline-block display */
+  }
   #workDropdownMenu {
     position: absolute;
     left: 0;
@@ -89,7 +93,11 @@
     width: auto; /* Avoid it growing too large */
     padding: 1rem 0;
   }
-
+  .relative.inline-block {
+    /* Select the parent element */
+    position: relative; /* Make it a positioning context */
+    display: inline-block; /* Keep the inline-block display */
+  }
   .mobileMarginTop {
     column-gap: 0.25rem;
   }

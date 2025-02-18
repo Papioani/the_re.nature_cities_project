@@ -158,8 +158,21 @@ a:focus {
   display: inline-block;
   border-radius: 2px; /* Optional: Slight rounding for a softer look */
 }
+#workDropdownMenu {
+  position: absolute;
+  left: 0;
+  top: 100%; /* Or top-full if you are using Tailwind */
+  margin-top: 0.5rem; /* Adjust as needed */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 0.5rem; /* Or rounded-md if you are using Tailwind */
+  max-height: 50vh;
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Hide horizontal scrollbar if it appears*/
+}
 #workDropdownMenu ul {
   margin-bottom: 0;
+  padding: 0;
 }
 #workDropdownMenu ul li a:active {
   background-color: rgba(
