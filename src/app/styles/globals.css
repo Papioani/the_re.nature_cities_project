@@ -11,7 +11,7 @@ html {
   font-size: 1rem; /* This will set 1rem = 16px */
   --background: #f8f9fa; /* Lightened background */
   --foreground: #333333; /* Darkened foreground for contrast */
-  --background-image: url("/background-forest.png"); /* defined this variable in your CSS like so: syntax retrieves the value of the custom property --background*/
+  /* --background-image: url("/background-forest.png"); */ /* defined this variable in your CSS like so: syntax retrieves the value of the custom property --background*/
 }
 
 @media (prefers-color-scheme: dark) {
@@ -54,7 +54,9 @@ body {
   body {
     font-size: 0.875rem;
     padding: 20px;
-    width: 100%;
+    width: 100vw; /* Make it as wide as the viewport */
+    max-width: 100%; /* Prevent overflow issues */
+    overflow-x: hidden;
   }
   :root {
     font-size: 1rem; /* Increases base font size for larger screens */

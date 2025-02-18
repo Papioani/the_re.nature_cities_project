@@ -1,10 +1,5 @@
 .navbar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
   left: 0;
-  top: 0;
   background-color: #e3e3cb; /*  556b2f  ///// */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
   z-index: 20;
@@ -12,12 +7,12 @@
   line-height: 1.5rem;
   height: auto;
   flex-wrap: nowrap;
-  padding-right: 0.6rem;
+  padding-right: 0.7rem;
 }
 .navbar a:hover {
   text-decoration: wavy;
   transform: scale(1.03); /* Slightly enlarge on hover for effect */
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   background-color: #c5c5af; /* rgba(255, 255, 255, 0.1) /////// */
 }
 
@@ -27,6 +22,12 @@
 }
 .logoSection img {
   cursor: pointer; /* Pointer cursor on hover over the image */
+}
+.navbarLinks {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  flex-wrap: nowrap;
 }
 @media (min-width: 1440px) {
   .logoSection {
@@ -41,55 +42,74 @@
   }
 }
 
-.navbarLinks {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end; /* Align all items to the top */
-  gap: 0.4rem;
-  flex-wrap: nowrap;
+@media (min-width: 768px) and (max-width: 1024px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+  .navbarLinks {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  #workDropdownMenu {
+    position: absolute;
+    left: 0;
+    top: 100%; /* Places it exactly below the button */
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    width: max-content; /* Adjust width based on content */
+  }
 }
 @media (max-width: 768px) {
   .navbarLinks {
     flex-direction: column; /* Stack vertically on small screens */
-    align-items: flex-start; /* Adjust alignment */
+    align-items: flex-end; /* Adjust alignment */
     position: relative; /* Ensure that links stay within their container */
     padding-top: 4rem;
     padding: 0.5rem;
   }
   .navbar {
+    display: flex;
     flex-direction: row;
     padding: 0.5rem; /* Adjust padding for mobile */
     justify-content: space-between;
-    position: fixed;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .mobile-link {
+    position: relative;
+    z-index: 50;
   }
   .logoSection {
-    /*  position: absolute; this gives error  */ /* Keep the logo at the top left */
+    position: relative;
     top: 0;
     left: 0;
     z-index: 21;
     width: auto; /* Avoid it growing too large */
     padding: 1rem 0;
   }
-  .hamburger-container {
-    display: block;
-    position: absolute;
-    top: 1rem;
-    right: 1rem; /* Position it at the top-right */
-    font-size: 1.5rem;
-    color: white;
-    z-index: 22;
+
+  .mobileMarginTop {
+    column-gap: 0.25rem;
   }
 }
+.hamburger-container {
+  display: block;
+  position: absolute;
+  top: 1rem;
+  right: 1rem; /* Position it at the top-right */
+  font-size: 1.5rem;
+  color: white;
+  z-index: 22;
+}
 .navLink {
-  text-decoration: none;
   margin-top: 0;
   font-weight: bolder;
-  padding: 0 0 0.125rem 0; /* Converted 2px to 0.125rem */
+  padding: 0 0 0.125rem 0;
   border-radius: 0.25rem;
   transition: color 0.3s ease, transform 0.2s ease;
-  display: flex;
   text-align: start;
-  z-index: 20;
   color: rgba(
     28,
     61,

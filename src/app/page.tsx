@@ -10,14 +10,14 @@ const Home: React.FC = () => {
     <section className="flex flex-col" ref={mainContentRef}>
       <main className="flex flex-col gap-4 items-start sm:items-start p-8 pb-6">
         <div className="w-full flex justify-center items-start gap-4">
-          <div className="section-divider"></div> {/* Line on the left */}
+          <div className="section-divider" /> {/* Line on the left */}
           <h1
             className={`${styles.centeredHeading} flex flex-col items-center text-center `}
           >
             {" "}
             Welcome to Re.Nature Cities
           </h1>
-          <div className="section-divider"></div> {/* Line on the right */}
+          <div className="section-divider" /> {/* Line on the right */}
         </div>
 
         <p className=" leading-relaxed mb-6  border-[#059669] pl-2">
