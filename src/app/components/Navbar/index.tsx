@@ -325,153 +325,156 @@ const Navbar: React.FC = () => {
         {/* Conditionally render for mobile */}
         {isMobile ? (
           <>
-            <div className="relative inline-block">
-              <button
-                onClick={handleProjectOutlineClick} // Redirect to the project outline page
-                className={`${styles.navLink} mobileMarginTop mt-2 inline-flex items-center space-x-2`}
-                aria-expanded={isWorkDropdownOpen ? "true" : "false"} // Reflect dropdown state
-                aria-controls="workDropdownMenu"
-                id="project-outline-link"
-              >
-                <span>Project Outline</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  fill="currentColor"
-                  className={`bi bi-chevron-down transition-transform duration-300 ${
-                    isRotated ? "rotate-180" : ""
-                  } text-[#fffff] `}
-                  viewBox="0 0 16 16"
-                  onClick={handleDropdownClick} // Open the dropdown on arrow click
-                  aria-hidden="true"
+            <div className="relative">
+              <div className="relative inline-block">
+                <button
+                  onClick={handleProjectOutlineClick} // Redirect to the project outline page
+                  className={`${styles.navLink} mobileMarginTop mt-2 inline-flex items-center space-x-2`}
+                  aria-expanded={isWorkDropdownOpen ? "true" : "false"} // Reflect dropdown state
+                  aria-controls="workDropdownMenu"
+                  id="project-outline-link"
                 >
-                  <path
-                    fillRule="evenodd"
-                    d="M1.5 5.5a.5.5 0 0 1 .707-.707L8 9.793l5.793-5.793a.5.5 0 0 1 .707.707l-6 6a.5.5 0 0 1-.707 0l-6-6z"
-                  />
-                </svg>
-              </button>
-            </div>
-            {/* Dropdown for mobile */}
-            {isWorkDropdownOpen && (
-              <div
-                ref={dropdownRef}
-                id="workDropdownMenu"
-                className="absolute left-0 top-full mt-2 bg-white shadow-md rounded-md max-w-[90%] sm:max-w-[350px] "
-                role="region"
-                aria-labelledby="project-outline-link"
-              >
-                <ul>
-                  {/* Dropdown items for mobile */}
-                  <li
-                    style={{
-                      backgroundColor: "rgba(107, 139, 59, 0.2)", // RGBA for #556b2f with opacity 0.5
-                      transition: "background-color 0.3s ease",
-                    }}
+                  <span>Project Outline</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    className={`bi bi-chevron-down transition-transform duration-300 ${
+                      isRotated ? "rotate-180" : ""
+                    } text-[#fffff] `}
+                    viewBox="0 0 16 16"
+                    onClick={handleDropdownClick} // Open the dropdown on arrow click
+                    aria-hidden="true"
                   >
-                    <a
-                      href="#work1"
-                      className="mobile-link"
-                      onClick={() => {
-                        closeMobileMenu();
-                        handleProjectOutlineClick();
-                      }}
-                    >
-                      Work Package 1: Definition of the Case Study Areas and
-                      Simulation Days
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#work2"
-                      className="mobile-link"
-                      onClick={() => {
-                        closeMobileMenu();
-                        handleProjectOutlineClick();
-                      }}
-                    >
-                      Work Package 2: Microclimate Evaluation on the Basis of
-                      Climate Change
-                    </a>
-                  </li>
-                  <li
-                    style={{
-                      backgroundColor: "rgba(107, 139, 59, 0.2)", // RGBA for #556b2f with opacity 0.5
-                      transition: "background-color 0.3s ease",
-                    }}
-                  >
-                    <a
-                      href="#work3"
-                      onClick={() => {
-                        closeMobileMenu();
-                        handleProjectOutlineClick();
-                      }}
-                    >
-                      Work Package 3: Evaluation of Climate Change Effect on the
-                      Built Environment
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#work4"
-                      onClick={() => {
-                        closeMobileMenu();
-                        handleProjectOutlineClick();
-                      }}
-                    >
-                      Work Package 4: Experimental Assessment of Street Trees as
-                      Urban NBS
-                    </a>
-                  </li>
-                  <li
-                    style={{
-                      backgroundColor: "rgba(107, 139, 59, 0.2)", // RGBA for #556b2f with opacity 0.5
-                      transition: "background-color 0.3s ease",
-                    }}
-                  >
-                    <a
-                      href="#work5"
-                      onClick={() => {
-                        closeMobileMenu();
-                        handleProjectOutlineClick();
-                      }}
-                    >
-                      Work Package 5: Evaluation of the Environmental and Energy
-                      Effect of Street Trees
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#work6"
-                      onClick={() => {
-                        closeMobileMenu();
-                        handleProjectOutlineClick();
-                      }}
-                    >
-                      Work Package 6: Project Management
-                    </a>
-                  </li>
-                  <li
-                    style={{
-                      backgroundColor: "rgba(107, 139, 59, 0.2)", // RGBA for #556b2f with opacity 0.5
-                      transition: "background-color 0.3s ease",
-                    }}
-                  >
-                    <a
-                      href="#work7"
-                      onClick={() => {
-                        closeMobileMenu();
-                        handleProjectOutlineClick();
-                      }}
-                    >
-                      Work Package 7: Dissemination and Communication of the
-                      Results
-                    </a>
-                  </li>
-                </ul>
+                    <path
+                      fillRule="evenodd"
+                      d="M1.5 5.5a.5.5 0 0 1 .707-.707L8 9.793l5.793-5.793a.5.5 0 0 1 .707.707l-6 6a.5.5 0 0 1-.707 0l-6-6z"
+                    />
+                  </svg>
+                </button>
               </div>
-            )}
+              {/* Dropdown for mobile */}
+              {isWorkDropdownOpen && (
+                <div
+                  ref={dropdownRef}
+                  id="workDropdownMenu"
+                  className="absolute left-0 top-full mt-2 bg-white shadow-md rounded-md max-w-[90%] sm:max-w-[350px]"
+                  style={{ width: "100vw" }}
+                  role="region"
+                  aria-labelledby="project-outline-link"
+                >
+                  <ul>
+                    {/* Dropdown items for mobile */}
+                    <li
+                      style={{
+                        backgroundColor: "rgba(107, 139, 59, 0.2)", // RGBA for #556b2f with opacity 0.5
+                        transition: "background-color 0.3s ease",
+                      }}
+                    >
+                      <a
+                        href="#work1"
+                        className="mobile-link"
+                        onClick={() => {
+                          closeMobileMenu();
+                          handleProjectOutlineClick();
+                        }}
+                      >
+                        Work Package 1: Definition of the Case Study Areas and
+                        Simulation Days
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#work2"
+                        className="mobile-link"
+                        onClick={() => {
+                          closeMobileMenu();
+                          handleProjectOutlineClick();
+                        }}
+                      >
+                        Work Package 2: Microclimate Evaluation on the Basis of
+                        Climate Change
+                      </a>
+                    </li>
+                    <li
+                      style={{
+                        backgroundColor: "rgba(107, 139, 59, 0.2)", // RGBA for #556b2f with opacity 0.5
+                        transition: "background-color 0.3s ease",
+                      }}
+                    >
+                      <a
+                        href="#work3"
+                        onClick={() => {
+                          closeMobileMenu();
+                          handleProjectOutlineClick();
+                        }}
+                      >
+                        Work Package 3: Evaluation of Climate Change Effect on
+                        the Built Environment
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#work4"
+                        onClick={() => {
+                          closeMobileMenu();
+                          handleProjectOutlineClick();
+                        }}
+                      >
+                        Work Package 4: Experimental Assessment of Street Trees
+                        as Urban NBS
+                      </a>
+                    </li>
+                    <li
+                      style={{
+                        backgroundColor: "rgba(107, 139, 59, 0.2)", // RGBA for #556b2f with opacity 0.5
+                        transition: "background-color 0.3s ease",
+                      }}
+                    >
+                      <a
+                        href="#work5"
+                        onClick={() => {
+                          closeMobileMenu();
+                          handleProjectOutlineClick();
+                        }}
+                      >
+                        Work Package 5: Evaluation of the Environmental and
+                        Energy Effect of Street Trees
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#work6"
+                        onClick={() => {
+                          closeMobileMenu();
+                          handleProjectOutlineClick();
+                        }}
+                      >
+                        Work Package 6: Project Management
+                      </a>
+                    </li>
+                    <li
+                      style={{
+                        backgroundColor: "rgba(107, 139, 59, 0.2)", // RGBA for #556b2f with opacity 0.5
+                        transition: "background-color 0.3s ease",
+                      }}
+                    >
+                      <a
+                        href="#work7"
+                        onClick={() => {
+                          closeMobileMenu();
+                          handleProjectOutlineClick();
+                        }}
+                      >
+                        Work Package 7: Dissemination and Communication of the
+                        Results
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
           </>
         ) : (
           <>
