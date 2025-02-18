@@ -14,13 +14,21 @@
   background: rgba(28, 61, 90, 0.8); /* Color of the line */
 }
 .deliverableLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #2e4d2e; /* Link color, e.g., blue */
   text-decoration: none; /* Underline to indicate it's a link */
   font-weight: 500; /* Slightly bold for emphasis */
   font-weight: bold;
   transition: color 0.3s; /* Smooth transition for hover effect */
 }
-
+.deliverableLink a,
+.deliverableLink button {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
 .deliverableLink:hover {
   color: #2e4d2e;
   text-decoration: underline; /* Remove underline on hover */

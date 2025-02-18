@@ -10,15 +10,10 @@ const Footer: React.FC = () => {
 
   // Reference to the modal content
   const modalRef = useRef<HTMLDivElement>(null);
-  // Function to open the modal
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
 
-  // Function to close the modal
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   // Close modal when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -39,6 +34,7 @@ const Footer: React.FC = () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [isModalOpen]);
+
   return (
     <footer className={styles.footerBackground} aria-label="Footer">
       <button
@@ -71,15 +67,17 @@ const Footer: React.FC = () => {
             width={500} // specify width
             height={300}
             style={{ objectFit: "contain" }}
+            priority // faster loading of key images
           />
         </div>
         <div className={styles.footerImage} aria-label="Greece 2.0 logo">
           <Image
             src="/Ellada2.0.jpg"
-            alt="image of Greece2.0"
+            alt="Greece2.0 logo"
             width={500} // specify width
             height={300}
             style={{ objectFit: "contain" }}
+            priority
           />
         </div>
       </div>
@@ -116,7 +114,7 @@ const Footer: React.FC = () => {
                 Department of Civil Engineering,
               </Link>{" "}
               <Link
-                href="https://www.civil.upatras.gr/?lang=en"
+                href="https://www.upatras.gr/en"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.contactLink}
