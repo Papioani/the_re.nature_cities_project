@@ -61,9 +61,12 @@
   list-style: none; /* Removes the default bullet */
 }
 .windPart:nth-child(odd) {
-  padding: 1rem;
-
+  /*  padding: 1rem; */
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
   transition: box-shadow 0.3s ease;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 .windLine::before {
   content: "";
@@ -78,4 +81,7 @@
 
   border-radius: 5px;
   transition: box-shadow 0.3s ease;
+}
+.NTUAimageWithPadding {
+  padding: 0.5rem;
 }
