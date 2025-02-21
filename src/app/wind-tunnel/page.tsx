@@ -76,7 +76,7 @@ const WindTunnel: React.FC = () => {
               </li>
             </ul>
           </div>
-          <div className={styles.NTUAimage}>
+          <div className={`${styles.NTUAimage} ${styles.NTUAimageWithPadding}`}>
             <Image
               src="/WIND TUN.jpg"
               alt="Photo of the tree sample"
