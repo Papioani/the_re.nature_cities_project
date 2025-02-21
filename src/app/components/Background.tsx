@@ -10,7 +10,13 @@ export default function Background() {
         src="/background-forest.png"
         alt="Background"
         fill
-        style={{ objectFit: "cover", opacity: 0.6 }}
+        style={{
+          objectFit: "cover",
+          opacity: 1.2,
+          maskImage: "linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))",
+        }}
         quality={75}
         priority
       />
