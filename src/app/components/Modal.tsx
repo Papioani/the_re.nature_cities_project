@@ -166,6 +166,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
                 height="100%"
                 className="rounded-lg border"
                 title="PDF Viewer"
+                loading="lazy"
               />
             ) : loadError ? (
               <p className="text-gray-600">Error loading file.</p>
