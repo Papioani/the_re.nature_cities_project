@@ -56,8 +56,13 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
       setLoading(true);
       setLoadError(false); // Reset load error state
 
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds timeout
+
       try {
-        const response = await fetch(`/api/drive?fileId=${fileId}`);
+        const response = await fetch(`/api/drive?fileId=${fileId}`, {
+          signal: controller.signal,
+        });
 
         if (!response.ok) {
           const errorText = await response.text();
@@ -95,6 +100,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
         setFileUrl(null); // Reset if there's an error
         setLoadError(true); // Set load error state
       } finally {
+        clearTimeout(timeoutId);
         setLoading(false);
       }
     };
