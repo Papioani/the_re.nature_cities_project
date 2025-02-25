@@ -18,16 +18,24 @@
   box-sizing: border-box;
 }
 
-.footerBackground::before {
+/* .footerBackground::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1; /* Place it behind the footer content */
+  z-index: -1;
   pointer-events: none;
   background-image: url("/background-forest.webp");
   background-size: cover;
   background-position: center;
   opacity: 0.2;
+} */
+.footerBackgroundImage {
+  position: absolute; /* Position it behind the content */
+  inset: 0; /* Cover the entire footer */
+  z-index: -1; /* Send it behind the content */
+  pointer-events: none;
+  content: "";
+  background-position: center;
 }
 .footerLink {
   font-weight: bold; /* Bold font weight */

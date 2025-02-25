@@ -37,6 +37,17 @@ const Footer: React.FC = () => {
 
   return (
     <footer className={styles.footerBackground} aria-label="Footer">
+      <div className={styles.footerBackgroundImage}>
+        <Image
+          src="/background-forest.webp" // The path to your background image
+          alt="Footer Background"
+          layout="fill" // Make it fill the container
+          objectFit="cover" // Ensure the image covers the entire area
+          quality={50} // Adjust quality as needed
+          priority // Load it first as it's the hero image
+          style={{ opacity: 0.2 }} // Add opacity for a similar effect
+        />
+      </div>
       <button
         onClick={openModal}
         className={`${styles.footerLink} flex space-x-2 text-white transition-colors duration-300`}
