@@ -41,11 +41,10 @@ const Footer: React.FC = () => {
         <Image
           src="/background-forest.webp" // The path to your background image
           alt="Footer Background"
-          layout="fill" // Make it fill the container
-          objectFit="cover" // Ensure the image covers the entire area
+          fill // Make it fill the container
           quality={50} // Adjust quality as needed
           priority // Load it first as it's the hero image
-          style={{ opacity: 0.2 }} // Add opacity for a similar effect
+          style={{ opacity: 0.2, objectFit: "cover" }} // Add opacity for a similar effect
         />
       </div>
       <button
