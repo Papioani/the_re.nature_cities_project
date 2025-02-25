@@ -24,7 +24,7 @@
   inset: 0;
   z-index: -1; /* Place it behind the footer content */
   pointer-events: none;
-  background-image: url("/background-forest.png");
+  background-image: url("/background-forest.jpg");
   background-size: cover;
   background-position: center;
   opacity: 0.2;
