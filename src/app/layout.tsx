@@ -51,7 +51,7 @@ export default function RootLayout({
           {/* For styles in globals.css, you don't use styles. You just use the regular class names directly (e.g., className="heroSection"). */}
           <section className={styles.heroSection}>
             <Image
-              src="/background-forest2.png" // Path to your image
+              src="/background-forest2.webp" // Path to your image
               alt="Hero Background" // Alt text for accessibility
               fill // Important for hero images, fills parent
               style={{ objectFit: "cover" }} // Maintains aspect ratio
