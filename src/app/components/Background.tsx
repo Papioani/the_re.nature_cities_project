@@ -7,7 +7,7 @@ export default function Background() {
       {" "}
       {/* z-[-1] to place it behind other content */}
       <Image
-        src="/background-forest.jpg"
+        src="/background-forest.webp"
         alt="Background"
         fill
         style={{
