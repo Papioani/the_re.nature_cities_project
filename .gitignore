@@ -40,3 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 src/app/drive-to-gcs-function/*.json
+
+# dist
+/dist/
+
+# json
+*.json
