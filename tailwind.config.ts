@@ -4,6 +4,7 @@ const config: Config = {
   content: [
     // Paths to your pages, components, and other relevant files in the src directory
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "!./node_modules/**/*",
     "./src/app/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/deliverables/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/publications-announcements/**/*.{js,ts,jsx,tsx,mdx}",
