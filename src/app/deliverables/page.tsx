@@ -1,7 +1,8 @@
 "use client";
-import React, { FC, useEffect, useRef } from "react";
+import React, { FC, useEffect, useState, useRef } from "react";
 import styles from "./Deliverables.module.css";
 import Link from "next/link";
+import { getFileUrl } from "../../lib/gcs";
 import { useModal } from "../context/ModalContext";
 
 const DeliverablesPage: FC = () => {
@@ -9,6 +10,34 @@ const DeliverablesPage: FC = () => {
   const firstParagraphRef = useRef<HTMLParagraphElement>(null);
   // Access modal state and functions from context
   const { openModal } = useModal();
+  const [deliverableUrls, setDeliverableUrls] = useState<{
+    [key: string]: string;
+  }>({});
+
+  useEffect(() => {
+    async function fetchUrls() {
+      const fileNames: { [key: string]: string } = {
+        "Microclimate_evaluation_for_current_and_future_conditions.pdf":
+          "Microclimate_evaluation_for_current_and_future_conditions.pdf",
+        "Evaluation_of_climate_change_effect_on_the_built_environment.pdf":
+          "Evaluation_of_climate_change_effect_on_the_built_environment.pdf",
+        "Selection_of_urban_street_trees_types.pdf":
+          "Selection_of_urban_street_trees_types.pdf",
+        "LAI_LAD_and_albedo_database.pdf": "LAI_LAD_and_albedo_database.pdf",
+      };
+
+      const urls: { [key: string]: string } = {};
+
+      for (const key in fileNames) {
+        const url = await getFileUrl(fileNames[key]);
+        if (url) {
+          urls[key] = url;
+        }
+      }
+      setDeliverableUrls(urls);
+    }
+    fetchUrls();
+  }, []);
 
   // Set focus to the main content on load
   useEffect(() => {
@@ -63,12 +92,14 @@ const DeliverablesPage: FC = () => {
                   onClick={() => {
                     const isMobile = window.innerWidth <= 768;
                     const pdfUrl =
-                      "https://drive.google.com/file/d/1vMgajDuBjWnoUVVDVh7XebpVfH_2FJek/view";
+                      deliverableUrls[
+                        "Microclimate_evaluation_for_current_and_future_conditions.pdf"
+                      ];
 
                     if (isMobile) {
                       window.open(pdfUrl, "_blank"); // Redirect to Google Drive on mobile
                     } else {
-                      openModal("1vMgajDuBjWnoUVVDVh7XebpVfH_2FJek"); // Open modal on desktop
+                      openModal(pdfUrl); // Open modal on desktop
                     }
                   }}
                 >
@@ -86,12 +117,14 @@ const DeliverablesPage: FC = () => {
                   onClick={() => {
                     const isMobile = window.innerWidth <= 768;
                     const pdfUrl =
-                      "https://drive.google.com/file/d/1xi3RCLIqwWL5yTjPiUHiLoFeql9Aja0M/view";
+                      deliverableUrls[
+                        "Evaluation_of_climate_change_effect_on_the_built_environment.pdf"
+                      ];
 
                     if (isMobile) {
                       window.open(pdfUrl, "_blank"); // Redirect to Google Drive on mobile
                     } else {
-                      openModal("1xi3RCLIqwWL5yTjPiUHiLoFeql9Aja0M"); // Open modal on desktop
+                      openModal(pdfUrl); // Open modal on desktop
                     }
                   }}
                 >
@@ -109,12 +142,14 @@ const DeliverablesPage: FC = () => {
                   onClick={() => {
                     const isMobile = window.innerWidth <= 768;
                     const pdfUrl =
-                      "https://drive.google.com/file/d/1pTdys-Z7qRrmG-XvQXwdLwBSOIsWnQu5/view";
+                      deliverableUrls[
+                        "Selection_of_urban_street_trees_types.pdf"
+                      ];
 
                     if (isMobile) {
                       window.open(pdfUrl, "_blank"); // Redirect to Google Drive on mobile
                     } else {
-                      openModal("1pTdys-Z7qRrmG-XvQXwdLwBSOIsWnQu5"); // Open modal on desktop
+                      openModal(pdfUrl); // Open modal on desktop
                     }
                   }}
                 >
@@ -130,12 +165,12 @@ const DeliverablesPage: FC = () => {
                   onClick={() => {
                     const isMobile = window.innerWidth <= 768;
                     const pdfUrl =
-                      "https://drive.google.com/file/d/1L39hJMJPHgcm1wRM7CsEwxfeXLxMOyyu/view";
+                      deliverableUrls["LAI_LAD_and_albedo_database.pdf"];
 
                     if (isMobile) {
                       window.open(pdfUrl, "_blank"); // Redirect to Google Drive on mobile
                     } else {
-                      openModal("1L39hJMJPHgcm1wRM7CsEwxfeXLxMOyyu"); // Open modal on desktop
+                      openModal(pdfUrl); // Open modal on desktop
                     }
                   }}
                 >
