@@ -104,7 +104,7 @@ const DeliverablesPage: FC = () => {
         id: "D4.1",
         title: "Selection of urban street tree types",
         fileName: deliverableUrls.find(
-          (file) => file.name === "Selection_of_urban_street_trees_types.pdf"
+          (file) => file.name === "Selection_of_urban_street_tree_types.pdf"
         )?.name,
       };
     }
