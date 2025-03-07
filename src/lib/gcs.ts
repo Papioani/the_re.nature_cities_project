@@ -1,33 +1,18 @@
-// lib/config.ts    ((need to know that your configuration is valid before any other part of your application starts using it.
-//useEffect hooks, on the other hand, run asynchronously after the initial render of your component.))
-export const config = {
-  gcsBucketName: process.env.GCS_BUCKET_NAME,
-  googleApplicationCredentials: process.env.GOOGLE_APPLICATION_CREDENTIALS,
-};
-
-if (!config.gcsBucketName) {
-  throw new Error("GCS_BUCKET_NAME is not defined.");
-}
-
-if (!config.googleApplicationCredentials) {
-  throw new Error("GOOGLE_APPLICATION_CREDENTIALS is not defined.");
-}
-
 // lib/gcs.ts
 import { Storage } from "@google-cloud/storage";
+import { config } from "./config";
 
 const storage = new Storage({
-  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+  keyFilename: config.googleApplicationCredentials,
 });
-const bucketName = process.env.GCS_BUCKET_NAME;
 
 export async function getFileUrl(fileName: string): Promise<string | null> {
-  if (!bucketName) {
+  if (!config.gcsBucketName) {
     console.error("GCS_BUCKET_NAME is not defined.");
     return null;
   }
   try {
-    const bucket = storage.bucket(bucketName);
+    const bucket = storage.bucket(config.gcsBucketName);
     const file = bucket.file(fileName);
     const [url] = await file.getSignedUrl({
       action: "read",
@@ -41,12 +26,12 @@ export async function getFileUrl(fileName: string): Promise<string | null> {
 }
 
 export async function listFiles(): Promise<string[]> {
-  if (!bucketName) {
+  if (!config.gcsBucketName) {
     console.error("GCS_BUCKET_NAME is not defined.");
     return [];
   }
   try {
-    const bucket = storage.bucket(bucketName);
+    const bucket = storage.bucket(config.gcsBucketName);
     const [files] = await bucket.getFiles();
     const fileNames = files.map((file) => file.name);
     return fileNames;

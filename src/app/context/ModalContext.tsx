@@ -6,8 +6,9 @@ type ModalContextType = {
   modalOpen: boolean;
   modalContent: string | null;
   loading: boolean;
-  openModal: (fileId: string) => void;
+  openModal: (fileName: string) => void;
   closeModal: () => void;
+  setLoading: (loading: boolean) => void;
 };
 
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
@@ -17,8 +18,8 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
   const [modalContent, setModalContent] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const openModal = (fileId: string) => {
-    setModalContent(fileId);
+  const openModal = (fileName: string) => {
+    setModalContent(fileName);
     setModalOpen(true);
     setLoading(true);
   };
@@ -31,7 +32,14 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <ModalContext.Provider
-      value={{ modalOpen, modalContent, loading, openModal, closeModal }}
+      value={{
+        modalOpen,
+        modalContent,
+        loading,
+        openModal,
+        closeModal,
+        setLoading,
+      }}
     >
       {children}
 
@@ -52,7 +60,7 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
         <Modal
           isOpen={modalOpen}
           onClose={closeModal}
-          fileId={modalContent || ""}
+          fileName={modalContent || ""}
           setLoading={setLoading} // Pass setLoading to update it from Modal
         />
       )}

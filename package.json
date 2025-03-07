@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && tsc -p tsconfig.functions.json",
-    "deploy:functions": "npm run build && gcloud functions deploy your-function-name --source=dist",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "postbuild": "next-sitemap"
