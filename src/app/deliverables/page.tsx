@@ -165,7 +165,17 @@ const DeliverablesPage: FC = () => {
                             );
                             // Conditional check
                             if (isMobile) {
-                              window.open(deliverable.fileName, "_blank");
+                              const fileUrl = deliverableUrls.find(
+                                (file) => file.name === deliverable.fileName
+                              )?.url;
+                              if (fileUrl) {
+                                window.open(fileUrl, "_blank");
+                              } else {
+                                console.error(
+                                  "URL not found for deliverable:",
+                                  deliverable.id
+                                );
+                              }
                             } else {
                               openModal(deliverable.fileName);
                             }
