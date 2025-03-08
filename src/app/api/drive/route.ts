@@ -8,9 +8,11 @@ export async function GET(request: NextRequest) {
   if (fetchAll) {
     try {
       const files = await listFiles();
+      console.log("Files from listFiles():", files);
       const fileUrls = await Promise.all(
         files.map(async (fileName) => {
           const url = await getFileUrl(fileName);
+          console.log("url from urls():", url);
           return { name: fileName, url: url };
         })
       );
