@@ -6,12 +6,12 @@ import "react-resizable/css/styles.css";
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  fileName: string | null;
+  fileId: string | null;
   setLoading: (loading: boolean) => void; // Accept setLoading from parent
 }
 
-const Modal: FC<ModalProps> = ({ isOpen, onClose, fileName, setLoading }) => {
-  console.log("Modal received fileName:", fileName); // Add this line !!!!!
+const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
+  console.log("Modal received fileName:", fileId); // Add this line !!!!!
   const [fileUrl, setFileUrl] = useState<string | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -49,9 +49,9 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileName, setLoading }) => {
   }, [isOpen, onClose]); // React's eslint plugin requires you to list setLoading(a function) in the dependencies as safety mechanism to ensure that not using an old version of a function if it's being updated frequently.
 
   useEffect(() => {
-    if (fileName) {
+    if (fileId) {
       setLoading(true);
-      fetch(`/api/drive?fileId=${fileName}`)
+      fetch(`/api/drive?fileId=${fileId}`)
         .then((response) => response.json())
         .then((data) => {
           console.log("API response:", data); // Add this log
@@ -69,7 +69,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileName, setLoading }) => {
         })
         .finally(() => setLoading(false));
     }
-  }, [fileName, setLoading]);
+  }, [fileId, setLoading]);
 
   useEffect(() => {
     console.log("fileUrl before iframe useEffect:", fileUrl); // Add this line
