@@ -37,7 +37,9 @@ const DeliverablesPage: FC = () => {
           throw new Error("Failed to fetch GCS data");
         }
         const data = await response.json(); // Get the JSON response
+        console.log("Fetched data:", data);
         setDeliverableUrls(data.fileUrls); // that is the { name: fileName, url: url };
+        console.log("Fetched data:", data);
         console.log("deliverableUrls:", data.fileUrls); // Add this line !!!!!!
       } catch (error) {
         console.error("Error fetching GCS URLs data:", error);
