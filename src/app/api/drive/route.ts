@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
           { status: 400 }
         );
       }
-      const url = await getFileUrl(fileName);
+      const url = await getFileUrl(fileName); // for mobile
       if (!url) {
         return NextResponse.json(
           { error: "File not found or URL generation failed" },
