@@ -41,6 +41,11 @@ const DeliverablesPage: FC = () => {
         setDeliverableUrls(data.fileUrls); // that is the { name: fileName, url: url };
         console.log("Fetched data:", data);
         console.log("deliverableUrls:", data.fileUrls); // Add this line !!!!!!
+        if (data.fileUrls) {
+          setDeliverableUrls(data.fileUrls);
+        } else {
+          console.error("No fileUrls returned from the API");
+        }
       } catch (error) {
         console.error("Error fetching GCS URLs data:", error);
       }

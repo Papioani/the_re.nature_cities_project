@@ -1,6 +1,13 @@
 // src/app/api/drive/route.ts
 import { NextResponse, NextRequest } from "next/server";
 import { getFileUrl, listFiles } from "../../../lib/gcs";
+import path from "path";
+
+// Resolve the credentials path
+const credentialsPath = path.resolve(
+  "./config/renaturecities-cfc73252a887.json"
+);
+process.env.GOOGLE_APPLICATION_CREDENTIALS = credentialsPath;
 
 export async function GET(request: NextRequest) {
   console.log("GCS_BUCKET_NAME:", process.env.GCS_BUCKET_NAME);
