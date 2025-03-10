@@ -3,6 +3,12 @@ import { NextResponse, NextRequest } from "next/server";
 import { getFileUrl, listFiles } from "../../../lib/gcs";
 
 export async function GET(request: NextRequest) {
+  console.log("GCS_BUCKET_NAME:", process.env.GCS_BUCKET_NAME);
+  console.log(
+    "GOOGLE_APPLICATION_CREDENTIALS:",
+    process.env.GOOGLE_APPLICATION_CREDENTIALS
+  );
+
   const fetchAll = request.nextUrl.searchParams.get("fetchAll") === "true";
 
   if (fetchAll) {

@@ -32,7 +32,8 @@ const DeliverablesPage: FC = () => {
   useEffect(() => {
     async function fetchUrls() {
       try {
-        const response = await fetch("/api/drive?fetchAll=true");
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
+        const response = await fetch(`${baseUrl}/api/drive?fetchAll=true`);
         if (!response.ok) {
           throw new Error("Failed to fetch GCS data");
         }
