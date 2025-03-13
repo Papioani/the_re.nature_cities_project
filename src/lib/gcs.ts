@@ -29,7 +29,7 @@ export async function getFileUrl(fileName: string): Promise<string | null> {
     const file = bucket.file(fileName);
     const [url] = await file.getSignedUrl({
       action: "read",
-      expires: Date.now() + 15 * 60 * 1000, // URL expires in 15 minutes
+      expires: Date.now() + 30 * 60 * 1000, // URL expires in 30 minutes
     });
     return url;
   } catch (error) {
