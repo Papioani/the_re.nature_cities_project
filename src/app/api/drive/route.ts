@@ -1,88 +1,50 @@
-// src/app/api/drive/route.ts
-import { NextResponse } from "next/server";
+// src/app/api/drive/route.ts  // allows you to create server-side API endpoints within your Next.js application
+import { NextResponse, NextRequest } from "next/server";
+import { getFileUrl, listFiles } from "../../../lib/gcs";
 
-export async function GET(request: Request) {
-  try {
-    console.log("API route hit"); // <-- This should always log when the function runs
-  } catch (error) {
-    console.error("Error before reaching logic:", error);
-  }
-  const { searchParams } = new URL(request.url);
-  const fileId = searchParams.get("fileId");
+export async function GET(request: NextRequest) {
+  const fetchAll = request.nextUrl.searchParams.get("fetchAll") === "true";
 
-  console.log("Received request for fileId:", fileId);
-
-  if (!fileId) {
-    return NextResponse.json({ error: "File ID is required" }, { status: 400 });
-  }
-
-  try {
-    const apiKey = process.env.GOOGLE_BACKEND_API_KEY; // Use backend API key
-    console.log("USING API Key:", apiKey);
-    if (!apiKey) {
-      console.error("GOOGLE_BACKEND_API_KEY is not set.");
+  if (fetchAll) {
+    try {
+      const files = await listFiles();
+      const fileUrls = await Promise.all(
+        files.map(async (fileName) => {
+          const url = await getFileUrl(fileName);
+          return { name: fileName, url: url };
+        })
+      );
+      return NextResponse.json({ fileUrls });
+    } catch (error) {
+      console.error("Error fetching file URLs:", error);
       return NextResponse.json(
-        { error: "API key is missing" },
+        { error: "Failed to fetch file URLs" },
         { status: 500 }
       );
     }
-    const url = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&key=${apiKey}`; ///////
-    console.log("API URL:", url); ////////
-    const response = await fetch(url);
-    console.log("Response status:", response.status); // Log the status code
-    console.log("Content-Type:", response.headers.get("Content-Type"));
-
-    console.log("Response status:", response.status);
-
-    if (!response.ok) {
-      const errorText = await response.text(); // Capture the error details from Google API
-      console.error("Failed to fetch file:", errorText);
-      throw new Error(`Failed to fetch file: ${errorText}`);
-    }
-
-    // *** Add the Content-Type check here ***
-    const contentType = response.headers.get("Content-Type");
-    if (!contentType || !contentType.includes("application/pdf")) {
-      const errorText = await response.text(); // Capture the error details from Google API
-      console.error(
-        "Unexpected Content-Type from Google Drive API:",
-        contentType,
-        errorText
-      );
-      return NextResponse.json({ error: "Invalid file type" }, { status: 500 });
-    }
-
-    const data = await response.blob();
-    console.log("Blob size:", data.size); // Check the size
-    console.log("Blob type:", data.type); // Should be "application/pdf"
-    if (data.type !== "application/pdf") {
-      console.error("Downloaded data is NOT a PDF!");
+  } else {
+    try {
+      const fileName = request.nextUrl.searchParams.get("fileId");
+      if (!fileName) {
+        return NextResponse.json(
+          { error: "Missing fileId parameter" },
+          { status: 400 }
+        );
+      }
+      const url = await getFileUrl(fileName); // for mobile
+      if (!url) {
+        return NextResponse.json(
+          { error: "File not found or URL generation failed" },
+          { status: 404 }
+        );
+      }
+      return NextResponse.json({ url });
+    } catch (error) {
+      console.error("Error fetching file URL:", error);
       return NextResponse.json(
-        { error: "Invalid file type (not PDF)" },
+        { error: "Failed to fetch file URL" },
         { status: 500 }
       );
     }
-    const fileUrl = URL.createObjectURL(data); // Create URL after checks
-    console.log("File URL:", fileUrl); // Log the URL
-    return new NextResponse(data, {
-      headers: {
-        "Content-Type": "application/pdf",
-        "Cache-Control": "public, max-age=3600",
-        "Content-Disposition": "inline", // Crucial for displaying in iframe
-      },
-    });
-  } catch (error: unknown) {
-    console.error("Error fetching file:", error);
-    let errorMessage = "An unknown error occurred."; // Default message
-
-    if (error instanceof Error) {
-      errorMessage = error.message;
-    } else if (typeof error === "string") {
-      errorMessage = error;
-    }
-    return NextResponse.json(
-      { error: `Error fetching file: ${errorMessage}` },
-      { status: 500 }
-    );
   }
 }

@@ -6,11 +6,12 @@ import "react-resizable/css/styles.css";
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  fileId: string | null;
+  fileName: string | null;
   setLoading: (loading: boolean) => void; // Accept setLoading from parent
 }
 
-const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
+const Modal: FC<ModalProps> = ({ isOpen, onClose, fileName, setLoading }) => {
+  console.log("Modal received fileName:", fileName); // Add this line !!!!!
   const [fileUrl, setFileUrl] = useState<string | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -39,73 +40,42 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileId, setLoading }) => {
         onClose();
       }
     };
-
     if (isOpen) {
       document.addEventListener("click", handleClickOutside);
     }
-
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [isOpen, onClose]); // React's eslint plugin requires you to list setLoading(a function) in the dependencies as safety mechanism to ensure that not using an old version of a function if it's being updated frequently.
 
   useEffect(() => {
-    const fetchFile = async () => {
-      if (!fileId) return; // prevent the useEffect from running at all until a valid fileId is available
-
+    if (fileName) {
       setLoading(true);
-      setLoadError(false); // Reset load error state
-
-      try {
-        const response = await fetch(`/api/drive?fileId=${fileId}`);
-
-        if (!response.ok) {
-          const errorText = await response.text();
-          throw new Error(`HTTP error ${response.status}: ${errorText}`);
-        }
-
-        // Check for JSON errors even if response.ok is true
-        const contentType = response.headers.get("Content-Type");
-        if (contentType && contentType.includes("application/json")) {
-          try {
-            const data = await response.json();
-            if (data.error) {
-              // Check for an 'error' property in the JSON
-              throw new Error(data.error); // Throw the server's error
-            }
-          } catch (jsonError) {
-            // Handle JSON parsing errors or missing 'error' property
-            console.error("Error parsing JSON response:", jsonError);
-            throw new Error("Invalid JSON response from server.");
+      fetch(`/api/drive?fileId=${fileName}`)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("API response:", data); // Add this log
+          if (data.url) {
+            console.log("Setting fileUrl to:", data.url); // Add this log
+            setFileUrl(data.url);
+          } else {
+            console.error("API response missing URL:", data);
+            setLoadError(true);
           }
-        }
-        const fileBlob = (await response.blob()) as Blob;
-
-        // Create object URL only when the Blob is valid
-        if (fileBlob.type === "application/pdf") {
-          const fileUrl = URL.createObjectURL(fileBlob);
-          setFileUrl(fileUrl);
-        } else {
-          console.error("Fetched file is not a valid PDF.");
-          setFileUrl(null); // In case the file is not a PDF, reset fileUrl
-          setLoadError(true); // Set load error state
-        }
-      } catch (error) {
-        console.error("Error fetching file:", error);
-        setFileUrl(null); // Reset if there's an error
-        setLoadError(true); // Set load error state
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchFile();
-  }, [fileId, setLoading]);
+        })
+        .catch((error) => {
+          console.error("Error fetching file URL:", error);
+          setLoadError(true);
+        })
+        .finally(() => setLoading(false));
+    }
+  }, [fileName, setLoading]);
 
   useEffect(() => {
+    console.log("fileUrl before iframe useEffect:", fileUrl); // Add this line
+
     if (fileUrl && iframeRef.current) {
       const currentIframe = iframeRef.current; // Copy the ref value here
-
       currentIframe.src = fileUrl;
 
       const handleLoad = () => {
