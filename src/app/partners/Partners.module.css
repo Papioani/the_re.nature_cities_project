@@ -44,3 +44,13 @@
 .orcidLink:hover {
   text-decoration: underline;
 }
+@media (max-width: 768px) {
+  .partnerLogo1,
+  .partnerLogo2 {
+    float: none; /* Remove float on smaller screens */
+    width: 10rem; /* Adjust logo width */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto 1rem; /* Center logo and add margin */
+    display: block; /* Make logo a block element */
+  }
+}
