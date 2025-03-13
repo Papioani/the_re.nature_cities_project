@@ -17,7 +17,7 @@ interface HardcodedDeliverable {
 interface CloudDeliverable {
   id: string;
   title: string;
-  fileName: string | undefined;
+  fileName?: string | undefined;
 }
 
 type Deliverable = HardcodedDeliverable | CloudDeliverable;
@@ -68,57 +68,93 @@ const DeliverablesPage: FC = () => {
       link: "https://zenodo.org/records/14442184",
     },
   ];
-  const deliverablesOrder = ["D1.1", "D2.1.", "D3.1.", "D4.1", "D4.2", "D4.3"];
+  const deliverablesOrder = [
+    "D1.1",
+    "D2.1.",
+    "D3.1.",
+    "D4.1",
+    "D4.2",
+    "D4.3",
+    "D5.1.",
+    "D5.2.",
+    "D5.3.",
+    "D6.1.",
+    "D6.2.",
+  ];
 
   const getDeliverableData = (id: string): Deliverable | null => {
     if (id === "D1.1" || id === "D4.3") {
       return hardcodedRows.find((row) => row.id === id) || null;
     }
 
-    if (id === "D2.1.") {
-      return {
+    const cloudDeliverables = [
+      {
         id: "D2.1.",
-        title: "Microclimate evaluation for current and future conditions",
-        fileName: deliverableUrls.find(
-          (file) =>
-            file.name ===
-            "Microclimate_evaluation_for_current_and_future_conditions.pdf"
-        )?.name,
-      };
-    }
-
-    if (id === "D3.1.") {
-      return {
+        fileName:
+          "Microclimate_evaluation_for_current_and_future_conditions.pdf",
+      },
+      {
         id: "D3.1.",
-        title: "Evaluation of climate change effect on the built environment",
-        fileName: deliverableUrls.find(
-          (file) =>
-            file.name ===
-            "Evaluation_of_climate_change_effect_on_the_built_environment.pdf"
-        )?.name,
-      };
-    }
+        fileName:
+          "Evaluation_of_climate_change_effect_on_the_built_environment.pdf",
+      },
+      { id: "D4.1", fileName: "Selection_of_urban_street_tree_types.pdf" },
+      { id: "D4.2", fileName: "LAI_LAD_and_albedo_database.pdf" },
+    ];
 
-    if (id === "D4.1") {
+    const cloudDeliverable = cloudDeliverables.find((d) => d.id === id);
+    if (cloudDeliverable) {
       return {
-        id: "D4.1",
-        title: "Selection of urban street tree types",
+        id: cloudDeliverable.id,
+        title: cloudDeliverable.fileName.replace(".pdf", "").replace(/_/g, " "),
         fileName: deliverableUrls.find(
-          (file) => file.name === "Selection_of_urban_street_tree_types.pdf"
+          (file) => file.name === cloudDeliverable.fileName
         )?.name,
       };
     }
-    if (id === "D4.2") {
-      return {
-        id: "D4.2",
-        title: "LAI/LAD and albedo database",
-        fileName: deliverableUrls.find(
-          (file) => file.name === "LAI_LAD_and_albedo_database.pdf"
-        )?.name,
-      };
+    // Handle new deliverables without links or files
+    if (["D5.1.", "D5.2.", "D5.3.", "D6.1.", "D6.2."].includes(id)) {
+      let title = "";
+      switch (id) {
+        case "D5.1.":
+          title = "Impact of NBS on microclimate";
+          break;
+        case "D5.2.":
+          title = "Impact of NBS on building performance and NVP";
+          break;
+        case "D5.3.":
+          title = "Impact of NBS on outdoor comfort and air quality";
+          break;
+        case "D6.1.":
+          title = "Final report";
+          break;
+        case "D6.2.":
+          title = "Interim report";
+          break;
+        default:
+          break;
+      }
+      return { id, title };
     }
 
     return null;
+  };
+
+  const handleViewDeliverable = (deliverable: CloudDeliverable) => {
+    const isMobile = window.innerWidth <= 768;
+    const fileUrl = deliverableUrls.find(
+      (file) => file.name === deliverable.fileName
+    )?.url;
+
+    if (fileUrl) {
+      if (isMobile) {
+        window.open(fileUrl, "_blank");
+      } else {
+        openModal(deliverable.fileName ?? "");
+      }
+    } else {
+      console.error("URL not found for deliverable:", deliverable.id);
+    }
   };
   return (
     <section
@@ -150,42 +186,17 @@ const DeliverablesPage: FC = () => {
                   </td>
                   <td className="px-4 py-2 ">{deliverable.title}</td>
                   <td className={`px-4 py-2 ${styles.deliverableLink}`}>
-                    {"link" in deliverable ? (
+                    {["D5.1.", "D5.2.", "D5.3.", "D6.1.", "D6.2."].includes(
+                      deliverable.id
+                    ) ? (
+                      "" // Render nothing for these deliverables
+                    ) : "link" in deliverable ? (
                       <Link href={deliverable.link} target="_blank">
                         View deliverable
                       </Link>
                     ) : (
                       <button
-                        onClick={() => {
-                          const isMobile = window.innerWidth <= 768;
-                          if (deliverable.fileName) {
-                            console.log(
-                              "deliverable.fileName:",
-                              deliverable.fileName
-                            );
-                            // Conditional check
-                            if (isMobile) {
-                              const fileUrl = deliverableUrls.find(
-                                (file) => file.name === deliverable.fileName
-                              )?.url;
-                              if (fileUrl) {
-                                window.open(fileUrl, "_blank");
-                              } else {
-                                console.error(
-                                  "URL not found for deliverable:",
-                                  deliverable.id
-                                );
-                              }
-                            } else {
-                              openModal(deliverable.fileName);
-                            }
-                          } else {
-                            console.error(
-                              "URL is undefined for deliverable:",
-                              deliverable.id
-                            );
-                          }
-                        }}
+                        onClick={() => handleViewDeliverable(deliverable)}
                       >
                         View deliverable
                       </button>
