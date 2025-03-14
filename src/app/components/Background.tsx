@@ -17,8 +17,9 @@ export default function Background() {
           WebkitMaskImage:
             "linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))",
         }}
-        quality={75}
+        quality={40}
         priority
+        sizes="(max-width: 768px) 100vw, 1920px" // How wide the image should be at that screen size
       />
     </div>
   );
