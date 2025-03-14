@@ -191,7 +191,11 @@ const DeliverablesPage: FC = () => {
                     ) ? (
                       "" // Render nothing for these deliverables
                     ) : "link" in deliverable ? (
-                      <Link href={deliverable.link} target="_blank">
+                      <Link
+                        href={deliverable.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         View deliverable
                       </Link>
                     ) : (
