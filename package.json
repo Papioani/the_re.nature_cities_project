@@ -28,11 +28,12 @@
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@types/react-resizable": "^3.0.8",
+    "esbuild": ">=0.25.0",
     "eslint": "^8",
     "eslint-config-next": "15.0.1",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.3",
-    "vercel": "^41.4.0"
+    "vercel": "^41.4.1"
   }
 }

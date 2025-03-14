@@ -145,11 +145,14 @@ const DeliverablesPage: FC = () => {
     const fileUrl = deliverableUrls.find(
       (file) => file.name === deliverable.fileName
     )?.url;
+    console.log("fileUrlPPPPPPPPPPP:", fileUrl);
 
     if (fileUrl) {
       if (isMobile) {
+        console.log("Mobile URLPPPPPPPPPP:", fileUrl);
         window.open(fileUrl, "_blank");
       } else {
+        console.log("Desktop fileNamePPPPPPPPPP:", deliverable.fileName);
         openModal(deliverable.fileName ?? "");
       }
     } else {
@@ -191,7 +194,11 @@ const DeliverablesPage: FC = () => {
                     ) ? (
                       "" // Render nothing for these deliverables
                     ) : "link" in deliverable ? (
-                      <Link href={deliverable.link} target="_blank">
+                      <Link
+                        href={deliverable.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         View deliverable
                       </Link>
                     ) : (
