@@ -32,7 +32,12 @@ const DeliverablesPage: FC = () => {
   useEffect(() => {
     async function fetchUrls() {
       try {
-        const response = await fetch("/api/drive?fetchAll=true");
+        const isMobile = window.innerWidth <= 768;
+        console.log("Frontend isMobile:", isMobile); // Add this line
+
+        const response = await fetch(
+          `/api/drive?fetchAll=true&isMobile=${isMobile}`
+        ); // Send isMobile
         if (!response.ok) {
           throw new Error("Failed to fetch GCS data");
         }
