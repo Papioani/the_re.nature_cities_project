@@ -11,6 +11,14 @@ html {
   font-size: 1rem; /* This will set 1rem = 16px */
   --background: #f8f9fa; /* Lightened background */
   --foreground: #333333; /* Darkened foreground for contrast */
+
+  --h2-size: 1.5rem; /* variable for h2 font-size */
+  --h2-weight: bold; /* variable for h2 font-weight */
+  --h2-color: #1c3d5a; /* Store color to keep it consistent */
+  --h2-line-height: 2rem; /* Keep line height consistent */
+  --h2-margin-top: 1rem;
+  --h2-margin-bottom: 1rem;
+  --h2-padding-bottom: 1rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -69,14 +77,24 @@ h1 {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+h1#action-heading {
+  display: flex;
+  font-size: var(--h2-size);
+  font-weight: var(--h2-weight);
+  color: var(--h2-color);
+  line-height: var(--h2-line-height);
+  margin-top: var(--h2-margin-top);
+  margin-bottom: var(--h2-margin-bottom);
+}
+
 h2 {
-  font-size: 1.5rem; /* Slightly larger for academic headers */
-  font-weight: bold;
-  color: #1c3d5a;
-  line-height: 2rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
+  font-size: var(--h2-size);
+  font-weight: var(--h2-weight);
+  color: var(--h2-color);
+  line-height: var(--h2-line-height);
+  margin-top: var(--h2-margin-top);
+  margin-bottom: var(--h2-margin-bottom);
+  padding-bottom: var(--h2-padding-bottom);
 }
 .h3 {
   color: #2e4d2e;
