@@ -11,7 +11,6 @@ interface ModalProps {
 }
 
 const Modal: FC<ModalProps> = ({ isOpen, onClose, fileName, setLoading }) => {
-  console.log("Modal received fileName:", fileName); // Add this line !!!!!
   const [fileUrl, setFileUrl] = useState<string | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -54,9 +53,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileName, setLoading }) => {
       fetch(`/api/drive?fileId=${fileName}`)
         .then((response) => response.json())
         .then((data) => {
-          console.log("API response:", data); // Add this log
           if (data.url) {
-            console.log("Setting fileUrl to:", data.url); // Add this log
             setFileUrl(data.url);
           } else {
             console.error("API response missing URL:", data);
@@ -72,10 +69,8 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileName, setLoading }) => {
   }, [fileName, setLoading]);
 
   useEffect(() => {
-    console.log("fileUrl before iframe useEffect:", fileUrl); // Add this line
-
     if (fileUrl && iframeRef.current) {
-      const currentIframe = iframeRef.current; // Copy the ref value here
+      const currentIframe = iframeRef.current;
       currentIframe.src = fileUrl;
 
       const handleLoad = () => {
