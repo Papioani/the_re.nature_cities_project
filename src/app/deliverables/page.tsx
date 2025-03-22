@@ -33,7 +33,6 @@ const DeliverablesPage: FC = () => {
     async function fetchUrls() {
       try {
         const isMobile = window.innerWidth <= 768;
-        console.log("Frontend isMobile:", isMobile); // Add this line
 
         const response = await fetch(
           `/api/drive?fetchAll=true&isMobile=${isMobile}`
@@ -43,7 +42,6 @@ const DeliverablesPage: FC = () => {
         }
         const data = await response.json(); // Get the JSON response
         setDeliverableUrls(data.fileUrls); // that is the { name: fileName, url: url };
-        console.log("deliverableUrls:", data.fileUrls); // Add this line !!!!!!
       } catch (error) {
         console.error("Error fetching GCS URLs data:", error);
       }
@@ -150,14 +148,11 @@ const DeliverablesPage: FC = () => {
     const fileUrl = deliverableUrls.find(
       (file) => file.name === deliverable.fileName
     )?.url;
-    console.log("fileUrlPPPPPPPPPPP:", fileUrl);
 
     if (fileUrl) {
       if (isMobile) {
-        console.log("Mobile URLPPPPPPPPPP:", fileUrl);
         window.open(fileUrl, "_blank");
       } else {
-        console.log("Desktop fileNamePPPPPPPPPP:", deliverable.fileName);
         openModal(deliverable.fileName ?? "");
       }
     } else {
