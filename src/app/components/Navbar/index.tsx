@@ -101,7 +101,6 @@ const Navbar: React.FC = () => {
       !workDropdownTriggerRef.current.contains(relatedTarget) &&
       !relatedTarget.closest("#workDropdownMenu")
     ) {
-      console.log("Closing dropdown due to focus loss");
       setIsWorkDropdownOpen(false);
     } else {
       console.log("Not closing dropdown, conditions not met");
@@ -110,6 +109,7 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     if (isWorkDropdownOpen && firstDropdownItemRef.current) {
+      console.log("Focusing on first dropdown item");
       firstDropdownItemRef.current.focus();
     }
   }, [isWorkDropdownOpen]);
