@@ -48,10 +48,10 @@ const Navbar: React.FC = () => {
   };
   useEffect(() => {
     if (isWorkDropdownOpen) {
-      document.addEventListener("click", handleClickOutside); // Add listener when dropdown opens
+      document.addEventListener("click", handleClickOutside); // listener for when dropdown opens
       document.addEventListener("touchstart", handleClickOutside);
     } else {
-      document.removeEventListener("click", handleClickOutside); // Remove listener when dropdown closes
+      document.removeEventListener("click", handleClickOutside); // removing listener
       document.removeEventListener("touchstart", handleClickOutside);
     }
 
@@ -109,8 +109,32 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     if (isWorkDropdownOpen && firstDropdownItemRef.current) {
-      console.log("Focusing on first dropdown item");
-      firstDropdownItemRef.current.focus();
+      console.log(
+        "Focusing on first dropdown item:",
+        firstDropdownItemRef.current
+      );
+      // Log the text content of the first dropdown item
+      console.log(
+        "First dropdown item text:",
+        firstDropdownItemRef.current.textContent
+      );
+
+      // Log the class name of the first dropdown item
+      console.log(
+        "First dropdown item class:",
+        firstDropdownItemRef.current.className
+      );
+
+      // Log the href of the first dropdown item (if it is an anchor tag)
+      if (firstDropdownItemRef.current instanceof HTMLAnchorElement) {
+        console.log(
+          "First dropdown item href:",
+          firstDropdownItemRef.current.href
+        );
+      }
+      if (document.activeElement === workDropdownTriggerRef.current) {
+        firstDropdownItemRef.current.focus();
+      }
     }
   }, [isWorkDropdownOpen]);
 
