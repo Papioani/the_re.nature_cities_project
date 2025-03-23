@@ -78,7 +78,6 @@ const Footer: React.FC = () => {
             width={500} // specify width
             height={300}
             style={{ objectFit: "contain" }}
-            priority // faster loading of key images
           />
         </div>
         <div className={styles.footerImage} aria-label="Greece 2.0 logo">
@@ -88,7 +87,6 @@ const Footer: React.FC = () => {
             width={500} // specify width
             height={300}
             style={{ objectFit: "contain" }}
-            priority
           />
         </div>
       </div>
