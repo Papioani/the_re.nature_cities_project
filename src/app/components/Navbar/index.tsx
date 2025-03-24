@@ -287,7 +287,6 @@ const Navbar: React.FC = () => {
             src="/Logo2.png"
             width={100} // Specify width
             height={100} // Specify height
-            priority // Optional: use for LCP optimization
             alt="The Re.Nature Cities logo showing a tree within a circle"
             className=" object-contain cursor-pointer  md:w-auto  py-0 hover:opacity-80 hover:scale-105 transition-all duration-200"
           />

@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   description:
     "Explore experimental and numerical methods to evaluate street trees as Nature-Based Solutions for mitigating climate change in urban environments.",
 };
+// Move viewport to a separate export
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export default function RootLayout({
   children,
@@ -22,8 +27,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Add the viewport meta tag here */}
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Favicon and Manifest */}
         <link
           rel="apple-touch-icon"
