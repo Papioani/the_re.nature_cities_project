@@ -12,6 +12,9 @@ export default function ScrollHandler() {
       const navbarElement = document.querySelector(
         ".navbarElement"
       ) as HTMLElement;
+      if (!navbarElement) {
+        console.error("navbarElement not found");
+      }
       return navbarElement ? navbarElement.offsetHeight : 0;
     };
 
@@ -64,7 +67,7 @@ export default function ScrollHandler() {
       ) {
         event.preventDefault();
         console.log("Same-page navigation detected:", target.hash);
-        setTimeout(() => adjustScrollPosition(), 100); // Delay to allow default behavior
+        adjustScrollPosition(); // Delay to allow default behavior
       }
     };
 
