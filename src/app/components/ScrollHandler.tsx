@@ -67,7 +67,7 @@ export default function ScrollHandler() {
       ) {
         event.preventDefault();
         console.log("Same-page navigation detected:", target.hash);
-        adjustScrollPosition(); // Delay to allow default behavior
+        setTimeout(() => adjustScrollPosition(), 50);
       }
     };
 
