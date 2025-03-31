@@ -5,14 +5,10 @@ export default function ScrollHandler() {
   const pathname = usePathname();
 
   const adjustScrollPosition = useCallback(() => {
-    console.log("Adjust scroll position called");
-
-    // Cache the navbar element outside of the scroll handler
-
-    const hash = window.location.hash;
+    const hash = window.location.hash; // gives the part of the URL after the #
     if (hash) {
       const targetElement = document.querySelector(hash) as HTMLElement;
-      console.log("Target element found:", targetElement);
+
       if (targetElement) {
         const getNavbarHeight = () => {
           const navbarElement = document.querySelector(
@@ -26,18 +22,10 @@ export default function ScrollHandler() {
         // Use requestAnimationFrame to ensure rendering is complete
 
         const rect = targetElement.getBoundingClientRect();
-        // Log the values before the scroll action
-        console.log("Navbar height:", navbarHeight);
-        console.log("Target element rect:", rect);
-        console.log(
-          "Current scroll position (window.scrollY):",
-          window.scrollY
-        );
-        console.log("Visual offset (viewport offset):", visualOffset);
 
         const scrollToPosition =
           rect.top + window.scrollY - navbarHeight - visualOffset;
-        console.log("Calculated scrollToPosition:", scrollToPosition);
+
         requestAnimationFrame(() => {
           window.scrollTo({
             top: scrollToPosition,
@@ -59,7 +47,7 @@ export default function ScrollHandler() {
     // Handle same-page hash navigation
     const handleAnchorClick = (event: Event) => {
       const target = event.target as HTMLAnchorElement;
-      console.log("Anchor click detected:", target);
+
       if (
         target.tagName === "A" &&
         target.hash &&
@@ -67,7 +55,7 @@ export default function ScrollHandler() {
           target.pathname === pathname)
       ) {
         event.preventDefault();
-        console.log("Same-page navigation detected:", target.hash);
+
         // Update the URL hash manually
         window.history.pushState(null, "", target.hash);
         adjustScrollPosition();

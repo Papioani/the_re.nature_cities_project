@@ -109,29 +109,6 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     if (isWorkDropdownOpen && firstDropdownItemRef.current) {
-      console.log(
-        "Focusing on first dropdown item:",
-        firstDropdownItemRef.current
-      );
-      // Log the text content of the first dropdown item
-      console.log(
-        "First dropdown item text:",
-        firstDropdownItemRef.current.textContent
-      );
-
-      // Log the class name of the first dropdown item
-      console.log(
-        "First dropdown item class:",
-        firstDropdownItemRef.current.className
-      );
-
-      // Log the href of the first dropdown item (if it is an anchor tag)
-      if (firstDropdownItemRef.current instanceof HTMLAnchorElement) {
-        console.log(
-          "First dropdown item href:",
-          firstDropdownItemRef.current.href
-        );
-      }
       if (document.activeElement === workDropdownTriggerRef.current) {
         firstDropdownItemRef.current.focus();
       }
@@ -139,18 +116,9 @@ const Navbar: React.FC = () => {
   }, [isWorkDropdownOpen]);
 
   useEffect(() => {
-    // Debug and reset focus stealing
-    console.log("Initially focused element:", document.activeElement);
+    // reset focus stealing
     if (document.activeElement !== document.body) {
       (document.activeElement as HTMLElement).blur();
-    }
-  }, []);
-
-  useEffect(() => {
-    // Check if the dropdown menu is ready (for debugging)
-    const dropdownElement = document.querySelector("#workDropdownMenu");
-    if (dropdownElement) {
-      console.log("Dropdown element exists:", dropdownElement);
     }
   }, []);
 
@@ -162,8 +130,6 @@ const Navbar: React.FC = () => {
   };
 
   const handleWorkMouseEnter = () => {
-    console.log("Mouse entered the 'Project Outline' link");
-
     if (workDropdownTimeout) clearTimeout(workDropdownTimeout); // Clear any previous timeout
     setIsWorkDropdownOpen(() => true);
   };
@@ -233,7 +199,6 @@ const Navbar: React.FC = () => {
       top: rect.top, // Tooltip's top position relative to the viewport (same as the link)
       left: rect.right + 5, // Position the tooltip just to the right of the link (5px padding)
     };
-    console.log("Tooltip Position:", tooltipPosition);
 
     setTooltip({
       show: true,
@@ -269,7 +234,6 @@ const Navbar: React.FC = () => {
     event.stopPropagation(); // Prevent triggering other click events
     setIsRotated((prev) => !prev);
     setIsWorkDropdownOpen((prev) => !prev); // Toggle the dropdown visibility
-    console.log("Rotated:", !isRotated, "Dropdown:", !isWorkDropdownOpen);
   };
 
   return (
