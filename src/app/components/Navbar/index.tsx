@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
       setIsWorkDropdownOpen(false);
       setIsRotated(false);
     },
-    ["svg"] // Exclude SVG elements
+    ["svg", ".hamburger-container", "#mobile-menu"] // exclusions
   );
 
   // Check for mobile screen size on initial render and when window resizes
@@ -107,6 +107,8 @@ const Navbar: React.FC = () => {
   };
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
+    setIsWorkDropdownOpen(false); // close the dropdown
+    setIsRotated(false);
   };
 
   const handleWorkMouseEnter = () => {
