@@ -4,6 +4,7 @@ import { useState, useRef, useLayoutEffect, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import { useClickOutside } from "../../hooks/userClickOutside";
 
 // <Link>: This component enables client-side navigation, which means that clicking the link will not trigger a full page reload. Instead, it will only update the necessary components on the page
 interface Tooltip {
@@ -14,8 +15,7 @@ interface Tooltip {
     left: number;
   };
 }
-// many modern setups and Next.js examples skip React.FC
-//when no props are present to keep the code concise.
+// many modern setups and Next.js examples skip React.FC when no props are present to keep the code concise.
 const Navbar: React.FC = () => {
   const [isRotated, setIsRotated] = useState<boolean>(false);
   const navbarRef = useRef<HTMLElement | null>(null); // Ref to access the Navbar
@@ -27,40 +27,20 @@ const Navbar: React.FC = () => {
   const [workDropdownTimeout, setWorkDropdownTimeout] =
     useState<NodeJS.Timeout | null>(null);
 
-  // Create the ref for the workDropdownTrigger
+  // ref for the workDropdownTrigger
   const workDropdownTriggerRef = useRef<HTMLAnchorElement | null>(null);
   const firstDropdownItemRef = useRef<HTMLAnchorElement | null>(null);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-  const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-    if (!dropdownRef.current || !event.target) return;
-    const targetElement = event.target as HTMLElement;
-    // if click is inside dropdown OR on the arrow itself
-    if (
-      dropdownRef.current.contains(targetElement) ||
-      targetElement.closest("svg") // Prevents closing if clicking the arrow
-    ) {
-      return;
-    }
+  useClickOutside(
+    dropdownRef,
+    () => {
+      setIsWorkDropdownOpen(false);
+      setIsRotated(false);
+    },
+    ["svg"] // Exclude SVG elements
+  );
 
-    setIsWorkDropdownOpen(false);
-    setIsRotated(false);
-  };
-  useEffect(() => {
-    if (isWorkDropdownOpen) {
-      document.addEventListener("click", handleClickOutside); // listener for when dropdown opens
-      document.addEventListener("touchstart", handleClickOutside);
-    } else {
-      document.removeEventListener("click", handleClickOutside); // removing listener
-      document.removeEventListener("touchstart", handleClickOutside);
-    }
-
-    // Cleanup on unmount or when dropdown state changes
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-      document.removeEventListener("touchstart", handleClickOutside);
-    };
-  }, [isWorkDropdownOpen]); // Depend on `isDropdownOpen`
   // Check for mobile screen size on initial render and when window resizes
   useEffect(() => {
     const checkScreenSize = () => {
