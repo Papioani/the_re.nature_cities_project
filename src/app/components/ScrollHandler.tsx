@@ -72,7 +72,7 @@ export default function ScrollHandler() {
     return () => {
       document.removeEventListener("click", handleAnchorClick);
     };
-  }, [adjustScrollPosition]);
+  }, [adjustScrollPosition, pathname]);
 
   return null;
 }
