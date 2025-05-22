@@ -2,6 +2,7 @@
 import React, { FC, useState, useEffect, useRef } from "react";
 import { ResizableBox } from "react-resizable";
 import "react-resizable/css/styles.css";
+import { useClickOutside } from "../hooks/userClickOutside";
 
 interface ModalProps {
   isOpen: boolean;
@@ -16,7 +17,8 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileName, setLoading }) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [loadError, setLoadError] = useState<boolean>(false); // State for load errors
 
-  // !!!!!! The general rule is: any state or prop used inside the useEffect should go into the dependency array !!!!!!!!!!!!!!!!!!!
+  // Use the useClickOutside hook
+  useClickOutside(modalRef, onClose);
 
   // State variables to store the max width and height of the resizable box
   const [maxWidth, setMaxWidth] = useState(600);
@@ -28,24 +30,6 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileName, setLoading }) => {
     setMaxWidth(window.innerWidth - 20);
     setMaxHeight(window.innerHeight - 20);
   }, []); // Empty dependency array ensures this only runs on mount (client-side)
-
-  // Close modal when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        modalRef.current &&
-        !modalRef.current.contains(event.target as Node)
-      ) {
-        onClose();
-      }
-    };
-    if (isOpen) {
-      document.addEventListener("click", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [isOpen, onClose]); // React's eslint plugin requires you to list setLoading(a function) in the dependencies as safety mechanism to ensure that not using an old version of a function if it's being updated frequently.
 
   useEffect(() => {
     if (fileName) {
@@ -98,49 +82,58 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileName, setLoading }) => {
   if (!isOpen || !fileUrl) return null;
 
   return (
-    <div
-      className="fixed inset-0 flex justify-center items-center z-[2000]"
-      role="dialog"
-      aria-labelledby="deliverable-modal-title"
-    >
-      <div className=" w-full h-full flex justify-center items-center">
-        {" "}
-        {/* Center ResizableBox */}
-        <ResizableBox
-          width={600}
-          height={600}
-          minConstraints={[400, 300]}
-          maxConstraints={[maxWidth, maxHeight]}
-          resizeHandles={["se", "sw", "ne", "nw"]}
-          className="bg-white p-6 rounded-lg shadow-lg relative"
-        >
-          <button
-            className="absolute top-2 right-2 text-gray-500"
-            onClick={onClose}
-            aria-label="Close modal"
-          >
-            ✖
-          </button>
-          <div className="h-full w-full">
-            {fileUrl ? (
-              <iframe
-                ref={iframeRef}
-                src={fileUrl}
-                width="100%"
-                height="100%"
-                className="rounded-lg border"
-                title="PDF Viewer"
-                loading="lazy"
-              />
-            ) : loadError ? (
-              <p className="text-gray-600">Error loading file.</p>
-            ) : (
-              <p className="text-gray-600">Loading PDF...</p>
-            )}
+    <>
+      {/* Backdrop */}
+      <div
+        className="fixed inset-0 bg-black bg-opacity-50 z-[1999]"
+        onClick={onClose}
+        aria-hidden="true"
+      />
+      {/* Modal Content */}
+      <div
+        className="fixed inset-0 flex justify-center items-center z-[2000]"
+        role="dialog"
+        aria-labelledby="deliverable-modal-title"
+      >
+        <div className="w-full h-full flex justify-center items-center">
+          <div ref={modalRef}>
+            <ResizableBox
+              width={600}
+              height={600}
+              minConstraints={[400, 300]}
+              maxConstraints={[maxWidth, maxHeight]}
+              resizeHandles={["se", "sw", "ne", "nw"]}
+              className="bg-white p-6 rounded-lg shadow-lg relative"
+            >
+              <button
+                className="absolute top-2 right-2 text-gray-500"
+                onClick={onClose}
+                aria-label="Close modal"
+              >
+                ✖
+              </button>
+              <div className="h-full w-full">
+                {fileUrl ? (
+                  <iframe
+                    ref={iframeRef}
+                    src={fileUrl}
+                    width="100%"
+                    height="100%"
+                    className="rounded-lg border"
+                    title="PDF Viewer"
+                    loading="lazy"
+                  />
+                ) : loadError ? (
+                  <p className="text-gray-600">Error loading file.</p>
+                ) : (
+                  <p className="text-gray-600">Loading PDF...</p>
+                )}
+              </div>
+            </ResizableBox>
           </div>
-        </ResizableBox>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
