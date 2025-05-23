@@ -28,22 +28,25 @@ const DeliverablesPage: FC = () => {
   // Access modal state and functions from context
   const { openModal } = useModal();
   const [deliverableUrls, setDeliverableUrls] = useState<FileObject[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function fetchUrls() {
       try {
+        setIsLoading(true);
         const isMobile = window.innerWidth <= 768;
-
         const response = await fetch(
           `/api/drive?fetchAll=true&isMobile=${isMobile}`
         ); // Send isMobile
         if (!response.ok) {
           throw new Error("Failed to fetch GCS data");
         }
-        const data = await response.json(); // Get the JSON response
-        setDeliverableUrls(data.fileUrls); // that is the { name: fileName, url: url };
+        const data = await response.json();
+        setDeliverableUrls(data.fileUrls);
       } catch (error) {
         console.error("Error fetching GCS URLs data:", error);
+      } finally {
+        setIsLoading(false); // End loading
       }
     }
     fetchUrls();
@@ -148,7 +151,9 @@ const DeliverablesPage: FC = () => {
     const fileUrl = deliverableUrls.find(
       (file) => file.name === deliverable.fileName
     )?.url;
-
+    if (isLoading) {
+      return; // Don't do anything while loading
+    }
     if (fileUrl) {
       if (isMobile) {
         window.open(fileUrl, "_blank");
@@ -204,6 +209,7 @@ const DeliverablesPage: FC = () => {
                     ) : (
                       <button
                         onClick={() => handleViewDeliverable(deliverable)}
+                        disabled={isLoading}
                       >
                         View deliverable
                       </button>
