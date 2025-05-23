@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Background() {
   return (
-    <div className="fixed inset-0 z-[-1]">
+    <div className="fixed inset-0 z-[-1] overflow-hidden">
       {" "}
       {/* z-[-1] to place it behind other content */}
       <Image
@@ -16,10 +16,12 @@ export default function Background() {
           maskImage: "linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))",
           WebkitMaskImage:
             "linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))",
+          willChange: "transform", // Optimize for animations
+          transform: "translateZ(0)", // Force GPU acceleration
         }}
         quality={40}
         priority
-        sizes="(max-width: 768px) 100vw, 1920px" // How wide the image should be at that screen size
+        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 1920px" // // How wide the image should be at that screen size
       />
     </div>
   );
