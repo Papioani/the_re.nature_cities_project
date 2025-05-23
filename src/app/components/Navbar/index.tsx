@@ -44,14 +44,22 @@ const Navbar: React.FC = () => {
   // Check for mobile screen size on initial render and when window resizes
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 1024); // Threshold for mobile screens
+      const isMobileView = window.innerWidth <= 1024;
+      setIsMobile(isMobileView);
+      if (!isMobileView) {
+        setIsMobileMenuOpen(false);
+      }
     };
 
-    checkScreenSize(); // Check on initial render
-    window.addEventListener("resize", checkScreenSize); // Check on resize
+    // Check immediately
+    checkScreenSize();
 
+    // Add resize listener
+    window.addEventListener("resize", checkScreenSize);
+
+    // Cleanup
     return () => {
-      window.removeEventListener("resize", checkScreenSize); // Cleanup on unmount
+      window.removeEventListener("resize", checkScreenSize);
     };
   }, []);
 
@@ -231,10 +239,11 @@ const Navbar: React.FC = () => {
         <Link href="/" onClick={closeMobileMenu} className="inline-block">
           <Image
             src="/Logo2.png"
-            width={100} // Specify width
-            height={100} // Specify height
+            width={100}
+            height={100}
             alt="The Re.Nature Cities logo showing a tree within a circle"
-            className=" object-contain cursor-pointer  md:w-auto  py-0 hover:opacity-80 hover:scale-105 transition-all duration-200"
+            className="object-contain cursor-pointer md:w-auto py-0 hover:opacity-80 hover:scale-105 transition-all duration-200"
+            priority
           />
         </Link>
       </header>
