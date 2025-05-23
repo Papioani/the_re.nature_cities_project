@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { ErrorBoundary } from "react-error-boundary";
 
 import "./styles/globals.css";
 import styles from "./styles/layout.module.css";
@@ -9,6 +8,7 @@ import Navbar from "./components/Navbar";
 import { ModalProvider } from "./context/ModalContext";
 import Image from "next/image";
 import Background from "./components/Background";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 
 export const metadata: Metadata = {
   title: "Re.Nature Cities: Assessing Street Trees for Climate Adaptation",
@@ -22,14 +22,14 @@ export const metadata: Metadata = {
     ],
     shortcut: "/favicon.ico",
   },
-  other: {
-    preload: "/background-forest2.webp",
-  },
 };
 
 export const viewport = {
   width: "device-width",
   initialScale: 1,
+  viewportFit: "cover",
+  maximumScale: 1,
+  userScalable: false,
 };
 
 type LayoutProps = {
@@ -59,7 +59,7 @@ export default function RootLayout({ children }: Readonly<LayoutProps>) {
               />
             </section>
 
-            <ErrorBoundary fallback={<div>Something went wrong</div>}>
+            <ErrorBoundary>
               <main
                 className={`${styles.mainContent} flex-grow pt-16 md:pt-20`}
               >

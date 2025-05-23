@@ -44,14 +44,22 @@ const Navbar: React.FC = () => {
   // Check for mobile screen size on initial render and when window resizes
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 1024); // Threshold for mobile screens
+      const isMobileView = window.innerWidth <= 1024;
+      setIsMobile(isMobileView);
+      if (!isMobileView) {
+        setIsMobileMenuOpen(false);
+      }
     };
 
-    checkScreenSize(); // Check on initial render
-    window.addEventListener("resize", checkScreenSize); // Check on resize
+    // Check immediately
+    checkScreenSize();
 
+    // Add resize listener
+    window.addEventListener("resize", checkScreenSize);
+
+    // Cleanup
     return () => {
-      window.removeEventListener("resize", checkScreenSize); // Cleanup on unmount
+      window.removeEventListener("resize", checkScreenSize);
     };
   }, []);
 
@@ -112,14 +120,18 @@ const Navbar: React.FC = () => {
   };
 
   const handleWorkMouseEnter = () => {
-    if (workDropdownTimeout) clearTimeout(workDropdownTimeout); // Clear any previous timeout
-    setIsWorkDropdownOpen(() => true);
+    if (workDropdownTimeout) {
+      clearTimeout(workDropdownTimeout);
+    }
+    setIsWorkDropdownOpen(true);
+    setIsRotated(true);
   };
 
   const handleWorkMouseLeave = () => {
     const timeout = setTimeout(() => {
       setIsWorkDropdownOpen(false);
-    }, 300); // 300ms delay before closing the dropdown
+      setIsRotated(false);
+    }, 300);
     setWorkDropdownTimeout(timeout);
   };
 
@@ -218,6 +230,25 @@ const Navbar: React.FC = () => {
     setIsWorkDropdownOpen((prev) => !prev); // Toggle the dropdown visibility
   };
 
+  // Add this useEffect to ensure proper initialization
+  useEffect(() => {
+    // Reset any existing timeouts on component mount
+    if (workDropdownTimeout) {
+      clearTimeout(workDropdownTimeout);
+    }
+
+    // Initialize the dropdown state
+    setIsWorkDropdownOpen(false);
+    setIsRotated(false);
+
+    // Cleanup on unmount
+    return () => {
+      if (workDropdownTimeout) {
+        clearTimeout(workDropdownTimeout);
+      }
+    };
+  }, []); // Empty dependency array means this runs once on mount
+
   return (
     <nav
       ref={navbarRef}
@@ -231,10 +262,17 @@ const Navbar: React.FC = () => {
         <Link href="/" onClick={closeMobileMenu} className="inline-block">
           <Image
             src="/Logo2.png"
-            width={100} // Specify width
-            height={100} // Specify height
+            width={100}
+            height={100}
             alt="The Re.Nature Cities logo showing a tree within a circle"
-            className=" object-contain cursor-pointer  md:w-auto  py-0 hover:opacity-80 hover:scale-105 transition-all duration-200"
+            style={{
+              width: "100px",
+              height: "100px",
+              objectFit: "contain",
+              objectPosition: "center",
+            }}
+            className="cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200"
+            priority
           />
         </Link>
       </header>

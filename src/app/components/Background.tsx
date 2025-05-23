@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Background() {
   return (
-    <div className="fixed inset-0 z-[-1] overflow-hidden">
+    <div className="fixed inset-0 z-[-1] overflow-hidden h-[100dvh] w-full">
       {" "}
       {/* z-[-1] to place it behind other content */}
       <Image
@@ -18,10 +18,12 @@ export default function Background() {
             "linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))",
           willChange: "transform", // Optimize for animations
           transform: "translateZ(0)", // Force GPU acceleration
+          height: "100%",
+          width: "100%",
         }}
         quality={40}
         priority
-        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 1920px" // // How wide the image should be at that screen size
+        sizes="100vw"
       />
     </div>
   );
