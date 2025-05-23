@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@google-cloud/storage": "^7.15.2",
-    "autoprefixer": "^10.4.20",
     "dotenv": "^16.4.7",
     "font-awesome": "^4.7.0",
     "googleapis": "^144.0.0",
@@ -29,11 +28,12 @@
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@types/react-resizable": "^3.0.8",
+    "autoprefixer": "^10.4.21",
     "esbuild": ">=0.25.0",
     "eslint": "^8",
     "eslint-config-next": "15.0.1",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.7",
     "typescript": "^5.7.3",
     "vercel": "^41.4.1"
   }
