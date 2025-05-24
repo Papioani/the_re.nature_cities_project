@@ -18,8 +18,8 @@
 }
 
 .partnerLogo {
-  width: 180px;
-  height: 100px;
+  width: 220px;
+  height: 130px;
   object-fit: contain;
   margin-bottom: 1rem;
   opacity: 0.9;
@@ -43,12 +43,14 @@
 
 .partnerDescription {
   margin: 0;
-  line-height: 1.8;
+  line-height: 1.7;
   text-align: justify;
+  font-size: 1rem;
+  color: #333;
 }
 
 .partnerDescription span {
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
 .partnerList {
@@ -67,12 +69,14 @@
 .partnerList li {
   margin-bottom: 0.5rem;
   line-height: 1.6;
+  font-size: 0.95rem;
 }
 
 .partnerList li:first-child {
   color: #2e4d2e;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   margin-bottom: 0.75rem;
+  font-weight: 600;
 }
 
 .orcidLink {
@@ -90,8 +94,8 @@
 @media (min-width: 768px) {
   .partnerContent {
     flex-direction: row;
-    align-items: center;
-    gap: 2rem;
+    align-items: flex-start;
+    gap: 2.5rem;
   }
 
   .partnerLogo {
@@ -101,17 +105,27 @@
 
   .partnerText {
     flex: 1;
+    padding-top: 0.5rem;
   }
 }
 
 @media (max-width: 768px) {
   .partnerLogo {
-    width: 150px;
+    width: 180px;
     height: auto;
     margin: 0 auto 1rem;
   }
 
   .partnerDescription {
     text-align: left;
+    font-size: 0.95rem;
+  }
+
+  .partnerList li {
+    font-size: 0.9rem;
+  }
+
+  .partnerList li:first-child {
+    font-size: 1.1rem;
   }
 }
