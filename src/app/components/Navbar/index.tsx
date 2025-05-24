@@ -247,7 +247,7 @@ const Navbar: React.FC = () => {
         clearTimeout(workDropdownTimeout);
       }
     };
-  }, []); // Empty dependency array means this runs once on mount
+  }, [workDropdownTimeout]); // Added workDropdownTimeout to dependencies
 
   return (
     <nav

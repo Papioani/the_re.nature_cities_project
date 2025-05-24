@@ -53,11 +53,13 @@ const Footer: React.FC = () => {
       >
         <div className={styles.footerImage}>
           <Image
-            src="/elidek.png"
+            src="/elidek.jpg"
             alt="Elidek logo"
             width={500}
             height={300}
-            style={{ objectFit: "contain" }}
+            loading="lazy"
+            quality={85}
+            sizes="(max-width: 768px) 100vw, 500px"
           />
         </div>
         <div className={styles.footerImage} aria-label="Greece 2.0 logo">
@@ -66,7 +68,9 @@ const Footer: React.FC = () => {
             alt="Greece2.0 logo"
             width={500}
             height={300}
-            style={{ objectFit: "contain" }}
+            loading="lazy"
+            quality={85}
+            sizes="(max-width: 768px) 100vw, 500px"
           />
         </div>
       </div>
