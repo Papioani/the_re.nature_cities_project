@@ -5,6 +5,7 @@ import styles from "./Navbar.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { useClickOutside } from "../../hooks/userClickOutside";
+import { usePathname } from "next/navigation";
 
 // <Link>: This component enables client-side navigation, which means that clicking the link will not trigger a full page reload. Instead, it will only update the necessary components on the page
 interface Tooltip {
@@ -17,6 +18,7 @@ interface Tooltip {
 }
 // many modern setups and Next.js examples skip React.FC when no props are present to keep the code concise.
 const Navbar: React.FC = () => {
+  const pathname = usePathname();
   const [isRotated, setIsRotated] = useState<boolean>(false);
   const navbarRef = useRef<HTMLElement | null>(null); // Ref to access the Navbar
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -316,13 +318,21 @@ const Navbar: React.FC = () => {
         } ${styles.navbarLinks}`}
         role="menu"
       >
-        <Link href="/" className={styles.navLink} onClick={closeMobileMenu}>
+        <Link
+          href="/"
+          className={`${styles.navLink} ${
+            pathname === "/" ? styles.active : ""
+          }`}
+          onClick={closeMobileMenu}
+        >
           Home
         </Link>
 
         <Link
           href="/the-re.nature-cities-project"
-          className={`${styles.navLink} mobileMarginTop mt-2`}
+          className={`${styles.navLink} mobileMarginTop mt-2 ${
+            pathname === "/the-re.nature-cities-project" ? styles.active : ""
+          }`}
           onClick={closeMobileMenu}
         >
           <span className="inline-flex lg:flex-col items-center text-start gap-x-1">
@@ -333,7 +343,9 @@ const Navbar: React.FC = () => {
 
         <Link
           href="/partners"
-          className={`${styles.navLink} mobileMarginTop mt-2`}
+          className={`${styles.navLink} mobileMarginTop mt-2 ${
+            pathname === "/partners" ? styles.active : ""
+          }`}
           onClick={closeMobileMenu}
         >
           <span className="inline-flex flex-row max-[1024px]:flex-row lg:flex-col items-center text-start gap-x-1">
@@ -348,9 +360,13 @@ const Navbar: React.FC = () => {
             <div className="relative">
               <div className="relative inline-block">
                 <button
-                  onClick={handleProjectOutlineClick} // Redirect to the project outline page
-                  className={`${styles.navLink} mobileMarginTop mt-2 inline-flex items-center space-x-2`}
-                  aria-expanded={isWorkDropdownOpen ? "true" : "false"} // Reflect dropdown state
+                  onClick={handleProjectOutlineClick}
+                  className={`${
+                    styles.navLink
+                  } mobileMarginTop mt-2 inline-flex items-center space-x-2 ${
+                    pathname === "/project-outline" ? styles.active : ""
+                  }`}
+                  aria-expanded={isWorkDropdownOpen ? "true" : "false"}
                   aria-controls="workDropdownMenu"
                   id="project-outline-link"
                 >
@@ -364,7 +380,7 @@ const Navbar: React.FC = () => {
                       isRotated ? "rotate-180" : ""
                     } text-[#fffff] `}
                     viewBox="0 0 16 16"
-                    onClick={handleDropdownClick} // Open the dropdown on arrow click
+                    onClick={handleDropdownClick}
                     aria-hidden="true"
                   >
                     <path
@@ -509,14 +525,16 @@ const Navbar: React.FC = () => {
             >
               <Link
                 href="/project-outline"
-                className={`${styles.navLink} px-4`}
+                className={`${styles.navLink} px-4 ${
+                  pathname === "/project-outline" ? styles.active : ""
+                }`}
                 aria-haspopup="true"
                 aria-expanded={isWorkDropdownOpen}
                 aria-controls="workDropdownMenu"
                 onFocus={handleWorkFocus}
                 onBlur={handleWorkBlur}
                 id="workDropdownTrigger"
-                ref={workDropdownTriggerRef} // Attach the ref to the element
+                ref={workDropdownTriggerRef}
               >
                 Project Outline
                 <svg
@@ -682,7 +700,9 @@ const Navbar: React.FC = () => {
         )}
         <Link
           href="/wind-tunnel"
-          className={`${styles.navLink} mobileMarginTop mt-2`}
+          className={`${styles.navLink} mobileMarginTop mt-2 ${
+            pathname === "/wind-tunnel" ? styles.active : ""
+          }`}
           onClick={closeMobileMenu}
         >
           <span>Wind Tunnel, LAI/LAD</span>
@@ -690,14 +710,18 @@ const Navbar: React.FC = () => {
         </Link>
         <Link
           href="/deliverables"
-          className={`${styles.navLink} mobileMarginTop mt-2`}
+          className={`${styles.navLink} mobileMarginTop mt-2 ${
+            pathname === "/deliverables" ? styles.active : ""
+          }`}
           onClick={closeMobileMenu}
         >
           Deliverables
         </Link>
         <Link
           href="/publications-announcements"
-          className={`${styles.navLink} mobileMarginTop mt-2`}
+          className={`${styles.navLink} mobileMarginTop mt-2 ${
+            pathname === "/publications-announcements" ? styles.active : ""
+          }`}
           onClick={closeMobileMenu}
         >
           <span className="w-full text-start">Publications & Conference</span>
@@ -707,7 +731,9 @@ const Navbar: React.FC = () => {
         </Link>
         <Link
           href="/the-action"
-          className={`${styles.navLink} mobileMarginTop mt-2`}
+          className={`${styles.navLink} mobileMarginTop mt-2 ${
+            pathname === "/the-action" ? styles.active : ""
+          }`}
           onClick={closeMobileMenu}
         >
           <span className="inline-flex items-center text-start gap-x-1">
