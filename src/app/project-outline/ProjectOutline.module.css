@@ -65,7 +65,7 @@
   align-items: center;
   cursor: pointer; /* Indicates interactivity */
   transition: color 0.2s ease, transform 0.2s ease; /* Smooth hover effect */
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .arrowLink:hover {

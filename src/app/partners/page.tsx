@@ -80,9 +80,10 @@ const PartnersPage: FC = () => {
             Among others, the department presents significant expertise in the
             research and development of innovative systems and components for
             combined energy and seismic retrofitting of buildings, and also a
-            strong expertise in numerical methods for buildings' dynamic energy
-            performance and urban microclimate analysis, buildings hygrothermal
-            performance and sustainable design of the urban built environment.
+            strong expertise in numerical methods for buildings&apos; dynamic
+            energy performance and urban microclimate analysis, buildings
+            hygrothermal performance and sustainable design of the urban built
+            environment.
           </p>
         </ul>
       </article>
