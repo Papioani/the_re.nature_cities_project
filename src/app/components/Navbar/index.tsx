@@ -137,7 +137,7 @@ const Navbar: React.FC = () => {
     setWorkDropdownTimeout(timeout);
   };
 
-  // Define handleKeyDown to close dropdowns on Escape key press
+  // handleKeyDown to close dropdowns on Escape key press
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Escape") {
       setIsWorkDropdownOpen(false);
@@ -232,7 +232,7 @@ const Navbar: React.FC = () => {
     setIsWorkDropdownOpen((prev) => !prev); // Toggle the dropdown visibility
   };
 
-  // Add this useEffect to ensure proper initialization
+  // useEffect to ensure proper initialization
   useEffect(() => {
     // Reset any existing timeouts on component mount
     if (workDropdownTimeout) {
@@ -249,7 +249,7 @@ const Navbar: React.FC = () => {
         clearTimeout(workDropdownTimeout);
       }
     };
-  }, [workDropdownTimeout]); // Added workDropdownTimeout to dependencies
+  }, [workDropdownTimeout]); //  workDropdownTimeout to dependencies
 
   return (
     <nav
