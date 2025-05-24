@@ -1,7 +1,8 @@
 .navbar {
   left: 0;
-  background-color: #e3e3cb; /*  556b2f  ///// */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+  background-color: #e3e3cb; /*  or 556b2f  ///// */
+  will-change: transform;
+  transform: translateZ(0);
   z-index: 20;
   width: 100%;
   line-height: 1.5rem;
@@ -9,11 +10,11 @@
   flex-wrap: nowrap;
   padding-right: 0.7rem;
 }
+
 .navbar a:hover {
   text-decoration: wavy;
-  transform: scale(1.03); /* Slightly enlarge on hover for effect */
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  background-color: #c5c5af; /* rgba(255, 255, 255, 0.1) /////// */
+  transform: scale(1.04);
+  transition: all 0.3s ease;
 }
 
 .logoSection {
@@ -28,6 +29,7 @@
   justify-content: flex-end;
   gap: 0.4rem;
   flex-wrap: nowrap;
+  padding: 0.5rem 0;
 }
 @media (min-width: 1440px) {
   .logoSection {
@@ -37,7 +39,7 @@
   .navbarLinks {
     display: flex; /* Ensure this is flex to apply gap */
     flex-direction: row; /* Align links horizontally */
-    gap: 4rem;
+    gap: 2rem;
     margin: 0 0.5rem; /* Adds rem margin to the left and right of the navbar */
   }
 }
@@ -49,6 +51,7 @@
   .navbarLinks {
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 1.5rem;
   }
   .relative.inline-block {
     /* Select the parent element */
@@ -70,8 +73,8 @@
     flex-direction: column; /* Stack vertically on small screens */
     align-items: flex-end; /* Adjust alignment */
     position: relative; /* Ensure that links stay within their container */
-    padding-top: 4rem;
-    padding: 0.5rem;
+    padding: 1rem 0.5rem;
+    gap: 0.75rem;
   }
   .navbar {
     display: flex;
@@ -116,25 +119,32 @@
   font-weight: bolder;
   padding: 0 0 0.125rem 0;
   border-radius: 0.25rem;
-  transition: color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
   text-align: start;
-  color: rgba(
-    28,
-    61,
-    90,
-    0.8
-  ); /* #356335; */ /* ffffff   556b2f 333333  2e4d2e  /////// */
+  color: rgba(28, 61, 90, 0.8);
   font-size: 1rem;
   display: block;
   white-space: nowrap;
-  /* Prevent shrinking */
   flex-shrink: 0;
+  position: relative;
+  background-color: #e3e3cb;
 }
 
-.navLink:active {
-  outline: 0.125rem solid #2e4d2e;
-  outline-offset: 0.125rem;
-  transform: scale(0.98);
+.navLink:hover {
+  transform: scale(1.04);
+  color: rgba(28, 61, 90, 0.95);
+  border-bottom: 2px solid rgba(28, 61, 90, 0.8);
+  padding-bottom: 0.125rem;
+}
+
+.navLink.active {
+  border-bottom: 2px solid rgba(28, 61, 90, 0.8);
+  padding-bottom: 0.125rem;
+  color: rgba(28, 61, 90, 0.95);
+}
+
+.navLink:focus {
+  outline: none;
 }
 
 .tooltipBox {
@@ -149,4 +159,14 @@
   font-size: 0.9rem;
   z-index: 20;
   transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar a,
+  .navLink,
+  .dropdownMenu,
+  .tooltipBox {
+    transition: none;
+    animation: none;
+  }
 }

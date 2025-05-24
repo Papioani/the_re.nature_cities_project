@@ -2,8 +2,8 @@
   position: -webkit-sticky; /* Safari fix */
   position: relative;
   background: rgba(255, 255, 255, 0.93);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease-in-out;
   flex-grow: 1;
@@ -30,8 +30,23 @@
   min-height: 400px;
   max-height: 450px;
   overflow: hidden;
-  /*  negative margin to create overlap */
   margin-bottom: -3rem;
+}
+
+.heroSection::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3rem; /* Match the negative margin-bottom of heroSection */
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.9) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
 }
 
 .heroImageContainer {
