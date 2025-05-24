@@ -1,19 +1,11 @@
 .partner {
   margin-bottom: 1rem;
 }
-.partnerLogo1 {
-  float: left; /* Floats the image to the left to allow text to wrap around it */
-  width: 15rem;
-  height: 6rem;
-  vertical-align: middle; /* Ensures the logo aligns vertically with the text */
-  margin-right: 1rem; /* Adjust space between image and text */
-}
-.partnerLogo2 {
-  float: left; /* Floats the image to the left to allow text to wrap around it */
-  width: 15rem;
-  height: 7rem;
-  vertical-align: middle; /* Ensures the logo aligns vertically with the text */
-  margin-right: 1rem; /* Adjust space between image and text */
+.partnerLogo {
+  display: inline-block;
+  margin-right: 0.75rem;
+  margin-bottom: 0.5rem;
+  object-fit: contain;
 }
 .partnerLine::before {
   content: "";

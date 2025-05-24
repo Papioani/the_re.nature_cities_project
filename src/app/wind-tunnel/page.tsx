@@ -83,6 +83,9 @@ const WindTunnel: React.FC = () => {
               width={500}
               height={300}
               className={styles.treePhoto}
+              loading="lazy"
+              quality={85}
+              sizes="(max-width: 768px) 100vw, 500px"
             />
           </div>
         </div>
@@ -125,6 +128,9 @@ const WindTunnel: React.FC = () => {
               width={500}
               height={300}
               className={styles.treePhoto}
+              loading="lazy"
+              quality={85}
+              sizes="(max-width: 768px) 100vw, 500px"
             />
           </div>
         </div>
@@ -168,6 +174,9 @@ const WindTunnel: React.FC = () => {
               width={500}
               height={300}
               className={styles.treePhoto}
+              loading="lazy"
+              quality={85}
+              sizes="(max-width: 768px) 100vw, 500px"
             />
           </div>
         </div>
@@ -233,6 +242,9 @@ const WindTunnel: React.FC = () => {
               width={500}
               height={300}
               className={styles.treePhoto}
+              loading="lazy"
+              quality={85}
+              sizes="(max-width: 768px) 100vw, 500px"
             />
           </div>
         </div>

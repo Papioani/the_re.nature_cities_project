@@ -38,9 +38,12 @@ const PartnersPage: FC = () => {
           <Image
             src="/CEUPlogo.png"
             alt="University of Patras Logo"
-            width={500}
-            height={300}
-            className={`${styles.partnerLogo1} inline-block mr-3 mb-2`}
+            width={200}
+            height={120}
+            className={styles.partnerLogo}
+            loading="lazy"
+            quality={85}
+            sizes="(max-width: 768px) 150px, 200px"
           />
           Founded in 1972, the{" "}
           <Link
@@ -77,7 +80,7 @@ const PartnersPage: FC = () => {
             Among others, the department presents significant expertise in the
             research and development of innovative systems and components for
             combined energy and seismic retrofitting of buildings, and also a
-            strong expertise in numerical methods for buildings’ dynamic energy
+            strong expertise in numerical methods for buildings' dynamic energy
             performance and urban microclimate analysis, buildings hygrothermal
             performance and sustainable design of the urban built environment.
           </p>
@@ -90,9 +93,12 @@ const PartnersPage: FC = () => {
           <Image
             src="/UniAthensLogo.png"
             alt="University of Athens Logo"
-            width={500}
-            height={300}
-            className={`${styles.partnerLogo2} inline-block mr-3`}
+            width={200}
+            height={120}
+            className={styles.partnerLogo}
+            loading="lazy"
+            quality={85}
+            sizes="(max-width: 768px) 150px, 200px"
           />
           The{" "}
           <Link

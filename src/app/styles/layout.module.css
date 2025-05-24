@@ -13,7 +13,8 @@
 }
 @media (max-width: 768px) {
   .heroSection {
-    height: auto; /* Allow natural height scaling */
+    height: 40vh;
+    min-height: 300px;
   }
   .mainContent {
     padding-left: 0rem; /* Reduced padding for mobile */
@@ -21,18 +22,27 @@
   }
 }
 .heroSection {
-  height: 350px;
-  position: relative; /* .hero-section as a reference point for any absolutely positioned elements within it, like ::before. */
-  overflow: hidden; /* Prevents content overflow */
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  min-height: 350px;
+  max-height: 450px;
+  overflow: hidden;
+}
+
+.heroImageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .heroSection::before {
-  content: ""; /* is required to make the ::before pseudo-element appear. Without defining content, pseudo-elements won’t render */
-  position: absolute; /* its position is calculated relative to the .hero-section (thanks to the parent’s position: relative). */
-  top: 0; /* the 0s here to span the full height and width of its parent element, the .hero-section */
+  content: "";
+  position: absolute;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0.2);
   z-index: 1;
 }

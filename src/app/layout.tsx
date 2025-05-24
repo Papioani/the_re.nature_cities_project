@@ -40,35 +40,33 @@ export default function RootLayout({ children }: Readonly<LayoutProps>) {
   return (
     <html lang="en">
       <body className="antialiased flex flex-col min-h-[100dvh] w-full">
-        <Suspense fallback={<div>Loading...</div>}>
-          {" "}
-          {/*  //loading state while components are being loaded. */}
-          <Background />
+        <ErrorBoundary>
+          <Suspense
+            fallback={<div className={styles.loadingSpinner}>Loading...</div>}
+          >
+            <Background />
+          </Suspense>
           <Navbar />
           <ModalProvider>
             <section className={styles.heroSection}>
-              <Image
-                src="/background-forest2.webp"
-                alt="Hero Background"
-                fill
-                style={{ objectFit: "cover" }}
-                priority
-                quality={75}
-                sizes="100vw"
-                loading="eager"
-              />
+              <div className={styles.heroImageContainer}>
+                <Image
+                  src="/background-forest2.webp"
+                  alt="Hero Background"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  priority
+                  quality={75}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+                />
+              </div>
             </section>
-
-            <ErrorBoundary>
-              <main
-                className={`${styles.mainContent} flex-grow pt-16 md:pt-20`}
-              >
-                {children}
-              </main>
-            </ErrorBoundary>
+            <main className={`${styles.mainContent} flex-grow pt-16 md:pt-20`}>
+              {children}
+            </main>
           </ModalProvider>
           <Footer />
-        </Suspense>
+        </ErrorBoundary>
       </body>
     </html>
   );
