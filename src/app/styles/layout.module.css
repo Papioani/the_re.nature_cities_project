@@ -1,33 +1,37 @@
 .mainContent {
   position: -webkit-sticky; /* Safari fix */
-  position: sticky;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
-  transition: top 0.3s ease-in-out;
+  position: relative;
+  background: rgba(255, 255, 255, 0.93);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease-in-out;
   flex-grow: 1;
-  padding-top: 2rem;
-  padding-left: 4rem;
-  padding-right: 4rem;
+  padding: clamp(1.5rem, 5vw, 2.5rem) clamp(1rem, 5vw, 4rem); /* Responsive padding */
   z-index: 5;
-  scroll-padding-top: calc(350px + 100px);
+  /* negative margin to create overlap with hero */
+  margin-top: -2.5rem;
 }
 @media (max-width: 768px) {
   .heroSection {
-    height: 40vh;
+    height: 45vh;
     min-height: 300px;
+    max-height: 400px;
   }
   .mainContent {
-    padding-left: 0rem; /* Reduced padding for mobile */
-    padding-right: 0rem; /* Reduced padding for mobile */
+    padding: 1.25rem 1rem;
+    margin-top: -2.5rem;
   }
 }
 .heroSection {
   position: relative;
   width: 100%;
-  height: 50vh;
-  min-height: 350px;
+  height: 70vh;
+  min-height: 400px;
   max-height: 450px;
   overflow: hidden;
+  /*  negative margin to create overlap */
+  margin-bottom: -3rem;
 }
 
 .heroImageContainer {
@@ -36,13 +40,30 @@
   height: 100%;
 }
 
-.heroSection::before {
+/* .heroSection::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.2);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.1) 40%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
   z-index: 1;
+} */
+/* Add focus styles for better accessibility */
+.mainContent:focus-within {
+  outline: 2px solid rgba(46, 77, 46, 0.3);
+  outline-offset: 2px;
+}
+
+/* Add reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .mainContent {
+    transition: none;
+  }
 }
