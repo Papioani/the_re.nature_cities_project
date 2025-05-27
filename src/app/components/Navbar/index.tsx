@@ -517,11 +517,13 @@ const Navbar: React.FC = () => {
             {/* For desktop, no button but dropdown with hover interaction */}
 
             <div
-              className="relative inline-block"
+              className="relative inline-block group"
               onMouseEnter={handleWorkMouseEnter}
               onMouseLeave={handleWorkMouseLeave}
               onKeyDown={handleDropdownKeyDown}
               tabIndex={0}
+              role="navigation"
+              aria-label="Project Outline navigation"
             >
               <Link
                 href="/project-outline"
@@ -538,7 +540,9 @@ const Navbar: React.FC = () => {
               >
                 Project Outline
                 <svg
-                  className="-mr-1 h-5 w-5 text-gray-400"
+                  className={`-mr-1 h-5 w-5 text-gray-400 transition-transform ${
+                    isRotated ? "rotate-180" : ""
+                  }`}
                   viewBox="0 0 20 20"
                   fill="currentColor"
                   aria-hidden="true"
