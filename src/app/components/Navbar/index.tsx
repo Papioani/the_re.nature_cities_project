@@ -133,7 +133,7 @@ const Navbar: React.FC = () => {
     const timeout = setTimeout(() => {
       setIsWorkDropdownOpen(false);
       setIsRotated(false);
-    }, 300);
+    }, 1000);
     setWorkDropdownTimeout(timeout);
   };
 
@@ -278,8 +278,8 @@ const Navbar: React.FC = () => {
           />
         </Link>
       </header>
-      {/* Hamburger Icon (visible on mobile) */}
 
+      {/* Hamburger Icon */}
       <div className={`hamburger-container ${isMobile ? "block" : "hidden"}`}>
         <button
           className="text-2xl text-white"
@@ -357,6 +357,7 @@ const Navbar: React.FC = () => {
         {/* Conditionally render for mobile */}
         {isMobile ? (
           <>
+            {/*  MOBILE DROPDOWN RENDERING */}
             <div className="relative">
               <div className="relative inline-block">
                 <button
@@ -514,7 +515,7 @@ const Navbar: React.FC = () => {
           </>
         ) : (
           <>
-            {/* For desktop, no button but dropdown with hover interaction */}
+            {/* DESKTOP DROPDOWN RENDERING */}
 
             <div
               className="relative inline-block group"
@@ -555,13 +556,21 @@ const Navbar: React.FC = () => {
                 </svg>
               </Link>
 
-              {/* Dropdown for desktop */}
+              {/* NEW: Invisible bridge to fill the gap */}
+              {isWorkDropdownOpen && (
+                <div
+                  className="absolute top-full left-0 right-0 h-2 bg-transparent"
+                  style={{ height: "8px" }} // Covers the gap
+                />
+              )}
+
+              {/* The dropdown menu */}
               {isWorkDropdownOpen && (
                 <div
                   role="menu"
                   id="workDropdownMenu"
                   aria-labelledby="workDropdownTrigger"
-                  className="dropdown-container absolute z-10 mt-2 w-full bg-white font-bold rounded-lg shadow-lg "
+                  className="dropdown-container absolute z-10 w-full bg-white font-bold rounded-lg shadow-lg "
                   style={{ backgroundColor: "rgba(255, 255, 255, 0.9)" }}
                 >
                   <ul className="text-m" style={{ color: "#2e4d2e" }}>
