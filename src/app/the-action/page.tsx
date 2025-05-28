@@ -1,11 +1,25 @@
-import React from "react";
+"use client";
+import React, { useRef, useEffect } from "react";
 
 const ActionPage: React.FC = () => {
-  return (
-    <section className="action-page-container px-6 py-8 max-w-4xl mx-auto">
-      <h2 className="text-center">Action Overview</h2>
+  const mainContentRef = useRef<HTMLElement>(null);
 
-      <div className="action-description text-justify text-lg space-y-4 p-4 shadow-lg rounded-lg">
+  useEffect(() => {
+    if (mainContentRef.current) {
+      mainContentRef.current.focus({ preventScroll: true });
+    }
+  }, []);
+  return (
+    <section
+      aria-labelledby="actionTitle"
+      ref={mainContentRef}
+      className="action-page-container px-6 py-8 max-w-4xl mx-auto"
+    >
+      <h2 id="actionTitle" className="text-center mb-8">
+        Action Overview
+      </h2>
+
+      <div className="action-description text-left md:text-justify text-lg leading-relaxed p-6 shadow-lg rounded-lg bg-white">
         <p>
           The Action “Basic Research Financing (Horizontal support for all
           Sciences)” (ID 16618 - Subproject 1) is included in the projects of
