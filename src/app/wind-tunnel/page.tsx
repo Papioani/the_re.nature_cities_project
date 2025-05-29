@@ -60,7 +60,7 @@ const WindTunnel: React.FC = () => {
                     ○
                   </span>{" "}
                   <span className={styles.NTUAtext}>
-                    Trees samples' height: 1.8m.
+                    Trees samples&apos; height: 1.8m.
                   </span>
                 </div>
               </li>
@@ -117,8 +117,8 @@ const WindTunnel: React.FC = () => {
                   </span>{" "}
                   <span className={styles.NTUAtext}>
                     Use of portable pyranometers to measure the received and
-                    reflected radiation by the plants' foliage and definition of
-                    the albedo value.
+                    reflected radiation by the plants&apos; foliage and
+                    definition of the albedo value.
                   </span>
                 </div>
               </li>
@@ -175,7 +175,7 @@ const WindTunnel: React.FC = () => {
                   <span className={styles.NTUAtext}>
                     For each plant, 4 perimetric measurements performed, with
                     the use of a 45 o lens cap, for the better representation of
-                    plants' spatial distribution.
+                    plants&apos; spatial distribution.
                   </span>
                 </div>
               </li>
