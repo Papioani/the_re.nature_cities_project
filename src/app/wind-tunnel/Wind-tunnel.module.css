@@ -45,21 +45,14 @@
   justify-content: center;
   align-items: flex-start;
   max-width: 250px; /* Reduced from 350px */
-  cursor: pointer;
-  transition: all 0.3s ease;
 }
 .treePhoto {
   max-width: 100%;
   height: auto;
   object-fit: cover;
   border-radius: 8px;
-  transition: transform 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
 
-.treePhoto:hover {
-  transform: scale(1.02);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .treePhotoExpanded {
@@ -133,19 +126,30 @@
 }
 
 .windPart:nth-child(3) .NTUAPackageTitle {
-  color: #1c3d5a; /* Dark green */
+  color: #1c3d5a;
 }
 
 .windPart:nth-child(5) .NTUAPackageTitle {
-  color: #1c3d5a; /* Dark green */
+  color: #1c3d5a;
 }
 
-/* Override for Albedo Measurements (2nd section) */
 .windPart:nth-child(2) .NTUAPackageTitle {
   color: #1a331a;
 }
 
-/* Override for LMA Measurements (4th section) */
 .windPart:nth-child(4) .NTUAPackageTitle {
   color: #1a331a;
+}
+
+.windPart:nth-child(3) .NTUAimage {
+  max-width: 12rem;
+  margin-left: 1rem;
+  align-self: flex-start;
+  margin-top: -2rem;
+}
+
+.windPart:nth-child(4) .NTUAimage {
+  max-width: 14rem;
+  margin-left: 1rem;
+  align-self: flex-start;
 }
