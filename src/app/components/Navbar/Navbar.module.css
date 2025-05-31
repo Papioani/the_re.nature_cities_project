@@ -85,6 +85,19 @@
     width: 100%;
     flex-wrap: wrap;
   }
+  .navbar .navLink:hover {
+    transform: scale(1.04);
+    color: rgba(28, 61, 90, 1);
+    background-color: #d1d1b5;
+    border-bottom: 2px solid transparent;
+  }
+
+  .navbar .navLink.active {
+    color: rgba(28, 61, 90, 1);
+    background-color: #d1d1b5;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 0.125rem;
+  }
   .mobile-link {
     position: relative;
     z-index: 50;
