@@ -117,7 +117,7 @@
   border-top: 2px solid rgba(28, 61, 90, 0.8);
 }
 .NTUAimageWithPadding {
-  padding: 0;
+  margin-top: -1.5rem;
 }
 /* In CSS module */
 .NTUALiContentWithMargin {
@@ -152,4 +152,14 @@
   max-width: 14rem;
   margin-left: 1rem;
   align-self: flex-start;
+}
+@media (max-width: 600px) {
+  .NTUALiContent {
+    margin-bottom: 1.1em;
+  }
+  .NTUABullet {
+    font-size: 1em; /* Make bullet a bit smaller on mobile */
+    margin-right: 0.9em; /* Add more space if needed */
+    margin-top: 0.2em; /* Adjust vertical alignment if needed */
+  }
 }

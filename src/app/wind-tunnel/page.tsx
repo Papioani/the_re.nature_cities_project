@@ -14,7 +14,7 @@ const WindTunnel: React.FC = () => {
   }, []);
   return (
     <main
-      className=" px-8 pb-16"
+      className="px-6 sm:px-8 pb-16"
       ref={mainContentRef}
       aria-labelledby="main-title"
     >
@@ -90,12 +90,12 @@ const WindTunnel: React.FC = () => {
             <Image
               src="/WIND TUN.jpg"
               alt="Wind tunnel experimental setup showing tree sample during drag coefficient measurement"
-              width={500}
-              height={300}
+              width={380}
+              height={228}
               className={styles.treePhoto}
               loading="lazy"
               quality={85}
-              sizes="(max-width: 768px) 100vw, 500px"
+              sizes="(max-width: 768px) 100vw, 380px"
             />
           </div>
         </div>
