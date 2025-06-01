@@ -111,7 +111,7 @@ const WindTunnel: React.FC = () => {
           <div className={styles.NTUAtext}>
             <ul>
               <li>
-                <div className={styles.NTUALiContentWithMargin}>
+                <div className={styles.NTUALiContent}>
                   <span className={styles.NTUABullet} aria-hidden="true">
                     ○
                   </span>{" "}
@@ -135,7 +135,7 @@ const WindTunnel: React.FC = () => {
               </li>
             </ul>
           </div>
-          <div className={styles.NTUAimage}>
+          <div className={`${styles.NTUAimage} ${styles.NTUAimageWithPadding}`}>
             <Image
               src="/ALBEDO.jpg"
               alt="Portable pyranometers measuring reflected radiation from tree foliage for albedo determination"

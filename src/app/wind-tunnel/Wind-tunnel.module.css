@@ -19,6 +19,9 @@
     align-items: start;
     min-height: auto;
   }
+  .NTUAimageWithPadding {
+    margin-bottom: 0rem; /* Less space on desktop */
+  }
 }
 .NTUADescription ul {
   list-style: none;
@@ -117,7 +120,7 @@
   border-top: 2px solid rgba(28, 61, 90, 0.8);
 }
 .NTUAimageWithPadding {
-  margin-top: -1.5rem;
+  margin-top: 0rem;
 }
 /* In CSS module */
 .NTUALiContentWithMargin {
@@ -145,7 +148,6 @@
   max-width: 12rem;
   margin-left: 1rem;
   align-self: flex-start;
-  margin-top: -2rem;
 }
 
 .windPart:nth-child(4) .NTUAimage {
@@ -161,5 +163,11 @@
     font-size: 1em; /* Make bullet a bit smaller on mobile */
     margin-right: 0.9em; /* Add more space if needed */
     margin-top: 0.2em; /* Adjust vertical alignment if needed */
+  }
+}
+
+@media (max-width: 768px) {
+  .NTUAimage {
+    margin-top: 1.5rem; /* Add space above image on mobile only */
   }
 }
