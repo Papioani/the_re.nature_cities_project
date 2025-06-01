@@ -91,12 +91,15 @@ const Footer: React.FC = () => {
           >
             <div
               ref={modalRef}
-              className="bg-white p-8 rounded-lg max-w-md w-full"
-              style={{ marginTop: "80px" }}
+              className="bg-white p-8 rounded-lg max-w-md w-full shadow-lg"
+              style={{
+                marginTop: "80px",
+                boxShadow: "0 4px 24px rgba(44,62,80,0.10)",
+              }}
             >
-              <p id="modal-title" className="text-lg text-center underline">
+              {/*  <p id="modal-title" className="text-lg text-center underline">
                 Contact Details
-              </p>
+              </p> */}
 
               <p id="modal-description" className="font-normal">
                 <span className="text-xl font-semibold text-[#2e4d2e]">
