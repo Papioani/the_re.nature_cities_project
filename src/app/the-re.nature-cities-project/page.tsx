@@ -4,7 +4,15 @@
 
 import React, { FC, useRef } from "react";
 import styles from "./theReNatureCitiesProject.module.css";
-import { FaSearch, FaClipboardList } from "react-icons/fa";
+import {
+  MagnifyingGlass,
+  ClipboardText,
+  Leaf,
+  Tree,
+  Wind,
+  Buildings,
+  ChartLine,
+} from "@phosphor-icons/react";
 
 // If there were props, we would define them here as an interface
 // interface ReNaturePageProps {
@@ -24,7 +32,8 @@ const ReNaturePage: FC = () => {
             id="scope"
             className="text-center flex items-center gap-4 px-4" /*  className="markerSquare" */
           >
-            <FaSearch style={{ color: "#2e4d2e" }} /> The Scope
+            <MagnifyingGlass size={24} weight="light" color="#2e4d2e" /> The
+            Scope
           </h2>
         </div>
         <p
@@ -43,50 +52,93 @@ const ReNaturePage: FC = () => {
             id="objectives"
             className="text-center flex items-center gap-4 px-4"
           >
-            <FaClipboardList style={{ color: "#2e4d2e" }} /> The Objectives
+            <ClipboardText size={24} weight="light" color="#2e4d2e" /> The
+            Objectives
           </h2>
         </div>
-        <ul className={`${styles.listCustom} pl-6 text-m `}>
-          <li className="mb-2">
-            To assess the{" "}
-            <span className={styles.emphasis}>microclimatic conditions</span>{" "}
-            prevailing in urban districts in Greek cities, based on{" "}
-            <span className={styles.emphasis}>
-              current and future climate change conditions.
+        <ul className={`${styles.listCustom} pl-6 text-m`}>
+          <li className="mb-2 flex items-start gap-2">
+            <Buildings
+              size={20}
+              weight="light"
+              color="#2e4d2e"
+              className="mt-1 flex-shrink-0"
+            />
+            <span>
+              To assess the{" "}
+              <span className={styles.emphasis}>microclimatic conditions</span>{" "}
+              prevailing in urban districts in Greek cities, based on{" "}
+              <span className={styles.emphasis}>
+                current and future climate change conditions.
+              </span>
             </span>
           </li>
-          <li className="mb-2">
-            To evaluate the{" "}
-            <span className={styles.emphasis}>
-              building’s energy performance
+          <li className="mb-2 flex items-start gap-2">
+            <ChartLine
+              size={20}
+              weight="light"
+              color="#2e4d2e"
+              className="mt-1 flex-shrink-0"
+            />
+            <span>
+              To evaluate the{" "}
+              <span className={styles.emphasis}>
+                building's energy performance
+              </span>
+              , as well as the{" "}
+              <span className={styles.emphasis}>
+                thermal comfort conditions
+              </span>{" "}
+              in indoor and outdoor spaces.
             </span>
-            , as well as the{" "}
-            <span className={styles.emphasis}>thermal comfort conditions</span>{" "}
-            in indoor and outdoor spaces.
           </li>
-          <li className="mb-2">
-            To provide <span className={styles.emphasis}>guidelines</span>{" "}
-            regarding the{" "}
-            <span className={styles.emphasis}>
-              contribution of street trees as Nature Based Solutions to the
-              climate resilience
-            </span>{" "}
-            of urban areas.
+          <li className="mb-2 flex items-start gap-2">
+            <Leaf
+              size={20}
+              weight="light"
+              color="#2e4d2e"
+              className="mt-1 flex-shrink-0"
+            />
+            <span>
+              To provide <span className={styles.emphasis}>guidelines</span>{" "}
+              regarding the{" "}
+              <span className={styles.emphasis}>
+                contribution of street trees as Nature Based Solutions to the
+                climate resilience
+              </span>{" "}
+              of urban areas.
+            </span>
           </li>
-          <li className="mb-2">
-            To create a{" "}
-            <span className={styles.emphasis}>
-              high-accuracy experimental database of foliage, thermal, and
-              aerodynamic characteristics
-            </span>{" "}
-            of common urban tree species, available for use in the precise and
-            holistic evaluation of trees&apos; effects in cities.
+          <li className="mb-2 flex items-start gap-2">
+            <Tree
+              size={20}
+              weight="light"
+              color="#2e4d2e"
+              className="mt-1 flex-shrink-0"
+            />
+            <span>
+              To create a{" "}
+              <span className={styles.emphasis}>
+                high-accuracy experimental database of foliage, thermal, and
+                aerodynamic characteristics
+              </span>{" "}
+              of common urban tree species, available for use in the precise and
+              holistic evaluation of trees&apos; effects in cities.
+            </span>
           </li>
-          <li className="mb-2 ">
-            To develop a{" "}
-            <span className={styles.emphasis}>decision-making toolbox</span>,
-            which will allow for the optimized selection of street trees and
-            planting patterns for urban areas.
+          <li className="mb-2 flex items-start gap-2">
+            <Wind
+              size={20}
+              weight="light"
+              color="#2e4d2e"
+              className="mt-1 flex-shrink-0"
+            />
+            <span>
+              To develop a{" "}
+              <span className={styles.emphasis}>decision-making toolbox</span>,
+              which will allow for the optimized selection of street trees and
+              planting patterns for urban areas.
+            </span>
           </li>
         </ul>
       </section>
