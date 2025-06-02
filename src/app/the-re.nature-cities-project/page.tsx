@@ -83,7 +83,7 @@ const ReNaturePage: FC = () => {
             <span>
               To evaluate the{" "}
               <span className={styles.emphasis}>
-                building's energy performance
+                building&apos;s energy performance
               </span>
               , as well as the{" "}
               <span className={styles.emphasis}>
