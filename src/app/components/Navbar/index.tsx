@@ -397,7 +397,7 @@ const Navbar: React.FC = () => {
                   ref={dropdownRef}
                   id="workDropdownMenu"
                   className="absolute left-0 top-full mt-2 bg-white shadow-md rounded-md max-w-[90%] sm:max-w-[350px]"
-                  style={{ width: "100vw" }}
+                  style={{ width: "100vw", zIndex: 100 }}
                   role="region"
                   aria-labelledby="project-outline-link"
                 >

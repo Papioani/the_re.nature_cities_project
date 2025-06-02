@@ -31,22 +31,22 @@ const PartnersPage: FC = () => {
 
       <article className={`${styles.partner} px-4`}>
         <div className={styles.partnerContent}>
-          <Image
-            src="/CEUPlogo.png"
-            alt="University of Patras Logo"
-            width={200}
-            height={120}
-            className={styles.partnerLogo}
-            loading="lazy"
-            quality={85}
-            sizes="(max-width: 768px) 150px, 200px"
-          />
           <div className={styles.partnerText}>
             <p
               className={styles.partnerDescription}
               ref={firstParagraphRef}
               tabIndex={0}
             >
+              <Image
+                src="/CEUPlogo.png"
+                alt="University of Patras Logo"
+                width={200}
+                height={120}
+                className={styles.partnerLogoFloat}
+                loading="lazy"
+                quality={85}
+                sizes="200px"
+              />
               Founded in 1972, the{" "}
               <Link
                 href="https://www.civil.upatras.gr/?lang=en"
@@ -86,39 +86,37 @@ const PartnersPage: FC = () => {
 
       <article className={`${styles.partner} px-4`}>
         <div className={styles.partnerContent}>
-          <Image
-            src="/UniAthensLogo.png"
-            alt="University of Athens Logo"
-            width={200}
-            height={120}
-            className={styles.partnerLogo}
-            loading="lazy"
-            quality={85}
-            sizes="(max-width: 768px) 150px, 200px"
-          />
-          <div className={styles.partnerText}>
-            <p className={styles.partnerDescription}>
-              The{" "}
-              <Link
-                href="https://ntua.gr/en/"
-                target="_blank"
-                className="partner-link"
-              >
-                National Technical University of Athens (NTUA)
-              </Link>
-              , is a Collaborating Organization of the Re.NatureCities project.
-              NTUA participates through the School of Mechanical Engineering,{" "}
-              <Link
-                href="http://wt.fluid.mech.ntua.gr/"
-                target="_blank"
-                className="partner-link"
-              >
-                Fluid Section
-              </Link>{" "}
-              and assures the wind tunnel measurements of the drag coefficient
-              of common urban tree species.
-            </p>
-          </div>
+          <p className={styles.partnerDescription}>
+            <Image
+              src="/UniAthensLogo.png"
+              alt="University of Athens Logo"
+              width={200}
+              height={120}
+              className={styles.partnerLogoFloat}
+              loading="lazy"
+              quality={85}
+              sizes="200px"
+            />
+            The{" "}
+            <Link
+              href="https://ntua.gr/en/"
+              target="_blank"
+              className="partner-link"
+            >
+              National Technical University of Athens (NTUA)
+            </Link>
+            , is a Collaborating Organization of the Re.NatureCities project.
+            NTUA participates through the School of Mechanical Engineering,{" "}
+            <Link
+              href="http://wt.fluid.mech.ntua.gr/"
+              target="_blank"
+              className="partner-link"
+            >
+              Fluid Section
+            </Link>{" "}
+            and assures the wind tunnel measurements of the drag coefficient of
+            common urban tree species.
+          </p>
         </div>
       </article>
       <div className="section-divider"></div>
