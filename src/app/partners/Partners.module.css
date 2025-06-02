@@ -91,6 +91,18 @@
   text-decoration: underline;
 }
 
+.partnerLogoFloat {
+  float: left;
+  margin: 0 1.5rem 1rem 0;
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.98;
+  filter: grayscale(10%);
+  border-radius: 8px;
+  /* shape-outside: ellipse(48% 45% at 50% 50%); */
+}
+
 @media (min-width: 768px) {
   .partnerContent {
     flex-direction: row;
@@ -127,5 +139,14 @@
 
   .partnerList li:first-child {
     font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .partnerLogoFloat {
+    float: none;
+    display: block;
+    margin: 0 auto 1rem auto;
+    width: 140px;
   }
 }

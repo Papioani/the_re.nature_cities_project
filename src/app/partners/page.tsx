@@ -31,22 +31,22 @@ const PartnersPage: FC = () => {
 
       <article className={`${styles.partner} px-4`}>
         <div className={styles.partnerContent}>
-          <Image
-            src="/CEUPlogo.png"
-            alt="University of Patras Logo"
-            width={200}
-            height={120}
-            className={styles.partnerLogo}
-            loading="lazy"
-            quality={85}
-            sizes="(max-width: 768px) 150px, 200px"
-          />
           <div className={styles.partnerText}>
             <p
               className={styles.partnerDescription}
               ref={firstParagraphRef}
               tabIndex={0}
             >
+              <Image
+                src="/CEUPlogo.png"
+                alt="University of Patras Logo"
+                width={200}
+                height={120}
+                className={styles.partnerLogoFloat}
+                loading="lazy"
+                quality={85}
+                sizes="200px"
+              />
               Founded in 1972, the{" "}
               <Link
                 href="https://www.civil.upatras.gr/?lang=en"
