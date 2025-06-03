@@ -427,7 +427,7 @@ const Navbar: React.FC = () => {
                         className="mobile-link"
                         onClick={() => {
                           closeMobileMenu();
-                          handleProjectOutlineClick();
+                          handleLinkClick();
                         }}
                       >
                         Work Package 2: Microclimate Evaluation on the Basis of
@@ -444,7 +444,7 @@ const Navbar: React.FC = () => {
                         href="/project-outline#work3"
                         onClick={() => {
                           closeMobileMenu();
-                          handleProjectOutlineClick();
+                          handleLinkClick();
                         }}
                       >
                         Work Package 3: Evaluation of Climate Change Effect on
@@ -456,7 +456,7 @@ const Navbar: React.FC = () => {
                         href="/project-outline#work4"
                         onClick={() => {
                           closeMobileMenu();
-                          handleProjectOutlineClick();
+                          handleLinkClick();
                         }}
                       >
                         Work Package 4: Experimental Assessment of Street Trees
@@ -473,7 +473,7 @@ const Navbar: React.FC = () => {
                         href="/project-outline#work5"
                         onClick={() => {
                           closeMobileMenu();
-                          handleProjectOutlineClick();
+                          handleLinkClick();
                         }}
                       >
                         Work Package 5: Evaluation of the Environmental and
@@ -485,7 +485,7 @@ const Navbar: React.FC = () => {
                         href="/project-outline#work6"
                         onClick={() => {
                           closeMobileMenu();
-                          handleProjectOutlineClick();
+                          handleLinkClick();
                         }}
                       >
                         Work Package 6: Project Management
@@ -501,7 +501,7 @@ const Navbar: React.FC = () => {
                         href="/project-outline#work7"
                         onClick={() => {
                           closeMobileMenu();
-                          handleProjectOutlineClick();
+                          handleLinkClick();
                         }}
                       >
                         Work Package 7: Dissemination and Communication of the
