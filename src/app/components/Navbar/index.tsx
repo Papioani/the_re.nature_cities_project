@@ -423,7 +423,7 @@ const Navbar: React.FC = () => {
                     </li>
                     <li>
                       <a
-                        href="#work2"
+                        href="/project-outline#work2"
                         className="mobile-link"
                         onClick={() => {
                           closeMobileMenu();
@@ -441,7 +441,7 @@ const Navbar: React.FC = () => {
                       }}
                     >
                       <a
-                        href="#work3"
+                        href="/project-outline#work3"
                         onClick={() => {
                           closeMobileMenu();
                           handleProjectOutlineClick();
@@ -453,7 +453,7 @@ const Navbar: React.FC = () => {
                     </li>
                     <li>
                       <a
-                        href="#work4"
+                        href="/project-outline#work4"
                         onClick={() => {
                           closeMobileMenu();
                           handleProjectOutlineClick();
@@ -471,7 +471,10 @@ const Navbar: React.FC = () => {
                     >
                       <a
                         href="/project-outline#work5"
-                        onClick={handleLinkClick}
+                        onClick={() => {
+                          closeMobileMenu();
+                          handleProjectOutlineClick();
+                        }}
                       >
                         Work Package 5: Evaluation of the Environmental and
                         Energy Effect of Street Trees
@@ -479,7 +482,7 @@ const Navbar: React.FC = () => {
                     </li>
                     <li>
                       <a
-                        href="#work6"
+                        href="/project-outline#work6"
                         onClick={() => {
                           closeMobileMenu();
                           handleProjectOutlineClick();
@@ -495,7 +498,7 @@ const Navbar: React.FC = () => {
                       }}
                     >
                       <a
-                        href="#work7"
+                        href="/project-outline#work7"
                         onClick={() => {
                           closeMobileMenu();
                           handleProjectOutlineClick();
