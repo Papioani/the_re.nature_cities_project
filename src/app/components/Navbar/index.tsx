@@ -410,12 +410,9 @@ const Navbar: React.FC = () => {
                       }}
                     >
                       <a
-                        href="#work1"
+                        href="/project-outline#work1"
                         className="mobile-link"
-                        onClick={() => {
-                          closeMobileMenu();
-                          handleProjectOutlineClick();
-                        }}
+                        onClick={handleLinkClick}
                       >
                         Work Package 1: Definition of the Case Study Areas and
                         Simulation Days
@@ -470,11 +467,8 @@ const Navbar: React.FC = () => {
                       }}
                     >
                       <a
-                        href="#work5"
-                        onClick={() => {
-                          closeMobileMenu();
-                          handleProjectOutlineClick();
-                        }}
+                        href="/project-outline#work5"
+                        onClick={handleLinkClick}
                       >
                         Work Package 5: Evaluation of the Environmental and
                         Energy Effect of Street Trees
@@ -556,7 +550,7 @@ const Navbar: React.FC = () => {
                 </svg>
               </Link>
 
-              {/* NEW: Invisible bridge to fill the gap */}
+              {/* Invisible bridge to fill the gap */}
               {isWorkDropdownOpen && (
                 <div
                   className="absolute top-full left-0 right-0 h-2 bg-transparent"
