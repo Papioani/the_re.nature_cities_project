@@ -412,7 +412,10 @@ const Navbar: React.FC = () => {
                       <a
                         href="/project-outline#work1"
                         className="mobile-link"
-                        onClick={handleLinkClick}
+                        onClick={() => {
+                          closeMobileMenu();
+                          handleLinkClick();
+                        }}
                       >
                         Work Package 1: Definition of the Case Study Areas and
                         Simulation Days
