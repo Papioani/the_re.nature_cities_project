@@ -4,6 +4,15 @@ import { usePathname } from "next/navigation";
 export default function ScrollHandler() {
   const pathname = usePathname();
 
+  // Add scroll behavior control
+  useEffect(() => {
+    if (pathname === "/project-outline") {
+      document.documentElement.classList.add("disable-smooth-scroll");
+    } else {
+      document.documentElement.classList.remove("disable-smooth-scroll");
+    }
+  }, [pathname]);
+
   const adjustScrollPosition = useCallback(() => {
     const hash = window.location.hash; // gives the part of the URL after the #
     if (hash) {
@@ -29,7 +38,7 @@ export default function ScrollHandler() {
         requestAnimationFrame(() => {
           window.scrollTo({
             top: scrollToPosition,
-            behavior: "smooth",
+            behavior: pathname === "/project-outline" ? "auto" : "smooth",
           });
         });
         // Focus for accessibility
@@ -41,7 +50,7 @@ export default function ScrollHandler() {
         }
       }
     }
-  }, []);
+  }, [pathname]); // Add pathname to dependencies
 
   useEffect(() => {
     // Handle same-page hash navigation

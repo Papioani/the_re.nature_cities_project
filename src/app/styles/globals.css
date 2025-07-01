@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* Enable smooth scrolling for the entire page */
-html {
+html:not(.disable-smooth-scroll) {
   scroll-behavior: smooth;
 }
 /* You typically define custom properties in the :root selector (or any parent element) to make them accessible throughout your stylesheet. */
