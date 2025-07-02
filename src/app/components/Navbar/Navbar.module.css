@@ -171,8 +171,20 @@
   }
 }
 
-.navLink:focus {
+/* Hides outline for mouse/touch users */
+.navLink:focus:not(:focus-visible),
+.mobile-link:focus:not(:focus-visible),
+button.navLink:focus:not(:focus-visible) {
   outline: none;
+  box-shadow: none;
+}
+
+/* Shows visible outline only for keyboard users */
+.navLink:focus-visible,
+.mobile-link:focus-visible,
+button.navLink:focus-visible {
+  outline: 1px dashed #aaa;
+  outline-offset: 2px;
 }
 
 .tooltipBox {
