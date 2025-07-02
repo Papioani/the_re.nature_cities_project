@@ -61,7 +61,11 @@ export default function RootLayout({ children }: Readonly<LayoutProps>) {
                 />
               </div>
             </section>
-            <main className={`${styles.mainContent} flex-grow pt-16 md:pt-20`}>
+            <main
+              id="main-content"
+              tabIndex={-1}
+              className={`${styles.mainContent} flex-grow pt-16 md:pt-20`}
+            >
               {children}
             </main>
           </ModalProvider>

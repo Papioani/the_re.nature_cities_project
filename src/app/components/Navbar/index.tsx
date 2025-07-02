@@ -258,6 +258,13 @@ const Navbar: React.FC = () => {
       className={`${styles.navbar} flex sticky top-0 justify-between items-end text-white navbarElement`}
       onKeyDown={handleKeyDown}
     >
+      {/* Add the skip link here, as the first child */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-2 focus:bg-white focus:text-black"
+      >
+        Skip to main content
+      </a>
       <header
         className={`${styles.logoSection} flex items-center pl-2 pr-2 pt-2 pb-2`}
       >
@@ -283,13 +290,15 @@ const Navbar: React.FC = () => {
       <div className={`hamburger-container ${isMobile ? "block" : "hidden"}`}>
         <button
           className="text-2xl text-white"
-          aria-label={
-            isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"
-          }
-          aria-expanded={isMobileMenuOpen ? "true" : "false"}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
           aria-controls="mobile-menu" // Associates button with the menu
           onClick={toggleMobileMenu}
         >
+          <span className="sr-only">
+            {isMobileMenuOpen ? "Close menu" : "Open menu"}
+          </span>
+
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
