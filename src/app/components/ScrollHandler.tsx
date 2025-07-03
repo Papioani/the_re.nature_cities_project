@@ -46,7 +46,6 @@ export default function ScrollHandler() {
           if (targetElement.tabIndex === -1) {
             targetElement.setAttribute("tabindex", "0");
           }
-          targetElement.focus();
         }
       }
     }
