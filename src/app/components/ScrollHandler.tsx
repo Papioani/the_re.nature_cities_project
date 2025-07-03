@@ -41,16 +41,15 @@ export default function ScrollHandler() {
             behavior: pathname === "/project-outline" ? "auto" : "smooth",
           });
         });
-        // Focus for accessibility
+        // make focusable the elements that are not focusable, cause they’re not interactive
         if (targetElement) {
           if (targetElement.tabIndex === -1) {
             targetElement.setAttribute("tabindex", "0");
           }
-          targetElement.focus();
         }
       }
     }
-  }, [pathname]); // Add pathname to dependencies
+  }, [pathname]);
 
   useEffect(() => {
     // Handle same-page hash navigation

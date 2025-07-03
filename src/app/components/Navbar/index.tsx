@@ -16,6 +16,47 @@ interface Tooltip {
     left: number;
   };
 }
+
+// Work packages data
+const workPackages = [
+  {
+    id: "work1",
+    title: "Work Package 1",
+    description: "Definition of the Case Study Areas and Simulation Days",
+  },
+  {
+    id: "work2",
+    title: "Work Package 2",
+    description: "Microclimate Evaluation on the Basis of Climate Change",
+  },
+  {
+    id: "work3",
+    title: "Work Package 3",
+    description: "Evaluation of Climate Change Effect on the Built Environment",
+  },
+  {
+    id: "work4",
+    title: "Work Package 4",
+    description: "Experimental Assessment of Street Trees as Urban NBS",
+  },
+  {
+    id: "work5",
+    title: "Work Package 5",
+    description:
+      "Evaluation of the Environmental and Energy Effect of Street Trees",
+  },
+  {
+    id: "work6",
+    title: "Work Package 6",
+    description: "Project Management",
+  },
+  {
+    id: "work7",
+    title: "Work Package 7",
+    description: "Dissemination and Communication of the Results",
+  },
+];
+
 // many modern setups and Next.js examples skip React.FC when no props are present to keep the code concise.
 const Navbar: React.FC = () => {
   const pathname = usePathname();
@@ -258,6 +299,14 @@ const Navbar: React.FC = () => {
       className={`${styles.navbar} flex sticky top-0 justify-between items-end text-white navbarElement`}
       onKeyDown={handleKeyDown}
     >
+      {/* Skip to main content link */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-10 focus:p-2 focus:bg-white focus:text-black focus:rounded"
+      >
+        Skip to main content
+      </a>
+
       <header
         className={`${styles.logoSection} flex items-center pl-2 pr-2 pt-2 pb-2`}
       >
@@ -283,13 +332,14 @@ const Navbar: React.FC = () => {
       <div className={`hamburger-container ${isMobile ? "block" : "hidden"}`}>
         <button
           className="text-2xl text-white"
-          aria-label={
-            isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"
-          }
-          aria-expanded={isMobileMenuOpen ? "true" : "false"}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
           aria-controls="mobile-menu" // Associates button with the menu
           onClick={toggleMobileMenu}
         >
+          <span className="sr-only">
+            {isMobileMenuOpen ? "Close menu" : "Open menu"}
+          </span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -522,9 +572,6 @@ const Navbar: React.FC = () => {
               onMouseEnter={handleWorkMouseEnter}
               onMouseLeave={handleWorkMouseLeave}
               onKeyDown={handleDropdownKeyDown}
-              tabIndex={0}
-              role="navigation"
-              aria-label="Project Outline navigation"
             >
               <Link
                 href="/project-outline"
@@ -536,6 +583,12 @@ const Navbar: React.FC = () => {
                 aria-controls="workDropdownMenu"
                 onFocus={handleWorkFocus}
                 onBlur={handleWorkBlur}
+                onKeyDown={(e) => {
+                  if (e.key === "ArrowDown" && !isWorkDropdownOpen) {
+                    e.preventDefault();
+                    setIsWorkDropdownOpen(true);
+                  }
+                }}
                 id="workDropdownTrigger"
                 ref={workDropdownTriggerRef}
               >
@@ -567,144 +620,38 @@ const Navbar: React.FC = () => {
               {/* The dropdown menu */}
               {isWorkDropdownOpen && (
                 <div
-                  role="menu"
                   id="workDropdownMenu"
+                  role="menu"
                   aria-labelledby="workDropdownTrigger"
                   className="dropdown-container absolute z-10 w-full bg-white font-bold rounded-lg shadow-lg "
                   style={{ backgroundColor: "rgba(255, 255, 255, 0.9)" }}
                 >
                   <ul className="text-m" style={{ color: "#2e4d2e" }}>
-                    <li role="menuitem">
-                      <Link
-                        href="/project-outline#work1"
-                        aria-label="Definition of the Case Study Areas and Simulation Days"
-                        className="work-link block py-1 px-1 "
-                        ref={firstDropdownItemRef}
-                        tabIndex={0}
-                        role="menuitem"
-                        onMouseEnter={(e) =>
-                          handleTooltipMouseEnter(
-                            e,
-                            "Definition of the Case Study Areas and Simulation Days"
-                          )
-                        }
-                        onMouseLeave={handleTooltipMouseLeave}
-                        onClick={handleLinkClick}
-                      >
-                        Work Package 1
-                      </Link>
-                    </li>{" "}
-                    <li>
-                      <Link
-                        href="/project-outline#work2"
-                        aria-label="Microclimate Evaluation on the Basis of Climate Change"
-                        className="work-link block py-1 px-1 "
-                        tabIndex={0}
-                        role="menuitem"
-                        onMouseEnter={(e) =>
-                          handleTooltipMouseEnter(
-                            e,
-                            "Microclimate Evaluation on the Basis of Climate Change"
-                          )
-                        }
-                        onMouseLeave={handleTooltipMouseLeave}
-                        onClick={handleLinkClick}
-                      >
-                        Work Package 2
-                      </Link>
-                    </li>
-                    <li role="menuitem">
-                      <Link
-                        href="/project-outline#work3"
-                        aria-label="Evaluation of Climate Change Effect on the Built Environment"
-                        className="work-link block py-1 px-1 "
-                        tabIndex={0}
-                        role="menuitem"
-                        onMouseEnter={(e) =>
-                          handleTooltipMouseEnter(
-                            e,
-                            "Evaluation of Climate Change Effect on the Built Environment"
-                          )
-                        }
-                        onMouseLeave={handleTooltipMouseLeave}
-                        onClick={handleLinkClick}
-                      >
-                        Work Package 3
-                      </Link>
-                    </li>{" "}
-                    <li role="menuitem">
-                      <Link
-                        href="/project-outline#work4"
-                        aria-label="Experimental Assessment of Street Trees as Urban NBS"
-                        className="work-link block py-1 px-1 "
-                        tabIndex={0}
-                        role="menuitem"
-                        onMouseEnter={(e) =>
-                          handleTooltipMouseEnter(
-                            e,
-                            "Experimental Assessment of Street Trees as Urban NBS"
-                          )
-                        }
-                        onMouseLeave={handleTooltipMouseLeave}
-                        onClick={handleLinkClick}
-                      >
-                        Work Package 4
-                      </Link>
-                    </li>
-                    <li role="menuitem">
-                      <Link
-                        href="/project-outline#work5"
-                        aria-label="Evaluation of the Environmental and Energy Effect of Street Trees"
-                        className="work-link block py-1 px-1 "
-                        tabIndex={0}
-                        role="menuitem"
-                        onMouseEnter={(e) =>
-                          handleTooltipMouseEnter(
-                            e,
-                            "Evaluation of the Environmental and Energy Effect of Street Trees"
-                          )
-                        }
-                        onMouseLeave={handleTooltipMouseLeave}
-                        onClick={handleLinkClick}
-                      >
-                        Work Package 5
-                      </Link>
-                    </li>{" "}
-                    <li role="menuitem">
-                      <Link
-                        href="/project-outline#work6"
-                        aria-label="Project Management"
-                        className="work-link block py-1 px-1 "
-                        tabIndex={0}
-                        role="menuitem"
-                        onMouseEnter={(e) =>
-                          handleTooltipMouseEnter(e, "Project Management")
-                        }
-                        onMouseLeave={handleTooltipMouseLeave}
-                        onClick={handleLinkClick}
-                      >
-                        Work Package 6
-                      </Link>
-                    </li>
-                    <li role="menuitem">
-                      <Link
-                        href="/project-outline#work7"
-                        aria-label="Dissemination and Communication of the Results"
-                        className="work-link block py-1 px-1 "
-                        tabIndex={0}
-                        role="menuitem"
-                        onMouseEnter={(e) =>
-                          handleTooltipMouseEnter(
-                            e,
-                            "Dissemination and Communication of the Results"
-                          )
-                        }
-                        onMouseLeave={handleTooltipMouseLeave}
-                        onClick={handleLinkClick}
-                      >
-                        Work Package 7
-                      </Link>
-                    </li>
+                    {workPackages.map((wp, index) => (
+                      <li key={wp.id} role="none">
+                        <Link
+                          href={`/project-outline#${wp.id}`}
+                          aria-label={wp.description}
+                          className="work-link block py-1 px-1"
+                          tabIndex={isWorkDropdownOpen ? 0 : -1}
+                          role="menuitem"
+                          ref={index === 0 ? firstDropdownItemRef : null}
+                          onMouseEnter={(e) =>
+                            handleTooltipMouseEnter(e, wp.description)
+                          }
+                          onMouseLeave={handleTooltipMouseLeave}
+                          onClick={handleLinkClick}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter" || e.key === " ") {
+                              e.preventDefault();
+                              handleLinkClick();
+                            }
+                          }}
+                        >
+                          {wp.title}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               )}

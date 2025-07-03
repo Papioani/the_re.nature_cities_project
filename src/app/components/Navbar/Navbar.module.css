@@ -183,7 +183,7 @@ button.navLink:focus:not(:focus-visible) {
 .navLink:focus-visible,
 .mobile-link:focus-visible,
 button.navLink:focus-visible {
-  outline: 1px dashed #aaa;
+  outline: 2px solid blue;
   outline-offset: 2px;
 }
 
