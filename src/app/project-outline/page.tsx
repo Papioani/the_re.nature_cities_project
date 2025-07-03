@@ -62,7 +62,7 @@ const ProjectOutline: FC = () => {
           </li>
           <li>Identification of the most critical scenario.</li>
           <li>
-            Extraction of microclimate data for buildings' dynamic energy
+            Extraction of microclimate data for buildings&apos; dynamic energy
             performance simulations.
           </li>
         </ul>
@@ -134,7 +134,7 @@ const ProjectOutline: FC = () => {
           <li>
             Numerical evaluation of the impact of the selected trees on the
             microclimate of the examined case study areas, the outdoor thermal
-            comfort, the buildings' energy performance, and the natural
+            comfort, the buildings&apos; energy performance, and the natural
             ventilation potential.
           </li>
           <li>

@@ -27,10 +27,10 @@ const Home: React.FC = () => {
         </p>
         <p className=" leading-relaxed mb-6 border-[#059669] pl-2">
           The research project is implemented in the framework of the H.F.R.I
-          call "Basic Research Financing (Horizontal support of all Sciences)"
-          under the National Recovery and Resilience Plan "Greece 2.0," funded
-          by the European Union - NextGenerationEU (H.F.R.I. Project Number:
-          15566).
+          call &ldquo;Basic Research Financing (Horizontal support of all
+          Sciences)&rdquo; under the National Recovery and Resilience Plan
+          &ldquo;Greece 2.0,&rdquo; funded by the European Union -
+          NextGenerationEU (H.F.R.I. Project Number: 15566).
         </p>
         <div className={`section-divider ${styles.noBottomMargin}`}></div>
         <div className=" leading-relaxed mb-6 text-left">
