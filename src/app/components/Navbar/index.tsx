@@ -298,7 +298,6 @@ const Navbar: React.FC = () => {
           <span className="sr-only">
             {isMobileMenuOpen ? "Close menu" : "Open menu"}
           </span>
-
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -531,9 +530,6 @@ const Navbar: React.FC = () => {
               onMouseEnter={handleWorkMouseEnter}
               onMouseLeave={handleWorkMouseLeave}
               onKeyDown={handleDropdownKeyDown}
-              tabIndex={0}
-              role="navigation"
-              aria-label="Project Outline navigation"
             >
               <Link
                 href="/project-outline"
@@ -545,6 +541,12 @@ const Navbar: React.FC = () => {
                 aria-controls="workDropdownMenu"
                 onFocus={handleWorkFocus}
                 onBlur={handleWorkBlur}
+                onKeyDown={(e) => {
+                  if (e.key === "ArrowDown" && !isWorkDropdownOpen) {
+                    e.preventDefault();
+                    setIsWorkDropdownOpen(true);
+                  }
+                }}
                 id="workDropdownTrigger"
                 ref={workDropdownTriggerRef}
               >
