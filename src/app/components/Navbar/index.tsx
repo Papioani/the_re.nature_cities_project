@@ -299,14 +299,6 @@ const Navbar: React.FC = () => {
       className={`${styles.navbar} flex sticky top-0 justify-between items-end text-white navbarElement`}
       onKeyDown={handleKeyDown}
     >
-      {/* Skip to main content link */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:z-10 focus:p-2 focus:bg-white focus:text-black focus:rounded"
-      >
-        Skip to main content
-      </a>
-
       <header
         className={`${styles.logoSection} flex items-center pl-2 pr-2 pt-2 pb-2`}
       >
@@ -448,12 +440,13 @@ const Navbar: React.FC = () => {
                   id="workDropdownMenu"
                   className="absolute left-0 top-full mt-2 bg-white shadow-md rounded-md max-w-[90%] sm:max-w-[350px]"
                   style={{ width: "100vw", zIndex: 100 }}
-                  role="region"
+                  role="menu"
                   aria-labelledby="project-outline-link"
                 >
                   <ul>
                     {/* Dropdown items for mobile */}
                     <li
+                      role="none"
                       style={{
                         backgroundColor: "rgba(107, 139, 59, 0.2)", // RGBA for #556b2f with opacity 0.5
                         transition: "background-color 0.3s ease",
@@ -462,6 +455,7 @@ const Navbar: React.FC = () => {
                       <a
                         href="/project-outline#work1"
                         className="mobile-link"
+                        role="menuitem"
                         onClick={() => {
                           closeMobileMenu();
                           handleLinkClick();
@@ -471,10 +465,11 @@ const Navbar: React.FC = () => {
                         Simulation Days
                       </a>
                     </li>
-                    <li>
+                    <li role="none">
                       <a
                         href="/project-outline#work2"
                         className="mobile-link"
+                        role="menuitem"
                         onClick={() => {
                           closeMobileMenu();
                           handleLinkClick();
@@ -485,6 +480,7 @@ const Navbar: React.FC = () => {
                       </a>
                     </li>
                     <li
+                      role="none"
                       style={{
                         backgroundColor: "rgba(107, 139, 59, 0.2)", // RGBA for #556b2f with opacity 0.5
                         transition: "background-color 0.3s ease",
@@ -492,6 +488,8 @@ const Navbar: React.FC = () => {
                     >
                       <a
                         href="/project-outline#work3"
+                        className="mobile-link"
+                        role="menuitem"
                         onClick={() => {
                           closeMobileMenu();
                           handleLinkClick();
@@ -501,9 +499,11 @@ const Navbar: React.FC = () => {
                         the Built Environment
                       </a>
                     </li>
-                    <li>
+                    <li role="none">
                       <a
                         href="/project-outline#work4"
+                        className="mobile-link"
+                        role="menuitem"
                         onClick={() => {
                           closeMobileMenu();
                           handleLinkClick();
@@ -514,6 +514,7 @@ const Navbar: React.FC = () => {
                       </a>
                     </li>
                     <li
+                      role="none"
                       style={{
                         backgroundColor: "rgba(107, 139, 59, 0.2)", // RGBA for #556b2f with opacity 0.5
                         transition: "background-color 0.3s ease",
@@ -521,6 +522,8 @@ const Navbar: React.FC = () => {
                     >
                       <a
                         href="/project-outline#work5"
+                        className="mobile-link"
+                        role="menuitem"
                         onClick={() => {
                           closeMobileMenu();
                           handleLinkClick();
@@ -530,9 +533,11 @@ const Navbar: React.FC = () => {
                         Energy Effect of Street Trees
                       </a>
                     </li>
-                    <li>
+                    <li role="none">
                       <a
                         href="/project-outline#work6"
+                        className="mobile-link"
+                        role="menuitem"
                         onClick={() => {
                           closeMobileMenu();
                           handleLinkClick();
@@ -542,6 +547,7 @@ const Navbar: React.FC = () => {
                       </a>
                     </li>
                     <li
+                      role="none"
                       style={{
                         backgroundColor: "rgba(107, 139, 59, 0.2)", // RGBA for #556b2f with opacity 0.5
                         transition: "background-color 0.3s ease",
@@ -549,6 +555,8 @@ const Navbar: React.FC = () => {
                     >
                       <a
                         href="/project-outline#work7"
+                        className="mobile-link"
+                        role="menuitem"
                         onClick={() => {
                           closeMobileMenu();
                           handleLinkClick();
@@ -567,7 +575,7 @@ const Navbar: React.FC = () => {
           <>
             {/* DESKTOP DROPDOWN RENDERING */}
 
-            <div
+            <nav
               className="relative inline-block group"
               onMouseEnter={handleWorkMouseEnter}
               onMouseLeave={handleWorkMouseLeave}
@@ -578,6 +586,9 @@ const Navbar: React.FC = () => {
                 className={`${styles.navLink} px-4 ${
                   pathname === "/project-outline" ? styles.active : ""
                 }`}
+                aria-current={
+                  pathname === "/project-outline" ? "page" : undefined
+                }
                 aria-haspopup="true"
                 aria-expanded={isWorkDropdownOpen}
                 aria-controls="workDropdownMenu"
@@ -623,6 +634,7 @@ const Navbar: React.FC = () => {
                   id="workDropdownMenu"
                   role="menu"
                   aria-labelledby="workDropdownTrigger"
+                  aria-describedby="dropdown-instructions"
                   className="dropdown-container absolute z-10 w-full bg-white font-bold rounded-lg shadow-lg "
                   style={{ backgroundColor: "rgba(255, 255, 255, 0.9)" }}
                 >
@@ -655,7 +667,7 @@ const Navbar: React.FC = () => {
                   </ul>
                 </div>
               )}
-            </div>
+            </nav>
           </>
         )}
         <Link
