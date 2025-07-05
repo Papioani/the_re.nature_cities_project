@@ -3,12 +3,15 @@ import Image from "next/image";
 
 export default function Background() {
   return (
-    <div className="fixed inset-0 z-[-1] overflow-hidden h-[100dvh] w-full">
+    <div
+      className="fixed inset-0 z-[-1] overflow-hidden h-[100dvh] w-full"
+      aria-hidden="true"
+    >
       {" "}
       {/* z-[-1] to place it behind other content */}
       <Image
         src="/background-forest.webp"
-        alt="Background"
+        alt=""
         fill
         style={{
           objectFit: "cover",
