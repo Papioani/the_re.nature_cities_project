@@ -62,7 +62,7 @@ const Navbar: React.FC = () => {
   const pathname = usePathname();
   const [isRotated, setIsRotated] = useState<boolean>(false);
   const navbarRef = useRef<HTMLElement | null>(null); // Ref to access the Navbar
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   const [navbarHeight, setNavbarHeight] = useState(0);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
@@ -297,7 +297,6 @@ const Navbar: React.FC = () => {
       ref={navbarRef}
       aria-label="Main navigation"
       className={`${styles.navbar} flex sticky top-0 justify-between items-end text-white navbarElement`}
-      onKeyDown={handleKeyDown}
     >
       {/* Skip to main content link  */}
       <a
@@ -422,23 +421,29 @@ const Navbar: React.FC = () => {
                   id="project-outline-link"
                 >
                   <span>Project Outline</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    className={`bi bi-chevron-down transition-transform duration-300 ${
-                      isRotated ? "rotate-180" : ""
-                    } text-[#fffff] `}
-                    viewBox="0 0 16 16"
+                  <button
                     onClick={handleDropdownClick}
-                    aria-hidden="true"
+                    aria-label="Toggle project outline dropdown"
+                    className="p-0 m-0 border-none bg-transparent cursor-pointer flex items-center"
+                    type="button"
                   >
-                    <path
-                      fillRule="evenodd"
-                      d="M1.5 5.5a.5.5 0 0 1 .707-.707L8 9.793l5.793-5.793a.5.5 0 0 1 .707.707l-6 6a.5.5 0 0 1-.707 0l-6-6z"
-                    />
-                  </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                      className={`bi bi-chevron-down transition-transform duration-300 ${
+                        isRotated ? "rotate-180" : ""
+                      } text-[#fffff]`}
+                      aria-hidden="true"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M1.5 5.5a.5.5 0 0 1 .707-.707L8 9.793l5.793-5.793a.5.5 0 0 1 .707.707l-6 6a.5.5 0 0 1-.707 0l-6-6z"
+                      />
+                    </svg>
+                  </button>
                 </button>
               </div>
               {/* Dropdown for mobile */}
@@ -583,7 +588,7 @@ const Navbar: React.FC = () => {
           <>
             {/* DESKTOP DROPDOWN RENDERING */}
 
-            <nav
+            <div
               className="relative inline-block group"
               onMouseEnter={handleWorkMouseEnter}
               onMouseLeave={handleWorkMouseLeave}
@@ -675,7 +680,7 @@ const Navbar: React.FC = () => {
                   </ul>
                 </div>
               )}
-            </nav>
+            </div>
           </>
         )}
         <Link
