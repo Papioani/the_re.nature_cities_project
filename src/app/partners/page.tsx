@@ -1,7 +1,7 @@
 "use client";
 
 // src/app/partners/page.tsx
-import React, { FC, useEffect, useRef } from "react";
+import React, { FC /* useEffect, useRef */ } from "react";
 import Link from "next/link";
 import styles from "./Partners.module.css";
 import Image from "next/image";
