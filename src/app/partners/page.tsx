@@ -1,29 +1,29 @@
 "use client";
 
 // src/app/partners/page.tsx
-import React, { FC, useEffect, useRef } from "react";
+import React, { FC /* useEffect, useRef */ } from "react";
 import Link from "next/link";
 import styles from "./Partners.module.css";
 import Image from "next/image";
 
 const PartnersPage: FC = () => {
-  const mainContentRef = useRef<HTMLElement>(null);
-  const firstParagraphRef = useRef<HTMLParagraphElement>(null);
+  /* const mainContentRef = useRef<HTMLElement>(null);
+  const firstParagraphRef = useRef<HTMLParagraphElement>(null); */
 
   // Set focus to the main content on load
-  useEffect(() => {
+  /*  useEffect(() => {
     if (mainContentRef.current) {
       mainContentRef.current.focus({ preventScroll: true });
     }
     if (firstParagraphRef.current) {
       firstParagraphRef.current.focus({ preventScroll: true });
     }
-  }, []);
+  }, []); */
 
   return (
     <section
       className=" px-8 pb-10"
-      ref={mainContentRef}
+      /* ref={mainContentRef} */
       aria-labelledby="partnersTitle"
     >
       <h2 id="partnersTitle">The Partners and Research Team</h2>
@@ -34,8 +34,8 @@ const PartnersPage: FC = () => {
           <div className={styles.partnerText}>
             <p
               className={styles.partnerDescription}
-              ref={firstParagraphRef}
-              tabIndex={0}
+              /*  ref={firstParagraphRef}
+              tabIndex={0} */
             >
               <Image
                 src="/CEUPlogo.png"

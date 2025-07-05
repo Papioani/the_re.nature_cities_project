@@ -299,6 +299,14 @@ const Navbar: React.FC = () => {
       className={`${styles.navbar} flex sticky top-0 justify-between items-end text-white navbarElement`}
       onKeyDown={handleKeyDown}
     >
+      {/* Skip to main content link  */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 bg-blue-600 text-white p-2 rounded shadow-lg"
+      >
+        Skip to main content
+      </a>
+
       <header
         className={`${styles.logoSection} flex items-center pl-2 pr-2 pt-2 pb-2`}
       >

@@ -52,7 +52,7 @@ export default function RootLayout({ children }: Readonly<LayoutProps>) {
               <div className={styles.heroImageContainer}>
                 <Image
                   src="/background-forest2.webp"
-                  alt="Hero Background"
+                  alt=""
                   fill
                   style={{ objectFit: "cover" }}
                   priority
@@ -61,12 +61,7 @@ export default function RootLayout({ children }: Readonly<LayoutProps>) {
                 />
               </div>
             </section>
-            <a
-              href="#main-content"
-              className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white p-2 rounded"
-            >
-              Skip to main content
-            </a>
+
             <main
               id="main-content"
               tabIndex={-1}
