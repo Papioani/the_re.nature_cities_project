@@ -62,7 +62,7 @@ const Navbar: React.FC = () => {
   const pathname = usePathname();
   const [isRotated, setIsRotated] = useState<boolean>(false);
   const navbarRef = useRef<HTMLElement | null>(null); // Ref to access the Navbar
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   const [navbarHeight, setNavbarHeight] = useState(0);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
@@ -121,21 +121,31 @@ const Navbar: React.FC = () => {
   const handleWorkFocus = () => {
     setIsWorkDropdownOpen(true);
   };
-  const handleWorkBlur = (event: React.FocusEvent) => {
-    const relatedTarget = event.relatedTarget as HTMLElement;
-    console.log("handleWorkBlur triggered");
-    console.log("Event target:", event.target);
-    console.log("Related target:", relatedTarget);
-    if (
-      relatedTarget &&
-      workDropdownTriggerRef.current &&
-      !workDropdownTriggerRef.current.contains(relatedTarget) &&
-      !relatedTarget.closest("#workDropdownMenu")
-    ) {
-      setIsWorkDropdownOpen(false);
-    } else {
-      console.log("Not closing dropdown, conditions not met");
-    }
+  const handleWorkBlur = () => {
+    requestAnimationFrame(() => {
+      const active = document.activeElement as HTMLElement | null;
+      console.log("handleWorkBlur: active element is", active);
+      if (active) {
+        console.log("active.id:", active.id);
+        console.log("active.className:", active.className);
+        console.log(
+          "active.closest('#workDropdownMenu'):",
+          active.closest("#workDropdownMenu")
+        );
+        console.log(
+          "active.id === 'workDropdownTrigger':",
+          active.id === "workDropdownTrigger"
+        );
+        console.log("active.textContent:", active.textContent);
+      }
+      if (
+        active &&
+        !active.closest("#workDropdownMenu") &&
+        active.id !== "workDropdownTrigger"
+      ) {
+        setIsWorkDropdownOpen(false);
+      }
+    });
   };
 
   useEffect(() => {
@@ -297,7 +307,6 @@ const Navbar: React.FC = () => {
       ref={navbarRef}
       aria-label="Main navigation"
       className={`${styles.navbar} flex sticky top-0 justify-between items-end text-white navbarElement`}
-      onKeyDown={handleKeyDown}
     >
       {/* Skip to main content link  */}
       <a
@@ -409,7 +418,7 @@ const Navbar: React.FC = () => {
           <>
             {/*  MOBILE DROPDOWN RENDERING */}
             <div className="relative">
-              <div className="relative inline-block">
+              <div className="relative inline-flex items-center space-x-2">
                 <button
                   onClick={handleProjectOutlineClick}
                   className={`${
@@ -420,18 +429,32 @@ const Navbar: React.FC = () => {
                   aria-expanded={isWorkDropdownOpen ? "true" : "false"}
                   aria-controls="workDropdownMenu"
                   id="project-outline-link"
+                  type="button"
                 >
-                  <span>Project Outline</span>
+                  Project Outline
+                </button>
+                <button
+                  onClick={handleDropdownClick}
+                  aria-label={
+                    isWorkDropdownOpen
+                      ? "Close project outline menu"
+                      : "Open project outline menu"
+                  }
+                  aria-expanded={isWorkDropdownOpen}
+                  aria-controls="workDropdownMenu"
+                  type="button"
+                  className="dropdownToggle"
+                  tabIndex={0}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
                     height="20"
                     fill="currentColor"
+                    viewBox="0 0 16 16"
                     className={`bi bi-chevron-down transition-transform duration-300 ${
                       isRotated ? "rotate-180" : ""
-                    } text-[#fffff] `}
-                    viewBox="0 0 16 16"
-                    onClick={handleDropdownClick}
+                    } text-[#fffff]`}
                     aria-hidden="true"
                   >
                     <path
@@ -583,14 +606,14 @@ const Navbar: React.FC = () => {
           <>
             {/* DESKTOP DROPDOWN RENDERING */}
 
-            <nav
+            <div
               className="relative inline-block group"
               onMouseEnter={handleWorkMouseEnter}
               onMouseLeave={handleWorkMouseLeave}
-              onKeyDown={handleDropdownKeyDown}
             >
               <Link
                 href="/project-outline"
+                tabIndex={0}
                 className={`${styles.navLink} px-4 ${
                   pathname === "/project-outline" ? styles.active : ""
                 }`}
@@ -600,13 +623,14 @@ const Navbar: React.FC = () => {
                 aria-haspopup="true"
                 aria-expanded={isWorkDropdownOpen}
                 aria-controls="workDropdownMenu"
-                onFocus={handleWorkFocus}
+                /*  onFocus={handleWorkFocus} */
                 onBlur={handleWorkBlur}
                 onKeyDown={(e) => {
                   if (e.key === "ArrowDown" && !isWorkDropdownOpen) {
                     e.preventDefault();
                     setIsWorkDropdownOpen(true);
                   }
+                  handleDropdownKeyDown(e);
                 }}
                 id="workDropdownTrigger"
                 ref={workDropdownTriggerRef}
@@ -675,7 +699,7 @@ const Navbar: React.FC = () => {
                   </ul>
                 </div>
               )}
-            </nav>
+            </div>
           </>
         )}
         <Link
