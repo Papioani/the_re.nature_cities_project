@@ -18,7 +18,7 @@ const ProjectOutline: FC = () => {
         subsections:
       </p>
       <article className={styles.workPackage}>
-        <h2 id="work1" className={styles.workPackageTitle} tabIndex={0}>
+        <h2 id="work1" className={styles.workPackageTitle}>
           Work Package 1: Definition of the Case Study Areas and Simulation Days
           <a
             href="https://zenodo.org/records/14513140"
@@ -42,7 +42,7 @@ const ProjectOutline: FC = () => {
         </ul>
       </article>
       <article className={styles.workPackage}>
-        <h2 id="work2" className={styles.workPackageTitle} tabIndex={0}>
+        <h2 id="work2" className={styles.workPackageTitle}>
           Work Package 2: Microclimate Evaluation on the Basis of Climate Change
           {/*  <a
             href="/files/work2" 
@@ -68,7 +68,7 @@ const ProjectOutline: FC = () => {
         </ul>
       </article>
       <article className={styles.workPackage}>
-        <h2 id="work3" className={styles.workPackageTitle} tabIndex={0}>
+        <h2 id="work3" className={styles.workPackageTitle}>
           Work Package 3: Evaluation of Climate Change Effect on the Built
           Environment
           {/*  <a
@@ -91,7 +91,7 @@ const ProjectOutline: FC = () => {
         </ul>
       </article>
       <article className={styles.workPackage}>
-        <h2 id="work4" className={styles.workPackageTitle} tabIndex={0}>
+        <h2 id="work4" className={styles.workPackageTitle}>
           Work Package 4: Experimental Assessment of Street Trees as Urban NBS
           <a
             href="https://zenodo.org/records/14442184"
@@ -113,7 +113,7 @@ const ProjectOutline: FC = () => {
         </ul>
       </article>
       <article className={styles.workPackage}>
-        <h2 id="work5" className={styles.workPackageTitle} tabIndex={0}>
+        <h2 id="work5" className={styles.workPackageTitle}>
           Work Package 5: Evaluation of the Environmental and Energy Effect of
           Street Trees
           {/*  <a
@@ -144,7 +144,7 @@ const ProjectOutline: FC = () => {
         </ul>
       </article>
       <article className={styles.workPackage}>
-        <h2 id="work6" className={styles.workPackageTitle} tabIndex={0}>
+        <h2 id="work6" className={styles.workPackageTitle}>
           Work Package 6: Project Management
           {/* <a
             href="/files/work6"
@@ -158,7 +158,7 @@ const ProjectOutline: FC = () => {
         </h2>
       </article>
       <article className={styles.workPackage}>
-        <h2 id="work7" className={styles.workPackageTitle} tabIndex={0}>
+        <h2 id="work7" className={styles.workPackageTitle}>
           Work Package 7: Dissemination and Communication of the Results
           {/* <a
             href="/files/work7"

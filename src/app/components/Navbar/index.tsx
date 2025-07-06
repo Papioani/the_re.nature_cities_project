@@ -121,21 +121,31 @@ const Navbar: React.FC = () => {
   const handleWorkFocus = () => {
     setIsWorkDropdownOpen(true);
   };
-  const handleWorkBlur = (event: React.FocusEvent) => {
-    const relatedTarget = event.relatedTarget as HTMLElement;
-    console.log("handleWorkBlur triggered");
-    console.log("Event target:", event.target);
-    console.log("Related target:", relatedTarget);
-    if (
-      relatedTarget &&
-      workDropdownTriggerRef.current &&
-      !workDropdownTriggerRef.current.contains(relatedTarget) &&
-      !relatedTarget.closest("#workDropdownMenu")
-    ) {
-      setIsWorkDropdownOpen(false);
-    } else {
-      console.log("Not closing dropdown, conditions not met");
-    }
+  const handleWorkBlur = () => {
+    requestAnimationFrame(() => {
+      const active = document.activeElement as HTMLElement | null;
+      console.log("handleWorkBlur: active element is", active);
+      if (active) {
+        console.log("active.id:", active.id);
+        console.log("active.className:", active.className);
+        console.log(
+          "active.closest('#workDropdownMenu'):",
+          active.closest("#workDropdownMenu")
+        );
+        console.log(
+          "active.id === 'workDropdownTrigger':",
+          active.id === "workDropdownTrigger"
+        );
+        console.log("active.textContent:", active.textContent);
+      }
+      if (
+        active &&
+        !active.closest("#workDropdownMenu") &&
+        active.id !== "workDropdownTrigger"
+      ) {
+        setIsWorkDropdownOpen(false);
+      }
+    });
   };
 
   useEffect(() => {
@@ -421,11 +431,10 @@ const Navbar: React.FC = () => {
                   id="project-outline-link"
                 >
                   <span>Project Outline</span>
-                  <button
+                  <div
                     onClick={handleDropdownClick}
                     aria-label="Toggle project outline dropdown"
                     className="p-0 m-0 border-none bg-transparent cursor-pointer flex items-center"
-                    type="button"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -443,7 +452,7 @@ const Navbar: React.FC = () => {
                         d="M1.5 5.5a.5.5 0 0 1 .707-.707L8 9.793l5.793-5.793a.5.5 0 0 1 .707.707l-6 6a.5.5 0 0 1-.707 0l-6-6z"
                       />
                     </svg>
-                  </button>
+                  </div>
                 </button>
               </div>
               {/* Dropdown for mobile */}
@@ -592,10 +601,10 @@ const Navbar: React.FC = () => {
               className="relative inline-block group"
               onMouseEnter={handleWorkMouseEnter}
               onMouseLeave={handleWorkMouseLeave}
-              onKeyDown={handleDropdownKeyDown}
             >
               <Link
                 href="/project-outline"
+                tabIndex={0}
                 className={`${styles.navLink} px-4 ${
                   pathname === "/project-outline" ? styles.active : ""
                 }`}
@@ -605,13 +614,14 @@ const Navbar: React.FC = () => {
                 aria-haspopup="true"
                 aria-expanded={isWorkDropdownOpen}
                 aria-controls="workDropdownMenu"
-                onFocus={handleWorkFocus}
+                /*  onFocus={handleWorkFocus} */
                 onBlur={handleWorkBlur}
                 onKeyDown={(e) => {
                   if (e.key === "ArrowDown" && !isWorkDropdownOpen) {
                     e.preventDefault();
                     setIsWorkDropdownOpen(true);
                   }
+                  handleDropdownKeyDown(e);
                 }}
                 id="workDropdownTrigger"
                 ref={workDropdownTriggerRef}
