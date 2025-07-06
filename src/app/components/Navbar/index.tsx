@@ -418,7 +418,7 @@ const Navbar: React.FC = () => {
           <>
             {/*  MOBILE DROPDOWN RENDERING */}
             <div className="relative">
-              <div className="relative inline-block">
+              <div className="relative inline-flex items-center space-x-2">
                 <button
                   onClick={handleProjectOutlineClick}
                   className={`${
@@ -429,30 +429,39 @@ const Navbar: React.FC = () => {
                   aria-expanded={isWorkDropdownOpen ? "true" : "false"}
                   aria-controls="workDropdownMenu"
                   id="project-outline-link"
+                  type="button"
                 >
-                  <span>Project Outline</span>
-                  <div
-                    onClick={handleDropdownClick}
-                    aria-label="Toggle project outline dropdown"
-                    className="p-0 m-0 border-none bg-transparent cursor-pointer flex items-center"
+                  Project Outline
+                </button>
+                <button
+                  onClick={handleDropdownClick}
+                  aria-label={
+                    isWorkDropdownOpen
+                      ? "Close project outline menu"
+                      : "Open project outline menu"
+                  }
+                  aria-expanded={isWorkDropdownOpen}
+                  aria-controls="workDropdownMenu"
+                  type="button"
+                  className="dropdownToggle"
+                  tabIndex={0}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                    className={`bi bi-chevron-down transition-transform duration-300 ${
+                      isRotated ? "rotate-180" : ""
+                    } text-[#fffff]`}
+                    aria-hidden="true"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      fill="currentColor"
-                      viewBox="0 0 16 16"
-                      className={`bi bi-chevron-down transition-transform duration-300 ${
-                        isRotated ? "rotate-180" : ""
-                      } text-[#fffff]`}
-                      aria-hidden="true"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M1.5 5.5a.5.5 0 0 1 .707-.707L8 9.793l5.793-5.793a.5.5 0 0 1 .707.707l-6 6a.5.5 0 0 1-.707 0l-6-6z"
-                      />
-                    </svg>
-                  </div>
+                    <path
+                      fillRule="evenodd"
+                      d="M1.5 5.5a.5.5 0 0 1 .707-.707L8 9.793l5.793-5.793a.5.5 0 0 1 .707.707l-6 6a.5.5 0 0 1-.707 0l-6-6z"
+                    />
+                  </svg>
                 </button>
               </div>
               {/* Dropdown for mobile */}
