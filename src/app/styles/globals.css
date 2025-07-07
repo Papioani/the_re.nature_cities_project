@@ -9,9 +9,9 @@ html:not(.disable-smooth-scroll) {
 html,
 body {
   height: 100%;
-
   margin: 0;
   padding: 0;
+  max-width: 100%;
 }
 
 /* You typically define custom properties in the :root selector (or any parent element) to make them accessible throughout your stylesheet. */
@@ -32,14 +32,16 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100dvh; /* dynamic viewport height */
+  min-height: 100vh;
   width: 100%;
+  max-width: 100%;
   margin: 0;
   padding: 0;
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, sans-serif;
   line-height: 1.5rem;
-  overflow-x: hidden;
+
   position: relative;
 }
 

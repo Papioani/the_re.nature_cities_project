@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Background() {
   return (
     <div
-      className="fixed inset-0 z-[-1] overflow-hidden h-[100dvh] w-full"
+      className="fixed inset-0 z-[-1] overflow-hidden h-[100dvh] w-screen"
       aria-hidden="true"
     >
       {" "}
