@@ -151,11 +151,34 @@
 
 /* Desktop: underline on hover/active, no background */
 @media (min-width: 1025px) {
+  .navLink {
+    position: relative;
+  }
+
+  .navLink::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: rgba(28, 61, 90, 0.8);
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .navLink:hover::after,
+  .navLink.active::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
   .navLink:hover,
   .navLink.active {
     background-color: transparent;
     color: rgba(28, 61, 90, 0.95);
-    border-bottom: 2px solid rgba(28, 61, 90, 0.8);
     text-decoration: none;
   }
 }
