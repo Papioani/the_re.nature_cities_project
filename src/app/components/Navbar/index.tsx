@@ -719,9 +719,6 @@ const Navbar: React.FC = () => {
                             } else if (e.key === "Escape") {
                               setIsWorkDropdownOpen(false);
                               workDropdownTriggerRef.current?.focus();
-                            } else if (e.key === "Enter" || e.key === " ") {
-                              e.preventDefault();
-                              handleLinkClick();
                             }
                             // Tab/Shift+Tab: let browser move to next/prev nav item, menu will close via blur
                           }}
