@@ -73,6 +73,7 @@ const Navbar: React.FC = () => {
   // ref for the workDropdownTrigger
   const workDropdownTriggerRef = useRef<HTMLAnchorElement | null>(null);
   const firstDropdownItemRef = useRef<HTMLAnchorElement | null>(null);
+  const lastDropdownItemRef = useRef<HTMLAnchorElement | null>(null);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   useClickOutside(
@@ -140,11 +141,13 @@ const Navbar: React.FC = () => {
       }
       if (
         active &&
-        !active.closest("#workDropdownMenu") &&
-        active.id !== "workDropdownTrigger"
+        (active.closest("#workDropdownMenu") ||
+          active.id === "workDropdownTrigger")
       ) {
-        setIsWorkDropdownOpen(false);
+        // Focus is still in the menu or on the trigger, do not close
+        return;
       }
+      setIsWorkDropdownOpen(false);
     });
   };
 
@@ -613,24 +616,32 @@ const Navbar: React.FC = () => {
             >
               <Link
                 href="/project-outline"
-                tabIndex={0}
+                tabIndex={0} // link focusable by keyboard Tab.
                 className={`${styles.navLink} px-4 ${
                   pathname === "/project-outline" ? styles.active : ""
                 }`}
                 aria-current={
                   pathname === "/project-outline" ? "page" : undefined
                 }
-                aria-haspopup="true"
+                aria-haspopup="menu" // Announces to assistive tech that this link controls a menu
                 aria-expanded={isWorkDropdownOpen}
-                aria-controls="workDropdownMenu"
+                aria-controls="workDropdownMenu" // Associates this link with the menu it controls (by id)
                 /*  onFocus={handleWorkFocus} */
                 onBlur={handleWorkBlur}
                 onKeyDown={(e) => {
-                  if (e.key === "ArrowDown" && !isWorkDropdownOpen) {
+                  if (e.key === "ArrowDown") {
                     e.preventDefault();
                     setIsWorkDropdownOpen(true);
+                    setTimeout(() => firstDropdownItemRef.current?.focus(), 0);
+                  } else if (e.key === "ArrowUp") {
+                    e.preventDefault();
+                    setIsWorkDropdownOpen(true);
+                    setTimeout(() => lastDropdownItemRef.current?.focus(), 0);
+                  } else if (e.key === "Escape") {
+                    setIsWorkDropdownOpen(false);
+                    workDropdownTriggerRef.current?.focus();
                   }
-                  handleDropdownKeyDown(e);
+                  // Tab: do nothing special, let browser move to next nav item
                 }}
                 id="workDropdownTrigger"
                 ref={workDropdownTriggerRef}
@@ -677,19 +688,42 @@ const Navbar: React.FC = () => {
                           href={`/project-outline#${wp.id}`}
                           aria-label={wp.description}
                           className="work-link block py-1 px-1"
-                          tabIndex={isWorkDropdownOpen ? 0 : -1}
+                          tabIndex={-1}
                           role="menuitem"
-                          ref={index === 0 ? firstDropdownItemRef : null}
-                          onMouseEnter={(e) =>
-                            handleTooltipMouseEnter(e, wp.description)
+                          ref={
+                            index === 0
+                              ? firstDropdownItemRef
+                              : index === workPackages.length - 1
+                              ? lastDropdownItemRef
+                              : null
                           }
-                          onMouseLeave={handleTooltipMouseLeave}
-                          onClick={handleLinkClick}
                           onKeyDown={(e) => {
-                            if (e.key === "Enter" || e.key === " ") {
+                            if (e.key === "ArrowDown") {
+                              e.preventDefault();
+                              // Focus next menu item, or first if at end
+                              const next =
+                                e.currentTarget.parentElement?.nextElementSibling?.querySelector(
+                                  'a[role="menuitem"]'
+                                );
+                              if (next) (next as HTMLElement).focus();
+                              else firstDropdownItemRef.current?.focus();
+                            } else if (e.key === "ArrowUp") {
+                              e.preventDefault();
+                              // Focus previous menu item, or last if at start
+                              const prev =
+                                e.currentTarget.parentElement?.previousElementSibling?.querySelector(
+                                  'a[role="menuitem"]'
+                                );
+                              if (prev) (prev as HTMLElement).focus();
+                              else lastDropdownItemRef.current?.focus();
+                            } else if (e.key === "Escape") {
+                              setIsWorkDropdownOpen(false);
+                              workDropdownTriggerRef.current?.focus();
+                            } else if (e.key === "Enter" || e.key === " ") {
                               e.preventDefault();
                               handleLinkClick();
                             }
+                            // Tab/Shift+Tab: let browser move to next/prev nav item, menu will close via blur
                           }}
                         >
                           {wp.title}
