@@ -13,7 +13,11 @@ body {
   padding: 0;
   max-width: 100%;
 }
-
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 /* You typically define custom properties in the :root selector (or any parent element) to make them accessible throughout your stylesheet. */
 :root {
   font-size: 1rem; /* This will set 1rem = 16px */
