@@ -93,7 +93,7 @@ const WindTunnel: React.FC = () => {
               width={380}
               height={228}
               className={styles.treePhoto}
-              loading="lazy"
+              /* loading="lazy" */
               quality={85}
               sizes="(max-width: 768px) 100vw, 380px"
             />

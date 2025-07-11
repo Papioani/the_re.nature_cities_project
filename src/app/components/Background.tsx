@@ -25,7 +25,6 @@ export default function Background() {
           width: "100%",
         }}
         quality={40}
-        priority
         sizes="100vw"
       />
     </div>

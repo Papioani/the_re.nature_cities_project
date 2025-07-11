@@ -24,7 +24,6 @@ const Footer: React.FC = () => {
           alt="Footer Background"
           fill // fill the container
           quality={40}
-          priority // Load it first as it's the hero image
           style={{ opacity: 0.2, objectFit: "cover" }}
           sizes="(max-width: 768px) 100vw, 1920px"
         />
