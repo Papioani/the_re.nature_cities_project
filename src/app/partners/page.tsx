@@ -43,7 +43,7 @@ const PartnersPage: FC = () => {
                 width={200}
                 height={120}
                 className={styles.partnerLogoFloat}
-                loading="lazy"
+                /*  loading="lazy" */
                 quality={85}
                 sizes="200px"
               />
@@ -93,7 +93,7 @@ const PartnersPage: FC = () => {
               width={200}
               height={120}
               className={styles.partnerLogoFloat}
-              loading="lazy"
+              /* loading="lazy" */
               quality={85}
               sizes="200px"
             />
