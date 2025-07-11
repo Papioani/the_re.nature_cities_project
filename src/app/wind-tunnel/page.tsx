@@ -96,6 +96,7 @@ const WindTunnel: React.FC = () => {
               /* loading="lazy" */
               quality={85}
               sizes="(max-width: 768px) 100vw, 380px"
+              title="Wind Tunnel Setup"
             />
           </div>
         </div>
@@ -145,6 +146,7 @@ const WindTunnel: React.FC = () => {
               /* loading="lazy" */
               quality={85}
               sizes="(max-width: 768px) 100vw, 500px"
+              title="Albedo Measurements"
             />
           </div>
         </div>
@@ -191,6 +193,7 @@ const WindTunnel: React.FC = () => {
               loading="lazy"
               quality={85}
               sizes="(max-width: 768px) 100vw, 500px"
+              title="LAI-2000 PCA Canopy Analyzer"
             />
           </div>
         </div>
@@ -269,6 +272,7 @@ const WindTunnel: React.FC = () => {
               loading="lazy"
               quality={85}
               sizes="(max-width: 768px) 100vw, 500px"
+              title="LMA Measurements"
             />
           </div>
         </div>
