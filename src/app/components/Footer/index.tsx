@@ -1,6 +1,6 @@
 // src/app/components/Footer.tsx
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "./Footer.module.css";
 import Link from "next/link";
 import Image from "next/image";
@@ -9,12 +9,21 @@ import { useClickOutside } from "../../hooks/userClickOutside";
 const Footer: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const modalRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
   // Use the useClickOutside hook
   useClickOutside(modalRef, closeModal);
+
+  useEffect(() => {
+    if (isModalOpen) {
+      setTimeout(() => {
+        headingRef.current?.focus();
+      }, 0);
+    }
+  }, [isModalOpen]);
 
   return (
     <footer className={styles.footerBackground} aria-label="Footer">
@@ -82,9 +91,18 @@ const Footer: React.FC = () => {
             aria-hidden="true" // Tells screen readers to ignore this element
           />
           {/* Modal Content */}
+          <h2
+            id="modal-title"
+            className="sr-only"
+            tabIndex={-1}
+            ref={headingRef}
+          >
+            Contact Details
+          </h2>
           <div
             className="fixed inset-0 flex justify-center items-center z-[2000]"
             role="dialog"
+            aria-modal="true"
             aria-labelledby="modal-title"
             aria-describedby="modal-description"
           >

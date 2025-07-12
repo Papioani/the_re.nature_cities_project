@@ -5,13 +5,13 @@
 import React, { FC, useRef } from "react";
 import styles from "./theReNatureCitiesProject.module.css";
 import {
-  MagnifyingGlass,
-  ClipboardText,
-  Leaf,
-  Tree,
-  Wind,
-  Buildings,
-  ChartLine,
+  MagnifyingGlassIcon,
+  ClipboardTextIcon,
+  LeafIcon,
+  TreeIcon,
+  WindIcon,
+  BuildingsIcon,
+  ChartLineIcon,
 } from "@phosphor-icons/react";
 
 // If there were props, we would define them here as an interface
@@ -26,14 +26,16 @@ const ReNaturePage: FC = () => {
       {/* <section
         className={`${styles.reNatureProjectContent} px-8 py-2 pb-16 p-4 bg-white shadow-md rounded-lg`}
       > */}
-      <section className=" pb-10" ref={mainContentRef}>
-        <div className="w-full flex justify-between items-center ">
-          <h2
-            id="scope"
-            className="text-center flex items-center gap-4 px-4" /*  className="markerSquare" */
-          >
-            <MagnifyingGlass size={24} weight="light" color="#2e4d2e" /> The
-            Scope
+      <section aria-labelledby="scope">
+        <div className="w-full flex justify-between items-center">
+          <h2 id="scope" className="text-center flex items-center gap-4 px-4">
+            <MagnifyingGlassIcon
+              aria-hidden="true"
+              size={24}
+              weight="light"
+              color="#2e4d2e"
+            />{" "}
+            The Scope
           </h2>
         </div>
         <p
@@ -47,22 +49,31 @@ const ReNaturePage: FC = () => {
           health and the well-being of the citizens.
         </p>{" "}
         <div className="section-divider"></div>
+      </section>
+
+      <section aria-labelledby="objectives">
         <div className="w-full flex justify-between items-center">
           <h2
             id="objectives"
             className="text-center flex items-center gap-4 px-4"
           >
-            <ClipboardText size={24} weight="light" color="#2e4d2e" /> The
-            Objectives
+            <ClipboardTextIcon
+              aria-hidden="true"
+              size={24}
+              weight="light"
+              color="#2e4d2e"
+            />{" "}
+            The Objectives
           </h2>
         </div>
-        <ul className={`${styles.listCustom} pl-6 text-m`}>
+        <ul className="pl-6 text-m">
           <li className="mb-2 flex items-start gap-2">
-            <Buildings
+            <BuildingsIcon
               size={20}
               weight="light"
               color="#2e4d2e"
               className="mt-1 flex-shrink-0"
+              aria-hidden="true"
             />
             <span>
               To assess the{" "}
@@ -74,11 +85,12 @@ const ReNaturePage: FC = () => {
             </span>
           </li>
           <li className="mb-2 flex items-start gap-2">
-            <ChartLine
+            <ChartLineIcon
               size={20}
               weight="light"
               color="#2e4d2e"
               className="mt-1 flex-shrink-0"
+              aria-hidden="true"
             />
             <span>
               To evaluate the{" "}
@@ -93,11 +105,12 @@ const ReNaturePage: FC = () => {
             </span>
           </li>
           <li className="mb-2 flex items-start gap-2">
-            <Leaf
+            <LeafIcon
               size={20}
               weight="light"
               color="#2e4d2e"
               className="mt-1 flex-shrink-0"
+              aria-hidden="true"
             />
             <span>
               To provide <span className={styles.emphasis}>guidelines</span>{" "}
@@ -110,11 +123,12 @@ const ReNaturePage: FC = () => {
             </span>
           </li>
           <li className="mb-2 flex items-start gap-2">
-            <Tree
+            <TreeIcon
               size={20}
               weight="light"
               color="#2e4d2e"
               className="mt-1 flex-shrink-0"
+              aria-hidden="true"
             />
             <span>
               To create a{" "}
@@ -127,11 +141,12 @@ const ReNaturePage: FC = () => {
             </span>
           </li>
           <li className="mb-2 flex items-start gap-2">
-            <Wind
+            <WindIcon
               size={20}
               weight="light"
               color="#2e4d2e"
               className="mt-1 flex-shrink-0"
+              aria-hidden="true"
             />
             <span>
               To develop a{" "}
