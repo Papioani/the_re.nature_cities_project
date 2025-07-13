@@ -25,68 +25,49 @@ const Footer: React.FC = () => {
   useClickOutside(modalRef, closeModal);
 
   useEffect(() => {
-    if (isModalOpen) {
-      // Step 1: Focus the hidden heading briefly for screen readers
-      headingRef.current?.focus();
+    if (!isModalOpen) return;
 
-      // Step 2: Then move focus to first interactive element inside modal
-      // Use a small timeout to let the first focus happen
-      setTimeout(() => {
-        if (!modalRef.current) return;
-        const focusableSelectors = [
-          "a[href]",
-          "button:not([disabled])",
-          "textarea:not([disabled])",
-          "input:not([disabled])",
-          "select:not([disabled])",
-          '[tabindex]:not([tabindex="-1"])',
-        ];
-        const focusableEls = modalRef.current.querySelectorAll<HTMLElement>(
-          focusableSelectors.join(",")
-        );
-        const firstFocusable = focusableEls[0];
-        if (firstFocusable) firstFocusable.focus();
-      }, 50);
-    }
-  }, [isModalOpen]);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!modalRef.current) return;
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (!modalRef.current) return;
-    const focusableSelectors = [
-      "a[href]",
-      "button:not([disabled])",
-      "textarea:not([disabled])",
-      "input:not([disabled])",
-      "select:not([disabled])",
-      '[tabindex]:not([tabindex="-1"])',
-    ];
-    const focusableEls = modalRef.current.querySelectorAll<HTMLElement>(
-      focusableSelectors.join(",")
-    );
-    const firstEl = focusableEls[0];
-    const lastEl = focusableEls[focusableEls.length - 1];
+      const focusableSelectors = [
+        "a[href]",
+        "button:not([disabled])",
+        "textarea:not([disabled])",
+        "input:not([disabled])",
+        "select:not([disabled])",
+        '[tabindex]:not([tabindex="-1"])',
+      ];
+      const focusableEls = modalRef.current.querySelectorAll<HTMLElement>(
+        focusableSelectors.join(",")
+      );
+      const firstEl = focusableEls[0];
+      const lastEl = focusableEls[focusableEls.length - 1];
 
-    if (e.key === "Tab") {
-      if (focusableEls.length === 0) return;
-      if (e.shiftKey) {
-        // Shift+Tab
-        if (document.activeElement === firstEl) {
-          e.preventDefault();
-          lastEl.focus();
-        }
-      } else {
-        // Tab
-        if (document.activeElement === lastEl) {
-          e.preventDefault();
-          firstEl.focus();
+      if (e.key === "Tab") {
+        if (e.shiftKey) {
+          if (document.activeElement === firstEl) {
+            e.preventDefault();
+            lastEl.focus();
+          }
+        } else {
+          if (document.activeElement === lastEl) {
+            e.preventDefault();
+            firstEl.focus();
+          }
         }
       }
-    }
-    if (e.key === "Escape") {
-      // Call your closeModal function here
-      closeModal();
-    }
-  };
+
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isModalOpen]);
 
   return (
     <footer className={styles.footerBackground} aria-label="Footer">
@@ -154,19 +135,10 @@ const Footer: React.FC = () => {
             aria-hidden="true"
           />
           {/* Modal Content */}
-          <h2
-            id="modal-title"
-            className="sr-only"
-            tabIndex={-1}
-            ref={headingRef}
-          >
-            Contact Details
-          </h2>
+
           <div className="fixed inset-0 flex justify-center items-center z-[2000]">
-            <div
+            <section
               ref={modalRef}
-              tabIndex={0}
-              onKeyDown={handleKeyDown}
               role="dialog"
               aria-modal="true"
               aria-labelledby="modal-title"
@@ -177,6 +149,14 @@ const Footer: React.FC = () => {
                 boxShadow: "0 4px 24px rgba(44,62,80,0.10)",
               }}
             >
+              <h2
+                id="modal-title"
+                className="sr-only"
+                tabIndex={-1}
+                ref={headingRef}
+              >
+                Contact Details
+              </h2>
               {/*  <p id="modal-title" className="text-lg text-center underline">
                 Contact Details
               </p> */}
@@ -233,7 +213,7 @@ const Footer: React.FC = () => {
               >
                 Close
               </button>
-            </div>
+            </section>
           </div>
         </>
       )}
