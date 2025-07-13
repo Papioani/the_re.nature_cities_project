@@ -149,9 +149,9 @@ ul {
 }
 
 /* Remove the outline on hover */
-a:focus {
+/* a:focus {
   outline: none;
-}
+} */
 .markerSquare {
   position: relative;
   padding-left: 20px; /* Adjust padding to accommodate the square */
