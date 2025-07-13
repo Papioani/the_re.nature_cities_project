@@ -10,19 +10,63 @@ const Footer: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const modalRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const openModal = () => {
+    triggerRef.current = document.activeElement as HTMLButtonElement;
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+    triggerRef.current?.focus();
+  };
 
   // Use the useClickOutside hook
   useClickOutside(modalRef, closeModal);
 
   useEffect(() => {
-    if (isModalOpen) {
-      setTimeout(() => {
-        headingRef.current?.focus();
-      }, 0);
-    }
+    if (!isModalOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!modalRef.current) return;
+
+      const focusableSelectors = [
+        "a[href]",
+        "button:not([disabled])",
+        "textarea:not([disabled])",
+        "input:not([disabled])",
+        "select:not([disabled])",
+        '[tabindex]:not([tabindex="-1"])',
+      ];
+      const focusableEls = modalRef.current.querySelectorAll<HTMLElement>(
+        focusableSelectors.join(",")
+      );
+      const firstEl = focusableEls[0];
+      const lastEl = focusableEls[focusableEls.length - 1];
+
+      if (e.key === "Tab") {
+        if (e.shiftKey) {
+          if (document.activeElement === firstEl) {
+            e.preventDefault();
+            lastEl.focus();
+          }
+        } else {
+          if (document.activeElement === lastEl) {
+            e.preventDefault();
+            firstEl.focus();
+          }
+        }
+      }
+
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   }, [isModalOpen]);
 
   return (
@@ -88,32 +132,31 @@ const Footer: React.FC = () => {
           <div
             className="fixed inset-0 bg-black bg-opacity-50 z-[1999]"
             onClick={closeModal}
-            aria-hidden="true" // Tells screen readers to ignore this element
+            aria-hidden="true"
           />
           {/* Modal Content */}
-          <h2
-            id="modal-title"
-            className="sr-only"
-            tabIndex={-1}
-            ref={headingRef}
-          >
-            Contact Details
-          </h2>
-          <div
-            className="fixed inset-0 flex justify-center items-center z-[2000]"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="modal-title"
-            aria-describedby="modal-description"
-          >
-            <div
+
+          <div className="fixed inset-0 flex justify-center items-center z-[2000]">
+            <section
               ref={modalRef}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="modal-title"
+              aria-describedby="modal-description"
               className="bg-white p-8 rounded-lg max-w-md w-full shadow-lg"
               style={{
                 marginTop: "80px",
                 boxShadow: "0 4px 24px rgba(44,62,80,0.10)",
               }}
             >
+              <h2
+                id="modal-title"
+                className="sr-only"
+                tabIndex={-1}
+                ref={headingRef}
+              >
+                Contact Details
+              </h2>
               {/*  <p id="modal-title" className="text-lg text-center underline">
                 Contact Details
               </p> */}
@@ -170,7 +213,7 @@ const Footer: React.FC = () => {
               >
                 Close
               </button>
-            </div>
+            </section>
           </div>
         </>
       )}
