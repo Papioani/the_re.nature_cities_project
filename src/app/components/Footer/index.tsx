@@ -10,18 +10,43 @@ const Footer: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const modalRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const openModal = () => {
+    triggerRef.current = document.activeElement as HTMLButtonElement;
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+    triggerRef.current?.focus();
+  };
 
   // Use the useClickOutside hook
   useClickOutside(modalRef, closeModal);
 
   useEffect(() => {
     if (isModalOpen) {
+      // Step 1: Focus the hidden heading briefly for screen readers
+      headingRef.current?.focus();
+
+      // Step 2: Then move focus to first interactive element inside modal
+      // Use a small timeout to let the first focus happen
       setTimeout(() => {
-        headingRef.current?.focus();
-      }, 0);
+        if (!modalRef.current) return;
+        const focusableSelectors = [
+          "a[href]",
+          "button:not([disabled])",
+          "textarea:not([disabled])",
+          "input:not([disabled])",
+          "select:not([disabled])",
+          '[tabindex]:not([tabindex="-1"])',
+        ];
+        const focusableEls = modalRef.current.querySelectorAll<HTMLElement>(
+          focusableSelectors.join(",")
+        );
+        const firstFocusable = focusableEls[0];
+        if (firstFocusable) firstFocusable.focus();
+      }, 50);
     }
   }, [isModalOpen]);
 
@@ -126,7 +151,7 @@ const Footer: React.FC = () => {
           <div
             className="fixed inset-0 bg-black bg-opacity-50 z-[1999]"
             onClick={closeModal}
-            aria-hidden="true" // Tells screen readers to ignore this element
+            aria-hidden="true"
           />
           {/* Modal Content */}
           <h2
@@ -137,17 +162,15 @@ const Footer: React.FC = () => {
           >
             Contact Details
           </h2>
-          <div
-            className="fixed inset-0 flex justify-center items-center z-[2000]"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="modal-title"
-            aria-describedby="modal-description"
-          >
+          <div className="fixed inset-0 flex justify-center items-center z-[2000]">
             <div
               ref={modalRef}
-              tabIndex={-1}
+              tabIndex={0}
               onKeyDown={handleKeyDown}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="modal-title"
+              aria-describedby="modal-description"
               className="bg-white p-8 rounded-lg max-w-md w-full shadow-lg"
               style={{
                 marginTop: "80px",
