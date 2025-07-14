@@ -378,7 +378,7 @@ const Navbar: React.FC = () => {
             ? "absolute inset-x-0 top-full bg-[#e3e3cb] text-white p-4 z-50 "
             : "md:flex flex-row space-y-0 md:space-x-4 2xl:gap-6 md:items-start text-white mt-8 md:mt-0"
         } ${styles.navbarLinks}`}
-        role="menu"
+        role="navigation"
       >
         <Link
           href="/"
@@ -490,6 +490,13 @@ const Navbar: React.FC = () => {
                         href="/project-outline#work1"
                         className="mobile-link"
                         role="menuitem"
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                          if (e.key === "Escape") {
+                            e.preventDefault();
+                            setIsWorkDropdownOpen(false);
+                          }
+                        }}
                         onClick={() => {
                           closeMobileMenu();
                           handleLinkClick();
@@ -623,13 +630,18 @@ const Navbar: React.FC = () => {
                 aria-current={
                   pathname === "/project-outline" ? "page" : undefined
                 }
-                aria-haspopup="menu" // Announces to assistive tech that this link controls a menu
+                aria-haspopup="true" // Announces to assistive tech that this link controls a menu
                 aria-expanded={isWorkDropdownOpen}
                 aria-controls="workDropdownMenu" // Associates this link with the menu it controls (by id)
                 /*  onFocus={handleWorkFocus} */
                 onBlur={handleWorkBlur}
                 onKeyDown={(e) => {
-                  if (e.key === "ArrowDown") {
+                  // Support for VoiceOver: Control+Option+Down Arrow to expand
+                  if (e.key === "ArrowDown" && (e.ctrlKey || e.metaKey)) {
+                    e.preventDefault();
+                    setIsWorkDropdownOpen(true);
+                    setTimeout(() => firstDropdownItemRef.current?.focus(), 0);
+                  } else if (e.key === "ArrowDown") {
                     e.preventDefault();
                     setIsWorkDropdownOpen(true);
                     setTimeout(() => firstDropdownItemRef.current?.focus(), 0);
@@ -640,6 +652,15 @@ const Navbar: React.FC = () => {
                   } else if (e.key === "Escape") {
                     setIsWorkDropdownOpen(false);
                     workDropdownTriggerRef.current?.focus();
+                  } else if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setIsWorkDropdownOpen((prev) => !prev);
+                    if (!isWorkDropdownOpen) {
+                      setTimeout(
+                        () => firstDropdownItemRef.current?.focus(),
+                        0
+                      );
+                    }
                   }
                   // Tab: do nothing special, let browser move to next nav item
                 }}
@@ -786,10 +807,18 @@ const Navbar: React.FC = () => {
             top: tooltip.position.top + "px",
             left: tooltip.position.left + "px",
           }}
+          role="tooltip"
+          aria-live="polite"
         >
           {tooltip.text}
         </div>
       )}
+      {/* Hidden instructions for screen readers */}
+      <div id="dropdown-instructions" className="sr-only">
+        Use arrow keys to navigate work packages. Press Enter or Space to
+        activate. Press Escape to close the menu. For VoiceOver users, use
+        Control+Option+Down Arrow to expand the menu.
+      </div>
     </nav>
   );
 };
