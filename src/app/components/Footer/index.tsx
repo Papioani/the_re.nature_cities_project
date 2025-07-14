@@ -24,6 +24,15 @@ const Footer: React.FC = () => {
   // Use the useClickOutside hook
   useClickOutside(modalRef, closeModal);
 
+  // Focus management useEffect
+  useEffect(() => {
+    if (isModalOpen) {
+      // Focus the heading and keep it there
+      headingRef.current?.focus();
+    }
+  }, [isModalOpen]);
+
+  // Keyboard handling useEffect (your new one)
   useEffect(() => {
     if (!isModalOpen) return;
 
@@ -162,30 +171,33 @@ const Footer: React.FC = () => {
               </p> */}
 
               <p id="modal-description" className="font-normal">
-                <span className="text-xl font-semibold text-[#2e4d2e]">
+                <span className="text-xl font-semibold text-[#2e4d2e] block">
                   Stella Tsoka
                 </span>
-                <br />
-                Scientific responsible and coordinator of the project <br />
-                Assistant professor <br />
-                <Link
-                  href="https://www.civil.upatras.gr/?lang=en"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.contactLink}
-                  aria-label="Visit the Department of Civil Engineering at the University of Patras website"
-                >
-                  Department of Civil Engineering,
-                </Link>{" "}
-                <Link
-                  href="https://www.upatras.gr/en"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.contactLink}
-                  aria-label="Visit the University of Patras website"
-                >
-                  University of Patras
-                </Link>
+                <span className="block">
+                  Scientific responsible and coordinator of the project{" "}
+                </span>
+                <span className="block">Assistant professor</span>
+                <span className="block">
+                  <Link
+                    href="https://www.civil.upatras.gr/?lang=en"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.contactLink}
+                    aria-label="Visit the Department of Civil Engineering at the University of Patras website"
+                  >
+                    Department of Civil Engineering,
+                  </Link>{" "}
+                  <Link
+                    href="https://www.upatras.gr/en"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.contactLink}
+                    aria-label="Visit the University of Patras website"
+                  >
+                    University of Patras
+                  </Link>
+                </span>
               </p>
               <p className="mb-3">
                 <a
