@@ -75,6 +75,7 @@ const Navbar: React.FC = () => {
   const firstDropdownItemRef = useRef<HTMLAnchorElement | null>(null);
   const lastDropdownItemRef = useRef<HTMLAnchorElement | null>(null);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const firstMobileLinkRef = useRef<HTMLAnchorElement | null>(null);
 
   useClickOutside(
     dropdownRef,
@@ -150,6 +151,12 @@ const Navbar: React.FC = () => {
       setIsWorkDropdownOpen(false);
     });
   };
+
+  useEffect(() => {
+    if (isMobileMenuOpen && firstMobileLinkRef.current) {
+      firstMobileLinkRef.current.focus();
+    }
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     if (isWorkDropdownOpen && firstDropdownItemRef.current) {
@@ -382,6 +389,7 @@ const Navbar: React.FC = () => {
       >
         <Link
           href="/"
+          ref={firstMobileLinkRef}
           className={`${styles.navLink} ${
             pathname === "/" ? styles.active : ""
           }`}
