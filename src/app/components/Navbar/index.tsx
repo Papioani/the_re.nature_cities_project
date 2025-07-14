@@ -628,10 +628,22 @@ const Navbar: React.FC = () => {
               className="relative inline-block group"
               onMouseEnter={handleWorkMouseEnter}
               onMouseLeave={handleWorkMouseLeave}
+              onBlur={(e) => {
+                // If focus is leaving both trigger and dropdown, close it
+                const relatedTarget = e.relatedTarget as HTMLElement | null;
+                if (
+                  relatedTarget &&
+                  (relatedTarget.closest("#workDropdownMenu") ||
+                    relatedTarget.id === "workDropdownTrigger")
+                ) {
+                  return; // still inside trigger or dropdown
+                }
+                setIsWorkDropdownOpen(false);
+              }}
             >
               <Link
                 href="/project-outline"
-                tabIndex={0} // link focusable by keyboard Tab.
+                tabIndex={0} // makes it focusable by Tab.
                 className={`${styles.navLink} px-4 ${
                   pathname === "/project-outline" ? styles.active : ""
                 }`}
@@ -642,7 +654,7 @@ const Navbar: React.FC = () => {
                 aria-expanded={isWorkDropdownOpen}
                 aria-controls="workDropdownMenu" // Associates this link with the menu it controls (by id)
                 /*  onFocus={handleWorkFocus} */
-                onBlur={handleWorkBlur}
+
                 onKeyDown={(e) => {
                   // Support for VoiceOver: Control+Option+Down Arrow to expand
                   if (e.key === "ArrowDown" && (e.ctrlKey || e.metaKey)) {
