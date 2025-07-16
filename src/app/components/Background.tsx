@@ -11,6 +11,7 @@ export default function Background() {
       {/* z-[-1] to place it behind other content */}
       <Image
         src="/background-forest.webp"
+        loading="lazy"
         alt=""
         fill
         style={{
