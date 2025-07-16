@@ -26,9 +26,18 @@ const ReNaturePage: FC = () => {
       {/* <section
         className={`${styles.reNatureProjectContent} px-8 py-2 pb-16 p-4 bg-white shadow-md rounded-lg`}
       > */}
-      <section aria-labelledby="scope">
+      <section
+        ref={mainContentRef}
+        id="main-content"
+        aria-labelledby="scope"
+        className="focus:outline-2 focus:outline-[#2e4d2e] focus:outline-offset-4 focus:rounded"
+      >
         <div className="w-full flex justify-between items-center">
-          <h2 id="scope" className="text-center flex items-center gap-4 px-4">
+          <h2
+            id="scope"
+            tabIndex={0}
+            className="text-center flex items-center gap-4 px-4 focus:outline-2 focus:outline-[#2e4d2e] focus:outline-offset-2 focus:rounded cursor-pointer"
+          >
             <MagnifyingGlassIcon
               aria-hidden="true"
               size={24}
@@ -39,7 +48,8 @@ const ReNaturePage: FC = () => {
           </h2>
         </div>
         <p
-          className="leading-relaxed mb-6 pl-6" /*  border-l-2 border-[#059669] pl-2 */
+          tabIndex={0}
+          className="leading-relaxed mb-6 pl-6 focus:outline-2 focus:outline-[#2e4d2e] focus:outline-offset-2 focus:rounded" /*  border-l-2 border-[#059669] pl-2 */
         >
           Re.Nature Cities aims to evaluate via experimental and simulation
           means the ability of street trees as nature-based solutions (NBS) to
@@ -51,11 +61,15 @@ const ReNaturePage: FC = () => {
         <div className="section-divider"></div>
       </section>
 
-      <section aria-labelledby="objectives">
+      <section
+        aria-labelledby="objectives"
+        className="focus:outline-2 focus:outline-[#2e4d2e] focus:outline-offset-4 focus:rounded"
+      >
         <div className="w-full flex justify-between items-center">
           <h2
             id="objectives"
-            className="text-center flex items-center gap-4 px-4"
+            tabIndex={0}
+            className="text-center flex items-center gap-4 px-4 focus:outline-2 focus:outline-[#2e4d2e] focus:outline-offset-2 focus:rounded cursor-pointer"
           >
             <ClipboardTextIcon
               aria-hidden="true"
@@ -67,7 +81,10 @@ const ReNaturePage: FC = () => {
           </h2>
         </div>
         <ul className="pl-6 text-m">
-          <li className="mb-2 flex items-start gap-2">
+          <li
+            tabIndex={0}
+            className="mb-2 flex items-start gap-2 focus:outline-2 focus:outline-[#2e4d2e] focus:outline-offset-2 focus:rounded p-2"
+          >
             <BuildingsIcon
               size={20}
               weight="light"
@@ -84,7 +101,10 @@ const ReNaturePage: FC = () => {
               </span>
             </span>
           </li>
-          <li className="mb-2 flex items-start gap-2">
+          <li
+            tabIndex={0}
+            className="mb-2 flex items-start gap-2 focus:outline-2 focus:outline-[#2e4d2e] focus:outline-offset-2 focus:rounded p-2"
+          >
             <ChartLineIcon
               size={20}
               weight="light"
@@ -104,7 +124,10 @@ const ReNaturePage: FC = () => {
               in indoor and outdoor spaces.
             </span>
           </li>
-          <li className="mb-2 flex items-start gap-2">
+          <li
+            tabIndex={0}
+            className="mb-2 flex items-start gap-2 focus:outline-2 focus:outline-[#2e4d2e] focus:outline-offset-2 focus:rounded p-2"
+          >
             <LeafIcon
               size={20}
               weight="light"
@@ -122,7 +145,10 @@ const ReNaturePage: FC = () => {
               of urban areas.
             </span>
           </li>
-          <li className="mb-2 flex items-start gap-2">
+          <li
+            tabIndex={0}
+            className="mb-2 flex items-start gap-2 focus:outline-2 focus:outline-[#2e4d2e] focus:outline-offset-2 focus:rounded p-2"
+          >
             <TreeIcon
               size={20}
               weight="light"
@@ -140,7 +166,10 @@ const ReNaturePage: FC = () => {
               holistic evaluation of trees&apos; effects in cities.
             </span>
           </li>
-          <li className="mb-2 flex items-start gap-2">
+          <li
+            tabIndex={0}
+            className="mb-2 flex items-start gap-2 focus:outline-2 focus:outline-[#2e4d2e] focus:outline-offset-2 focus:rounded p-2"
+          >
             <WindIcon
               size={20}
               weight="light"
