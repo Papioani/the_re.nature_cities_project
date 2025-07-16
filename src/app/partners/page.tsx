@@ -43,7 +43,7 @@ const PartnersPage: FC = () => {
                 width={200}
                 height={120}
                 className={styles.partnerLogoFloat}
-                /*  loading="lazy" */
+                priority
                 quality={85}
                 sizes="200px"
               />
