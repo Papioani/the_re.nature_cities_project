@@ -31,7 +31,8 @@ const ReNaturePage: FC = () => {
         id="main-content"
         role="main"
         aria-labelledby="page-title"
-        className="focus:outline-2 focus:outline-[#2e4d2e] focus:outline-offset-4 focus:rounded"
+        tabIndex={-1}
+        className="focus-visible:outline-2 focus-visible:outline-[#2e4d2e] focus-visible:outline-offset-4 focus-visible:rounded"
       >
         <h1 id="page-title" className="sr-only">
           Re.Nature Cities Project
@@ -42,7 +43,7 @@ const ReNaturePage: FC = () => {
         </p>
         <section
           aria-labelledby="scope"
-          className="focus:outline-2 focus:outline-[#2e4d2e] focus:outline-offset-4 focus:rounded"
+          className="focus-visible:outline-2 focus-visible:outline-[#2e4d2e] focus-visible:outline-offset-4 focus-visible:rounded"
         >
           <div className="w-full flex justify-between items-center">
             <h2 id="scope" className="text-center flex items-center gap-4 px-4">
@@ -70,7 +71,7 @@ const ReNaturePage: FC = () => {
 
         <section
           aria-labelledby="objectives"
-          className="focus:outline-2 focus:outline-[#2e4d2e] focus:outline-offset-4 focus:rounded"
+          className="focus-visible:outline-2 focus-visible:outline-[#2e4d2e] focus-visible:outline-offset-4 focus-visible:rounded"
         >
           <div className="w-full flex justify-between items-center">
             <h2
