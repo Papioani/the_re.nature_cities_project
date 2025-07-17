@@ -29,7 +29,6 @@ const ReNaturePage: FC = () => {
       <main
         ref={mainContentRef}
         id="main-content"
-        tabIndex={-1}
         role="main"
         aria-labelledby="page-title"
         className="focus:outline-2 focus:outline-[#2e4d2e] focus:outline-offset-4 focus:rounded"
