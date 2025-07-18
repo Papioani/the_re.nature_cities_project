@@ -383,7 +383,6 @@ const Navbar: React.FC = () => {
             ? "absolute inset-x-0 top-full bg-[#e3e3cb] text-white p-4 z-50 "
             : "md:flex flex-row space-y-0 md:space-x-4 2xl:gap-6 md:items-start text-white mt-8 md:mt-0"
         } ${styles.navbarLinks}`}
-        role="navigation"
       >
         <Link
           href="/"
