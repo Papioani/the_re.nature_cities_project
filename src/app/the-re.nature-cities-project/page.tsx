@@ -19,8 +19,6 @@ import {
 //   title: string;
 // }
 const ReNaturePage: FC = () => {
-  const mainContentRef = useRef<HTMLElement>(null);
-
   return (
     <>
       {/* <section

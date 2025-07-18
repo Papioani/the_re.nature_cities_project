@@ -4,21 +4,9 @@ import styles from "./Wind-tunnel.module.css";
 import Image from "next/image";
 
 const WindTunnel: React.FC = () => {
-  const mainContentRef = useRef<HTMLElement>(null);
-
-  // Set focus to the main content on load
-  useEffect(() => {
-    if (mainContentRef.current) {
-      mainContentRef.current.focus({ preventScroll: true });
-    }
-  }, []);
   return (
-    <main
-      className="px-6 sm:px-8 pb-16"
-      ref={mainContentRef}
-      aria-labelledby="main-title"
-    >
-      <h2 id="main-title">Wind Tunnel, LAI/LAD & Albedo Measurements</h2>
+    <>
+      <h2 id="page-title">Wind Tunnel, LAI/LAD & Albedo Measurements</h2>
       {/* <div className={styles.windLine}> </div> */}
 
       <section
@@ -277,7 +265,7 @@ const WindTunnel: React.FC = () => {
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 };
 export default WindTunnel;
