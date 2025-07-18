@@ -336,8 +336,6 @@ const Navbar: React.FC = () => {
             height={100}
             alt="The Re.Nature Cities logo showing a tree within a circle"
             style={{
-              width: "100px",
-              height: "100px",
               objectFit: "contain",
               objectPosition: "center",
             }}
