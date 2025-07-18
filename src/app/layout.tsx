@@ -10,6 +10,7 @@ import Image from "next/image";
 import Background from "./components/Background";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import MainFocusHandler from "./components/MainFocusHandler";
+import PageAnnouncer from "./components/PageAnnouncer";
 
 export const metadata: Metadata = {
   title: "Re.Nature Cities: Assessing Street Trees for Climate Adaptation",
@@ -64,9 +65,12 @@ export default function RootLayout({ children }: Readonly<LayoutProps>) {
             {/* Replace <main> with MainFocusHandler for accessibility focus management */}
             <MainFocusHandler
               className={`${styles.mainContent} flex-grow pt-16 md:pt-20 focus:outline-none focus-visible:outline-2 focus-visible:outline-[#2e4d2e] focus-visible:outline-offset-4 focus-visible:rounded`}
+              aria-labelledby="page-title"
             >
               {children}
             </MainFocusHandler>
+            {/* Live region for announcing page title */}
+            <PageAnnouncer />
           </ModalProvider>
           <Footer />
         </ErrorBoundary>
