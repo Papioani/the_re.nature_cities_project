@@ -61,7 +61,7 @@ const workPackages = [
 const Navbar: React.FC = () => {
   const pathname = usePathname();
   const [isRotated, setIsRotated] = useState<boolean>(false);
-  const navbarRef = useRef<HTMLElement | null>(null); // Ref to access the Navbar
+  const navbarRef = useRef<HTMLElement | null>(null);
   // eslint-disable-next-line no-unused-vars
   const [navbarHeight, setNavbarHeight] = useState(0);
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -114,6 +114,7 @@ const Navbar: React.FC = () => {
       setNavbarHeight(height);
     }
   }, []);
+
   const [tooltip, setTooltip] = useState<Tooltip>({
     text: "",
     show: false,
