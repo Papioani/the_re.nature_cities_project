@@ -271,8 +271,11 @@ const Navbar: React.FC = () => {
 
   // Close both the tooltip and dropdown after clicking on a link (hash navigation)
   const handleLinkClick = () => {
-    setIsWorkDropdownOpen(false); // Close dropdown after link click
-    setTooltip((prevState) => ({ ...prevState, show: false })); // Close tooltip after link click
+    // Wait 100 milliseconds before closing the dropdown
+    setTimeout(() => {
+      setIsWorkDropdownOpen(false);
+      setTooltip((prevState) => ({ ...prevState, show: false }));
+    }, 100);
   };
   useEffect(() => {
     console.log(
@@ -312,6 +315,20 @@ const Navbar: React.FC = () => {
       }
     };
   }, [workDropdownTimeout]); //  workDropdownTimeout to dependencies
+
+  const handleHashLinkClick = (e: React.MouseEvent, hash: string) => {
+    e.preventDefault(); // ⛔ Stop the default <a href="#hash"> jump behavior  , for overriding anchor scroll behavior
+
+    const el = document.getElementById(hash); // 🔍 Find the element with the matching ID
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" }); // ✅ Smooth scroll to it
+      el.focus?.({ preventScroll: true }); // ♿ Accessibility: put keyboard focus on it (without scrolling again)
+    }
+
+    // 🔐 Close dropdown and tooltip UI states
+    setIsWorkDropdownOpen(false);
+    setTooltip((prev) => ({ ...prev, show: false }));
+  };
 
   return (
     <nav
@@ -493,7 +510,7 @@ const Navbar: React.FC = () => {
                       }}
                     >
                       <a
-                        href="/project-outline#work1"
+                        href="#work1"
                         className="mobile-link"
                         role="menuitem"
                         tabIndex={0}
@@ -514,7 +531,7 @@ const Navbar: React.FC = () => {
                     </li>
                     <li role="none">
                       <a
-                        href="/project-outline#work2"
+                        href="#work2"
                         className="mobile-link"
                         role="menuitem"
                         onClick={() => {
@@ -534,7 +551,7 @@ const Navbar: React.FC = () => {
                       }}
                     >
                       <a
-                        href="/project-outline#work3"
+                        href="#work3"
                         className="mobile-link"
                         role="menuitem"
                         onClick={() => {
@@ -548,7 +565,7 @@ const Navbar: React.FC = () => {
                     </li>
                     <li role="none">
                       <a
-                        href="/project-outline#work4"
+                        href="#work4"
                         className="mobile-link"
                         role="menuitem"
                         onClick={() => {
@@ -568,7 +585,7 @@ const Navbar: React.FC = () => {
                       }}
                     >
                       <a
-                        href="/project-outline#work5"
+                        href="#work5"
                         className="mobile-link"
                         role="menuitem"
                         onClick={() => {
@@ -582,7 +599,7 @@ const Navbar: React.FC = () => {
                     </li>
                     <li role="none">
                       <a
-                        href="/project-outline#work6"
+                        href="#work6"
                         className="mobile-link"
                         role="menuitem"
                         onClick={() => {
@@ -601,7 +618,7 @@ const Navbar: React.FC = () => {
                       }}
                     >
                       <a
-                        href="/project-outline#work7"
+                        href="#work7"
                         className="mobile-link"
                         role="menuitem"
                         onClick={() => {
@@ -759,7 +776,12 @@ const Navbar: React.FC = () => {
                               setIsWorkDropdownOpen(false);
                               workDropdownTriggerRef.current?.focus();
                             }
+
                             // Tab/Shift+Tab: let browser move to next/prev nav item, menu will close via blur
+                          }}
+                          onClick={() => {
+                            setIsWorkDropdownOpen(false);
+                            // Optionally close tooltip, etc.
                           }}
                         >
                           {wp.title}
