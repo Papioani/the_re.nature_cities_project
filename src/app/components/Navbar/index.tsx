@@ -510,7 +510,7 @@ const Navbar: React.FC = () => {
                       }}
                     >
                       <a
-                        href="#work1"
+                        href="/project-outline#work1"
                         className="mobile-link"
                         role="menuitem"
                         tabIndex={0}
@@ -531,7 +531,7 @@ const Navbar: React.FC = () => {
                     </li>
                     <li role="none">
                       <a
-                        href="#work2"
+                        href="/project-outline#work2"
                         className="mobile-link"
                         role="menuitem"
                         onClick={() => {
@@ -551,7 +551,7 @@ const Navbar: React.FC = () => {
                       }}
                     >
                       <a
-                        href="#work3"
+                        href="/project-outline#work3"
                         className="mobile-link"
                         role="menuitem"
                         onClick={() => {
@@ -565,7 +565,7 @@ const Navbar: React.FC = () => {
                     </li>
                     <li role="none">
                       <a
-                        href="#work4"
+                        href="/project-outline#work4"
                         className="mobile-link"
                         role="menuitem"
                         onClick={() => {
@@ -585,7 +585,7 @@ const Navbar: React.FC = () => {
                       }}
                     >
                       <a
-                        href="#work5"
+                        href="/project-outline#work5"
                         className="mobile-link"
                         role="menuitem"
                         onClick={() => {
@@ -599,7 +599,7 @@ const Navbar: React.FC = () => {
                     </li>
                     <li role="none">
                       <a
-                        href="#work6"
+                        href="/project-outline#work6"
                         className="mobile-link"
                         role="menuitem"
                         onClick={() => {
@@ -618,7 +618,7 @@ const Navbar: React.FC = () => {
                       }}
                     >
                       <a
-                        href="#work7"
+                        href="/project-outline#work7"
                         className="mobile-link"
                         role="menuitem"
                         onClick={() => {
