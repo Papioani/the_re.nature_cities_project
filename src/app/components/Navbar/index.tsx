@@ -5,7 +5,7 @@ import styles from "./Navbar.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { useClickOutside } from "../../hooks/userClickOutside";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 // <Link>: This component enables client-side navigation, which means that clicking the link will not trigger a full page reload. Instead, it will only update the necessary components on the page
 interface Tooltip {
@@ -316,18 +316,122 @@ const Navbar: React.FC = () => {
     };
   }, [workDropdownTimeout]); //  workDropdownTimeout to dependencies
 
+  const router = useRouter();
+
+  const announceNavigation = (headingText: string) => {
+    // Create a temporary live region for the announcement
+    const announcement = document.createElement("div");
+    announcement.setAttribute("aria-live", "assertive");
+    announcement.setAttribute("aria-atomic", "true");
+    announcement.style.position = "absolute";
+    announcement.style.left = "-10000px";
+    announcement.style.width = "1px";
+    announcement.style.height = "1px";
+    announcement.style.overflow = "hidden";
+    announcement.textContent = `Navigated to ${headingText}`;
+
+    document.body.appendChild(announcement);
+
+    // Remove after announcement
+    setTimeout(() => {
+      if (document.body.contains(announcement)) {
+        document.body.removeChild(announcement);
+      }
+    }, 2000);
+  };
+
   const handleHashLinkClick = (e: React.MouseEvent, hash: string) => {
-    e.preventDefault(); // ⛔ Stop the default <a href="#hash"> jump behavior  , for overriding anchor scroll behavior
+    try {
+      console.log("🔍 handleHashLinkClick called with hash:", hash);
+      console.log("🔍 Current pathname:", pathname);
 
-    const el = document.getElementById(hash); // 🔍 Find the element with the matching ID
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" }); // ✅ Smooth scroll to it
-      el.focus?.({ preventScroll: true }); // ♿ Accessibility: put keyboard focus on it (without scrolling again)
+      if (pathname === "/project-outline") {
+        console.log(" Inside project-outline condition");
+        e.preventDefault();
+
+        console.log("🔍 About to get element by id:", hash);
+        const el = document.getElementById(hash);
+        console.log("🔍 Found element:", el);
+        console.log("🔍 Element text content:", el?.textContent?.trim());
+
+        if (el) {
+          console.log("🔍 Element found, about to scroll");
+          el.scrollIntoView({ behavior: "smooth" });
+
+          setTimeout(() => {
+            console.log("🔍 About to focus element");
+
+            // First announce the content
+            const announcement = document.createElement("div");
+            announcement.setAttribute("aria-live", "polite");
+            announcement.setAttribute("aria-atomic", "true");
+            announcement.style.position = "absolute";
+            announcement.style.left = "-10000px";
+            announcement.style.width = "1px";
+            announcement.style.height = "1px";
+            announcement.style.overflow = "hidden";
+            announcement.textContent = el.textContent?.trim() || "";
+            document.body.appendChild(announcement);
+
+            // Then focus the element
+            el.focus({ preventScroll: true });
+            console.log("🔍 Focus applied");
+
+            // Remove announcement after it's read
+            setTimeout(() => {
+              if (document.body.contains(announcement)) {
+                document.body.removeChild(announcement);
+              }
+            }, 2000);
+          }, 500);
+        } else {
+          console.log("❌ Element not found!");
+        }
+
+        console.log("🔍 About to close dropdown");
+        setIsWorkDropdownOpen(false);
+        setTooltip((prev) => ({ ...prev, show: false }));
+        console.log(" Function completed successfully");
+      } else {
+        console.log(" Not on project-outline page, navigating");
+        e.preventDefault();
+        router.push(`/project-outline#${hash}`);
+        setIsWorkDropdownOpen(false);
+        setTooltip((prev) => ({ ...prev, show: false }));
+
+        // Add focus logic for navigation case
+        setTimeout(() => {
+          const el = document.getElementById(hash);
+          if (el) {
+            console.log("🔍 Element found after navigation, focusing");
+
+            // First announce the content
+            const announcement = document.createElement("div");
+            announcement.setAttribute("aria-live", "polite");
+            announcement.setAttribute("aria-atomic", "true");
+            announcement.style.position = "absolute";
+            announcement.style.left = "-10000px";
+            announcement.style.width = "1px";
+            announcement.style.height = "1px";
+            announcement.style.overflow = "hidden";
+            announcement.textContent = el.textContent?.trim() || "";
+            document.body.appendChild(announcement);
+
+            // Then focus the element
+            el.focus({ preventScroll: true });
+
+            // Remove announcement after it's read
+            setTimeout(() => {
+              if (document.body.contains(announcement)) {
+                document.body.removeChild(announcement);
+              }
+            }, 2000);
+          }
+        }, 1000); // Longer delay for navigation
+      }
+    } catch (error) {
+      console.error("❌ Error in handleHashLinkClick:", error);
     }
-
-    // 🔐 Close dropdown and tooltip UI states
-    setIsWorkDropdownOpen(false);
-    setTooltip((prev) => ({ ...prev, show: false }));
   };
 
   return (
@@ -779,10 +883,7 @@ const Navbar: React.FC = () => {
 
                             // Tab/Shift+Tab: let browser move to next/prev nav item, menu will close via blur
                           }}
-                          onClick={() => {
-                            setIsWorkDropdownOpen(false);
-                            // Optionally close tooltip, etc.
-                          }}
+                          onClick={(e) => handleHashLinkClick(e, wp.id)}
                         >
                           {wp.title}
                         </Link>
