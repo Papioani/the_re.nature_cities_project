@@ -106,6 +106,14 @@ const DeliverablesPage: FC = () => {
       },
       { id: "D4.1", fileName: "Selection_of_urban_street_tree_types.pdf" },
       { id: "D4.2", fileName: "LAI_LAD_and_albedo_database.pdf" },
+      {
+        id: "D5.1.",
+        fileName: "Impact_of_NBS_on_microclimate.pdf",
+      },
+      {
+        id: "D5.2.",
+        fileName: "Impact_of_NBS_on_building_performance_and_NVP.pdf",
+      },
     ];
 
     const cloudDeliverable = cloudDeliverables.find((d) => d.id === id);
@@ -119,15 +127,9 @@ const DeliverablesPage: FC = () => {
       };
     }
     // Handle new deliverables without links or files
-    if (["D5.1.", "D5.2.", "D5.3.", "D6.1.", "D6.2."].includes(id)) {
+    if (["D5.3.", "D6.1.", "D6.2."].includes(id)) {
       let title = "";
       switch (id) {
-        case "D5.1.":
-          title = "Impact of NBS on microclimate";
-          break;
-        case "D5.2.":
-          title = "Impact of NBS on building performance and NVP";
-          break;
         case "D5.3.":
           title = "Impact of NBS on outdoor comfort and air quality";
           break;
@@ -194,9 +196,7 @@ const DeliverablesPage: FC = () => {
                   </td>
                   <td className="px-4 py-2 ">{deliverable.title}</td>
                   <td className={`px-4 py-2 ${styles.deliverableLink}`}>
-                    {["D5.1.", "D5.2.", "D5.3.", "D6.1.", "D6.2."].includes(
-                      deliverable.id
-                    ) ? (
+                    {["D5.3.", "D6.1.", "D6.2."].includes(deliverable.id) ? (
                       "" // Render nothing for these deliverables
                     ) : "link" in deliverable ? (
                       <Link
