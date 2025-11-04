@@ -54,9 +54,26 @@ const PublicationsAnnouncements: React.FC = () => {
               View the session here
             </a>
           </p>
-          <div className="section-divider"></div>
+        </div>
+        <div className={styles.conference}>
+          <p>
+            Theodoridou, I., Tsoka, S., Zaraveli, Z., & Velikoy, K. On the
+            evaluation of future energy demand and indoor thermal comfort
+            conditions in residential buildings in Greece,{" "}
+            <i>6th Central European Symposium on Building Physics</i>, 11 – 13
+            September 2025, Budapest, Hungary
+          </p>
+        </div>
+        <div className={styles.conference}>
+          <p>
+            Pappa, V., Bouris, D. Tsoka, S., & Markos, N. Wind tunnel study of
+            the drag coefficient of Mediterranean urban trees, <i>9th EACWE</i>,
+            16-19 June 2025, Trondheim, Norway
+          </p>
         </div>
       </div>
+
+      <div className="section-divider"></div>
 
       {/* Publications section */}
       <div className="publications-section">
@@ -64,10 +81,12 @@ const PublicationsAnnouncements: React.FC = () => {
           PUBLICATIONS
         </h3>
         <div>
-          <p></p>
-        </div>
-        <div>
-          <p></p>
+          <p>
+            Tsoka, S, Zaraveli, Z., Theodoridou, & Velikoy, K. Modeling Future
+            Urban Microclimates in Athens, Greece: An ENVI-Met Analysis of Local
+            Climate Zones Under Different Emission Scenarios. <i>Buildings</i>{" "}
+            (in press)
+          </p>
         </div>
       </div>
     </section>
