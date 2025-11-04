@@ -114,6 +114,14 @@ const DeliverablesPage: FC = () => {
         id: "D5.2.",
         fileName: "Impact_of_NBS_on_building_performance_and_NVP.pdf",
       },
+      {
+        id: "D5.3.",
+        fileName: "Impact_of_NBS_on_outdoor_comfort_and_air_quality.pdf",
+      },
+      {
+        id: "D6.2.",
+        fileName: "Interim_report.pdf",
+      },
     ];
 
     const cloudDeliverable = cloudDeliverables.find((d) => d.id === id);
@@ -127,17 +135,11 @@ const DeliverablesPage: FC = () => {
       };
     }
     // Handle new deliverables without links or files
-    if (["D5.3.", "D6.1.", "D6.2."].includes(id)) {
+    if (["D6.1."].includes(id)) {
       let title = "";
       switch (id) {
-        case "D5.3.":
-          title = "Impact of NBS on outdoor comfort and air quality";
-          break;
         case "D6.1.":
           title = "Final report";
-          break;
-        case "D6.2.":
-          title = "Interim report";
           break;
         default:
           break;
@@ -196,7 +198,7 @@ const DeliverablesPage: FC = () => {
                   </td>
                   <td className="px-4 py-2 ">{deliverable.title}</td>
                   <td className={`px-4 py-2 ${styles.deliverableLink}`}>
-                    {["D5.3.", "D6.1.", "D6.2."].includes(deliverable.id) ? (
+                    {["D6.1."].includes(deliverable.id) ? (
                       "" // Render nothing for these deliverables
                     ) : "link" in deliverable ? (
                       <Link

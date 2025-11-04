@@ -2,8 +2,6 @@
 import React, { FC, useState, useEffect, useRef } from "react";
 import { ResizableBox } from "react-resizable";
 import "react-resizable/css/styles.css";
-import { useClickOutside } from "../hooks/userClickOutside";
-
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -16,9 +14,6 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileName, setLoading }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [loadError, setLoadError] = useState<boolean>(false); // State for load errors
-
-  // Use the useClickOutside hook
-  useClickOutside(modalRef, onClose);
 
   // State variables to store the max width and height of the resizable box
   const [maxWidth, setMaxWidth] = useState(600);
@@ -86,7 +81,6 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, fileName, setLoading }) => {
       {/* Backdrop */}
       <div
         className="fixed inset-0 bg-black bg-opacity-50 z-[1999]"
-        onClick={onClose}
         aria-hidden="true"
       />
       {/* Modal Content */}

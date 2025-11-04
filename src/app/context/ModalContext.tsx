@@ -48,19 +48,6 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
         <div className="fixed inset-0 bg-gray-900 bg-opacity-50 z-50 flex justify-center items-center">
           {/* Show a loading spinner if the modal is still fetching data */}
           {loading && <div className="loader" />}
-          {/* Clicking the background closes the modal */}
-          {!loading && (
-            <button
-              className="absolute inset-0 w-full h-full bg-transparent"
-              onClick={closeModal}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  closeModal();
-                }
-              }}
-              aria-label="Close modal"
-            />
-          )}
         </div>
       )}
 
