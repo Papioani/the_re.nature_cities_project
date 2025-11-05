@@ -85,7 +85,7 @@ const PublicationsAnnouncements: React.FC = () => {
             Tsoka, S, Zaraveli, Z., Theodoridou, & Velikoy, K. Modeling Future
             Urban Microclimates in Athens, Greece: An ENVI-Met Analysis of Local
             Climate Zones Under Different Emission Scenarios. <i>Buildings</i>{" "}
-            (in press)
+            2025, 15(21), 3986;{" "}
           </p>
         </div>
       </div>
