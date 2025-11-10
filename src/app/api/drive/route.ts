@@ -18,11 +18,18 @@ export async function GET(request: NextRequest) {
               "Microclimate_evaluation_for_current_and_future_conditions.pdf":
                 "1vMgajDuBjWnoUVVDVh7XebpVfH_2FJek",
               "Evaluation_of_climate_change_effect_on_the_built_environment.pdf":
-                "1xi3RCLIqwWL5yTjPiUHiLoFeql9Aja0M",
+                "18D7D95V8uSitQIxYKhJraG6_C_5vBmM9",
               "Selection_of_urban_street_tree_types.pdf":
                 "1pTdys-Z7qRrmG-XvQXwdLwBSOIsWnQu5",
               "LAI_LAD_and_albedo_database.pdf":
                 "1L39hJMJPHgcm1wRM7CsEwxfeXLxMOyyu",
+              "Impact_of_NBS_on_microclimate.pdf":
+                "1wxKkJp6EF-Y6-iGijbo_dhcLpTINmrAL",
+              "Impact_of_NBS_on_building_performance_and_NVP.pdf":
+                "1apj8X03VxT_BLPFGdNCNp8tnKgH26LU_",
+              "Impact_of_NBS_on_outdoor_thermal_comfort_and_air_quality.pdf":
+                "11_pepxqm4ost657RbczWXZtjtLbeNnFC",
+              "Interim_report.pdf": "1qxWHD0a5ipuYSbYQvKQGw_aE5Hx_8DWb",
             };
             const fileId = fileIdMap[fileName];
             if (fileId) {
